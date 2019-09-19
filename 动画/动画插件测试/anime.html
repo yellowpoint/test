@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style type="text/css">
+			#svgAttributes{
+				color: yellowgreen;
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="svgAttributes">
+			<svg width="128" height="128" viewBox="0 0 128 128">
+				<polygon points="64 68.95077152952067 8.574 99.9790585222695 63.15872480849296 67.49320201864393 64 3.979058522269497 64.84127519150704 67.49320201864393 119.426 99.9790585222695 " fill="currentColor"></polygon>
+			</svg>
+		</div>
+
+		<script src="anime.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var svgAttributes = anime({
+				targets: '#svgAttributes polygon',
+				points: '64 128 8.574 96 8.574 32 64 0 119.426 32 119.426 96',
+				easing: 'easeInOutExpo',
+				delay:1000,
+				complete:function(){
+					console.log('展开了')
+				}
+			});
+		</script>
+	</body>
+
+</html>

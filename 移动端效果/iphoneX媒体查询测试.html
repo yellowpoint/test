@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		html{
+			font-size: 100px;
+		}
+		body{
+			font-size: 14px;
+			/*overflow: hidden;*/
+		}
+		.d1{
+			width: 100px;
+			height: 100px;
+			background: yellowgreen;
+		}
+
+		@media (max-width:768px) {
+			.d1{
+				background: red;
+			}
+		}
+		.d2{
+			width: 6rem;
+			height: 1rem;
+			background: wheat;
+			/*margin: 20px auto;*/
+		}
+		.abutton{
+			position: relative;
+		}
+		.abutton:hover:before{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			z-index: 5;
+			background: rgba(255,255,255,.3);
+		}
+		.abutton:active:before{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			z-index: 5;
+			background: rgba(0,0,0,.2);
+			
+		}
+	</style>
+</head>
+<body>
+	<button>wos</button>
+
+	<div class="d1 abutton">w我是一个块</div>
+	<div class="d2"></div>
+	<script src="../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+	
+//动态改变html的fontsize
+(function changeFontSize() {
+	var screenWidth = $(window).width();
+	if($(window).width()>1200){
+		screenWidth=1200
+	}
+	
+	var htmlFontSize = screenWidth / 12;
+	$("html").css("font-size", htmlFontSize);
+	$(window).resize(function() {
+		screenWidth = $(window).width();
+		if($(window).width()>1200){
+		screenWidth=1200
+	}
+		
+		htmlFontSize = screenWidth / 12;
+		$("html").css("font-size", htmlFontSize);
+	});
+})();
+	</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>观察者模式</title>
+</head>
+
+<body>
+
+
+  <script>
+    // 主题
+    class Subject {
+      constructor() {
+        this.state = 0
+        this.observers = []
+      }
+      getState() {
+        return this.state
+      }
+      setState(state) {
+        this.state = state
+        this.notifyAllObservers()
+      }
+      notifyAllObservers() {
+        this.observers.forEach(observer => {
+          observer.update()
+        })
+      }
+      attach(observer) {
+        this.observers.push(observer)
+      }
+    }
+    // 观察者
+    class Observer {
+      constructor(name, subject) {
+        this.name = name
+        this.subject = subject
+        this.subject.attach(this)
+
+      }
+      update() {
+        console.log(`${this.name} update,state:${this.subject.getState()}`)
+      }
+    }
+
+    // 测试
+    let s = new Subject()
+    let o1 = new Observer('o1', s)
+    let o2 = new Observer('o2', s)
+    let o3 = new Observer('o3', s)
+    s.setState(1)
+    s.setState(2)
+    s.setState(3)
+  </script>
+</body>
+
+</html>

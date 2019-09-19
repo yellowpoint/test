@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+
+    <title>Title</title>
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+
+    <script>
+
+
+        (function changeFontSize() {
+            var screenWidth = $(document).width();
+            var htmlFontSize = screenWidth/6.4;
+            $("html").css("font-size",htmlFontSize);
+            $(window).resize(function(){
+                screenWidth = $(document).width();
+                htmlFontSize = screenWidth/6.4;
+                $("html").css("font-size",htmlFontSize);
+            });
+        })();
+
+    </script>
+</body>
+</html>

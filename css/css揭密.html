@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			div {
+				margin: 20px;
+				width: 50px;
+				height: 50px;
+				background: yellowgreen;
+			}
+			
+			.d1 {
+				border: 10px solid rgba(0, 0, 0, .5);
+				background-clip: padding-box; /*没有这还行代码则边框的半透明下面是绿色的*/
+			}
+			
+			.d2 {
+				/*border: 10px solid yellow;*/
+				outline: 2px dashed red;
+				outline-offset:-10px;
+			}
+			.d3{
+				background: url(http://51app-image.oss-cn-hangzhou.aliyuncs.com/loan/loan/2017/9/29/1809484139332.gif) no-repeat yellowgreen;
+				background-size: 20px;
+				background-position: right 10px bottom 10px;
+			}
+			.d4{
+				background: url(http://51app-image.oss-cn-hangzhou.aliyuncs.com/loan/loan/2017/9/29/1809484139332.gif) no-repeat yellowgreen;
+				background-size: 20px;
+				background-position: right  bottom ;
+				background-origin: content-box;
+				padding: 10px;
+				box-sizing: border-box;
+			}
+			.d5{
+				background: url(http://51app-image.oss-cn-hangzhou.aliyuncs.com/loan/loan/2017/9/29/1809484139332.gif) no-repeat yellowgreen;
+				background-size: 20px;
+				background-position: 66.66666% 66.6666px ; /*(容器的宽度-图片的宽度) * 百分比     简直是一个坑，就说为什么感觉差一点，居然不是根据容器的宽度来算的*/
+			}
+			.d6{
+				background: url(http://51app-image.oss-cn-hangzhou.aliyuncs.com/loan/loan/2017/9/29/1809484139332.gif) no-repeat yellowgreen;
+				background-size: 20px;
+				background-position: calc(100% - 10px) calc(100% - 10px);
+			}
+			.d7{
+				background: url(http://51app-image.oss-cn-hangzhou.aliyuncs.com/loan/loan/2017/9/29/1809484139332.gif) no-repeat yellowgreen;
+				background-size: 20px;
+				background-position: right 10px bottom 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="d1">1</div>
+		<div class="d2">2</div>
+		<div class="d3">3</div>
+		<div class="d4">4</div>
+		<div class="d5">5</div>
+		<div class="d6">6</div>
+		<div class="d7">7</div>
+		
+
+	</body>
+
+</html>

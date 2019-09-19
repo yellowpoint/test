@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	</head>
+
+	<body>
+
+
+
+		<div id="distpicker3">
+			<select></select>
+			<select></select>
+		</div>
+		<a href="large.jpg" download>下载</a>
+
+		<script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+		<script src="../LAreaData2.js" type="text/javascript" charset="utf-8"></script>
+
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+
+		<script src="js/distpicker.data.js"></script>
+		<!--<script src="js/data2.js"></script>-->
+		<script src="js/distpicker.js"></script>
+
+		<script type="text/javascript">
+	
+
+			var city = remote_ip_info['city'];
+			var province = remote_ip_info['province'];
+
+			$("#distpicker3").distpicker({
+				province: province + "",
+				city: city + "市",
+				placeholder: false
+			});
+
+			setTimeout(function() {
+				//				console.log($('select :selected').attr('data-code'))
+			}, 1000)
+
+			var province = provs_data;
+			var province2 = {};
+
+			$.each(province, function(i) {
+				province2[String(province[i].value)] = String(province[i].text)
+			});
+
+			console.log(Object.getOwnPropertyNames(province2).length)
+
+			var city = citys_data;
+			var city2 = {};
+			$.each(city, function(i, v) {
+
+				var dataBox = {};
+				$.each(v, function(j) {
+					dataBox[String(v[j].value)] = String(v[j].text)
+				})
+				city2[String(i)] = dataBox;
+			});
+			console.log(city2)
+
+			var district = dists_data;
+			var district2 = {};
+			$.each(district, function(i, v) {
+
+				var dataBox = {};
+				$.each(v, function(j) {
+					dataBox[String(v[j].value)] = String(v[j].text)
+				})
+				district2[String(i)] = dataBox;
+			});
+			console.log(district2)
+
+
+
+
+
+
+
+
+
+
+//			var eleTextarea = document.querySelector('textarea');
+			var eleButton = document.querySelector('a');
+
+			// 下载文件方法
+			var funDownload = function(content, filename) {
+				var eleLink = document.createElement('a');
+				eleLink.download = filename;
+				eleLink.style.display = 'none';
+				// 字符内容转变成blob地址
+				var blob = new Blob([content]);
+				eleLink.href = URL.createObjectURL(blob);
+				// 触发点击
+				document.body.appendChild(eleLink);
+				eleLink.click();
+				// 然后移除
+				document.body.removeChild(eleLink);
+			};
+
+			if('download' in document.createElement('a')) {
+				// 作为test.html文件下载
+				eleButton.addEventListener('click', function() {
+					funDownload(JSON.stringify(district2), 'test.js');
+				});
+			} else {
+				eleButton.onclick = function() {
+					alert('浏览器不支持');
+				};
+			}
+		</script>
+	</body>
+
+</html>

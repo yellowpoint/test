@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <title>Document</title>
+    <style type="text/css">
+    #source,
+    #frame {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+
+    <img id="source" src="Free-Converter.com-diskette-45771541.ico">
+    <img id="frame" src="Free-Converter.com-folder-1-56451542.ico">
+    <canvas id="canvas" width="600" height="350"></canvas>
+    <img id="imgBox" src="">
+
+
+
+    <script src="../zepto.min.js"></script>
+    <script type="text/javascript">
+    function draw() {
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+
+
+        var img1 = new Image(); // 创建img元素
+        img1.crossOrigin = "";
+        img1.onload = function() {
+
+            ctx.drawImage(img1, 0, 0);
+            var dataURL = canvas.toDataURL('image/png');
+            
+            $('#imgBox').attr("src", dataURL);
+            saveFile(dataURL)
+        }
+        	
+        img1.src = 'e3b52c0fb6e0e99ad125a8574811b44d_b.png';
+
+
+
+        // // var img = document.images;
+        // var img1 = document.getElementById('frame');
+        // // var img2 = document.getElementById('source');
+
+
+        // img1.onload = function() {
+        //     // Draw slice
+        //     ctx.drawImage(document.getElementById('source'),
+        //         0,0);
+
+        //     // // Draw frame
+        //     // ctx.drawImage(document.getElementById('frame'), 0, 0);
+        //     var dataURL = canvas.toDataURL('image/png');
+        //     console.log(dataURL);
+        //     $('#imgBox').attr("src", dataURL);
+
+        // }
+
+
+    }
+
+
+    function saveFile(strData) {
+        setTimeout(function() {
+            var filename = 'tuterm_' + (new Date()).getTime() + '.jpg';
+            strData = strData.replace('image/jpeg', 'image/octet-stream');      
+            downLoadFile(strData, filename);
+        }, 1000);
+    }
+
+    function downLoadFile(data, filename) {
+        var _saveLink = document.createElementNS('http://www.w3.org/1999/xhtml', 'a'),
+            _event = document.createEvent('MouseEvents');
+        _saveLink.href = data;
+        _saveLink.download = filename;
+        _event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+        _saveLink.dispatchEvent(_event);
+    };
+
+
+
+    draw();
+    </script>
+</body>
+
+</html>

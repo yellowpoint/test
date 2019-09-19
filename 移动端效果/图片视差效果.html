@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <title></title>
+    <style type="text/css">
+        body, html {
+            width: 100%;
+            overflow: hidden;
+        }
+        .content{
+            position: relative;
+            top: -51px;
+            left: -51px;
+            width: 600px;
+            z-index: 2;
+            height: 300px;
+            overflow: hidden;
+        }
+        img{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body >
+    <div class="content">
+        <img class="img" src="http://file.diy.51app.cn/uu20/special/0c1c55d2.jpg">
+    </div>
+
+
+    <script src="zepto.min.js" ></script>
+    <script src="orienter.min.js"></script>
+    <script >
+        var o = new Orienter();
+        o.onOrient = function (obj) {
+          var a, b;
+
+          a = obj.lon < 180 ? obj.lon : obj.lon - 360;
+          b = obj.lat;
+
+          a = a > 0 ? a > 50 ? 50 : a : a < -50 ? -50 : a;
+          b = b > 0 ? b > 50 ? 50 : b : b < -50 ? -50 : b;
+
+          $(".img").css("-webkit-transform", "translate3d(" + a + "px," + b + "px,0)");
+
+        };
+        o.init();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>aa\x41bb</p>
+		<p>aa\x41bb</p>
+		<input type="text" name="" id="" value="aa\nbb" />
+		<script type="text/javascript">
+			var str = "aa\nbb"
+			console.log(str)
+			document.querySelectorAll('p')[0].innerHTML=str;
+			console.log(document.querySelectorAll('input')[0].value)
+			
+		</script>
+	</body>
+</html>

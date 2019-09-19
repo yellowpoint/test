@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="css/mui.min.css" />
+	</head>
+
+	<body>
+
+		<div class="mui-scroll-wrapper " id="mySwitch">
+			<div class="mui-scroll">
+
+				<div class="mui-switch">
+					<div class="mui-switch-handle"></div>
+				</div>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<p>fksdlfjdklfjldks</p>
+				<!--这里放置真实显示的DOM内容-->
+			</div>
+		</div>
+
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+		<script src="js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init()
+			//		options = {
+			// scrollY: true, //是否竖向滚动
+			// scrollX: false, //是否横向滚动
+			// startX: 0, //初始化时滚动至x
+			// startY: 0, //初始化时滚动至y
+			// indicators: true, //是否显示滚动条
+			// deceleration:0.0006, //阻尼系数,系数越小滑动越灵敏
+			// bounce: true //是否启用回弹
+			//}
+			mui('.mui-scroll-wrapper').scroll({
+//				deceleration: 1 //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
+			});
+			$('body').on('touchmove', function(e) {
+				e.preventDefault()
+			})
+
+			var isActive = document.getElementById("mySwitch").classList.contains("mui-active");
+			if(isActive) {
+				console.log("打开状态");
+			} else {
+				console.log("关闭状态");
+			}
+			document.getElementById("mySwitch").addEventListener("toggle", function(event) {
+				if(event.detail.isActive) {
+					console.log("你启动了开关");
+				} else {
+					console.log("你关闭了开关");
+				}
+			})
+		</script>
+	</body>
+
+</html>

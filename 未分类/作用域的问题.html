@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+
+    <script>
+        var a = 1;
+        var f1 = function () {
+            console.log(a)
+        };
+        var f2 = function () {
+          var a = 2;
+            f1()
+        };
+        f2(); // 1
+
+    </script>
+</body>
+</html>

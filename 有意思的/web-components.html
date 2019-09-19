@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<template id="hd">
+			<h1>
+			hahaha
+		</h1>
+		</template>
+		<script type="text/javascript">
+			let temp = document.getElementById('hd')
+			console.log(temp)
+			
+			let indexDoc = document;
+			let CurrentDoc = indexDoc.currentScript.ownerDocument;
+			let temp2 = CurrentDoc.getElementById('hd')
+			console.log(temp2)
+		</script>
+	</body>
+
+</html>

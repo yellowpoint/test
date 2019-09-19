@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        /*普通的练习*/
+        .d1{
+            width: 100px;
+            height:100px;
+            background: yellowgreen;
+            transition-property: all;
+            transition-duration: 1s;
+            /*transition-delay: 1s;*/
+            transition-timing-function: cubic-bezier(.83,.97,.05,1.44);/*最后阶段放大过度、然后回缩的效果*/
+        }
+        .d1:hover{
+            width: 200px;
+            height:200px;
+
+        }
+
+
+        .d2{
+            width: 100px;
+            height:100px;
+            background: saddlebrown;
+            animation: 1s a1 4 forwards alternate;
+            animation-play-state: paused;
+        }
+        .d2:hover{
+            animation-play-state: running;
+        }
+        @keyframes a1 {
+            0% { background: #c00; width: 100px;}
+            50% { background: orange;width: 200px; }
+            100% { background: yellowgreen; width: 300px;}
+        }
+
+
+        /* 打字*/
+        @keyframes typing { from { width: 0; } }
+        @keyframes blink-caret { 50% { border-color: transparent; } }
+
+        h1 {
+            font: bold 200% Consolas, Monaco, monospace;
+            border-right: .1em solid;
+            /*width: 16.5em; !* fallback *!*/
+            width: 28ch; /* # of chars */
+            margin: 2em 1em;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 20s steps(15, end), /* # of steps = # of chars */
+            blink-caret .5s step-end infinite alternate;
+        }
+        h2{
+            width: 100px;
+            height:50px;
+            background: #ddd;
+            border-right:3px solid;
+            animation: blink-caret .5s step-end infinite alternate;
+        }
+
+        /*跳动的心*/
+        @keyframes pound {
+            from { transform:none; }
+            to { transform: scale(1.2); }
+        }
+        .d3{
+            position: relative;
+            animation: pound 1.5s infinite;
+        }
+        .d3 h1{
+            position: absolute;
+            top:50px;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="d1"></div>
+
+    <div class="d2"></div>
+
+    <h1>等宽字体维基百科自由的百科全书</h1>
+    <h2>?</h2>
+
+    <div class="d3">
+        <img src="heart.svg"/>
+        <h1>等宽字体维基百科自由的百科全书</h1>
+
+    </div>
+
+</body>
+</html>

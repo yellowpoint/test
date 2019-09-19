@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    class Iterator {
+      constructor(container) {
+        this.list = container.list
+        this.index = 0
+      }
+      next() {
+        if (this.hasNext()) {
+          return this.list[this.index++]
+        }
+      }
+      hasNext() {
+        if (this.index >= this.list.length) {
+          return false
+        }
+        return true
+      }
+    }
+    class Container {
+      constructor(list) {
+        this.list = list
+      }
+      // 生成迭代器
+      getIterator() {
+        return new Iterator(this)
+      }
+    }
+
+    // 测
+    let arr = [11, 22, 33, 44]
+    let container = new Container(arr)
+    let iterator = container.getIterator()
+    while (iterator.hasNext()) {
+      console.log(iterator.next())
+    }
+  </script>
+</body>
+
+</html>

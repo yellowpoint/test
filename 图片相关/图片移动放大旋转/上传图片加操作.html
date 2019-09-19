@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <title>aaa</title>
+    <style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+    }
+
+    .test {
+        width: 100%;
+        height: 70%;
+        background: #ffd800;
+
+    }
+
+    .result {
+        width: 100%;
+        height: 30%;
+        background: #b6ff00;
+        text-align: left;
+    }
+    img{
+    	width: 100%;
+    	display: block;
+    }
+
+    #text{
+        display: inline-block;
+        font-size: 30px;
+        color: #ff3444;
+        background: rgba(255,0,0,.2);
+    }
+    .imgBox{
+        width: 100%;
+        position: relative;
+
+    }
+    .templateImg{
+
+    }
+    #uploadImgBox{
+        position: absolute;
+        top: 19%;
+        left: 29%;
+        right: 29%;
+        bottom: 21%;
+        z-index: 999;
+        background:  rgba(255,0,0,.2);
+        /*overflow: hidden;*/
+    }
+    #uploadImg{
+        /*margin: 10px;*/
+        position: absolute;
+    }
+    </style>
+</head>
+
+<body>
+	<!-- <script src="http://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script> -->
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="lrz.all.bundle.js"></script>
+    <script src="transform.js"></script>
+    <script src="alloy_finger.js"></script>
+    <!-- <script src="to.js"></script> -->
+    <div  class="test" >
+        <form method="post" enctype="multipart/form-data">
+            <input  type="file" id="file-input" accept="image/png, image/jpeg, image/gif, image/jpg"/>
+            <input  type="button"  value="上传"  onclick="fileData()"  />
+            <input  type="button"  value="添加"  onclick="addImg()"  />
+        </form>
+
+        上传进度：<progress></progress><br/>
+        <p id="progress">0 bytes</p>
+        <p id="info"></p>
+        <!-- <img id="img1" src="fbc5a608.jpg"> -->
+        <div class="imgBox">
+            <img class="templateImg" src="template.png">
+            <div id="uploadImgBox"></div>
+        </div>
+
+
+    </div>
+    <div id="result" class="result">
+
+        x移动:<span id="x"></span><br/>
+        y移动:<span id="y"></span><br/>
+        旋转:<span id="rotate"></span><br/>
+        缩放:<span id="Scale"></span><br/>
+        x坐标:<span id="xx"></span><br/>
+        y坐标:<span id="yy"></span>
+    </div>
+    <script>
+    //初始化fastclick
+    // FastClick.attach(document.body);
+    var imgInfo = {
+        "rotateZ":0,
+        "scaleX":0,
+        "translateX":0,
+        "translateY":0
+    };
+
+    function handleImg(id) {
+        var uploadImg = document.getElementById("uploadImg");
+        var offsetTop,offsetLeft;
+        var top=0,left=0;
+        var initScale = 1;
+        Transform(id);
+        new AlloyFinger(id, {
+            rotate:function(evt){
+                id.rotateZ += evt.angle;
+                $("#rotate").text(id.rotateZ)
+                imgInfo.rotateZ = id.rotateZ;
+
+                // offsetTop = uploadImg.offsetTop;
+                // offsetLeft = uploadImg.offsetLeft;
+
+                offsetTop = $('#uploadImg').position().top;
+                offsetLeft = $('#uploadImg').position().left;
+                $("#xx").text(offsetLeft)
+                $("#yy").text(offsetTop)
+            },
+            multipointStart: function () {
+                initScale = id.scaleX;
+            },
+            pinch: function (evt) {
+                id.scaleX = id.scaleY = initScale * evt.scale;
+                $("#Scale").text(id.scaleX)
+                imgInfo.scaleX = id.scaleX;
+                // offsetTop = uploadImg.offsetTop;
+                // offsetLeft = uploadImg.offsetLeft;
+
+                offsetTop = $('#uploadImg').position().top;
+                offsetLeft = $('#uploadImg').position().left;
+                $("#xx").text(offsetLeft)
+                $("#yy").text(offsetTop)
+            },
+            pressMove:function(evt){
+                // alert(22222)
+                id.translateX += evt.deltaX;
+                id.translateY += evt.deltaY;
+
+                top += evt.deltaY;
+                left += evt.deltaX;
+                evt.preventDefault();
+                $("#x").text(id.translateX);
+                $("#y").text(id.translateY);
+                imgInfo.translateX = id.translateX;
+                imgInfo.translateY = id.translateY;
+
+                // $("#uploadImg").css({
+
+                //     "top":top+"px",
+                //     "left":left+"px"
+
+                // })
+
+                // offsetTop = uploadImg.offsetTop;
+                // offsetLeft = uploadImg.offsetLeft;
+
+                // offsetTop = $('#uploadImg').position().top;
+                // offsetLeft = $('#uploadImg').position().left;
+                $("#xx").text(offsetLeft)
+                $("#yy").text(offsetTop)
+
+            }
+
+        });
+    }
+
+    // var img1 = document.getElementById("img1");
+    // handleImg(img1)
+
+    function fileHandle() {
+        // 检测是否支持File API
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+          //  支持
+        } else {
+          alert('不支持');
+          return false;
+        }
+
+        $('#file-input').on('change', function(e) {
+
+            var file = e.target.files[0]; //获取图片资源
+
+              // 只选择图片文件
+              if (!file.type.match('image.*')) {
+                return false;
+              }
+
+            $("#info").html("总大小: " + file.size + "bytes");
+
+              var reader = new FileReader();
+              reader.readAsDataURL(file); // 读取文件
+              // 渲染文件
+              reader.onload = function(arg) {
+
+                    lrz(file)
+                        .then(function (rst) {
+                            // 处理成功会执行
+                            console.log(rst);
+                            var img = '<img id="uploadImg" src="' + rst.base64 + '" alt="preview"/>';
+                            $("#uploadImgBox").empty().append(img);
+                            var uploadImg = document.getElementById("uploadImg");
+                            handleImg(uploadImg)
+                        })
+                        .catch(function (err) {
+                            // 处理失败会执行
+                        })
+                        .always(function () {
+                            // 不管是成功失败，都会执行
+                        });
+
+              }
+
+        });
+
+        // $('#file-input').on('change', function(e) {
+
+        //     var file = e.target.files[0]; //获取图片资源
+
+        //       // 只选择图片文件
+        //       if (!file.type.match('image.*')) {
+        //         return false;
+        //       }
+
+        //       var reader = new FileReader();
+        //       reader.readAsBinaryString(file); // 读取文件
+
+
+        //       // 渲染文件
+        //       reader.onload = function(arg) {
+
+        //         lrz(file)
+        //             .then(function (rst) {
+        //                 // 处理成功会执行
+        //                 console.log(rst);
+        //                 var src = "data:"+file.type+";base64,"+window.btoa(this.result);
+
+        //                 var img = '<img id="uploadImg" src="' + src + '" alt="preview"/>';
+        //                 $("#uploadImgBox").empty().append(img);
+        //                 var uploadImg = document.getElementById("uploadImg");
+        //                 handleImg(uploadImg)
+        //             })
+        //             .catch(function (err) {
+        //                 // 处理失败会执行
+        //             })
+        //             .always(function () {
+        //                 // 不管是成功失败，都会执行
+        //             });
+
+
+
+        //       }
+
+
+
+        // });
+
+    }
+    fileHandle();
+
+    function fileData () {
+
+
+        var form_data = new FormData();
+        var file_data = $("#file-input").prop("files")[0];
+
+        // 把上传的数据放入form_data
+        form_data.append("userId", "2333333");
+        form_data.append("imgFile", file_data);
+        form_data.append("degree", imgInfo.rotateZ);
+        form_data.append("locationX", imgInfo.translateX);
+        form_data.append("locationY", imgInfo.translateY);
+        form_data.append("rate", imgInfo.scaleX);
+
+
+        $.ajax({
+            type: "POST",
+            url: "http://192.168.1.249:8080/uq/diyImage.do",
+            dataType : "json",
+            crossDomain: true, // 如果用到跨域，需要后台开启CORS   zepto貌似没有这个属性
+            processData: false,  // 注意：不要 process data
+            contentType: false,  // 注意：不设置 contentType
+            data: form_data,
+            xhr: function(){ //获取ajaxSettings中的xhr对象，为它的upload属性绑定progress事件的处理函数
+
+                myXhr = $.ajaxSettings.xhr();
+                if(myXhr.upload){ //检查upload属性是否存在
+                    //绑定progress事件的回调函数
+                    myXhr.upload.addEventListener('progress',progressHandlingFunction, false);
+                }
+                return myXhr; //xhr对象返回给jQuery使用
+            },
+            success:function (msg) {
+                console.log(msg);
+                alert("成功")
+            },
+            error:function (msg) {
+                console.log(msg);
+                alert("失败")
+            }
+        });
+
+    }
+
+    //上传进度回调函数：
+    function progressHandlingFunction(e) {
+        if (e.lengthComputable) {
+            $('progress').attr({value : e.loaded, max : e.total}); //更新数据到进度条
+            var percent = e.loaded/e.total*100;
+            $('#progress').html(e.loaded + "/" + e.total+" bytes. " + percent.toFixed(2) + "%");
+        }
+    }
+
+    function addImg() {
+         var img = '<img id="uploadImg" src="fbc5a608.jpg" alt="preview"/>';
+         $("#uploadImgBox").empty().append(img);
+         var uploadImg = document.getElementById("uploadImg");
+         handleImg(uploadImg)
+    }
+
+
+
+    //  $(document).on('touchmove',function(e) {
+    //      var e = e || window.event;
+    //      e.preventDefault();
+    // })
+    </script>
+
+
+</body>
+
+</html>
+

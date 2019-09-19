@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+
+		<iframe sandbox="allow-forms allow-same-origin allow-scripts" src="http://www.shandw.com/3th/suiyi/1938270412.html?username=a986bb4298f9b5ea&sign=2d92cf1693fe0efc766729a96ebb92d6" width="300px" height="600px"></iframe>
+
+		<script src="../../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//			var loginUrl = 'http://www.shandw.com/3th/suiyi/1938270412.html?username=a986bb4298f9b5ea&sign=2d92cf1693fe0efc766729a96ebb92d6'
+			//			//			$('iframe').contentWindow.location.replace()
+			//
+			//			var iframe = document.createElement('iframe');
+			//			iframe.src = loginUrl;
+			//			iframe.width = '300px';
+			//			iframe.height = '600px';
+			//			$('body').append(iframe);
+			//
+			//			var oDocument = iframe.contentWindow.document;
+			//
+			//			oDocument.open("text/html", "replace");
+			//
+			//			oDocument.write(iframe);
+			//
+			//			oDocument.close();
+
+			setTimeout(function() {
+				console.log('History.length', history.length)
+			}, 300)
+			window.history.pushState("creditCardCenter", "", '#');
+			window.addEventListener("popstate", function() {
+				if(window.history.state == null) {
+					history.go(-8)
+				}
+			})
+		</script>
+	</body>
+
+</html>

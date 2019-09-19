@@ -1,0 +1,32 @@
+<!-- 一段小动画：点击按钮之后会有一个爆炸的粒子效果 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Test</title>
+    <style>
+        .main {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background: #000;
+            overflow: hidden;
+        }
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid #FFF;
+            width: 8px;
+            height: 8px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="main"></div>
+<hr>
+<button onclick="showAnimation()">点我</button>
+<script src="jquery-3.0.0.js"></script>
+<script src="animation.js"></script>
+</body>
+</html>

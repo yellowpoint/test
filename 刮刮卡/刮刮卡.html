@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML5+JS实现刮刮乐刮刮卡抽奖</title>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript"  src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <style type="text/css">
+        #bg1{ display: none; position:fixed; top: 0%; left: 0%; width: 100%; height: 100%; background-color: black; z-index:1001; -moz-opacity: 0.7; opacity:.70; filter: alpha(opacity=70);}
+        #show{display: none; position: fixed; background-color: #fff; z-index:1002; overflow: auto;}
+    </style>
+</head>
+<!-- 获取更多知识，一起学习，关注微信公众号【前端开发知识】 -->
+<body style="overflow:hidden">
+<div id="bg" style="position:absolute;top:0;left:0;"><img src="http://7u2qrr.com1.z0.glb.clouddn.com/h5_guaguaka_bg.png" width="100%" height="100%"`z / ></div>
+<div id="bg2" style="width:295px;height:195px;margin:0 auto;">
+    <img id="bg2_img" src="http://7u2qrr.com1.z0.glb.clouddn.com/h5_guaguaka_word.png" width="295" height="195" style="position: absolute;">
+</div>
+<div>
+    <div id="re" style="position:absolute;top:20px;left:20px;">
+        <img src="http://7u2qrr.com1.z0.glb.clouddn.com/h5_rebi_logo.png" width="100%" height="100%" / >
+        <div id="re_div" style="color:white;font-family: '黑体';overflow:hidden;">x18</div>
+    </div>
+
+    <div id="gua" style="position:absolute;top:20px;left:80%;" align="center">
+        <img src="http://7u2qrr.com1.z0.glb.clouddn.com/h5_gua_logo.png" width="100%" height="100%" / >
+        <div id="gua_div" style="color:white;font-family: '黑体';overflow:hidden; ">x18</div>
+    </div>
+</div>
+<div id="gua1" style="width:295px;;margin:0 auto;" >
+    <img id="gua1_img" src="http://7u2qrr.com1.z0.glb.clouddn.com/h5_gua_image.png" style="position: absolute;">
+    <canvas id="front" style="position:absolute;no-repeat" />
+</div>
+<div id="notify" style="width:295px;height:101px;margin:0 auto;">
+    <img id="nImg" src="http://7u2qrr.com1.z0.glb.clouddn.com/h5_notice_bg.png" style="position: absolute;">
+    <div id="nImg_div" style="position: absolute;color:white;font-size: 17px;font-family: '黑体'" align="center">
+        <div style="width:245px;height:101px;padding:20px 0px 0px 50px;" align="left">每天登陆热拍有1张刮刮卡哦~元旦开始，热币可抵现金，还可抽神秘大奖！</div>
+    </div>
+</div>
+<div id="di" style="width:295px;margin:0 auto;" >
+</div>
+
+<div id="bg1"></div>
+<div id="show" style="position:absolute;" align="center">
+    <img id="show_img" src="http://7u2qrr.com1.z0.glb.clouddn.com/h5_dialog_bg.png" width="100%" height="100%">
+    <div style="margin-top:-145px;margin-left:40px;padding-right: 40px;line-height:1.5;color:#000000;font-size: 17px;font-family: '黑体'" >
+        亲，您今天的机会已经用完了~明天再接再励！
+    </div>
+    <img id="show_btn" src="http://7u2qrr.com1.z0.glb.clouddn.com/h5_btn_sure.png" style="margin-top: 30px;" onclick="hidediv()">
+</div>
+
+<script type="text/javascript">
+    var gua = 1,re = 2;
+    var imgSrc = 'http://7u2qrr.com1.z0.glb.clouddn.com/h5_images.jpeg';
+
+    function showdiv() {
+        document.getElementById("bg1").style.display ="block";
+        document.getElementById("show").style.display ="block";
+    }
+
+    function hidediv() {
+        document.getElementById("bg1").style.display ='none';
+        document.getElementById("show").style.display ='none';
+    }
+
+    $(function(){
+        var width = $("#show_img").width();
+        var height = $("#show_img").height();
+        var winheight=$(window).height();
+        var winwidth=$(window).width();
+        $("#show").css({"width":300+"px","height":160+"px","overflow":"hidden","margin-left":(winwidth-320)/2+"px","margin-top":winheight/3+"px"});
+        $("#show_btn").css({"width":176*0.5+"px","height":76*0.5+"px"});
+        $("#gua_div").html("x"+gua);
+        $("#re_div").html("x"+re);
+
+        if(gua == 0){
+            showdiv();
+        }
+    })
+
+    $("img").load(function(){
+        var body_width = $(window).width();
+        var body_height = $(window).height();
+        $("#gua1_img").width(300).height(160);
+        var height = 141;
+        var width  = 285;
+        var bg2_width = $("#bg2_img").width();
+        var bg2_height = $("#bg2_img").height();
+
+        $("#gua1").css({"margin-top":"20px"});
+
+        $("#notify").css({"margin-top":"200px"});
+        $("#nImg").width(300).height(101);
+
+        $("#di").css({"margin-top":"50px"});
+        $("#di_img").width(414*0.7).height(24*0.7);
+
+
+        $("#gua").width(width/10).height(width/10);
+        $("#gua_div").css({"line-height":width/10+"px","width":width/10+"px","height":width/10+"px","margin-top":"-"+($("#gua").height())+"px","margin-left":$("#gua").height()+5+"px","font-size": $("#gua").height()/1.6+"px"});
+        $("#re").width(width/10).height(width/10);
+        $("#re_div").css({ "line-height":width/10+"px","width":width/10+"px","height":width/10+"px","margin-top":"-"+($("#gua").height())+"px","margin-left":$("#gua").height()+5+"px","font-size": $("#gua").height()/1.6+"px"});
+        var gua1_img_width = $("#gua1_img").width();
+        $("#front").css({"margin-top":9.3+"px","margin-left":7.5+"px"});
+        $("#bg").width("100%").height($(window).height()-1);
+        if(gua > 0){
+            bodys(height,width);
+        }
+    });
+    function bodys(height,width){
+        var img = new Image();
+        var canvas = document.querySelector('canvas');
+        canvas.style.position = 'absolute';
+        img.addEventListener('load',function(e){
+            var ctx;
+            var w = width, h = height;
+            var offsetX = canvas.offsetLeft, offsetY = canvas.offsetTop;
+            var mousedown = false;
+            function layer(ctx){
+                ctx.fillStyle = 'gray';
+                ctx.fillRect(0, 0, w, h);
+            }
+            function eventDown(e){
+                e.preventDefault();
+                mousedown=true;
+            }
+            function eventUp(e){
+                e.preventDefault();
+                mousedown=false;
+            }
+            function eventMove(e){
+                e.preventDefault();
+                if(mousedown){
+                    if(e.changedTouches){
+                        e=e.changedTouches[e.changedTouches.length-1];
+                    }
+                    var x = (e.clientX + document.body.scrollLeft || e.pageX) - offsetX || 0,
+                            y = (e.clientY + document.body.scrollTop || e.pageY) - offsetY || 0;
+                    with(ctx){
+                        beginPath()
+                        arc(x, y, 15, 0, Math.PI * 2);
+                        fill();
+                    }
+                }
+            }
+            canvas.width=w;
+            canvas.height=h;
+
+            canvas.style.backgroundImage='url('+img.src+')';
+            ctx=canvas.getContext('2d');
+            ctx.fillStyle='b9b9b9';
+            ctx.fillRect(0, 0, w, h);
+
+            layer(ctx);
+            ctx.globalCompositeOperation = 'destination-out';
+            canvas.addEventListener('touchstart', eventDown);
+            canvas.addEventListener('touchend', eventUp);
+            canvas.addEventListener('touchmove', eventMove);
+            canvas.addEventListener('mousedown', eventDown);
+            canvas.addEventListener('mouseup', eventUp);
+            canvas.addEventListener('mousemove', eventMove);
+        });
+
+        img.src = imgSrc;
+        (document.body.style);
+    }
+</script>
+
+</body>
+</html>

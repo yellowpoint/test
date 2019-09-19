@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		
+		<!--<script src="https://cdn.bootcss.com/fingerprintjs/0.5.3/fingerprint.js"></script>
+		<script type="text/javascript">
+			var fingerprint = new Fingerprint({
+				canvas: true
+			}).get();
+			console.log(fingerprint)
+			document.write(fingerprint)
+		</script>-->
+
+		<!--<script src="https://cdn.bootcss.com/fingerprintjs2/1.5.1/fingerprint2.min.js"></script>-->
+		<script src="https://cdn.bootcss.com/fingerprintjs2/1.8.0/fingerprint2.min.js"></script>
+		<script type="text/javascript">
+			new Fingerprint2().get(function(result, components) {
+
+				console.log(result); //a hash, representingyour device fingerprint
+				document.write(result)
+
+				//				console.log(components); // an array of FPcomponents
+
+			});
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <link href="sprites_mobile.css" rel="stylesheet" >
+    <!--<link rel="stylesheet" href="http://yslstaticcontent.6edigital.cn/6e/css/mobile.css"/>-->
+    <!--<link rel="stylesheet" href="http://yslstaticcontent.6edigital.cn/6e/css/sprites_mobile.css"/>-->
+
+    <style>
+        *{margin: 0;padding:0;}
+        html,body{
+            min-height:100%;
+            background: #2c2c2c;
+
+        }
+        .circle3{
+            width: 500px;
+            height:500px;
+            border-radius: 100%;
+            overflow: hidden;
+            padding: 50px;
+            position: relative;
+            background: #a2a2a2;
+            display: none;
+        }
+        .circle3 img{
+            display: block;
+            width: 80%;
+
+            position:absolute ;
+            top:0;
+        }
+        .circle3 .c3-bg{
+            z-index: 1;
+            transform: scale(0);
+            transition: 0.3s ease-in;
+        }
+        .circle3 .c3-00{
+            z-index: 2;
+        }
+        .circle3 .c3-01{
+            z-index: 3;
+        }
+
+        .logoBox{
+            position: relative;
+            /*width: 270px;*/
+            /*height:201px;*/
+            /*background: #000000;*/
+        }
+        #logo{
+            position: absolute;
+            background-image:url(sprites_mobile.png) ;/*这样防止在手机上闪烁，奇怪的是引入服务器上的那个css就不会闪烁*/
+        }
+        img, fieldset {
+            border: 0;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="circle3">
+        <img class="c3-bg" src="img/circle3_bg.png" />
+        <img class="c3-00" src="img/circle3.png" />
+        <img class="c3-01" src="img/circle3_1.png" />
+    </div>
+
+    <div class="logoBox">
+        <div id="logo"></div>
+        <img src="http://yslstaticcontent.6edigital.cn/6e/images/transparent_mobile_bg.png"/>
+    </div>
+    <!--<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>-->
+    <script type='text/javascript' src='http://yslstaticcontent.6edigital.cn/6e/js/jquery.js' charset='utf-8'></script>
+    <script>
+        var rotate0 = 0;
+        var rotate1 = 0;
+        var timer = null;
+        var timer2 = null;
+        var logoClass = 0;
+        $('.circle3').mouseenter(function () {
+            clearTimeout(timer);
+            timer = setInterval(function () {
+                console.log(123456);
+
+                $('.circle3 .c3-00').css({'transform':'rotate('+ rotate0 +'deg)'});
+                $('.circle3 .c3-01').css({'transform':'rotate('+ rotate1 +'deg)'});
+                $('.circle3 .c3-bg').css({'transform':'scale(1)'});
+                rotate0 += 2;
+                rotate1 -= 2;
+            },100);
+
+            $('.circle3').mouseleave(function () {
+                clearTimeout(timer);
+                $('.circle3 .c3-bg').css({'transform':'scale(0)'});
+
+            })
+        });
+
+        timer2 = setInterval(function () {
+            if(logoClass == 35){
+                clearTimeout(timer2);
+            }else{
+
+                $('#logo').removeClass();
+                $('#logo').addClass('lgo_0' + (logoClass < 10 ? '0' + logoClass : logoClass));
+
+                logoClass++;
+
+            }
+
+        },33)
+
+
+
+    </script>
+
+
+    <!--<script type="text/javascript" charset="utf-8">-->
+        <!--;(function($){-->
+            <!--var logoFrameTotal = 34;-->
+            <!--var currentLogoFrame = 0;-->
+            <!--var logoHandler;-->
+
+            <!--function playLogo() {-->
+                <!--currentLogoFrame++;-->
+                <!--$('#logo').removeClass();-->
+                <!--$('#logo').addClass('lgo_0' + (currentLogoFrame < 10 ? '0' + currentLogoFrame : currentLogoFrame));-->
+                <!--if (currentLogoFrame == logoFrameTotal) {-->
+                    <!--clearInterval(logoHandler);-->
+                <!--}-->
+            <!--}-->
+
+            <!--$(function(){-->
+                <!--var frameRate = 30;-->
+                <!--logoHandler = setInterval(playLogo, 33);-->
+
+
+            <!--});-->
+        <!--})(jQuery);-->
+    <!--</script>-->
+</body>
+</html>

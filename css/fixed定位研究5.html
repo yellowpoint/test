@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>fixed定位研究-ios问题</title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.mask {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 500;
+				background: rgba(0, 0, 0, 0.5);
+			}
+			
+			.box {
+				position: relative;
+				/*z-index: 1;*/
+				width: 200px;
+				height: 200px;
+				background: yellowgreen;
+				overflow: auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<div class="box">
+				<div class="mask"></div>
+			</div>
+		</div>
+	</body>
+
+</html>

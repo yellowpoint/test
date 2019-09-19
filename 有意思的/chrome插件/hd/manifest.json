@@ -1,0 +1,30 @@
+{
+
+	"background": {},
+	"browser_action": {
+		"default_icon": "img/ji.png",
+		"default_popup": "index.html",
+		"default_title": "我是谁"
+	},
+	"description": "我就是试试",
+	// "options_page": "options.html",
+	"manifest_version": 2,
+	"minimum_chrome_version": "18.0.0",
+	"name": "yellowpoint",
+	"permissions": [
+		"proxy",
+		"tabs",
+		"contextMenus",
+		"webRequest",
+		"webRequestBlocking",
+		"webNavigation",
+		"unlimitedStorage",
+		"notifications",
+		"\u003Call_urls\u003E",
+		"http://*/*",
+		"https://*/*",
+		"ftp://*/*"
+	],
+	"content_security_policy": "script-src 'self' 'unsafe-eval' https://ssl.google-analytics.com; object-src 'self'",
+	"version": "1.0.0"
+}

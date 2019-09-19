@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+
+		<script type="text/javascript">
+			function moment(time, format) {
+				let Time = parseInt(time).toString().length > 11 ? +time : +time * 1000;
+				let date = new Date(Time);
+				let result = format || 'y/M/d'; //设置默认格式
+				let box = {
+					'y': date.getFullYear(),
+					'M': date.getMonth() + 1,
+					'd': date.getDate(),
+					'h': date.getHours(),
+					'm': date.getMinutes(),
+					's': date.getSeconds()
+				}
+
+				function add0(data) {
+					return +data < 10 ? ('0' + data) : data
+				}
+
+				for(let key in box) {
+					box[key] = add0(box[key]).toString()
+					//月为大写M，分钟为小写m,此时需要去掉i，区分大小写
+					result = result.replace(new RegExp(key + '+', (key === 'M' || key === 'm') ? 'g' : 'ig'), box[key])
+				}
+				return result
+			}
+			console.log(moment('1532657522.745'))
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>套马</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.ma {
+				width: 100px;
+				height: 112px;
+				background: url(./img/ma.png) no-repeat;
+				background-size: 200px;
+				-webkit-animation: ma 0.5s steps(1) infinite;
+				transform: translateX(300px);
+				transition: transform 2s linear;
+			}
+			
+			.ma.act {
+				transform: translateX(0);
+			}
+			
+			@-webkit-keyframes ma {
+				0% {
+					background-position: 0 0;
+				}
+				50% {
+					background-position: -104px 0;
+				}
+				100% {
+					background-position: 0 0;
+				}
+			}
+			
+			.m1 {
+				transform: translateX(200px);
+			}
+			
+			.m2 {
+				transform: translateX(350px);
+			}
+			
+			.rope {
+				width: 200px;
+				height: 646px;
+				background: url(./img/rope.png) no-repeat;
+				background-size: 800px;
+				background-position: 0 0;
+				-webkit-animation: rope .7s steps(4) infinite;
+			}
+			/*-800px这一帧是不会显示的，默认是以上一帧的显示效果来填充间隔动画*/
+			
+			@-webkit-keyframes rope {
+				100% {
+					background-position: -800px 0;
+				}
+			}
+			
+			.catchArea {
+				position: absolute;
+				top: 0;
+				left: 50%;
+				width: 100px;
+				height: 112px;
+				margin-left: -50px;
+				background: rgba(0, 0, 0, .5);
+				overflow: hidden;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="ma"></div>
+		<div class="ma m1"></div>
+		<div class="ma m2"></div>
+		<div class="ma m1"></div>
+
+		<div class="catchArea">我是捕捉区域</div>
+
+		<div class="rope"></div>
+		<script src="../../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$('.ma').addClass('act')
+			var ma = $('.ma').eq(0)
+			setInterval(() => {
+				
+				console.log(getDistance(ma))
+			}, 500)
+
+			function getPsiton(dom) {
+				var catchArea = dom
+				var CA_left = catchArea.offset().left
+				var CA_top = catchArea.offset().top
+				var CA_width = catchArea.outerWidth()
+				var CA_height = catchArea.outerHeight()
+				var CA_position_left = CA_left + CA_width / 2
+				var CA_position_top = CA_top + CA_height / 2
+				return [CA_position_left, CA_position_top]
+			}
+
+			function getDistance(ma) {
+				var CA_position = getPsiton($('.catchArea'))
+				var MA_position = getPsiton(ma)
+				var distance_x = Math.abs(CA_position[0] - MA_position[0])
+				var distance_y = Math.abs(CA_position[1] - MA_position[1])
+				var distance = Math.sqrt(Math.pow(distance_x, 2) + Math.pow(distance_y, 2))
+				return distance
+			}
+		</script>
+	</body>
+
+</html>

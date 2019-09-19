@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style>
+			.d1 {
+				width: 100px;
+				height: 200px;
+				margin-top: 200px;
+				transition: all 5s;
+				transform: rotateX(0);
+				transform-origin: top;
+				transform-style: preserve-3d;
+				background: yellowgreen;
+			}
+			
+			.d1.act {
+				transform: rotateX(-60deg);
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="d1">
+			1111<br /> 2222
+			<br />
+			333<br />
+			444<br />
+		
+		</div>
+		<script src="../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$('.d1').addClass('act')
+		</script>
+	</body>
+
+</html>

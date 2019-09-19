@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="waves.min.css" />
+		<style type="text/css">
+			.boxes {
+				width: 125px;
+				height: 125px;
+				text-align: center;
+				padding: 55px 0;
+				margin: 10px 30px;
+				float: left;
+				box-sizing: border-box;
+				border-radius: 0px;
+				border: 1px solid #ccc;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="boxes flat-box">Flat Box</div>
+		<!--<div class="boxes float-box">Float Box</div>-->
+		<!--<div class="clear"></div>-->
+
+		<!--<p class="text-center">
+			<img class="waves-image" src="https://farm2.staticflickr.com/1297/1091511802_2fb2451ecc_n.jpg">
+		</p>-->
+
+		<!--<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>-->
+		<script src="waves.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			Waves.init();
+//			Waves.attach('.flat-box', ['waves-block']);
+						Waves.attach('.flat-box', ['waves-block', 'waves-float']);
+			//			Waves.attach('.waves-image');
+			
+			
+		</script>
+
+
+	</body>
+
+</html>

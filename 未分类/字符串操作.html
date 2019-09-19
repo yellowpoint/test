@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div class="d1">ll:vv,dd:vv,aa:vv</div>
+
+    <script type="text/javascript">
+
+       var aa = '123456';
+      console.log(  aa[1]);
+      console.log(  aa.toString()[1]);
+
+       var dd = document.getElementsByClassName('d1')[0].outerText;
+
+       //用逗号或者冒号来分割字符串，给分割出来的每个字段加引号;再将他们拼起来加上前后的大括号，再转换为json对象
+       var ff = dd.split(/,|:/);
+       var str = '';
+       for(var i = 0 ; i<ff.length;i++){
+           if(i%2 == 0){
+               str+='"'+ff[i]+'":';
+           }else{
+               str+='"'+ff[i]+'",';
+           }
+       }
+
+       var str2 = str.slice(0,-1);
+       console.log(str2);
+       var str3 = '{'+str2+'}';
+
+       console.log(JSON.parse(str3).ll)
+
+        //前后颠倒一个字符串
+        var overthrowStr1 = "abc";
+        var overthrowStr2 = overthrowStr1.slice(-3);
+       function reverseString(str) {
+           return str.split("").reverse().join("");
+       }
+        console.log(reverseString("abcd"))
+
+    </script>
+</body>
+</html>

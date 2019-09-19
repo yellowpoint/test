@@ -1,0 +1,250 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery颜色选择器插件jColor.js - 站长素材</title>
+<link rel="stylesheet" type="text/css" href="css/jcolor.min.css">
+<link rel="stylesheet" type="text/css" href="css/examples.css">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jcolor.min.js"></script>
+<script type="text/javascript" src="js/examples.js"></script>
+</head>
+<body class="cp">
+<h1 class="page-title">
+  <img class="logo" src="logo.png"> <span class="desc">- a jQuery color picker</span>
+</h1>
+<article class="zeroconf">
+  <h1>Zero configuration!</h1>
+  <section>
+	The color picker automatically picks up the CSS color of the element it is attached to, if no color is given as a configuration parameter.
+  </section>
+  <section>
+	<div class="my-color-picker" style="color: skyblue"></div>
+	<script class="exposed">
+$('.my-color-picker').colorpicker();
+	</script>
+	<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
+<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
+</div>
+  </section>
+</article>
+
+<article class="hlsa-colors">
+  <h1>HSL(A) colors</h1>
+  <section>
+	The default color space is HSLA (hue, saturation, lightness, alpha). The default color can be given, either as a hexadecimal string, or as an object containing the color component values.
+  </section>
+  <section>
+	<div class="color-picker-hsl"></div>
+	<div class="color-picker-hsla"></div>
+	<script class="exposed">
+$('.color-picker-hsl').colorpicker({
+color: '#faaab5',
+colorSpace: 'hsl'
+});
+
+$('.color-picker-hsla').colorpicker({
+color: { h: 0.98, s: 0.66, l: 0.7, a: 0.6 },
+colorSpace: 'hsla' // Reduntant, this is the default
+});
+	</script>
+  </section>
+</article>
+
+<article class="rgba-colors">
+  <h1>RGB(A) colors and static sliders</h1>
+  <section>
+	<p>
+	  The common RGBA (red, green, blue, alpha) space is of course also supported.
+	<p>
+	<p>
+	  Some people prefer that the slider backgrounds does not dynamically update based on the current color. This option is also available for the HLS(A) color space, but it is not recommended from a usability standpoint.
+	</p>
+  </section>
+  <section>
+	<div class="color-picker-rgb"></div>
+	<div class="color-picker-rgba"></div>
+	<div class="color-picker-rgb-static"></div>
+	<div class="color-picker-rgba-static"></div>
+	<script class="exposed">
+$('.color-picker-rgb').colorpicker({
+color: '#b00b1e',
+colorSpace: 'rgb'
+});
+
+$('.color-picker-rgba').colorpicker({
+color: { r: 0.69, g: 0.04, b: 0.11, a: 0.6 },
+colorSpace: 'rgba'
+});
+
+$('.color-picker-rgb-static').colorpicker({
+color: '#28e755',
+colorSpace: 'rgb',
+staticComponents: true
+});
+
+$('.color-picker-rgba-static').colorpicker({
+color: '#28e755a0',
+colorSpace: 'rgba',
+staticComponents: true
+});
+	</script>
+  </section>
+</article>
+
+<article class="presentation">
+  <h1>Customizable UI</h1>
+  <section>
+	Per default, jColor sports a minimalistic UI, but it can easily be augmented with labels and textual color output.
+  </section>
+  <section>
+	<div class="color-picker-labels" style="color: hsla(42, 74%, 49%, 0.85)"></div>
+	<div class="color-picker-display-color" style="color: hsla(42, 74%, 49%, 0.85)"></div>
+	<div class="color-picker-labels-display-color" style="color: hsla(42, 74%, 49%, 0.85)"></div>
+	<script class="exposed">
+$('.color-picker-labels').colorpicker({
+labels: true
+});
+
+$('.color-picker-display-color').colorpicker({
+colorSpace: 'rgb',
+displayColor: 'hex',
+});
+
+$('.color-picker-labels-display-color').colorpicker({
+labels: true,
+displayColor: 'css',
+displayColorSpace: 'hsla', // Redundant, this is the default
+});
+	</script>
+  </section>
+</article>
+
+<article class="formats-and-events">
+  <h1>Output formats and color change events</h1>
+  <section>
+	The currently selected color can be output in various formats, and it is always possible to specify color space. Whenever the user picks a new color, a 'newcolor' jQuery event is triggered. This makes it super easy to update other page elements, based on the user selected color! The current color can also be accessed by calling any of the following.
+	<pre>
+	  <code>
+$('.your-colorpicker').colorpicker().toString();
+$('.your-colorpicker').colorpicker().toCssString();
+$('.your-colorpicker').colorpicker().toObject();
+	  </code>
+	</pre>
+  </section>
+  <section>
+	<div class="color-picker-colorchange-events"></div>
+	<div class="outputs">
+	  <div class="newcolor-css-hlsa"></div>
+	  <div class="newcolor-css-rgba"></div>
+	  <div class="newcolor-hlsa"></div>
+	  <div class="newcolor-rgba"></div>
+	</div>
+	<script class="exposed">
+$('.color-picker-colorchange-events').colorpicker({
+color: '#1a6888b0',
+colorSpace: 'hsla',
+});
+
+$('.color-picker-colorchange-events').on('newcolor', function (ev, colorpicker) {
+$('.newcolor-css-hlsa').html('<strong>CSS HLSA:</strong> ' + colorpicker.toCssString())
+  .css('background-color', colorpicker.toCssString());
+$('.newcolor-css-rgba').html('<strong>CSS RGBA:</strong> ' + colorpicker.toCssString('rgba'))
+  .css('background-color', colorpicker.toCssString('rgba'));
+
+$('.newcolor-hlsa').html('<strong>Hexadecimal HLSA:</strong> ' + colorpicker.toString('hsla'));
+$('.newcolor-rgba').html('<strong>Hexadecimal RGB:</strong> ' + colorpicker.toString('rgb'));
+});
+	</script>
+  </section>
+</article>
+
+<article class="theming">
+  <h1>Themability</h1>
+  <section>
+	With just a few lines of CSS, the entire appearance of the color picker can be altered. Internally, all sizes are set in the 'em' unit.
+  </section>
+  <section>
+	<div class="color-picker-big-dark"></div>
+	<script class="exposed">
+$('.color-picker-big-dark').colorpicker({
+color: '#4bdb80e9',
+colorSpace: 'hsla',
+});
+	</script>
+	<style type="text/css" class="exposed">
+/* Setting the font size of the root element scales the entire color picker */
+.color-picker-big-dark {
+font-size: 1.3em;
+}
+
+.color-picker-big-dark * {
+box-shadow: none;
+border-radius: 0;
+}
+
+.color-picker-big-dark .maximize-wrapper {
+padding: 0;
+background: #181818;
+background: linear-gradient(to bottom, #333, black);
+-webkit-transition: padding 0.5s, border-radius 0.5s;
+transition: padding 0.5s, border-radius 0.5s;
+}
+
+.color-picker-big-dark.expanded .maximize-wrapper {
+padding: 0.4em;
+}
+
+.color-picker-big-dark .maximize-wrapper .slider .handle {
+background: rgba(0, 0, 0, 0.65);
+box-shadow: none;
+width: 0.2em;
+left: -0.1em;
+outline: 1px solid #000;
+}
+	</style>
+  </section>
+</article>
+
+<article class="expand-collapse-events">
+  <h1>Customized expand/collapse events</h1>
+  <section>
+	The expanding and collapsing of the color picker can be customized by providing jQuery event strings. Note that it is possible to pass several events in the same string!
+  </section>
+  <section>
+	<div class="color-picker-custom-events"></div>
+	<script class="exposed">
+$('.color-picker-custom-events').colorpicker({
+color: 'hsla(10, 30%, 30%, 0.7)',
+expandEvent: 'mouseenter',
+collapseEvent: 'mouseleave mousewheel'
+});
+	</script>
+  </section>
+</article>
+
+<article class="cleanup">
+  <h1>Cleanup</h1>
+  <section>
+	Creating and destroying a color picker works in the same way as most jQuery plugins.
+  </section>
+  <section>
+	<div class="color-picker-destroy-me">[placeholder]</div><br>
+	<button class="create-btn">Create</button>
+	<button class="destroy-btn">Destroy</button>
+	<script class="exposed">
+$('.create-btn').on('click', function () {
+$('.color-picker-destroy-me').colorpicker();
+});
+
+$('.destroy-btn').on('click', function () {
+$('.color-picker-destroy-me').colorpicker().destroy();
+});
+	</script>
+  </section>
+</article>
+
+</body>
+</html>
+

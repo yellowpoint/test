@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+	<title></title>
+	<style >
+		img{
+			display: block;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+
+
+	<input  type="file" id="file-input" />
+	<input  type="button"  value="file_data"  onclick="fileData()"  />
+
+    <div  id="data"></div>
+	<!-- <script src="http://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script> -->
+	<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+	    // 检测是否支持File API
+	    if (window.File && window.FileReader && window.FileList && window.Blob) {
+	      //  支持
+	    } else {
+	      alert('不支持');
+	    }
+
+    	$('#file-input').on('change', function(e) {
+
+
+    	    var file = e.target.files[0]; //获取图片资源
+
+    	      // 只选择图片文件
+    	      if (!file.type.match('image.*')) {
+    	        return false;
+    	      }
+
+    	      var reader = new FileReader();
+
+    	      reader.readAsDataURL(file); // 读取文件
+
+    	      // 渲染文件
+    	      reader.onload = function(arg) {
+
+    	        var img = '<img class="preview" src="' + arg.target.result + '" alt="preview"/>';
+    	        $("#data").empty().append(img);
+    	      }
+    	});
+
+    	function fileData () {
+    		var form_data = new FormData();
+    		var file_data = $("#file-input").prop("files")[0];
+
+    		// 把上传的数据放入form_data
+    		form_data.append("userId", "22222222");
+    		form_data.append("imgFile", file_data);
+
+
+    		console.log(form_data);
+
+    		$.ajax({
+    		    type: "POST", // 上传文件要用POST
+    		    url: "http://192.168.1.249:8080/uq/diyImage.do",
+    		    dataType : "json",
+    		    crossDomain: true, // 如果用到跨域，需要后台开启CORS
+    		  	processData: false,  // 注意：不要 process data
+    		  	contentType: false,  // 注意：不设置 contentType
+    		    data: form_data,
+    		    success:function (msg) {
+    		    	console.log(msg);
+    		    },
+    		    error:function (msg) {
+    		    	console.log(msg);
+    		    }
+    		});
+    	}
+
+    </script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

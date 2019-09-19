@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+
+		<script type="text/javascript">
+			let arr = []
+			for(let i = 0; i < 1000000; i++) {
+				arr.push(i)
+			}
+			let len = arr.length;
+			let sum = 0;
+
+			function forTime() {
+
+				/*for */
+				//			console.time('for0')
+				//
+				//			sum = 0;
+				//			for(let i = 0; i < arr.length; i++) {
+				//				sum += arr[i]
+				//			}
+				//			console.log('sum', sum)
+				//
+				//			console.timeEnd('for0')
+
+				/*for len缓存 */
+				console.time('for')
+
+				sum = 0;
+				for(let i = 0; i < len; i++) {
+					sum += arr[i]
+				}
+				console.log('sum', sum)
+
+				console.timeEnd('for')
+
+				/*for len缓存 倒序 */
+				//				var start=Date.now();
+				var start = window.performance.now();
+				console.time('for-reverse')
+
+				sum = 0;
+				for(let i = len - 1; i >= 0; i--) {
+					sum += arr[i]
+				}
+				console.log('sum', sum)
+
+				console.timeEnd('for-reverse')
+				var end = window.performance.now();
+				//				var end= Date.now();
+				var reverse = end - start;
+
+				console.log('reverse', reverse)
+
+				/*reduce */
+				console.time('for3')
+
+				sum = 0;
+				sum = arr.reduce((x, y) => x + y)
+
+				console.log('sum', sum)
+
+				console.timeEnd('for3')
+			}
+
+			forTime()
+			//			for(let j = 0; j < 10; j++) {
+			//				console.info(`第${j+1}次`)
+			//				forTime()
+			//			}
+		</script>
+	</body>
+
+</html>

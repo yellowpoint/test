@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style type="text/css">
+            #box{
+                width: 100px;
+                height: 100px;
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div id="box">
+
+        </div>
+        <input type="button" id="btn" value="点击" />
+
+
+
+        <script type="text/javascript">
+            var oBtn=document.getElementById('btn');
+            var oBox=document.getElementById('box');
+            var num=0;
+            var timer = null;
+
+
+            function add(){
+
+            clearTimeout(timer);
+　　　　　　timer = setTimeout(add,1000);
+            }
+
+
+
+            oBtn.onclick=function(){
+                add();
+            };
+        </script>
+
+    </body>
+</html>

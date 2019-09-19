@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>正则匹配到第二个斜杠</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			
+			(function() {
+			var str = "abc123def";
+			var patt1 = /[1-9][0-9]?/;
+			document.write(str.match(patt1)+'<br>');
+			})();
+			
+			(function() {
+			var str = "<H1>Chapter 1 - 介绍正则表达式</H1>";
+			var patt1 = /<.*?>/;
+			console.log(str.match(patt1))
+//			document.write(str.match(patt1)+'<br>');
+			})();
+			
+			(function() {
+			var str = "http://api.51app.cn/gamepage/v1/v2/index?channel=i4";
+			var patt1 = /\/[a-zA-Z0-9]+\/[a-zA-Z0-9]+/;
+			console.log(str.match(patt1))
+			document.write(str.match(patt1)+'<br>');
+			})();
+			
+			(function() {
+			var str = "d1esc img1Url";
+			var patt1 = /(desc)|(imgUrl)/;
+			console.log(str.match(patt1))
+			document.write(str.match(patt1)+'<br>');
+			})();
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.d1 {
+				width: 5rem;
+				height: 1rem;
+				font-size: .28rem;
+				background: yellowgreen;
+				margin: 20px auto;
+			}
+			
+			@media (max-width: 768px) {
+				.d1 {
+					background: red;
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="d1">哈哈哈</div>
+
+		<script type="text/javascript" src="../jquery-3.3.1.min.js"></script>
+		<script type="text/javascript">
+			setHtmlFontSize();
+			$(window).resize(function() {
+				setHtmlFontSize()
+			});
+
+			function setHtmlFontSize() {
+				let clientWidth = document.documentElement.clientWidth;
+				if(clientWidth > 1200) {
+					clientWidth = 1200
+				}
+				if(clientWidth <= 768) {
+					document.documentElement.style.fontSize = clientWidth / 7.5 + 'px';
+				} else {
+										document.documentElement.style.fontSize = clientWidth / 12 + 'px';
+//					document.documentElement.style.fontSize = '50px';
+				}
+
+//				var clientWidth = document.documentElement.clientWidth;
+//				if(clientWidth < 575) {
+//					document.documentElement.style.fontSize = (clientWidth / 750) * 100 + "px";
+//				} else if(clientWidth < 1024) {
+//					// 竖版 iPad 的 2x 尺寸
+//					document.documentElement.style.fontSize = (clientWidth / 1536) * 100 + "px";
+//				} else {
+//					document.documentElement.style.fontSize = "50px";
+//				}
+
+			};
+		</script>
+	</body>
+
+</html>

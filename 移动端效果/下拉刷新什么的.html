@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <title>下拉刷新什么的</title>
+    <style>
+        a. html{
+            height:100%;
+        }
+        body{
+            height: 100%;
+            -webkit-overflow-scrolling: touch;
+        }
+        #scrollable{
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            overflow: auto;
+        }
+        .topBox{
+            width: 100%;
+            overflow: hidden;
+            background: yellowgreen;
+        }
+        .top{
+            /*position: fixed;*/
+            /*top: 0;*/
+            /*left:0;*/
+            border:1px solid yellowgreen;
+
+            width: 100%;
+            height:200px;
+            background: url('http://file.diy.51app.cn/uu20/special/484e01da.jpg') no-repeat;
+            /*transform-origin: center center;*/
+            background-position: center;
+            background-size: cover;
+            /*transform: scale(1);*/
+        }
+        .main{
+            width: 100%;
+            position: absolute;
+            top:202px;
+            left:0;
+
+        }
+
+    </style>
+
+</head>
+<body>
+    <div id="scrollable">
+        <div class="topBox">
+            <div class="top"></div>
+        </div>
+        <div class="main">
+            <P>dfsajkoldjaslk</P>
+            <P>dfsajkoldjaslk</P>
+            <P>dfsajkoldjaslk</P>
+            <P>dfsajkoldjaslk</P>
+            <P>dfsajkoldjaslk</P>
+            <P>dfsajkoldjaslkflds;'</P>
+            <P>dfsajkoldjaslkflds;'</P>
+            <P>dfsajkoldjaslkflds;'</P>
+            <P>dfsajkoldjaslkflds;'</P>
+            <P>dfsajkoldjaslkflds;'</P>
+            <P>dfsajkoldjaslkflds;'</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+            <P>dfsajkoldjaslkflds;'f,s;adl</P>
+
+        </div>
+    </div>
+
+
+
+
+
+    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+
+
+    <script>
+        //设置效果时间
+        var setTranslition = function (time) {
+            oDiv.css({
+                "-webkit-transition": "all " + time + "s",
+                "transition": "all " + time + "s"
+            });
+            $('.top').css({
+                "-webkit-transition": "all " + time + "s",
+                "transition": "all " + time + "s"
+            });
+        };
+
+        var oDiv = $('.main');
+        var disY = 0;
+        oDiv.on('touchstart',function (e) {
+            var oEvent = e || event;
+            setTranslition('0');
+            disY = oEvent.touches[0].pageY ;
+            var height;
+            oDiv.on('touchmove',function (e) {
+
+                var oEvent = e || event;
+                var tt = oEvent.touches[0].pageY - disY;
+                var t=tt/4;
+                height = 202+t+'px';
+                if(t>0){
+                    oDiv.css({
+                        'top':height
+                    });
+                    console.log(t);
+                    $('.top').css({
+                        'height':height
+                    });
+                }
+            });
+
+            oDiv.on('touchend',function () {
+
+                oDiv.css({
+                    'top':'202px'
+                });
+                $('.top').css({
+                    'height':'200px'
+                });
+                setTranslition('.5');
+            });
+
+        })
+
+        var ScrollFix = function(elem) {
+            // Variables to track inputs
+            var startY, startTopScroll;
+            elem = elem || document.querySelector(elem);
+            // If there is no element, then do nothing
+            if(!elem)
+                return;
+            // Handle the start of interactions
+            elem.addEventListener('touchstart', function(event){
+                startY = event.touches[0].pageY;
+                startTopScroll = elem.scrollTop;
+
+                if(startTopScroll <= 0)
+                    elem.scrollTop = 1;
+
+                if(startTopScroll + elem.offsetHeight >= elem.scrollHeight)
+                    elem.scrollTop = elem.scrollHeight - elem.offsetHeight - 1;
+            }, false);
+        };
+
+        var scrollable = document.getElementById("scrollable");
+        new ScrollFix(scrollable);
+
+
+    </script>
+
+    <!--<script>-->
+        <!--/*-->
+         <!--*obj&#45;&#45;滑动对象-->
+         <!--*offset&#45;&#45;滑动距离（当滑动距离大于等于offset时将调用callback）-->
+         <!--*callback&#45;&#45;滑动完成后的回调函数-->
+         <!--*/-->
+        <!--var slide = function (obj, offset, callback) {-->
+            <!--var start,-->
+                <!--end,-->
+                <!--isLock = false,//是否锁定整个操作-->
+                <!--isCanDo = false,//是否移动滑块-->
+                <!--isTouchPad = (/hp-tablet/gi).test(navigator.appVersion),-->
+                <!--hasTouch = 'ontouchstart' in window && !isTouchPad;-->
+
+            <!--//将对象转换为jquery的对象-->
+            <!--obj = $(obj);-->
+
+            <!--var objparent = obj.parent();-->
+
+            <!--/*操作方法*/-->
+            <!--var fn =-->
+            <!--{-->
+                <!--//移动容器-->
+                <!--translate: function (diff) {-->
+                    <!--obj.css({-->
+                        <!--"-webkit-transform": "translate(0," + diff + "px)",-->
+                        <!--"transform": "translate(0," + diff + "px)"-->
+                    <!--});-->
+                <!--},-->
+                <!--//设置效果时间-->
+                <!--setTranslition: function (time) {-->
+                    <!--obj.css({-->
+                        <!--"-webkit-transition": "all " + time + "s",-->
+                        <!--"transition": "all " + time + "s"-->
+                    <!--});-->
+                <!--},-->
+                <!--//返回到初始位置-->
+                <!--back: function () {-->
+                    <!--fn.translate(0 - offset);-->
+                    <!--//标识操作完成-->
+                    <!--isLock = false;-->
+                <!--}-->
+            <!--};-->
+
+            <!--//滑动开始-->
+            <!--obj.bind("touchstart", function (e) {-->
+
+                <!--if (objparent.scrollTop() <= 0 && !isLock) {-->
+                    <!--var even = typeof event == "undefined" ? e : event;-->
+                    <!--//标识操作进行中-->
+                    <!--isLock = true;-->
+                    <!--isCanDo = true;-->
+                    <!--//保存当前鼠标Y坐标-->
+                    <!--start = hasTouch ? even.touches[0].pageY : even.pageY;-->
+                    <!--//消除滑块动画时间-->
+                    <!--fn.setTranslition(0);-->
+                <!--}-->
+            <!--});-->
+
+            <!--//滑动中-->
+            <!--obj.bind("touchmove", function (e) {-->
+
+                <!--if (objparent.scrollTop() <= 0 && isCanDo) {-->
+
+                    <!--var even = typeof event == "undefined" ? e : event;-->
+
+                    <!--//保存当前鼠标Y坐标-->
+                    <!--end = hasTouch ? even.touches[0].pageY : even.pageY;-->
+
+                    <!--if (start < end) {-->
+                        <!--even.preventDefault();-->
+                        <!--//消除滑块动画时间-->
+                        <!--fn.setTranslition(0);-->
+                        <!--//移动滑块-->
+                        <!--fn.translate(end - start - offset);-->
+                    <!--}-->
+
+                <!--}-->
+            <!--});-->
+
+
+            <!--//滑动结束-->
+            <!--obj.bind("touchend", function (e) {-->
+                <!--if (isCanDo) {-->
+                    <!--isCanDo = false;-->
+                    <!--//判断滑动距离是否大于等于指定值-->
+                    <!--if (end - start >= offset) {-->
+                        <!--//设置滑块回弹时间-->
+                        <!--fn.setTranslition(1);-->
+                        <!--//保留提示部分-->
+                        <!--fn.translate(0);-->
+
+                        <!--//执行回调函数-->
+                        <!--if (typeof callback == "function") {-->
+                            <!--callback.call(fn, e);-->
+                        <!--}-->
+                    <!--} else {-->
+                        <!--//返回初始状态-->
+                        <!--fn.back();-->
+                    <!--}-->
+                <!--}-->
+            <!--});-->
+        <!--};-->
+        <!--slide('body','24',function () {-->
+            <!--console.log(12563456)-->
+
+        <!--})-->
+    <!--</script>-->
+
+
+
+</body>
+</html>

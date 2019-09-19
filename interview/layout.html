@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* 作者是 html *；有何区别 */
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    .layout{
+      height: 100px;
+    
+    }
+    .left-right-center>div{
+      height: 100px;
+    }
+    .clear:after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <section class="layout float">
+     <style>
+       .layout.float .left{
+          float: left;
+          width: 300px;
+          background: aquamarine;
+       }
+       .layout.float .right{
+          float: right;
+          width: 300px;
+          background: aquamarine;
+       }
+       .layout.float .center{
+         /* float: left; */
+          background: yellowgreen
+       }
+     </style>
+     <article class="left-right-center clear">
+       <div class="left"></div>
+       <div class="right"></div>
+       <div class="center">
+         <h1>浮动解决方案</h1>
+          <p>三栏布局的中间部分</p>
+       </div>
+     </article>
+  </section>
+
+  <section class="layout absolute">
+    <article class="left-center-right">
+      <div class="left"></div>
+      <div class="center">
+      
+      </div>
+      <div class="right"></div>
+    </article>
+  </section>
+</body>
+</html>

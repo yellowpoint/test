@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+<meta charset="UTF-8">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+
+    <title>切换面板</title>
+    <link rel="stylesheet" href="css/swiper-3.3.1.min.css">
+    <!--<link rel="stylesheet" href="css/all.css">-->
+    <style type="text/css">
+        .hd-slide{
+            overflow: auto;
+        }
+        .swiper-hdInside.swiper-container{
+            height:500px;
+            word-wrap:break-word;word-break:break-all;
+        }
+        .hd-outsidePagination{
+            position: fixed;
+            top:0;
+            left:0;
+            width: 100%;
+            height:40px;
+            background: #fff;
+            z-index: 9999;
+            padding-top: 10px;
+        }
+        .hd-outsidePagination .item{
+            display: inline-block;
+            width: 50px;
+            text-align: center;
+            padding: 0 5px;
+            height: 20px;
+            background: #fff;
+            border-bottom: 2px solid red;
+            margin: 0 5px;
+        }
+        .hd-outsidePagination>.swiper-pagination-bullet{
+            border-radius: 0;
+        }
+        .box{
+            padding-top: 40px;
+        }
+
+
+    </style>
+</head>
+<body>
+
+   
+
+
+<div >
+
+
+
+    <div class="hd-outsidePagination"></div>
+
+    <div class="box">
+        <div class="swiper-container swiper-hdOutside">
+
+            <div class="wrapper swiper-wrapper hd-wrapper">
+
+                <div class=" swiper-slide  hd-slide" >
+
+
+                    <div class="swiper-container swiper-hdInside">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">11111111111111111111111111111111111111111111111111111 1</div>
+                            <div class="swiper-slide">22222222222222222222222222222222222222 2</div>
+                            <div class="swiper-slide hd-lastSlide">333333333333333333333333333333333333333333333 3</div>
+                        </div>
+                        <!-- 如果需要分页器 -->
+                        <div class="swiper-pagination"></div>
+
+                    </div>
+
+                </div>
+                <div class=" swiper-slide hd-slide">
+                    <p>第二页</p>
+                    <p>第二页</p>
+                    <p>第二页</p>
+                </div>
+                <div class=" swiper-slide hd-slide">
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页</p>
+                    <p>第三页5</p>
+                    <p>第三页4</p>
+                    <p>第三页3</p>
+                    <p>第三页2</p>
+                    <p>第三页1</p>
+                </div>
+                <div class=" swiper-slide  hd-slide">
+                    <p>第四页</p>
+                    <p>第四页</p>
+                </div>
+                <div class=" swiper-slide  hd-slide">
+                    <p>第五页</p>
+                    <p>第五页</p>
+                    <p>第五页</p>
+                    <p>第五页</p>
+                    <p>第五页</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+    <script src="js/zepto.min.js"></script>
+    <script src="js/Swiper.js"></script>
+
+    <script type="text/javascript">
+
+
+        var hdOutside =  new Swiper ('.swiper-hdOutside', {
+            pagination : '.hd-outsidePagination',
+            paginationClickable :true,
+
+
+            paginationBulletRender: function (index, className) {
+                switch (index) {
+                    case 0: name='应用';break;
+                    case 1: name='教程';break;
+                    case 2: name='介绍';break;
+                    case 3: name='商品';break;
+                    case 4: name='评价';break;
+                    default: name='';
+                }
+                return '<span class="item ' + className + '">' + name + '</span>';
+            }
+        });
+
+
+        var lastPlace = -1000000;
+
+        lastPlace = -parseInt( $(".swiper-hdInside .swiper-slide").css("width") ) * ($(".swiper-hdInside .swiper-slide").length-1);
+
+        var hdInside = new Swiper ('.swiper-hdInside', {
+            // 如果需要分页器
+            pagination: '.swiper-pagination',
+
+            onTouchMove: function(swiper){
+                function remove2() {
+                    if(hdInside.getWrapperTranslate('x') < lastPlace ){
+
+                        hdOutside.slideTo(1, 1000, false);//切换到第一个slide，速度为1秒
+                    }
+                }
+                setInterval(remove2, 100);
+            }
+
+        });
+
+
+
+
+    </script>
+
+
+
+
+
+</body>
+</html>

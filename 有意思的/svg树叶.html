@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>树叶</title>
+		<style>
+			body {
+				margin: 0;
+				width: 100%;
+				height: 100%;
+			}
+			
+			#svg {
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				filter: drop-shadow(0 0 5px #888);
+			}
+			
+			.leaf path {
+				stroke: #000;
+				stroke-width: 0.5px;
+				fill: rgb(255, 255, 255, 0);
+			}
+		</style>
+	</head>
+
+	<body>
+		<svg id="svg">
+			<g id="leaves"></g>
+		</svg>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.0.3/chroma.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js'></script>
+
+		<script type="text/javascript">
+			let width, height, cx, cy;
+			const svg = document.getElementById('svg'),
+				leaves = document.getElementById('leaves');
+			const nbLeaves = 750;
+
+			const simplex = new SimplexNoise();
+			let colors = chroma.scale([chroma.random(), chroma.random(), chroma.random()]).mode('lch');
+			// let colors = chroma.scale(['#C86B28', '#FFC501', '#CB2228', '#91B43C']);
+
+			function init() {
+				onResize();
+				window.addEventListener('resize', onResize, false);
+
+				createLeaves();
+			}
+
+			function createLeaves() {
+				for(let i = 0; i < nbLeaves; i++) {
+					let w = 15 + rnd(20);
+					let h = w + rnd(w * 2);
+					let x = rnd(cx, true);
+					let y = rnd(cy, true);
+					let l = new Leaf(x, y, w, h, 3 + Math.round(rnd(5)));
+					l.create(leaves);
+				}
+			}
+
+			class Leaf {
+				constructor(x, y, w, h, n) {
+					this.x = x;
+					this.y = y;
+					this.w = w;
+					this.h = h;
+					this.n = n;
+					this.fill = colors((1 + simplex.noise2D(2 * y / cy, 2 * x / cx)) / 2).hex();
+					this.rz = simplex.noise2D(0.5 * x / cx, 0.5 * y / cy) * 180 + 180;
+					this.ep = {
+						x: rnd(w / 20, true),
+						y: h + rnd(h / 20, true)
+					};
+					this.stemH = h / 10;
+					this.left = new Curve({
+							x: 0,
+							y: this.stemH
+						}, {
+							x: -w / 2 + rnd(w / 5, true),
+							y: this.stemH + rnd(h / 5, true)
+						}, {
+							x: -w / 2 + rnd(w / 5, true),
+							y: this.stemH + h / 2 + rnd(h / 10, true)
+						},
+						this.ep
+					);
+					this.right = new Curve({
+							x: 0,
+							y: this.stemH
+						}, {
+							x: w / 2 + rnd(w / 5, true),
+							y: this.stemH + rnd(h / 5, true)
+						}, {
+							x: w / 2 + rnd(w / 5, true),
+							y: this.stemH + h / 2 + rnd(h / 10, true)
+						},
+						this.ep
+					);
+					this.center = new Curve({
+							x: 0,
+							y: this.stemH
+						}, {
+							x: rnd(w / 20, true),
+							y: h / 3 + rnd(h / 20, true)
+						}, {
+							x: rnd(w / 20, true),
+							y: 2 * h / 3 + rnd(h / 20, true)
+						},
+						this.ep
+					);
+				}
+				create(elt) {
+					this.group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+					this.group.setAttributeNS(null, 'transform', `translate(${this.x}, ${this.y})`);
+					this.group.setAttributeNS(null, 'class', 'leaf');
+					elt.appendChild(this.group);
+
+					this.duration = 1 + rnd(5);
+					this.innerGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+					this.group.appendChild(this.innerGroup);
+
+					let innerGroup1 = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+					innerGroup1.setAttributeNS(null, 'style', `transform: rotate3d(0, 0, 1, ${this.rz}deg);`);
+					this.innerGroup.appendChild(innerGroup1);
+
+					let py = this.h / 3;
+					this.path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+					this.path.setAttributeNS(null, 'd', this.pathD());
+
+					let length = this.path.getTotalLength() / 3;
+					this.path.style.strokeDasharray = length;
+					this.path.style.strokeDashoffset = length;
+					TweenMax.to(this.path, 3 + rnd(3), {
+						strokeDashoffset: 0,
+						fill: this.fill,
+						delay: rnd(15)
+					});
+
+					// this.path.style.opacity = 0;
+					// this.path.style.transform = 'scale(.2, .2)';
+					// TweenMax.to(this.path, 5, { opacity: 1, transform: 'scale(1, 1)', fill: this.fill, delay: rnd(20), easing: Power1.easeOut });
+
+					innerGroup1.appendChild(this.path);
+				}
+				pathD() {
+					let d = [];
+					d.push(`M0,0 L0,${this.stemH}`);
+					d.push(this.left.pathD());
+					d.push(this.right.pathD());
+					d.push(this.center.pathD());
+
+					for(let i = 0; i < this.n; i++) {
+						let p1 = this.center.getXY(i * (0.9 / this.n));
+						let p2 = this.left.getXY(0.5 + i * (0.5 / this.n));
+						d.push(`M${p1.x},${p1.y} L${p2.x},${p2.y}`);
+						p2 = this.right.getXY(0.5 + i * (0.5 / this.n));
+						d.push(`M${p1.x},${p1.y} L${p2.x},${p2.y}`);
+					}
+
+					return d.join(' ');
+				}
+			}
+
+			class Curve {
+				constructor(sp, cp1, cp2, ep) {
+					this.sp = sp;
+					this.cp1 = cp1;
+					this.cp2 = cp2;
+					this.ep = ep;
+				}
+				pathD() {
+					let d = [`M${this.sp.x} ${this.sp.y} `];
+					d.push(`C${this.cp1.x},${this.cp1.y}`);
+					d.push(`${this.cp2.x},${this.cp2.y}`);
+					d.push(`${this.ep.x},${this.ep.y}`);
+					return d.join(' ');
+				}
+				getXY(t) {
+					return {
+						x: Math.pow(1 - t, 3) * this.sp.x + 3 * t * Math.pow(1 - t, 2) * this.cp1.x +
+							3 * t * t * (1 - t) * this.cp2.x + t * t * t * this.ep.x,
+						y: Math.pow(1 - t, 3) * this.sp.y + 3 * t * Math.pow(1 - t, 2) * this.cp1.y +
+							3 * t * t * (1 - t) * this.cp2.y + t * t * t * this.ep.y
+					};
+				}
+			}
+
+			function onResize() {
+				const r = svg.getBoundingClientRect();
+				width = r.width;
+				height = r.height;
+				cx = width / 2;
+				cy = height / 2;
+				leaves.setAttributeNS(null, 'transform', `translate(${cx}, ${cy})`);;
+			}
+
+			function rnd(max, negative) {
+				return negative ? Math.random() * 2 * max - max : Math.random() * max;
+			}
+
+			init();
+		</script>
+	</body>
+
+</html>

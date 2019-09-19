@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>弹窗滚动问题</title>
+		<link rel="stylesheet" type="text/css" href="zxx.css" />
+		<style>
+			/*.aside {
+				pointer-events: none;
+			}
+			
+			.aside-content {
+				top: 100px;
+				bottom: 100px;
+				left: 100px;
+				z-index: 2;
+				pointer-events: all;
+			}
+			
+			.mask {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 1;
+				background: rgba(0, 0, 0, .6);
+				pointer-events: all;
+			}*/
+		</style>
+	</head>
+
+	<body>
+		<div id="main">
+			<h1>移动端浮层内滚动窗体不滚动的JS处理</h1>
+			<div id="body" class="light">
+				<div id="content" class="show">
+					<h3>展示</h3>
+					<div class="article_new">
+						<a href="//www.zhangxinxu.com/wordpress/?p=5844">回到相关文章 »</a>
+					</div>
+					<div class="demo">
+						<a href="javascript:" id="button" class="button">点击我出现浮层容器滚动没有阻止</a>
+						<a href="javascript:" id="buttonWith" class="button">点击出现浮层并开启阻止容器滚动</a>
+					</div>
+				</div>
+			</div>
+			<aside id="aside" class="aside">
+				<div class="mask"></div>
+				<i class="aside-overlay hideAside"></i>
+				<div class="aside-content">
+					<div class="module module-filter-list">
+						<div class="module-header">
+							<h3 class="module-title">筛选</h3>
+						</div>
+						<div>fasfafasfasf</div>
+						<div class="module-main scrollable">
+							<ul id="filters" class="sort-ul">
+								<li class="sort-li">
+									<h3 class="sort-li-title">属性</h3>
+									<div class="sort-li-detail">
+										<a href="javascript:" class="btn-tag">免费</a>
+										<a href="javascript:" class="btn-tag">VIP</a>
+									</div>
+								</li>
+								<li class="sort-li">
+									<h3 class="sort-li-title">字数</h3>
+									<div class="sort-li-detail">
+										<a href="javascript:" class="btn-tag">30万以下</a>
+										<a href="javascript:" class="btn-tag">30~50万</a>
+										<a href="javascript:" class="btn-tag">50~100万</a>
+										<a href="javascript:" class="btn-tag">100-200万</a>
+										<a href="javascript:" class="btn-tag">200万以上</a>
+									</div>
+								</li>
+								<li class="sort-li">
+									<h3 class="sort-li-title">状态</h3>
+									<div class="sort-li-detail">
+										<a href="javascript:" class="btn-tag">连载</a>
+										<a href="javascript:" class="btn-tag">完本</a>
+									</div>
+								</li>
+								<li class="sort-li">
+									<h3 class="sort-li-title">品质</h3>
+									<div class="sort-li-detail">
+										<a href="javascript:" class="btn-tag">签约作品</a>
+										<a href="javascript:" class="btn-tag">精品小说</a>
+									</div>
+								</li>
+								<li class="sort-li">
+									<h3 class="sort-li-title">更新时间</h3>
+									<div class="sort-li-detail">
+										<a href="javascript:" class="btn-tag">三日内</a>
+										<a href="javascript:" class="btn-tag">七日内</a>
+										<a href="javascript:" class="btn-tag">半月内</a>
+										<a href="javascript:" class="btn-tag">一月内</a>
+									</div>
+								</li>
+								<li class="sort-li">
+									<h3 class="sort-li-title">类型</h3>
+									<div class="sort-li-detail">
+										<a href="javascript:" class="btn-tag">武侠</a>
+										<a href="javascript:" class="btn-tag">仙侠</a>
+										<a href="javascript:" class="btn-tag">玄幻</a>
+										<a href="javascript:" class="btn-tag">魔幻</a>
+										<a href="javascript:" class="btn-tag">都市</a>
+										<a href="javascript:" class="btn-tag">校园</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+						
+						<div class="module-footer">
+							<nav class="btn-group">
+								<div class="btn-group-cell">
+									<a href="javascript:" class="btn-reset hideAside">重置</a>
+								</div>
+								<div class="btn-group-cell">
+									<a href="javascript:" class="btn-submit hideAside">完成</a>
+								</div>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</aside>
+		</div>
+		<script src="../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var elButton = $('#button'),
+				elButtonWith = $('#buttonWith');
+			var elAside = $('#aside');
+			elButton.on('click', function() {
+				elAside.addClass('active');
+				$('html').addClass('noscroll');
+			});
+			elButtonWith.on('click', function() {
+				elAside.addClass('active');
+				$.smartScroll(elAside, '.scrollable');
+				elButton.html(elButton.html().replace('没有', '已经'));
+				$('html').addClass('noscroll');
+			});
+
+			$('.hideAside').on('click', function() {
+				$('html').removeClass('noscroll');
+				elAside.removeClass('active');
+			});
+
+			$.smartScroll = function(container, selectorScrollable) {
+				// 如果没有滚动容器选择器，或者已经绑定了滚动时间，忽略
+				if(!selectorScrollable || container.data('isBindScroll')) {
+					return;
+				}
+
+				// 是否是搓浏览器
+				// 自己在这里添加判断和筛选
+				var isSBBrowser;
+
+				var data = {
+					posY: 0,
+					maxscroll: 0
+				};
+
+				// 事件处理
+				container.on({
+					touchstart: function(event) {
+						var events = event.touches[0] || event;
+
+						// 先求得是不是滚动元素或者滚动元素的子元素
+						var elTarget = $(event.target);
+
+						if(!elTarget.length) {
+							return;
+						}
+
+						var elScroll;
+
+						// 获取标记的滚动元素，自身或子元素皆可
+						if(elTarget.is(selectorScrollable)) {
+							elScroll = elTarget;
+						} else if((elScroll = elTarget.parents(selectorScrollable)).length == 0) {
+							elScroll = null;
+						}
+
+						if(!elScroll) {
+							return;
+						}
+
+						// 当前滚动元素标记
+						data.elScroll = elScroll;
+
+						// 垂直位置标记
+						data.posY = events.pageY;
+						data.scrollY = elScroll.scrollTop();
+						// 是否可以滚动
+						data.maxscroll = elScroll[0].scrollHeight - elScroll[0].clientHeight;
+					},
+					touchmove: function(event) {
+
+						// 如果不足于滚动，则禁止触发整个窗体元素的滚动
+						if(data.maxscroll <= 0 || isSBBrowser) {
+
+							// 禁止滚动
+							event.preventDefault();
+						}
+						// 滚动元素
+						var elScroll = data.elScroll;
+						// 当前的滚动高度
+						var scrollTop = elScroll.scrollTop();
+
+						// 现在移动的垂直位置，用来判断是往上移动还是往下
+						var events = event.touches[0] || event;
+						// 移动距离
+						var distanceY = events.pageY - data.posY;
+
+						if(isSBBrowser) {
+
+							elScroll.scrollTop(data.scrollY - distanceY);
+							elScroll.trigger('scroll');
+							return;
+						}
+
+						// 上下边缘检测
+						if(distanceY > 0 && scrollTop == 0) {
+							// 往上滑，并且到头
+							// 禁止滚动的默认行为
+							event.preventDefault();
+							return;
+						}
+
+						// 下边缘检测
+						if(distanceY < 0 && (scrollTop + 1 >= data.maxscroll)) {
+							// 往下滑，并且到头
+							// 禁止滚动的默认行为
+							event.preventDefault();
+							return;
+						}
+					},
+					touchend: function() {
+						data.maxscroll = 0;
+					}
+				});
+
+				// 防止多次重复绑定
+				container.data('isBindScroll', true);
+			};
+		</script>
+	</body>
+
+</html>

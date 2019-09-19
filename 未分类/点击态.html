@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <title>点击态</title>
+    <style>
+        .d1{
+            width: 200px;
+            height:200px;
+            background: yellowgreen;
+        }
+        .d1.act{
+            background: #70b7cd;
+        }
+    </style>
+</head>
+<body>
+    <div class="d1">
+
+    </div>
+
+    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script src="//cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+
+    <script type="text/javascript">
+        FastClick.attach(document.body);    //初始化fastclick
+
+        $(document).on('click',function (e) {
+            var $target = $(e.target);
+            $target.addClass('act');
+            setTimeout(function () {
+                $target.removeClass('act');
+            },150)
+        });
+//        $('.d1').on('click',function () {
+//            $('.d1').text("ssss")
+//        })
+
+        for(var i=1;i<=3;i++){
+            setTimeout(function(){
+                console.log(i);
+            },0);
+        };
+
+    </script>
+
+</body>
+</html>

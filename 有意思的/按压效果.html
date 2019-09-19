@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>菜鸟教程(runoob.com)</title>
+		<style>
+			.button {
+				display: inline-block;
+				padding: 15px 25px;
+				font-size: 24px;
+				cursor: pointer;
+				text-align: center;
+				text-decoration: none;
+				outline: none;
+				color: #fff;
+				background-color: #4CAF50;
+				border: none;
+				border-radius: 15px;
+				box-shadow: 0 9px #999;
+			}
+			
+			.button:hover {
+				/*background-color: #3e8e41*/
+			}
+			
+			.button:active {
+				background-color: red;
+				box-shadow: 0 5px #666;
+				transform: translateY(4px);
+			}
+			
+			html,
+			body {
+				min-height: 100%;
+				-moz-user-select: none;
+				-webkit-user-select: none;
+				/*禁止文字选中*/
+				-webkit-overflow-scrolling: touch;
+				/*滚动顺滑*/
+				-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+				/*取消ios上链接长按出现的半透明黑色遮罩*/
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<h2>按钮动画 - "按压效果"</h2>
+
+		<button class="button">Click Me</button>
+
+		<script src="../zepto.min.js"></script>
+		<script type="text/javascript">
+			//	document.body.addEventListener('touchstart', function () {});
+			
+			$('body').on('click','.button',function(){
+				alert(2346)
+				$(this).text(new Date)
+			})
+		</script>
+	</body>
+
+</html>

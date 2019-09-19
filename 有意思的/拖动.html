@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>拖动</title>
+		<style type="text/css">
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.d1 {
+				width: 100px;
+				height: 100px;
+				background: yellowgreen;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="d1"></div>
+		<span></span>
+		<script src="../jquery-3.3.1.min.js"></script>
+		<script>
+			let d1 = $('.d1')
+			let isMouseup = false
+			d1.mousedown(function(e) {
+				isMouseup = false
+				let originX = e.screenX
+				let originY = e.screenY
+				let offsetX = d1.offset().left
+				let offsetY = d1.offset().top
+				d1.mousemove(function(e) {
+					if(isMouseup) {
+						return
+					}
+					let nowX = e.screenX
+					let nowY = e.screenY
+					let moveX = nowX - originX
+					let moveY = nowY - originY
+					
+
+					let x = offsetX + moveX
+					let y = offsetY + moveY
+					if(d1.offset().top < 0) {
+						y = 0
+					}
+					if(d1.offset().left < 0) {
+						x = 0
+					}
+
+					if(d1.offset().top + d1.height() > $(window).height()) {
+						y = $(window).height() - d1.height()
+					}
+					if(d1.offset().left + d1.width() > $(window).width()) {
+						x = $(window).width() - d1.width()
+					}
+					d1.css({
+						'transform': `translate(${x}px,${y}px)`
+					})
+				})
+				d1.mouseup(function(e) {
+					isMouseup = true
+				})
+
+			})
+		</script>
+	</body>
+
+</html>

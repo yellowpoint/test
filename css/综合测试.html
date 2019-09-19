@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>综合测试</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			position: relative;
+			width: 50px;
+			height: 50px;
+			background: yellowgreen;
+			
+		}
+		/*添加点击区域*/
+		.d1:before{
+			content: '';
+			position: absolute;
+			top: -10px;
+			left: -10px;
+			right: -10px;
+			bottom: -10px;
+			background: rgba(0,0,0,.5);
+		}
+	</style>
+</head>
+<body>
+	<!--<div></div>-->
+	<img  class="d1" src="../js/goDraw.png"/>
+	<script src="../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$('.d1').click(function(){
+			console.log(1111)
+		})
+	</script>
+</body>
+</html>

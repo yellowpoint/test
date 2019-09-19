@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <style type="text/css">
+        body{
+            overflow: hidden;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        canvas{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<img src="http://file.diy.51app.cn/wp/IntegralMall/287f7c27.jpg" id="img1">
+<canvas width="600" height="600" id="canvas">您的浏览器不支持canvas</canvas>
+</body>
+</html>
+<script type="text/javascript">
+    var img= document.getElementById("img1");
+    img.onload=draw;
+    function draw()
+    {
+        var canvas=document.getElementById("canvas");
+        canvas.width=img.width;
+        canvas.height=img.height;
+        var ctx=canvas.getContext("2d");
+        ctx.beginPath();
+        ctx.fillStyle="#ccc";
+        ctx.fillRect(0,0,canvas.width,canvas.width);
+        ctx.globalCompositeOperation="destination-out";
+        ctx.lineWidth=50;
+        ctx.lineCap="round";
+        ctx.lineJoin="round";
+        ctx.strokeStyle="green";
+        canvas.onmousedown =function(ev)
+        {
+            var _this=this;
+            var ev=ev || window.event ;
+            var pX=ev.pageX-canvas.offsetTop;
+            var pY=ev.pageY-canvas.offsetLeft;
+            ctx.beginPath();
+            ctx.moveTo(pX,pY);
+            _this.onmousemove=function(ev)
+            {
+                var ev=ev || window.event;
+                var pX=ev.pageX-canvas.offsetTop;
+                var pY=ev.pageY-canvas.offsetLeft;
+                ctx.lineTo(pX,pY);
+                ctx.stroke();
+            }
+            _this.onmouseup=function()
+            {
+                _this.onmousemove=null;
+                check();
+            };
+        }
+        canvas.onmouseup=null;
+        function check()
+        {
+
+            var data=ctx.getImageData(0,0,canvas.width,canvas.height).data;
+            var sum=0;
+            var temp=0;
+            for(var i=0;i<=data.length;i=i+4)
+            {
+                if(data[i]==0 && data[i+1]==0 && data[i+2]==0 && data[i+4]==0)
+                {
+                    sum++;
+                }
+
+            }
+            temp=(sum*100/(canvas.width*canvas.height)).toFixed(2);
+            if(temp>60)
+            {
+                ctx.beginPath();
+                ctx.fillRect(0,0,canvas.width,canvas.height);
+            }
+
+        }
+    }
+</script>

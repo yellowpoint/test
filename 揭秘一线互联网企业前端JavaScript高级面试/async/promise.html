@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    function loadImg(src) {
+      var promise = new Promise(function (resolve, reject) {
+        var img = document.createElement('img')
+        // throw new Error('自定义错误')
+        img.onload = function () {
+          resolve(img)
+        }
+        img.onerror = function () {
+          reject('图片加载失败')
+        }
+        img.src = src
+      })
+      return promise
+    }
+
+    // var src = 'https://www.imooc.com/static/img/index/logo_new2.png'
+    // var result = loadImg(src)
+    // result.then(function (img) {
+    //   console.log(1, img.width)
+    //   return img
+    // }).then(function (img) {
+    //   console.log(2, img.height)
+    // }).catch(function (ex) {
+    //   // 统一捕获异常
+    //   console.log(ex)
+    //   throw new Error('catch中的错误')
+    // }).then(res=>{
+    //   console.log(3333)
+    //   throw new Error('catch之后then的错误')
+    // }).catch(err=>{
+    //   console.log(err)
+    // })
+
+    var src1 = 'https://www.imooc.com/static/img/index/logo_new.png'
+    var src2 = 'https://www.imooc.com/static/img/index/logo_new2.png'
+    var result1 = loadImg(src1)
+    var result2 = loadImg(src2)
+
+    result1.then(res=>{
+      console.log('第一张图片加载成功')
+      return 'result2'   //重要，不加的话就还是result1,且必须是promis实例，不然还是第一个
+    }).then(res=>{
+      console.log('第二张图片加载成功')
+    }).catch(err=>{
+      console.log(err)
+    })
+
+    // 有一个报错就都不走then了
+    // Promise.all([result1,result2]).then(datas=>{
+    //   console.log('all',datas)
+    // }).catch(err=>{
+    //   console.log('all',err)
+    // })
+    // Promise.race([result1,result2]).then(data=>{
+    //   console.log('race',data)
+    // }).catch(err=>{
+    //   console.log('race',err)
+    // })
+  </script>
+</body>
+
+</html>

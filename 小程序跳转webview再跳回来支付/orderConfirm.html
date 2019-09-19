@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="pixel-ratio-2 retina ios ios-9 ios-9-1 ios-gt-8 ios-gt-7 ios-gt-6 watch-active-state">
+
+	<head>
+		<meta charset="utf-8">
+		<!-- 兼容性调整 -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1.0">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no, email=no">
+		<link rel="shortcut icon" href="favicon.ico">
+		<title>腾趣</title>
+		<!-- 样式表文件导入 -->
+		<link rel="stylesheet" type="text/css" href="../../css/lib/framework7.ios.min.css">
+		<link rel="stylesheet" type="text/css" href="../../css/lib/swiper-3.4.1.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/lib/layer.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/xl/LArea.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/comment.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-main.css?1" />
+		<link rel="shortcut icon" href="../../img/favicon.ico">
+
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?f0e635459915122317d9199dc2470247";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+
+	</head>
+
+	<body class="shoppingcar-confirm">
+		<div class="statusbar-overlay"></div>
+		<div class="dom-noLoad"></div>
+		<div class="views">
+			<div class="view view-main _js-orderConfirm">
+				<div class="navbar">
+					<div class="navbar-inner navbar-on-center backToCar" data-page="orderComfirm">
+						<span class="left link _fm-f-14"><i class="_fm-back-left">&nbsp;</i>返回</span>
+						<span class="center">确认订单</span>
+					</div>
+					<div class="navbar-inner cached" data-page="goodsList">
+						<span class="left mainBack link _fm-f-14"><i class="_fm-back-left">&nbsp;</i>返回</span>
+						<span style="font-weight: 600;">商品列表</span>
+						<span class="totalNum">共件</span>
+					</div>
+				</div>
+				<div class="toolbar _fm-f-18 confirm-toolBar" style="z-index: 5000;height: 50px;">
+					<div class="toolbar-inner _fm-block _fm-rel _fm-overhide">
+						<div class="_fm-left comfirm-tool">
+							<p class="total _fm-f-18">合计:<span class="count-num _fm-f-14" data-size="18px">￥<span>0.</span>00</span></p>
+						</div>
+						<span class="submit do _fm-right _fm-txtcenter _fm-f-16" data-op="submit">提交订单</span>
+					</div>
+				</div>
+				<div class="pages navbar-through toolbar-through">
+					<div class="page page-on-center orderComfirm" data-page="orderComfirm">
+						<div class="page-content _js-limitdrag haveDone">
+							<!-- 页面主体 -->
+							<div class="cus-page">
+								<div class="cus-page-inner">
+									<!-- 订单确认页 -->
+									<div class="main-content">
+										<div class="order-msg list-block">
+
+											<!--收货地址-->
+											<a href="#" class="orderComfirm-address _fm-block _fm-overhide" style="display: block;">
+											</a>
+
+											<!-- 多件商品 -->
+											<p class="division _fm-rel"></p>
+
+											<section class="goods-detailList">
+
+											</section>
+											<!-- 多件商品/END -->
+
+											<!-- 单件商品 -->
+
+											<!-- 单件商品/END -->
+											<p class="division _fm-rel"></p>
+											<div class="postFee _fm-f-13 one-item"><span>运费：</span><span class="_fm-right" style="color: #ff5252;">+ ￥<i class="postPrice">0.00</i></span></div>
+											<p class="division _fm-rel"></p>
+											<div class="coupon one-item _fm-f-13 _fm-block _fm-overhide">
+												<!--<a href="#coupon">
+													<span class="_fm-left">选择优惠券：</span>
+													<div class="right-ico _fm-right" style="margin-top: -3px;">
+														<span class="_fm-back-right">&nbsp;</span>
+													</div>
+													<div class="msg _fm-overhide">
+														<span class="_fm-right _fm-ellipsis">无可用优惠券</span>
+													</div>
+												</a>-->
+											</div>
+											<p class="division _fm-rel"></p>
+											<p class="one-item _fm-f-13 DiscountNow"><span class="discountNow">立减优惠：</span><span class="_fm-right" style="color: #ff5252;">- ￥<i class="discountNowPrice">0.00</i></span></p>
+											<p class="division _fm-rel"></p>
+											<!--金豆-->
+											<!--<div class="one-item Coins"><span class="coins _fm-f-13">金豆：</span><span class="coinCon">共1600金豆，可用1000金豆，抵10.00元</span>
+												<div class="xl-switch" onclick="switchClick()">
+						                    		<div class="xl-checkbox">
+							                    		<div class="xl-checkSlide"></div>
+							                    	</div>
+							                    </div>
+											</div>-->
+											<p class="division _fm-rel"></p>
+											<div class="remarkInfo one-item _fm-f-13">
+												<span>备注：</span>
+												<input type="text" class="remarkTextarea" placeholder="选填：对本次交易的说明(建议填写)" maxlength="50">
+											</div>
+											<p class="division _fm-rel"></p>
+											<ul class="pay-method _js-wechatFit haveDone">
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- 页面主体/END -->
+						</div>
+					</div>
+					<div class="page cached no-toolbar no-tabbar goodsList" data-page="goodsList">
+						<div class="page-content _js-limitdrag haveDone">
+							<!-- 页面主体 -->
+							<div class="cus-page">
+								<div class="cus-page-inner">
+									<!-- 商品详情页 -->
+									<div class="main-content goods-detail">
+
+									</div>
+								</div>
+							</div>
+							<!-- 页面主体/END -->
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+		<!-- 脚本文件导入
+==================================================-->
+		<script type="text/javascript" src="../../js/lib/framework7.min.js"></script>
+		<script src="../../js/lib/jq-3.1.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../..//js/xl/my-app1.js"></script>
+		<script type="text/javascript" src="../../js/lib/fastclick.min.js"></script>
+		<script type="text/javascript" src="../../js/lib/layer.min.js"></script>
+		<script type="text/javascript" src="../../js/lib/swiper-3.4.1.min.js"></script>
+		<!--<script src="../../js/xl/pingpp.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="../../js/xl/LArea.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/xl/LAreaData2.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/xl/xl-public.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/xl/xl-main.js?2" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/xl/xl-f7.js" type="text/javascript" charset="utf-8"></script>
+		<script>
+		//不同的渠道，talkingdata传入不同的值
+			//			var appId;
+			//			if (channel == 'toutiao') {
+			//				appId = '0DBFCA731C854F6CB62404E48F98ACF2';
+			//			} else if (channel == 'i4') {
+			//				appId = '10A4CC28E10146E68D1453CFDE91F170';
+			//			} else {
+			//				appId = '952A04D6EAC24FAAB4E45623C75EDBBB';
+			//			}
+			var appId = '952A04D6EAC24FAAB4E45623C75EDBBB';
+			document.write("<s" + "cript id='td_tracking_sdk' type='text/javascript' src='https://h5.talkingdata.com/adt/h5sdk?ak=" + appId + "'></s" + "cript>");
+			loadPage();
+			orderConfirmPage();
+		</script>
+	</body>
+
+</html>

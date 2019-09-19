@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="container"></div>
+  <button id="btn-change">gaibai</button>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script>
+    var data = [{
+        name: '李四',
+        age: 10
+      },
+      {
+        name: '李四2',
+        age: 102
+      },
+      {
+        name: '李四3',
+        age: 103
+      }
+    ]
+
+
+    // 渲染函数
+    function render(data) {
+      var $container = $('#container');
+
+      $container.html('');
+      var $table = $('<table>');
+      $table.append($('<tr><td>name</td><td>age</td></tr>'))
+
+      data.forEach(item => {
+        $table.append($('<tr><td>' + item.name + '</td><td>' + item.age + '</td></tr>'))
+      });
+      $container.append($table)
+
+    }
+    render(data)
+    $('#btn-change').click(function () {
+      data[0].name = "ddd"
+      render(data)
+    })
+
+    Object.prototype.objCustom = function() {}; 
+    var testObject = {
+      a: 2
+    }
+    // testObject.prototype = {
+    //   b: 2
+    // }
+    for (let i in testObject) {
+      console.log('in',i)
+    }
+    // goole js object不是iterable啊
+    // Uncaught TypeError: testObject is not iterable
+    for (let i of testObject) {
+      console.log('of',i)
+    }
+  </script>
+</body>
+
+</html>

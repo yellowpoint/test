@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="swiper-3.3.1.min.css"/>
+    <style type="text/css">
+
+        .mask{ width: 100%; height: 100%; background: rgba(0,0,0,1); position:fixed; top:0; left: 0; z-index: 9998; display: none;}
+        .wrap_big{ width: 100%; position: fixed; left: 0; top: 50%; transform: translate(0,-50%); -webkit-transform: translate(0,-50%); z-index: 9999; display: none; }
+        .swiper-container {width: 100%; }
+        .swiper-wrapper{ width: 100%;}
+        .swiper-slide { width: 100%; }
+        .swiper-pagination-bullet-active{ background: red;}
+    </style>
+</head>
+<body>
+<div class="q_banner">
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+
+            <div class="swiper-slide preview">
+                <a href="images/img_01.jpg"><img src="images/img_01.jpg" alt="" /></a>
+
+            </div>
+            <div class="swiper-slide preview">
+                <a href="images/img_02.jpg"><img src="images/img_02.jpg" alt="" /></a>
+
+            </div>
+            <div class="swiper-slide preview">
+                <a href="images/img_03.jpg"><img src="images/img_03.jpg" alt="" /></a>
+            </div>
+
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+</div>
+
+<div class="mask"></div>
+
+<div class="wrap_big">
+    <div class="swiper-container_big">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="images/img_01.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+                <img src="images/img_02.jpg" alt="" />
+            </div>
+            <div class="swiper-slide">
+                <img src="images/img_03.jpg" alt="" />
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+    <script type="text/javascript" src="jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="swiper-3.3.1.jquery.min.js"></script>
+    <script type="text/javascript">
+
+        var swiper = new Swiper('.q_banner .swiper-container', {
+            pagination: '.swiper-container .swiper-pagination',
+            paginationClickable: true
+
+        });
+
+        $(function(){
+            $('.q_banner .swiper-slide').each(function(index){
+                $(this).click(function(){
+                    $('.mask').show();
+                    var thisIndex = index;
+                    $('.wrap_big').show();
+                    $('html,body').css('overflow','hidden');
+                    var swiper = new Swiper('.wrap_big .swiper-container_big', {
+                        paginationClickable: true,
+                        initialSlide:thisIndex
+                    });
+                });
+            });
+            $('.mask').click(function(){
+                $('.mask').hide();
+                $('.wrap_big').hide()
+            });
+            $('.wrap_big').each(function(index){
+                $(this).click(function(){
+                    $('html,body').css('overflow','auto');
+                    $(this).hide();
+                    $('.mask').hide();
+
+                });
+            });
+        });
+
+    </script>
+
+</body>
+</html>

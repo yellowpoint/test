@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script>
+    // var wait = function () {
+    //   var task = function () {
+    //     console.log("执行完成")
+    //   }
+    //   setTimeout(task, 2000)
+    // }
+    // wait()
+
+
+
+    function waitHandle() {
+      var dtd = $.Deferred()
+
+      var wait = function (dtd) {
+        var task = function () {
+          console.log("执行完成")
+          // dtd.resolve()
+          dtd.reject()
+        }
+        setTimeout(task, 1000)
+
+        // return dtd
+        return dtd.promise()//防止后面修改状态
+        // 对应的调用的时候要用 $.when(w).then... 而不是直接w.then；但我发现这样写也行呀
+      }
+      return wait(dtd)
+    }
+    var w = waitHandle()
+    
+    // w.reject() 就是为了防止用人后面再修改状态，对应前面的return dtd.promise()
+
+    // w.then(res=>{
+    //   console.log('res')
+    // },err=>{
+    //   console.log('0err')
+    // }).then(res=>{
+    //   console.log('0res2')
+    // },err=>{
+    //   console.log('0err3')
+    // })
+    // 执行完成   err  res2
+    w.then(res=>{
+      console.log('res')
+    },err=>{
+      console.log('err')
+    })
+    w.then(res=>{
+      console.log('res2')
+    },err=>{
+      console.log('err2')
+    })
+    // 执行完成   err  err2
+  </script>
+
+
+
+</body>
+
+</html>

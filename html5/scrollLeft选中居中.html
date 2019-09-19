@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <title>
+        </title>
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js">
+        </script>
+        <style>
+            ul, li { padding: 0px; margin: 0px; list-style: none; } ul { width: 1000000px;
+            } li { height: 100px; float: left; border: 1px solid red; } li.selected
+            { background-color: yellow;; }
+        </style>
+    </head>
+    
+    <body>
+        <div class="container" id="J_container" style="width: 200px;height: 100px;border:1px solid gray; overflow-x: scroll; overflow-y: hidden;">
+            <ul>
+                <li>
+                    测试1
+                </li>
+                <li>
+                    测试1
+                </li>
+                <li>
+                    测试1
+                </li>
+                <li>
+                    测试1
+                </li>
+                <li>
+                    测试1
+                </li>
+                <li>
+                    测试1
+                </li>
+                <li>
+                    测试1
+                </li>
+                <li class="selected">
+                    请将我居中
+                </li>
+                <li>
+                    测试1
+                </li>
+                <li>
+                    测试1
+                </li>
+            </ul>
+        </div>
+        <script>
+            $(function() {
+                var item = $(".selected");
+                var container = $("#J_container");
+                var itemOffset = item.offset();
+                var itemOffsetLeft = itemOffset.left + container.scrollLeft();
+                var centerLeft = (container.width() - item.width()) / 2;
+                container.scrollLeft(itemOffsetLeft - centerLeft);
+            })
+        </script>
+    </body>
+
+</html>

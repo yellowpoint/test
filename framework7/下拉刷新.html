@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html class="pixel-ratio-1 watch-active-state"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>My App</title>
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <!--<link rel="stylesheet" href="css/framework7.ios.colors.min.css">-->
+    <!--<script async="" src="//www.google-analytics.com/analytics.js"></script><script>-->
+    <!--(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){-->
+                <!--(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),-->
+            <!--m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)-->
+    <!--})(window,document,'script','//www.google-analytics.com/analytics.js','ga');-->
+    <!--ga('create', 'UA-55082724-1', 'auto');-->
+    <!--ga('send', 'pageview');-->
+<!--</script>-->
+</head>
+<body>
+<div class="views">
+    <div class="view view-main" >
+        <div class="pages">
+            <div class="page ">
+
+                <div class="page-content pull-to-refresh-content" style="">
+                    <div class="pull-to-refresh-layer">
+                        <div class="preloader"></div>
+                        <div class="pull-to-refresh-arrow"></div>
+                    </div>
+                    <div class="list-block media-list">
+                        <ul>
+                            <li class="item-content">
+                                <div class="item-media"><img src="http://hhhhold.com/88/d/jpg?1" width="44"></div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">Yellow Submarine</div>
+                                    </div>
+                                    <div class="item-subtitle">Beatles</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/framework7.min.js"></script>
+<!--<script>-->
+    <!--var myApp = new Framework7();-->
+
+    <!--var $$ = Dom7;-->
+
+    <!--// Dummy Content-->
+    <!--var songs = ['Yellow Submarine', 'Don\'t Stop Me Now', 'Billie Jean', 'Californication'];-->
+    <!--var authors = ['Beatles', 'Queen', 'Michael Jackson', 'Red Hot Chili Peppers'];-->
+    <!--// Pull to refresh content-->
+    <!--var ptrContent = $$('.pull-to-refresh-content');-->
+    <!--// Add 'refresh' listener on it-->
+    <!--ptrContent.on('refresh', function (e) {-->
+        <!--// Emulate 2s loading-->
+        <!--setTimeout(function () {-->
+            <!--var picURL = 'http://hhhhold.com/88/d/jpg?' + Math.round(Math.random() * 100);-->
+            <!--var song = songs[Math.floor(Math.random() * songs.length)];-->
+            <!--var author = authors[Math.floor(Math.random() * authors.length)];-->
+            <!--var itemHTML = '<li class="item-content">' +-->
+                    <!--'<div class="item-media"><img src="' + picURL + '" width="44"/></div>' +-->
+                    <!--'<div class="item-inner">' +-->
+                    <!--'<div class="item-title-row">' +-->
+                    <!--'<div class="item-title">' + song + '</div>' +-->
+                    <!--'</div>' +-->
+                    <!--'<div class="item-subtitle">' + author + '</div>' +-->
+                    <!--'</div>' +-->
+                    <!--'</li>';-->
+            <!--// Prepend new list element-->
+            <!--ptrContent.find('ul').prepend(itemHTML);-->
+            <!--// When loading done, we need to reset it-->
+            <!--myApp.pullToRefreshDone();-->
+        <!--}, 2000);-->
+    <!--});-->
+<!--</script>-->
+
+<script>
+    var myApp = new Framework7();
+    var mainView = myApp.addView('.view-main');
+
+
+    var $$ = Dom7;
+
+    // 随意编造的内容
+    var songs = ['Yellow Submarine', 'Don\'t Stop Me Now', 'Billie Jean', 'Californication'];
+    var authors = ['Beatles', 'Queen', 'Michael Jackson', 'Red Hot Chili Peppers'];
+
+    // 下拉刷新页面
+    var ptrContent = $$('.pull-to-refresh-content');
+
+
+    // 添加'refresh'监听器
+    ptrContent.on('refresh', function (e) {
+
+
+
+
+        // 模拟2s的加载过程
+        setTimeout(function () {
+
+
+//            // 随机图片
+//            var picURL = 'http://hhhhold.com/88/d/jpg?' + Math.round(Math.random() * 100);
+//            // 随机音乐
+//            var song = songs[Math.floor(Math.random() * songs.length)];
+//            // 随机作者
+//            var author = authors[Math.floor(Math.random() * authors.length)];
+//            // 列表元素的HTML字符串
+//            var itemHTML = '<li class="item-content">' +
+//                    '<div class="item-media"><img src="' + picURL + '" width="44"/></div>' +
+//                    '<div class="item-inner">' +
+//                    '<div class="item-title-row">' +
+//                    '<div class="item-title">' + song + '</div>' +
+//                    '</div>' +
+//                    '<div class="item-subtitle">' + author + '</div>' +
+//                    '</div>' +
+//                    '</li>';
+//            // 前插新列表元素
+//            ptrContent.find('ul').prepend(itemHTML);
+
+            console.log("下拉加载");
+            history.go(0);
+//            mainView.router.refreshPage();
+
+            console.log("刷新完成");
+
+
+            // 加载完毕需要重置
+            myApp.pullToRefreshDone();
+        }, 2000);
+    });
+
+</script>
+
+</body></html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <title></title>
+    <link href="//cdn.bootcss.com/Swiper/3.4.1/css/swiper.min.css" rel="stylesheet">
+    <style type="text/css">
+        .swiper-slide{
+
+        }
+        .swiper-container{
+            width: 100%;
+        }
+        .imgBox{
+            width: 250px;
+            background: yellowgreen;
+            height:200px;
+            line-height: 200px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><div class="imgBox">1123456</div></div>
+            <div class="swiper-slide"><div class="imgBox">1123456</div></div>
+            <div class="swiper-slide"><div class="imgBox">1123456</div></div>
+            <div class="swiper-slide"><div class="imgBox">1123456</div></div>
+            <div class="swiper-slide"><div class="imgBox">1123456</div></div>
+            <div class="swiper-slide"><div class="imgBox">1123456</div></div>
+
+        </div>
+    </div>
+
+
+    <script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <script src="//cdn.bootcss.com/Swiper/3.4.1/js/swiper.min.js"></script>
+    <script type="text/javascript">
+
+        var mySwiper = new Swiper('.swiper-container',{
+            effect : 'coverflow',
+            slidesPerView: 1,
+            centeredSlides: true,
+            coverflow: {
+                rotate: 0,
+                stretch: 0,
+                depth: 300,
+                modifier: 1,
+                slideShadows : false
+            }
+        })
+    </script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html,
+			body {
+				height: 100%;
+			}
+			
+			body {
+				/*background: yellowgreen;*/
+			}
+			
+			input {
+				position: fixed;
+				bottom: 10%;
+				left: 0;
+				padding: 50px;
+				background: red;
+			}
+			/*span {
+				display: block;
+				width: 100%;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				background: yellow;
+			}
+			
+			.scrollArea {
+				width: 100%;
+				position: absolute;
+				top: 50px;
+				bottom: 34px;
+				overflow-y: scroll;
+				-webkit-overflow-scrolling: touch;
+			}*/
+			
+			#d2 {
+				width: 200px;
+				height: 200px;
+				background: yellowgreen;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="scrollArea">
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+			<p>fds</p>
+
+		</div>
+
+		<!--<span>faskfasjkfljaskljfklasd</span>-->
+		<input type="text" name="" id="" value="hahah" onfocus="inputFocus()" onblur="blur2()" />
+		<div id="d2"></div>
+		<script src="../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//			alert(document.body.clientHeight)
+			var inputScrollTop = 0
+
+			function inputFocus() {
+				inputScrollTop = $('body').scrollTop()
+			}
+
+			function blur2() {
+				//				console.log(12111)
+				$('body').scrollTop(0)
+				setTimeout(() => {
+					//					$('body').scrollTop(0)
+					//					alert(document.body.clientHeight)
+					//					alert($(window).height())
+
+				}, 1500)
+
+			}
+
+			var allInput2 = document.getElementById('d2')
+			console.log(allInput)
+			allInput2.onclick = function() {
+				console.log(1545674)
+			}
+
+			var allInput = document.getElementsByTagName('input')
+			for(let value of allInput) {
+				value.addEventListener("blur", function(e) {
+					alert("ok");
+				});
+				value.onblur = function() {
+					console.log(1545674)
+				}
+			}
+		</script>
+	</body>
+
+</html>

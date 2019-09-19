@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>js的各种循环</title>
+	</head>
+<div class="d1">abcdefg</div>
+	<body>
+		<script src="../jquery-3.3.1.min.js"></script>
+		<script type="text/javascript">
+			function foo() {
+				var arr = [11, 22, 33, 44]
+				var arr2 = [
+					["a", 1],
+					["b", 2]
+				]
+
+				//return和break一样是只有11，continue是跳过了22；可是这个只有value没有index呀
+				//				for(let value of arr2) {
+				//
+				//					if(value == 22) {
+				//						return
+				//					}
+				//					console.log(value)
+				//
+				//				}
+
+				//				//只能return， 跳过了22
+				//				arr.forEach(function(value, index) {
+				//
+				//					if(value == 22) {
+				//						return
+				//					}
+				//					console.log(value)
+				//				})
+				//
+				//				//return和break一样是只有11，continue是跳过了22
+				//				for(var i = 0; i < arr.length; i++) {
+				//
+				//					if(arr[i] == 22) {
+				//						continue
+				//					}
+				//					console.log(arr[i])
+				//				}
+				//
+				//				//只能return，跳过了22
+				//				$.each(arr, function(index, value) {
+				//
+				//					if(value == 22) {
+				//
+				//						return
+				//					}
+				//					console.log(value)
+				//				})
+
+				$.map(arr,function(value,index) {
+					if(value == 22) {
+
+						return
+					}
+					console.log(value)
+				})
+				
+				
+				
+			}
+			foo()
+		</script>
+	</body>
+
+</html>

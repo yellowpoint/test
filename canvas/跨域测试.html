@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div class="d1">
+			我是dom元素
+			<img src="http://51app-image-test.oss-cn-hangzhou.aliyuncs.com/payment/resume/2018/12/20/2232077221037.png" />
+		</div>
+		我是c1<br />
+		<canvas id="c1" width="300" height="100"></canvas><br />
+		我是c2<br />
+		<canvas id="c2" width="300" height="100"></canvas>
+		
+		<div class="d2">我是输出</div>
+		<script src="../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="html2canvas.js" type="text/javascript" charset="utf-8"></script>
+		<script src="canvas2image.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			//获取canvas元素
+//			var cvs = document.getElementById("c1");
+//			//创建image对象
+//			var imgObj = new Image();
+//			imgObj.src = "http://51app-image-test.oss-cn-hangzhou.aliyuncs.com/payment/resume/2018/12/20/2232077221037.png";
+//			//待图片加载完后，将其显示在canvas上
+//			imgObj.onload = function() {
+//				var ctx = cvs.getContext('2d');
+//				ctx.drawImage(this, 0, 0); //this即是imgObj,保持图片的原始大小：470*480
+//
+//			}
+		</script>
+
+		<script type="text/javascript">
+			var canvas = document.getElementById("c2");
+			var ctx = canvas.getContext('2d');
+
+			html2canvas($('.d1'), {
+				canvas: canvas,
+				allowTaint: true,
+				taintTest: false,
+				onrendered: function(canvas) {
+					var dataUrl = canvas.toDataURL("image/png", 0.1);
+//					ctx.drawImage(dataUrl, 0, 0);
+					var oImgPNG = Canvas2Image.saveAsPNG(canvas, true)
+					console.log(oImgPNG)
+					$(".d2").append(oImgPNG);
+					
+
+				}
+			});
+		</script>
+
+	</body>
+
+</html>

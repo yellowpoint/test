@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <button class="btn" data-clipboard-text="来呀 快活呀">Copy</button>
+
+    <script type="text/javascript" src="clipboard.min.js"></script>
+    <script type="text/javascript">
+
+
+        var clipboard = new Clipboard('.btn');
+
+        clipboard.on('success', function(e) {
+            console.log(e);
+        });
+
+        clipboard.on('error', function(e) {
+            console.log(e);
+        });
+    </script>
+</body>
+</html>

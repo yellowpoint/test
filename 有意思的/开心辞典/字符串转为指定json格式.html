@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style type="text/css">
+			textarea {
+				width: 80%;
+				height: 200px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<textarea id="source"></textarea>
+		<br />
+		<button class="downloadJson">点击下载</button>
+
+		<script src="../../jquery-3.3.1.min.js"></script>
+		<script src="download.js"></script>
+		<script type="text/javascript">
+			$('body').on('click', '.downloadJson', function() {
+				if($('textarea')[0].value) {
+					str = $('textarea')[0].value
+				} else {
+					str = kxcd
+				}
+
+				var result = format(str)
+				//				console.log('result', result)
+				if(result) {
+					funDownload(JSON.stringify(result), 'kxxd.json')
+				}
+
+			})
+
+			function format(str) {
+				var template = {
+					"title": "“风筝实验”是科学家富兰克林所做的一次关于什么的实验？（　）",
+					"analyse": "风筝实验是美国先贤本杰明·富兰克林的一次关于雷电的实验。",
+					"trajectory": "全站数据: 本题共被作答6230次，正确率为72.81%，易错项为 [B]",
+					"answer": "A",
+					"options": [{
+						"code": "A.",
+						"value": "雷电"
+					}, {
+						"code": "B.",
+						"value": "空气对流"
+					}, {
+						"code": "C.",
+						"value": "高度对流速影响"
+					}]
+				}
+				//分割出答案
+				var daan_reg = /答\ {0,}案\ {0,}[0-9]+-[0-9]+\ {0,}:\ {0,}[A-Za-z]+(\s+[A-Za-z]+){0,}/g;
+
+				var daan = ''
+
+				while((result = daan_reg.exec(str)) != null) {
+					//这个exec要用循环，还有值要取[0]
+					daan += result[0].replace(/答  {0,}案 {0,}[0-9]+-[0-9]+:/, '').replace(/\s+/g, "")
+
+				}
+				console.log('答案：', daan)
+
+				str = str.replace(daan_reg, '')
+
+				//				console.log('str', str)
+
+				var que_arr = str.split(/[0-9]+\. /)
+				var que = []
+
+				var all = []
+				//去除数组中的空值
+				que_arr = que_arr.filter(function(n) {
+					return n
+				})
+
+				$.each(que_arr, function(i, v) {
+					var dataBox = v.trim()
+					if(dataBox) {
+						var data2 = dataBox.split(/\n +A/i)
+						data2[1] = 'A' + data2[1]
+
+						que.push(data2)
+
+						var data3 = data2[1].split(/[A-Za-z]\.\ +/)
+						var data4 = data3.map((v3, i3) => {
+
+							return v3.trim()
+
+						})
+						//清除数组中的空元素
+						data4 = data4.filter(function(n) {
+							return n
+						})
+						//将答案设置如下格式
+						//{
+						//"code": code,
+						//"value": v
+						//}
+						var answer2 = data4.map((v2, i2) => {
+							var abc = 'ABCDEFGHIG'
+							var code = abc[i2] + '. '
+							return {
+								"code": code,
+								"value": v2
+							}
+						})
+
+						template = {
+							"title": data2[0],
+							"options": answer2,
+							"analyse": "",
+							"trajectory": ""
+						}
+
+						all.push(template)
+
+					}
+
+				})
+				//que就是题目和答题的数组，第一个数组为题目，第二个之后都是选项
+				console.log('all', all)
+				console.log(`题目长度：${all.length}；答案长度${daan.length}`)
+				if(all.length == daan.length) {
+					all.map((v, i) => {
+						v.answer = daan[i]
+					})
+
+					return all
+				} else {
+
+					alert("该段题目与答案个数不相等")
+					return false
+
+				}
+
+			}
+			var page = 1
+			var allData = []
+			var allData2 = {
+				"(单项选择题)": []
+			}
+			//合并数据
+			function concatData() {
+				try {
+					$.get(`${page}.json`, function(data) {
+						console.log(data.length)
+						if(page < 7) {
+							page++
+							allData.push(...data)
+							concatData()
+						} else {
+							allData2["(单项选择题)"] = allData
+							console.log(allData2)
+							//592个
+//							funDownload(JSON.stringify(allData2), 'kxxd.json')
+						}
+					})
+				} catch(e) {
+
+				}
+
+			}
+			concatData()
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>fixed定位研究-嵌套</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+		}
+		.d1{
+			width: 300px;
+			height: 300px;
+			background: #F2DEDE;
+		}
+		.d2{
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 100;
+			
+			width: 200px;
+			height: 200px;
+			background: yellowgreen;
+		}
+		.d21{
+			position: fixed;
+			top: 10px;
+			left: 10px;
+			z-index: 300;
+			
+			width: 100px;
+			height: 100px;
+			background: darkred;
+		}
+		.d3{
+			position: fixed;
+			top:50px;
+			left: 50px;
+			z-index: 200;
+			
+			width: 200px;
+			height: 200px;
+			background: deepskyblue;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		我是最外层
+		<div class="d2">
+			我是d1子 d2
+			<div class="d21">
+				我是d2的子d21
+			</div>
+		</div>
+		<div class="d3">
+			我是和d2平级的d3
+		</div>
+	</div>
+</body>
+</html>

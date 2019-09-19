@@ -1,0 +1,11 @@
+{
+  "presets": [
+    ["latest", {
+      "es2015": {
+        // 过滤第三方的modules
+        "modules": false
+      }
+    }]
+  ],
+  "plugins": ["external-helpers", "babel-plugin-transform-regenerator"]
+}

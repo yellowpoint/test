@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+
+        var a =[
+            {
+                name:"hhh",
+                age:22
+            },
+            {
+                name:"bbb",
+                age:31
+            },
+            {
+                name:"aaa",
+                age:11
+            }
+        ]
+        var b =a.slice();
+        var b=sortList("age",b);
+        console.log(a);
+
+        console.log(b);
+
+
+        function sortList (sortBy, list) {
+            return list.sort(function(a, b) {
+
+                // 降序，若需要升序则互换两者位置
+                return b[sortBy] - a[sortBy];
+            });
+        }
+
+    </script>
+
+</body>
+</html>

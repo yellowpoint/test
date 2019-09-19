@@ -1,0 +1,71 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+.cp .hljs {
+  background: rgba(255,255,255,0.6);
+  padding: 0 1em;
+  border: 0.1em dashed #999;
+}
+
+h1.page-title {
+  margin: 1% 2% 0;
+  font-size: 3em;
+}
+
+h1.page-title .logo {
+  vertical-align: middle;
+  height: 1.2em;
+}
+
+h1.page-title span.desc {
+  color: gray;
+  font-weight: normal;
+}
+
+article {
+  float: left;
+  width: 47%;
+  margin: 2% 0 0 2%;
+  overflow-y: auto;
+  background: rgba(0,0,0,0.1);
+  padding: 2%;
+  box-sizing: border-box;
+}
+
+section {
+  margin-top: 1em;
+}
+
+article:last-child {
+  margin-bottom: 2%;
+}
+
+article.zeroconf, article.hlsa-colors {
+  height: 28em;
+}
+
+article.rgba-colors, article.presentation {
+  height: 45em;
+}
+
+article.formats-and-events, article.theming {
+  height: 57em;
+}
+
+article.expand-collapse-events, article.cleanup {
+  height: 26em;
+}
+
+article h1 {
+  margin-top: 0;
+  /*border-bottom: 0.1em dotted;*/
+  color: rgb(17, 120, 114);
+}
+
+@media only screen and (max-width: 960px) {
+  article {
+    width: 96%;
+  }
+}

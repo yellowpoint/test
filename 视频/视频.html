@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <title>Title</title>
+    <style>
+        video{
+            display: block;
+            width:100%;
+            height:auto;
+            margin: 0 auto;
+            margin-top: 200px;
+
+        }
+    </style>
+</head>
+<body>
+
+<button class="play">bofang</button>
+<video class="v1" width="320" height="240" controls>
+    <source src="movie.mp4" type="video/mp4">
+    <source src="movie.ogg" type="video/ogg">
+    <source src="movie.webm" type="video/webm">
+    <object data="movie.mp4" width="320" height="240">
+        <embed src="movie.swf" width="320" height="240">
+    </object>
+</video>
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+
+<script>
+    $('.play').click(function () {
+        console.log(222);
+        video.play();
+    });
+
+</script>
+</body>
+</html>

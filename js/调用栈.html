@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+
+<body>
+
+
+	<script type="text/javascript">
+		// var b = 'window'
+
+		// function foo() {
+		// 	// debugger
+		// 	var b = 'foo'
+		// 	console.log()
+		// 	bar()
+		// }
+		// foo.b = 'foo2'
+
+		// function bar() {
+		// 	console.log('bar2', this.b)
+		// 	var b = 'bar'
+
+		// 	baz()
+
+		// }
+
+		// function baz() {
+
+		// 	console.log(1111)
+		// }
+		// foo()
+
+		// var a = 2
+		// var obj = {
+		// 	a: 1,
+		// 	foo: function () {
+		// 		// debugger
+		// 		console.log('foo', this.a)
+
+		// 		function bar() {
+		// 			console.log('bar', this.a)
+		// 		}
+		// 		bar()
+					// 这里应该是默认绑定
+					// 在代码中， bar() 是直接使用不带任何修饰的函数引用进行调用的，
+					// 因此只能使用默认绑定，无法应用其他规则。
+
+		// 	}
+		// }
+		// obj.foo()
+
+		// function foo(a) {
+		// 	this.c = a;
+		// }
+		// var bar = new foo(2);
+		// console.log(bar.c); // 2
+		// foo(5)
+		// console.log(c); // 2
+
+		function foo() {
+			// 返回一个箭头函数
+			return (a)=> {
+				//this 继承自 foo()
+				console.log(this.a);
+			};
+		}
+		var obj1 = {
+			a: 2
+		};
+		var obj2 = {
+			a: 3
+
+		};
+		var bar = foo.call(obj1);
+		bar.call(obj2); // 2, 不是 3 ！
+		bar() //如果上面不是箭头函数，而是function则打印undefined
+	</script>
+</body>
+
+</html>

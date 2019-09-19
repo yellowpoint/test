@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1.0">
+		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<title>支付跳转中</title>
+		<link rel="stylesheet" type="text/css" href="../../css/lib/layer.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/comment.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/xl/xl-main.css?1"/>
+	</head>
+	<body>
+		<div class="hd-noLoad">
+			正在支付跳转中......
+			<img class="hd-loading" src="//api.51app.cn/loanpage/v1.0.0/images/loading.gif" alt="loading" style="margin: 0 auto;width: 1rem;" />
+		</div>
+		<script type="text/javascript" src="../../js/lib/jq-3.1.1.min.js"></script>
+		<script type="text/javascript" src="../../js/lib/fastclick.min.js"></script>
+		<script type="text/javascript" src="../../js/lib/layer.min.js"></script>
+		<script src="../../js/common.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" src="../../js/xl/xl-public.js"></script>
+		<script type="text/javascript" src="../../js/xl/xl-main.js?1"></script>
+		<script type="text/javascript">
+			var appId = '952A04D6EAC24FAAB4E45623C75EDBBB';
+			document.write("<s" + "cript id='td_tracking_sdk' type='text/javascript' src='https://h5.talkingdata.com/adt/h5sdk?ak=" + appId + "'></s" + "cript>");
+			var appid = GetQueryString('appid'),
+				nonceStr = GetQueryString('nonceStr'),
+				prepayId = GetQueryString('prepayId'),
+				sign = GetQueryString('sign'),
+				timestamp = GetQueryString('timestamp');
+			var packages = 'prepay_id=' + prepayId;	
+			var tradeOrderId = GetQueryString('tradeOrderId').split('_')[0];
+			
+			if(appid&&nonceStr&&prepayId&&sign&&timestamp){
+//				alert(appid+'/'+timestamp+'/'+nonceStr+'/'+packages+'/'+sign)
+				function onBridgeReady() {
+					WeixinJSBridge.invoke(
+						'getBrandWCPayRequest', {
+							"appId": appid, //公众号名称，由商户传入     
+							"timeStamp": timestamp, //时间戳，自1970年以来的秒数     
+							"nonceStr": nonceStr, //随机串     
+							"package": packages,
+							"signType": "MD5", //微信签名方式：     
+							"paySign": sign //微信签名 
+						},
+						function(res) {
+							//统计付款成功数据
+//								var amount = $('.confirm-toolBar .total').attr('data-payamount');
+//								var orderId = tradeOrderId;
+//								var itemCount = $('.confirm-toolBar .total').attr('data-totalnum');
+//								TDH5SDK.iap.currencyPurchase(orderId,amount,'CNY','paypal',arr,itemCount);
+//								alert(tradeOrderId)
+//								window.location.href = 'paySucced.html?tradeOrderId=' + tradeOrderId;
+//							//	window.location.href='orderDetail.html?userId='+userId+'&tradeOrderId='+tradeOrderId;
+							if (res.err_msg == "get_brand_wcpay_request:ok") {
+								if (GetQueryString('tradeOrderId').split('_')[1]) {
+									window.location.href = 'paySucced.html?tradeOrderId=' + tradeOrderId+'_materialPriority';
+								} else{
+									window.location.href = 'paySucced.html?tradeOrderId=' + tradeOrderId;
+								}
+								
+								//统计付款成功数据
+								var amount = $('.confirm-toolBar .total').attr('data-payamount');
+								var orderId = tradeOrderId;
+								var itemCount = $('.confirm-toolBar .total').attr('data-totalnum');
+								TDH5SDK.iap.currencyPurchase(orderId,amount,'CNY','paypal',arr,itemCount)
+								
+							} // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+							if (res.err_msg == "get_brand_wcpay_request:cancel") {
+								if (GetQueryString('tradeOrderId').split('_')[1]) {
+									window.location.href = 'paySucced.html?tradeOrderId=' + tradeOrderId+'_materialPriority';
+								} else{
+									window.location.href = 'paySucced.html?tradeOrderId=' + tradeOrderId;
+								}
+							}
+							if (res.err_msg == "get_brand_wcpay_request:fail") {
+								if (GetQueryString('tradeOrderId').split('_')[1]) {
+									window.location.href = 'paySucced.html?tradeOrderId=' + tradeOrderId+'_materialPriority';
+								} else{
+									window.location.href = 'paySucced.html?tradeOrderId=' + tradeOrderId;
+								}
+							}
+						}
+					);
+				}
+				if (typeof WeixinJSBridge == "undefined") {
+					if (document.addEventListener) {
+						document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+					} else if (document.attachEvent) {
+						document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+						document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+					}
+				} else {
+					onBridgeReady();
+				}
+			}else{
+				console.log('支付失败')
+			}
+			
+			
+			try{
+				console.log('跳转小程序成功开始')
+				wx.miniProgram.getEnv(function(res) {
+					var isMiniProgram = res.miniprogram;
+					if(isMiniProgram) {
+						wx.miniProgram.navigateTo({
+							url: '/pages/pay'+location.search
+						})
+					}
+				})
+				console.log('跳转小程序成功失败')
+			}catch(e){
+				console.log('跳转小程序失败')
+				//TODO handle the exception
+			}
+		</script>
+	</body>
+</html>

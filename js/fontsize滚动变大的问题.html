@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.d1{
+				width: 10.5rem;
+
+			}
+			html{
+				font-size: 50px;
+			}
+			.d2{
+				width: 100%;
+				height: 50px;
+				background: yellowgreen;
+			}
+			img{
+				width: 100%;
+			}
+			body{
+				height: 1000px;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<div class="d1">
+			<img src="http://51app-image.oss-cn-hangzhou.aliyuncs.com/loan/loan/2017/9/29/1809484139332.gif"/>
+		</div>
+		
+    <!--<script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>-->
+    <script src="zepto.min.js"></script>
+    <!--<script src="zepto_1.2.0.min.js"></script>-->
+		<script type="text/javascript">
+			
+//			window.onresize=function(){SomeJavaScriptCode};
+			
+			
+//			//动态改变html的fontsize
+//			(function changeFontSize() {
+//				var screenWidth = $(document).width();
+//				var htmlFontSize = screenWidth / 6.4;
+//				$("html").css("font-size", htmlFontSize);
+//				$(window).resize(function() {
+//					
+//					screenWidth = $(document).width();
+////					alert(screenWidth)
+//					htmlFontSize = screenWidth / 6.4;
+//					$("html").css("font-size", htmlFontSize);
+//					
+//				});
+//			})();
+			
+			(function changeFontSize() {
+				var screenWidth = $(window).width();
+				var htmlFontSize = screenWidth / 7.5;
+				$("html").css("font-size", htmlFontSize);
+				$(window).resize(function() {
+					screenWidth = $(window).width();
+					htmlFontSize = screenWidth / 7.5;
+					$("html").css("font-size", htmlFontSize);
+				});
+			})();
+			
+			setTimeout(function(){
+//				alert($('html').css('font-size'))
+			},5000)
+			
+			
+		</script>
+	</body>
+
+</html>

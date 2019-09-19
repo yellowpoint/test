@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>下拉回弹</title>
+    <style type="text/css">
+        *{
+            padding:0;
+            margin: 0;
+        }
+        p{
+            line-height: 2;
+            text-align: center;
+        }
+        html,body{
+            height: 100%;
+        }
+        #wrapper{
+            height:100%;
+        }
+        #scroller{
+            min-height: 101%;
+        }
+        #indicator{
+            position: absolute;
+            z-index: 9999;
+            width: 7px;
+            height:10vh;
+            right: 1px;
+            overflow: hidden;
+            pointer-events: none;
+            transform: translateZ(0px);
+            transition-duration: 500ms;
+            background: yellowgreen;
+        }
+        .iScrollIndicator{
+            height:40px!important;
+        }
+    </style>
+
+
+</head>
+<body >
+    <div class="d1 " id="wrapper">
+        <div id="scroller">
+
+           <button onclick="alert(565555)">aaaaaaaaaaaaaaaa</button>
+           <p onclick="alert(565555)">aaaaaaaaaaaaaaaa</p>
+           <p>aaaaaaaaaaaaaaaa</p>
+           <p>aaaaaaaaaaaaaaaa</p>
+           <p>aaaaaaaaaaaaaaaa</p>
+           <p>aaaaaaaaaaaaaaaa</p>
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+           <!--<p>aaaaaaaaaaaaaaaa</p>-->
+
+        </div>
+    </div>
+
+    <div id="indicator"></div>
+
+
+    <!--<script type="text/javascript" src="iscroll.js"></script>-->
+    <!--<script type="text/javascript" src="hd-iscroll.js"></script>-->
+    <script type="text/javascript" src="iscroll5.min.js"></script>
+    <script type="text/javascript">
+        var myScroll = new IScroll('#wrapper', {
+
+            click:true,
+            //circular quadratic
+            bounceEasing:"quadratic",
+            scrollbars:true,
+            fadeScrollbars:true,
+            shrinkScrollbars:"scale",
+            resizeScrollbars:true,
+//            indicators: {
+//                el: '#indicator'
+//            }
+
+
+
+        });
+    </script>
+
+
+</body>
+</html>

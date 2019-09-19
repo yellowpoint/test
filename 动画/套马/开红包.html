@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style type="text/css">
+			html {
+				font-size: 117.188px;
+			}
+			
+			.rptop {
+				position: absolute;
+				top: 0;
+				left: -.0512rem;
+				z-index: 10;
+				width: 2.62826667rem;
+				height: 2.38506667rem;
+				background-image: url(//yun.tuisnake.com/h5-mami/pluginAct/niudan3/rptop1.png);
+				background-repeat: no-repeat;
+				background-size: 100%;
+				transform-origin: top center
+			}
+			
+			.rptop.opentop {
+
+				animation: showrptop .6s forwards
+			}
+			
+			@keyframes showrptop {
+				0% {
+					-webkit-transform: scaleY(1);
+					transform: scaleY(1)
+				}
+				100% {
+					-webkit-transform: scaleY(0);
+					transform: scaleY(0)
+				}
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="rptop"></div>
+
+		<script src="../../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			setTimeout(() => {
+				$('.rptop').addClass('opentop')
+			}, 1000)
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="{CHARSET}">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="mod_player"></div>
+
+		<script src="http://imgcache.gtimg.cn/tencentvideo_v1/tvp/js/tvp.player_v2.js" charset="utf-8"></script>
+		<script type="text/javascript">
+			var video = new tvp.VideoInfo();-
+			video.setVid("i001216370f");
+			var player = new tvp.Player();
+			player.create({
+				width: 480,
+				height: 360,
+				video: video,
+				modId: "mod_player", //mod_player是刚刚在页面添加的div容器
+				autoplay: true
+			});
+		</script>
+	</body>
+
+</html>

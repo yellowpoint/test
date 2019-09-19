@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var aa = {
+			"a":12,
+			"b":22
+		}
+		var bb = JSON.stringify(aa);
+		console.log(bb)
+		localStorage.setItem('haha',bb)
+		console.log(JSON.parse(localStorage.getItem('haha')).a)
+
+//		localStorage.clear()	
+	</script>
+</html>

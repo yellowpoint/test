@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style type="text/css">
+			.ma {
+				width: 100px;
+				height: 112px;
+				background: url(ma.png) no-repeat;
+				background-size: 200px;
+				-webkit-animation: ma 0.5s steps(1) infinite ;
+				transform: translateX(300px) ;
+				transition:transform 2s linear;
+			}
+			.ma.act{
+				transform: translateX(0) ;
+			}
+			
+			@-webkit-keyframes ma {
+				0% {
+					background-position: 0 0;
+				}
+				50%{
+					background-position: -104px 0;
+				}
+				100% {
+					background-position: 0 0;
+				}
+			}
+		
+			
+			.m1{
+				transform: translateX(200px) ;
+			}
+			.m2{
+				transform: translateX(350px) ;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="ma"></div>
+		<div class="ma m1"></div>
+		<div class="ma m2"></div>
+		<div class="ma m1"></div>
+		<script src="../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$('.ma').addClass('act')
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>不定高垂直居中</title>
+		<style>
+			.box1 {
+				width: 200px;
+				height: 200px;
+				margin: 20px;
+				border: 1px solid yellowgreen;
+				position: relative;
+			}
+			
+			.content1 {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			
+			.box2 {
+				width: 200px;
+				height: 200px;
+				margin: 20px;
+				border: 1px solid yellowgreen;
+				display: table;
+				text-align: center;
+			}
+			
+			.content2 {
+				display: table-cell;
+				vertical-align: middle;
+			}
+			
+			.box3 {
+				width: 200px;
+				height: 200px;
+				margin: 20px;
+				border: 1px solid yellowgreen;
+				position: absolute;
+				top: 500px;
+				left: 500px;
+				display: flex;
+				align-items: center;/*定义body的元素垂直居中*/
+				justify-content: center;/*定义body的里的元素水平居中*/
+				
+			}
+			
+			.content3 {}
+			
+			.box4 {
+				width: 200px;
+				height: 200px;
+				margin: 20px;
+				border: 1px solid yellowgreen;
+				position: relative;
+				display: flex;
+				
+			}
+			.content4{
+				margin: auto;
+			} 
+		</style>
+	</head>
+
+	<body>
+
+		<!--position和transform-->
+		
+		<div class="box1">
+			<div class="content1">box1</div>
+		</div>
+
+		<div class="box2">
+			<div class="content2">box2</div>
+		</div>
+
+		<div class="box3">
+			<div class="content3"><p>333</p><p>44444</p></div>
+		</div>
+		
+		<div class="box4">
+			<div class="content4"><p>333</p><p>44444</p></div>
+		</div>
+
+	</body>
+
+</html>

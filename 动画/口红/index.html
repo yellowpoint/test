@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+
+<html lang="en" style="font-size: 79.5424px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title></title>
+    <script type="text/javascript">
+        var arrayLipstick = ["http://kouhong.tvu892.cn/addons/hc_doudou/public/img/Lipstick_1.png","http://kouhong.tvu892.cn/addons/hc_doudou/public/img/Lipstick_2.png","http://kouhong.tvu892.cn/addons/hc_doudou/public/img/Lipstick_3.png"];
+        //中心圆资源数组
+        var arrayCenterCircle = ["http://kouhong.tvu892.cn/addons/hc_doudou/public/img/CircleCenter_1.png","http://kouhong.tvu892.cn/addons/hc_doudou/public/img/CircleCenter_2.png","http://kouhong.tvu892.cn/addons/hc_doudou/public/img/CircleCenter_3.png"];
+        //关卡资源
+        var levelUrl = [
+            {"normal":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/level_icon_1_active.png","active":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/level_icon_1_active.png"},
+            {"normal":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/level_icon_2.png","active":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/level_icon_2_active.png"},
+            {"normal":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/level_3.png","active":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/level_3.png"}
+        ];
+         var CircleCenterSplit = [
+            {"left":{"url":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/CircleCenter_1_split_left.png","w":"238","h":"407","rs":Math.PI*2},
+             "right":{"url":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/CircleCenter_1_split_right.png","w":"230","h":"407","cutx":"26","rs":Math.PI*2}},
+            {"left":{"url":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/CircleCenter_2_split_right.png","w":"238","h":"407","rs":Math.PI*2},
+             "right":{"url":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/CircleCenter_2_split_left.png","w":"230","h":"407","cutx":"26","rs":Math.PI*2}},
+            {"left":{"url":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/CircleCenter_3_split_left.png","w":"238","h":"407","rs":Math.PI*2},
+             "right":{"url":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/CircleCenter_3_split_right.png","w":"230","h":"407","cutx":"26","rs":Math.PI*2}},
+        ];
+        var gamesmain={
+        "Level1_PARAMETERS":{
+            "ROTAION_SPEED_ARRAY" : [-0.05,-0.04,-0.02,0.02,0.04,0.05],
+            "rotationAccelerationSpeed" : 0.001,
+            "levelArray":[0,6,0.02,20]
+            /*"levelArray":[0,2,0.02,30]*/
+        },
+        "Level2_PARAMETERS":{
+             "ROTAION_SPEED_ARRAY" : [-0.06,-0.03,-0.02,0.02,0.04,0.06],
+            "rotationAccelerationSpeed" : 0.001,
+            "levelArray":[0,8,0.03,30]
+            /*"levelArray":[0,2,0.04,40]*/
+        },
+        "Level3_PARAMETERS":{
+            "ROTAION_SPEED_ARRAY" : [-0.08,-0.07,-0.05,0.06,0.08,0.08],
+            "rotationAccelerationSpeed" : 0.008,
+            "levelArray":[0,12,0.09,40]
+            /*"levelArray":[0,5,0.06,60]*/
+        }        
+    }
+
+    </script>
+    <link rel="stylesheet" href="game.css?1544004991">
+    <script type="text/javascript" src="bodymovin.js?1544004991"></script>
+    <script type="text/javascript" src="jweixin-1.3.2.js?1544004991"></script>
+    <script typet="text/javascript" src="jquery-3.3.1.min.js?1544004991"></script>
+    <script type="text/javascript" src="jquery.cookie.js?1544004991"></script>
+    <script type="text/javascript" src="JicemoonMobileTouch.js?1544004991"></script>
+    <script type="text/javascript" src="HardestGame1.js?1544004991"></script>
+    <script type="text/javascript" src="index1.js?1544004991"></script>
+</head>
+<body>
+    <audio id="back_music" preload="" src="http://kouhong.tvu892.cn/addons/hc_doudou/public/audio/bg_audio.mp3" loop="true"></audio>
+    <audio id="split_audio" preload="" src="http://kouhong.tvu892.cn/addons/hc_doudou/public/audio/split_audio.mp3"></audio>
+    <audio id="collision_audio" preload="" src="http://kouhong.tvu892.cn/addons/hc_doudou/public/audio/collision_audio.mp3"></audio>
+    <audio id="Countdown_10s_audio" preload="" src="http://kouhong.tvu892.cn/addons/hc_doudou/public/audio/Countdown_10s_audio.mp3"></audio>
+    <audio id="gameFail_audio" preload="" src="http://kouhong.tvu892.cn/addons/hc_doudou/public/audio/gameFail_audio.mp3"></audio>
+    <audio id="gameSuccess_audio" preload="" src="http://kouhong.tvu892.cn/addons/hc_doudou/public/audio/gameSuccess_audio.mp3"></audio>
+    <audio id="insert_audio" preload="" src="http://kouhong.tvu892.cn/addons/hc_doudou/public/audio/insert_audio.mp3"></audio>
+    <audio id="success_audio" preload="" src="http://kouhong.tvu892.cn/addons/hc_doudou/public/audio/success_audio.mp3"></audio>
+
+    <div class="levelSwitchBox" id="levelSwitchBox" style="display: block;">
+        <img id="levelSwitchBoxMain" class="levelSwitchBoxMain" src="http://kouhong.tvu892.cn/addons/hc_doudou/public/img/level_1_main.jpg?1544004991">
+    </div>
+    <div class="PopupBox" id="gameOverBox" style="display: none;">
+        <!--<div id="gameOverClose" class="close"><img src="https://wxopen.yiszh.com/addons/wn_ttrouges/style/img/close_btn.jpg?1544004991"></div>-->
+        <!--<div class="gameOverIcon"></div>-->
+        <div id="gameOverBoxTitle">闯关失败</div>
+        <div class="PopupBoxBtn" id="gameOverBoxBtn">重新闯关</div>
+    </div>
+    <div class="PopupBox" id="gameSuccessBox" style="display: none;">
+        <!--<div id="gameSuccessClose" class="close"><img src="https://wxopen.yiszh.com/addons/wn_ttrouges/style/img/close_btn.jpg?1544004991"></div>-->
+        <div id="gameSuccessBoxText">体验结束</div>
+        <div class="PopupBoxBtn" id="gameSuccessBoxBtn">马上赢口红</div>
+    </div>
+
+    <div class="layoutRoot" id="app" style="background:url(http://kouhong.tvu892.cn/addons/hc_doudou/public/img/bg.jpg) no-repeat;background-size:100% 100%;">
+        <div class="game" id="game" style="width: 596px; height: 938px;">
+            <div class="account">
+                <!--<img class="avatar" src="https://h5.lipstick.lemiao.xyz/play/trail/?h5=1&amp;unionid=orLqYwz20BqFmMvAjg97kcEykaTo">-->
+                <span></span>
+            </div>
+            <canvas style="position: relative;z-index: 3" id="gameStage" width="596" height="938"></canvas>
+            <div id="bm" style="width: 100%; height: 100%;position: fixed;background-color: rgba(0,0,0,0);top: 5.3rem; transform: translate(-5%,-1%); z-index: 2">
+            </div>
+            <div class="tips">
+                <p id="currentLevel">当前关数: <span>2</span></p>
+                <p id="gameTip"></p>
+            </div>
+
+            <div class="levelbox" id="levelbox">
+                <div class="level"><img id="level_1" src="http://kouhong.tvu892.cn/addons/hc_doudou/public/img/level_icon_1_active.png?1544004991"></div>
+                <div class="level"><img id="level_2" src="http://kouhong.tvu892.cn/addons/hc_doudou/public/img/level_icon_2_active.png?1544004991"></div>
+                <div class="level"><img id="level_3" src="http://kouhong.tvu892.cn/addons/hc_doudou/public/img/level_3.png?1544004991"></div>
+            </div>
+            <div id="timebox" style="background:url(http://kouhong.tvu892.cn/addons/hc_doudou/public/img/timebox_bg.png) no-repeat;background-size:100% 100%;color:#ffffff">15</div>
+        </div>
+    </div>
+
+<script type="text/javascript">
+    var loadedMusic = false;
+    document.body.addEventListener('touchmove', function (e) {
+        e.preventDefault(); //阻止默认的处理方式(阻止下拉滑动的效果)
+    }, {passive: false});
+    var baseUrl = function GetRequest() {
+        var url = location.search;  //获取url中"?"符后的字符串
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            url = url.split("?")[1];
+            strs = url.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1]);
+            }
+        }
+        return theRequest;
+
+    }
+    var columnsLipstick=[
+            {"normal":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/Sword_small_1.png","active":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/Sword_small_1_gray.png"},
+            {"normal":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/Sword_small_2.png","active":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/Sword_small_2_gray.png"},
+            {"normal":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/Sword_small_3.png","active":"http://kouhong.tvu892.cn/addons/hc_doudou/public/img/Sword_small_3_gray.png"}
+        ];
+    var levels_mains=[
+        "http://kouhong.tvu892.cn/addons/hc_doudou/public/img/level_1_main.jpg","http://kouhong.tvu892.cn/addons/hc_doudou/public/img/level_2_mains.jpg","http://kouhong.tvu892.cn/addons/hc_doudou/public/img/level_3_mains.jpg"
+    ]
+    var jsonParamsAlias = baseUrl();
+    // var jsonParams = {
+    //     "game_id" : jsonParamsAlias.gid,
+    //     "game_pay" : jsonParamsAlias.pay,
+    //     "product_id" : jsonParamsAlias.pid,
+    //     "randomNum" : jsonParamsAlias.rand,
+    //     "forecast_result": jsonParamsAlias.res,
+    //     "user_id" : jsonParamsAlias.uid
+    // }
+    var jsonParams = {
+        "game_id" : "",
+        "game_pay" : "",
+        "product_id" : "",
+        "randomNum" : "",
+        "forecast_result": "",
+        "user_id" : ""
+    }
+    if (jsonParamsAlias.slient) {
+        $('audio').prop('muted', true);
+    }
+    if (jsonParamsAlias.h5 && jsonParamsAlias.h5 == "1") {
+        window.isH5 = true;
+    }
+    var cookieDelTime = new Date(Math.floor(new Date(new Date().getTime()+150000)));
+    $.cookie('game_cookie', null);
+    $.cookie('game_cookie', JSON.stringify(jsonParams), { expires: cookieDelTime });
+    var anim = bodymovin.loadAnimation({
+        wrapper: document.querySelector('#bm'),
+        animType: 'svg',
+        loop: false,
+        autoplay: false,
+        prerender: true,
+        path: '../addons/hc_doudou/template/mobile/data.json'
+    });
+    function play(){
+        anim.goToAndStop(0, true)
+        anim.play()
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        audioAutoPlay();
+    });
+
+    function audioAutoPlay() {
+        var audio = document.getElementById('back_music');
+        audio.play();
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            audio.play();
+        }, false);
+    }
+    document.addEventListener('visibilitychange', function(e) {
+        function audioStop() {
+            var audio = document.getElementById('back_music');
+            document.hidden ? audio.pause() : audio.play();
+            document.addEventListener("WeixinJSBridgeReady", function () {
+                document.hidden ? audio.pause() : audio.play();
+            }, false);
+        }
+        audioStop();
+    });
+
+</script>
+<script>;</script><script type="text/javascript" src="http://kouhong.tvu892.cn/app/index.php?i=2&c=utility&a=visit&do=showjs&m=hc_doudou"></script></body>
+</html>

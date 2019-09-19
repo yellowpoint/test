@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding:0;
+        }
+        img{
+            width: 100%;
+            margin: 50px 0;
+        }
+        html,body{
+            height:100%;
+        }
+
+        /*.box{*/
+            /*position: absolute;*/
+            /*top:64px;*/
+            /*bottom:44px;*/
+            /*left:0;*/
+            /*right:0;*/
+            /*overflow: scroll;*/
+            /*background: yellowgreen;*/
+        /*}*/
+
+    </style>
+</head>
+
+
+<body>
+    <div class="box">
+        <img src="placeholder.png" alt="1"  data-echo="http://file.diy.51app.cn/uu20/special/d2665727.jpg"/>
+        <img src="placeholder.png" alt="1"  data-echo="http://file.diy.51app.cn/uu20/special/d2665727.jpg"/>
+        <img src="placeholder.png" alt="1"  data-echo="http://file.diy.51app.cn/uu20/special/d2665727.jpg"/>
+        <img src="placeholder.png" alt="1"  data-echo="http://file.diy.51app.cn/uu20/special/d2665727.jpg"/>
+        <img src="placeholder.png" alt="1"  data-echo="http://file.diy.51app.cn/uu20/special/d2665727.jpg"/>
+        <img src="placeholder.png" alt="1"  data-echo="http://file.diy.51app.cn/uu20/special/d2665727.jpg"/>
+        <img src="placeholder.png" alt="1"  data-echo="http://file.diy.51app.cn/uu20/special/d2665727.jpg"/>
+        <img src="placeholder.png" alt="1"  data-echo="http://file.diy.51app.cn/uu20/special/d2665727.jpg"/>
+
+    </div>
+    <!--<img src="placeholder.png" alt="5"  data-echo="http://file.diy.51app.cn/wp/IntegralMall/8af52c31.jpg"/>-->
+    <!--<img src="placeholder.png" alt="5"  data-echo="http://file.diy.51app.cn/wp/IntegralMall/8af52c31.jpg"/>-->
+
+
+
+    <!--<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>-->
+    <script type='text/javascript' src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js' charset='utf-8'></script>
+
+    <script type="text/javascript" src="lazyload.min.js"></script>
+    <script type="text/javascript">
+//        var box = $('.box');
+//        $("img").lazyload({
+//            data_attribute     :'echo',
+//            load:function ($elements, elements_left, options) {
+//                console.log($elements);
+//                $elements.addClass('ccc')
+//            },
+////            effect:'fadein',
+//            container:$('.box'),
+////            effect_params:[400,function () {
+////                console.log(124456789156)
+////            }],
+//            // failure_limit:9999,
+//            appear:function ($elements, elements_left, options) {
+//                console.log($elements)
+//            },
+//            threshold:3000,
+//        });
+
+        var options = {
+            data_attribute     :'echo',
+            threshold:1000,
+
+        }
+
+
+        $("img").lazyload(options);
+
+    </script>
+
+</body>
+</html>

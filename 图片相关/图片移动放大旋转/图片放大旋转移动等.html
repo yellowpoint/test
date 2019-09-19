@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+	<title></title>
+	<link rel="stylesheet" href="cropper.min.css">
+	<style >
+		.container {
+		  max-width: 640px;
+		  margin: 20px auto;
+		}
+		img{
+			display: block;
+			max-width: 100%;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="container">
+	  <img id="image" src="水野索诺娅2.jpg">
+	</div>
+
+	<!-- <script src="http://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script> -->
+	<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	<script src="cropper.min.js"></script>
+	<script >
+    $(function () {
+      $('#image').cropper({
+        viewMode: 1,
+        dragMode: 'move',
+        autoCropArea: 0.65,
+        restore: false,
+        guides: false,
+        highlight: false,
+        cropBoxMovable: false,
+        cropBoxResizable: false,
+        resizable:false,
+        rotatable:true
+      });
+    });
+	</script>
+</body>
+</html>

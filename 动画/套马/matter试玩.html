@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>matter</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.btns {
+				width: 800px;
+				padding: 20px 0;
+				text-align: center;
+			}
+			
+			.btns button {
+				display: inline-block;
+				margin: 0 5px;
+				padding: 0 20px;
+				height: 50px;
+				line-height: 50px;
+				font-size: 16px;
+				background-color: #eee;
+				border: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="btns">
+			<button class="btns_on">线框模式</button>
+			<button class="btns_off">全局渲染模式</button>
+		</div>
+
+		<script src="../../jquery-3.3.1.min.js"></script>
+		<script src="matter.js"></script>
+		<script>
+			// 简写
+			var Engine = Matter.Engine,
+				Render = Matter.Render,
+				World = Matter.World,
+				Bodies = Matter.Bodies,
+				Composites = Matter.Composites,
+				Body = Matter.Body,
+				Constraint = Matter.Constraint,
+				MouseConstraint = Matter.MouseConstraint,
+				Common = Matter.Common,
+				Events = Matter.Events;
+
+			// 创建引擎
+			var engine = Engine.create();
+
+			// 创建渲染器
+			var render = Render.create({
+				element: document.body,
+				engine: engine,
+				options: {
+					wireframes: false
+				}
+			});
+
+			// 墙壁
+			var offset = 5;
+			World.add(engine.world, [
+				Bodies.rectangle(400, -offset, 800.5 + 2 * offset, 50.5, {
+					isStatic: true
+				}),
+				Bodies.rectangle(400, 600 + offset, 800.5 + 2 * offset, 50.5, {
+					isStatic: true
+				}),
+				Bodies.rectangle(800 + offset, 300, 50.5, 600.5 + 2 * offset, {
+					isStatic: true
+				}),
+				Bodies.rectangle(-offset, 300, 50.5, 600.5 + 2 * offset, {
+					isStatic: true
+				})
+			]);
+
+			// 鼠标约束
+			var mouseConstraint = MouseConstraint.create(engine, {
+				element: render.canvas
+			});
+
+			World.add(engine.world, mouseConstraint);
+
+			// 运行引擎
+			Engine.run(engine);
+			Render.run(render);
+			//base
+			
+			var stack = Composites.stack(20, 20, 6, 4, 0, 0, function(x, y) {
+				if(Common.random() > 0.35) {
+					return Bodies.rectangle(x, y, 64, 64, {
+						render: {
+							stroke: "#000",
+							sprite: {
+								texture: "img/box.png"
+							}
+						}
+					});
+				} else {
+					return Bodies.circle(x, y, 46, {
+						desity: 0.0005,
+						frictionAir: 0.06,
+						friction: 0.01,
+						render: {
+							sprite: {
+								texture: "img/ball.png"
+							}
+						}
+					});
+				}
+			});
+
+			World.add(engine.world, stack);
+
+			var renderOptions = render.options;
+
+			Engine.run(engine);
+			Render.run(render);
+
+			document.querySelector(".btns_on").addEventListener("click", function() {
+				renderOptions.wireframes = true;
+			}, false);
+
+			document.querySelector(".btns_off").addEventListener("click", function() {
+				renderOptions.wireframes = false;
+			}, false);
+		</script>
+	</body>
+
+</html>

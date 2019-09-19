@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body>
+	<!--onsubmit='return false'-->
+	<form id='f1'>
+		<input type="text" name="" id="" value="我就试试" />
+		<button type="submit" >提交</button>
+	</form>
+	
+	<div id="d1">我又想提交</div>
+	
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+	<script type="text/javascript">
+
+		var form = document.querySelector('form')
+		var d1 = document.querySelector('#d1')
+		
+		form.addEventListener('submit',function(e){
+			var e = event||e
+			e.preventDefault()
+			console.log('我提交了')
+		})
+
+		d1.addEventListener('click',function(){
+			//1.直接提交表单,但是不调用form的onsubmit事件
+//			form.submit()
+
+			//2_1.IE 678 触发form的onsubmit事件 其他不支持
+//			form.fireEvent('onsubmit')
+//			form.submit()
+			
+			//2_2.DOM Level 2 Event 触发form的onsubmit事件
+//			var e = document.createEvent('HTMLEvents')
+//          e.initEvent('submit', true, true)
+//          form.dispatchEvent(e)
+            
+            //2_3.DOM Level 3 Event 触发form的onsubmit事件 ie不支持
+//			var e = new Event('submit')
+//			form.dispatchEvent(e)
+			
+			//2_4. jQuery 也不会调用form的onsubmit事件
+//			$('form').trigger('submit')
+			
+			
+            //3.还不如直接模拟点击下提交
+//			document.querySelector('button').click()
+
+		})
+		
+
+	</script>
+</body>
+</html>

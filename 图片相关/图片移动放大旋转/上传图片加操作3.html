@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <!-- <meta http-equiv="Access-Control-Allow-Origin" content="*" /> -->
+    <title>测试3</title>
+    <style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        /*overflow: hidden;*/
+    }
+
+    .main {
+        width: 100%;
+        height: 100%;
+        font-size: 13px;
+    }
+
+    img {
+        width: 100%;
+        display: block;
+    }
+
+    .imgBox {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .activeArea {
+        position: absolute;
+        top: 1.956521739rem;
+        left: 2.3913rem;
+        width: 2.7173913rem;
+        height: 3.913rem;
+        z-index: 999;
+        background: yellowgreen;
+    }
+
+    .additiveBox {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 999;
+        top: 0;
+        left: 0;
+        opacity: .1;
+        overflow: hidden;
+    }
+
+    .additive,
+    .additive2 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+
+    .addImg {
+        width: 100%;
+    }
+
+    .additiveBox2 {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 888;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+
+    .close {
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        width: 30px;
+        height: 30px;
+        background: red url(close.png) no-repeat;
+        background-size: 100%;
+        border-radius: 100%;
+        display: none;
+    }
+
+    .activeArea.confirm .additiveBox {
+        overflow: visible;
+    }
+
+    .addText {
+        padding: 10px;
+        z-index: 9999;
+        box-sizing: border-box;
+        font-size: 30px;
+        white-space: nowrap;
+    }
+
+    .activeArea.confirm .addText.textConfirm {
+        padding: 8px;
+        border: 2px solid #000;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- <script src="http://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script> -->
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="lrz.all.bundle.js"></script>
+    <script src="transform.js"></script>
+    <script src="alloy_finger.js"></script>
+    <div class="main">
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" id="file-input" accept="image/png, image/jpeg, image/gif, image/jpg" />
+            <input type="button" value="上传" onclick="fileData()" />
+            <input type="button" value="确定" onclick="confirm()" />
+            <input class="textInput" type="text" placeholder="最多可输入10个字" maxlength="10" />
+            <input type="text" style="display: none;" />
+            <input type="button" value="添加文字" onclick="addText()" />
+        </form>
+        上传进度：
+        <progress></progress>
+        <br/>
+        <p id="progress">0 bytes</p>
+        <p id="info">总大小</p>
+        <div class="imgBox" id="imgBox">
+            <img class="templateImg" src="001.jpg">
+            <div class="activeArea">
+                <div class="additiveBox"></div>
+                <div class="additiveBox2"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+    //动态改变html的fontsize
+    (function changeFontSize() {
+        var screenWidth = $(document).width();
+        var htmlFontSize = screenWidth / 7.5;
+        $("html").css("font-size", htmlFontSize);
+        $(window).resize(function() {
+            screenWidth = $(document).width();
+            htmlFontSize = screenWidth / 7.5;
+            $("html").css("font-size", htmlFontSize);
+        });
+    })();
+    var activeAreaWidth = $('.activeArea').width();
+    var activeAreaHeight = $('.activeArea').height();
+    var isImgUpload = false;
+    var imgWidth, imgHeight, imgRealWidth, imgRealHeight,additiveLayer=1;
+
+    var uploadData = function(url, async, data, successFunc) {
+        $.ajax({
+            url: url,
+            type: 'POST',
+            timeout: 60000,
+            async: async,
+            dataType: 'json',
+            crossDomain: true, // 如果用到跨域，需要后台开启CORS   zepto貌似没有这个属性
+            processData: false, // 注意：不要 process data
+            contentType: false, // 注意：不设置 contentType
+            data: data,
+            success: successFunc,
+            error: function(error) {
+                console.log('上传失败');
+                console.log(error);
+            }
+        });
+    };
+
+
+    var imgBox = document.getElementById("imgBox");
+    var newAlloyFinger = new AlloyFinger(imgBox, {});
+
+    function checked() {
+
+        $('.additive').off("click").click(function(e) {
+            $('.activeArea').addClass('confirm');
+            var index = $(this).index()
+            $('.additive .close').hide();
+            $('.additive').removeClass('textConfirm').eq(index).addClass('textConfirm').find('.close').show();
+            $('.additive2 .close').hide();
+            $('.additive2').removeClass('textConfirm').eq(index).addClass('textConfirm').find('.close').show();
+            handleImg(index)
+
+        })
+
+        $('.additiveBox .close').off("click").click(function() {
+            var index = $(this).parents('.additive').index();
+            $('.additive').eq(index).remove();
+            $('.additive2').eq(index).remove();
+
+        })
+    }
+    checked();
+
+    //点击确认
+    function confirm() {
+        $('.activeArea').removeClass('confirm');
+        $('.activeArea .close').hide();
+        newAlloyFinger = newAlloyFinger.destroy();
+        newAlloyFinger = new AlloyFinger(imgBox, {});
+    }
+
+    //添加文字
+    function addText() {
+        var value = $('.textInput').val();
+        if (value == '') {
+            return;
+        }
+
+        $('.textInput').val("");
+        var text = '<div class="additive addText" data-transform = "false"><div class="text">' + value + '</div><div class="close"></div></div>';
+        var text2 = '<div class="additive2 addText"><div class="text">' + value + '</div><div class="close"></div></div>';
+        $(".additiveBox").append(text);
+        $(".additiveBox2").append(text2);
+        checked();
+        $('.addText.additive').last().click();
+        var textWidth = parseFloat($('.addText.additive').last().css("width"))
+        var textHeight = parseFloat($('.addText.additive').last().css("height"))
+        $('.addText.additive').last().css({
+            "margin-left": -textWidth / 2 + "px",
+            "margin-top": -textHeight / 2 + "px"
+        })
+        $('.addText.additive2').last().css({
+            "margin-left": -textWidth / 2 + "px",
+            "margin-top": -textHeight / 2 + "px"
+        })
+        console.log();
+    }
+
+
+    var handleImg = function(index) {
+
+        var id = document.getElementsByClassName("additive")[index];
+        var id2 = document.getElementsByClassName("additive2")[index];
+
+        var initScale = 1;
+
+        if ($('.additive').eq(index).attr('data-transform') == 'false') {
+            Transform(id);
+            Transform(id2);
+            $('.additive').eq(index).attr('data-transform', 'true')
+        }
+
+        //先销毁实例
+        newAlloyFinger = newAlloyFinger.destroy();
+
+        newAlloyFinger = new AlloyFinger(imgBox, {
+            rotate: function(evt) {
+
+                id.rotateZ += evt.angle;
+                id2.rotateZ += evt.angle;
+
+            },
+            multipointStart: function() {
+                initScale = id.scaleX;
+
+            },
+            pinch: function(evt) {
+                var scale = initScale * evt.scale;
+
+                // 控制缩放比例
+                if (scale > 3) {
+                    scale = 3
+                } else if (scale < 0.3) {
+                    scale = 0.3
+                }
+
+                id.scaleX = id.scaleY = scale;
+                id2.scaleX = id2.scaleY = scale;
+
+            },
+            pressMove: function(evt) {
+
+                id.translateX += evt.deltaX;
+                id.translateY += evt.deltaY;
+
+                id2.translateX += evt.deltaX;
+                id2.translateY += evt.deltaY;
+                evt.preventDefault();
+
+            }
+
+        });
+
+    }
+
+    function fileHandle() {
+        // 检测是否支持File API
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            //  支持
+        } else {
+            alert('不支持');
+            return false;
+        }
+
+        $('#file-input').on('change', function(e) {
+
+            var file = e.target.files[0]; //获取图片资源
+
+
+            // 只选择图片文件
+            if (!file.type.match('image.*')) {
+                return false;
+            }
+
+            $("#info").html("总大小: " + file.size + "bytes");
+
+            var reader = new FileReader();
+            reader.readAsDataURL(file); // 读取文件
+
+            // 渲染文件
+            reader.onload = function(arg) {
+                var data = arg.target.result;
+                //加载图片获取图片真实宽度和高度
+                var image = new Image();
+                image.onload = function() {
+                    imgRealWidth = image.width;
+                    imgRealHeight = image.height;
+                };
+                image.src = data;
+
+                lrz(file)
+                    .then(function(rst) {
+                        // 处理成功会执行
+                        console.log(rst);
+
+                        var getImg = '<div class="additive addImg" data-transform="false" data-url="hdhdhdhd"><img  src="' + rst.base64 + '"><div class="close"></div></div>';
+                        var getImg2 = '<div class="additive2 addImg"><img  src="' + rst.base64 + '"><div class="close"></div></div>';
+
+                        $(".addImg").remove();
+                        $(".additiveBox").append(getImg)
+                        $(".additiveBox2").append(getImg2)
+
+
+                        //让图片居中
+                        imgWidth = activeAreaWidth;
+                        imgHeight = imgWidth / imgRealWidth * imgRealHeight;
+                        $(".addImg").css({
+                            "margin-left": -imgWidth / 2 + "px",
+                            "margin-top": -imgHeight / 2 + "px"
+                        })
+
+                        //上传图片
+                        var form_data = new FormData();
+                        var file_data = $("#file-input").prop("files")[0];
+                        form_data.append("file", file_data);
+                        var url = "http://192.168.1.10:8080/diyapi/upload/order";
+                        var successFunc = function (data) {
+                            console.log(data);
+                            $('.additive.addImg').attr("data-url",data.data.ossPath)
+                            isImgUpload = true;
+                            console.log("上传成功")
+                        }
+                        uploadData(url,true,form_data,successFunc)
+
+
+                        //添加点击选中事件
+                        checked();
+                        //默认进去是被点击后的状态
+                        $('.addImg').click();
+
+                    })
+                    .catch(function(err) {
+                        // 处理失败会执行
+                    })
+                    .always(function() {
+                        // 不管是成功失败，都会执行
+                    });
+
+
+            }
+
+
+
+
+        });
+
+    }
+    fileHandle();
+
+    function fileData() {
+        // var additiveData = {
+        //         "userId": 123,
+        //         "goodsId": 456,
+        //         "materialTemplateList": [
+        //             {
+        //                 "materialTemplateId": 111,
+        //                 "pageNo": 1
+        //             }
+        //         ],
+        //         "materialImageList": [
+        //             {
+        //                 "pageNo": 1,
+        //                 "layer": 1,
+        //                 "origin": "56.78,90,80",
+        //                 "size": "100.200,300.400",
+        //                 "isReverse": true,
+        //                 "angle": 88.88,
+        //                 "materialImageId": 234
+        //             },
+        //             {
+        //                 "pageNo": 2,
+        //                 "layer": 1,
+        //                 "origin": "56.78,90,80",
+        //                 "size": "100.200,300.400",
+        //                 "isReverse": false,
+        //                 "angle": 88.88,
+        //                 "imageUrl": "diy/order/2017/5/12/1353xxx.jpg"
+        //             }
+        //         ],
+        //         "materialPasterList": [
+        //             {
+        //                 "pageNo": 1,
+        //                 "layer": 2,
+        //                 "origin": "12.34,56.78",
+        //                 "size": "100,200.345",
+        //                 "isReverse": true,
+        //                 "angle": 23.89,
+        //                 "materialPasterId": 123
+        //             }
+        //         ],
+        //         "materialTextList": [
+        //             {
+        //                 "pageNo": 1,
+        //                 "layer": 1,
+        //                 "origin": "12.3,23.4",
+        //                 "size": "123.2,234.5",
+        //                 "isReverse": false,
+        //                 "angle": 69.89,
+        //                 "color": "#998877",
+        //                 "typeface": "宋体"
+        //             }
+        //         ]
+        //     }
+
+        //原生判断是否含有某个类名
+        var hasClass = (function() {
+            var div = document.createElement("div");
+            if ("classList" in div && typeof div.classList.contains === "function") {
+                return function(elem, className) {
+                    return elem.classList.contains(className);
+                };
+            } else {
+                return function(elem, className) {
+                    var classes = elem.className.split(/\s+/);
+                    for (var i = 0; i < classes.length; i++) {
+                        if (classes[i] === className) {
+                            return true;
+                        }
+                    }
+                    return false;
+                };
+            }
+        })();
+
+        //屏幕宽度
+        var screenWidth = $(document).width();
+        var baseScale = 414/screenWidth;
+
+        //初始化发送数据
+        var additiveData = {};
+        additiveData.userId = 123456;
+        additiveData.goodsId = 123456;
+        additiveData.materialTemplateList = [];
+        additiveData.materialImageList = [];
+        additiveData.materialPasterList = [];
+        additiveData.materialTextList = [];
+        var additive = document.getElementsByClassName("additive");
+        $.each(additive, function(i) {
+            if (hasClass(additive[i], "addImg")) {
+                additiveLayer++;
+                var dataBox = {};
+                dataBox.pageNo = 1;
+                dataBox.layer = additiveLayer;
+                dataBox.origin = additive[i].translateX*baseScale + "," + additive[i].translateY*baseScale;
+                dataBox.size = imgWidth*baseScale*additive[i].scaleX + "," + imgHeight*baseScale*additive[i].scaleX;
+                dataBox.isReverse = false;
+                dataBox.angle = additive[i].rotateZ;
+                // 这里要区分是素材 还是用户图片
+                dataBox.materialImageId = 145;
+                dataBox.imageUrl = additive[i].getAttribute("data-url");
+                additiveData.materialImageList.push(dataBox);
+            } else if (hasClass(additive[i], "addText")) {
+                additiveLayer++;
+                var dataBox = {};
+                dataBox.pageNo = 1;
+                dataBox.layer = additiveLayer;
+                dataBox.origin = additive[i].translateX*baseScale + "," + additive[i].translateY*baseScale;
+                dataBox.size = "123.2,234.5";
+                dataBox.isReverse = false;
+                dataBox.angle = 1;
+                dataBox.color = "#998877";
+                dataBox.typeface = "heiti";
+                additiveData.materialTextList.push(dataBox);
+            }
+        })
+        console.log(additiveData);
+        // console.log(additiveData.translateX);
+
+        // var form_data = new FormData();
+        // form_data.append("rate", imgInfo.scaleX);
+
+
+        // $.ajax({
+        //     type: "POST",
+        //     url: "http://192.168.1.249:8080/uq/diyImage.do",
+        //     dataType: "json",
+        //     crossDomain: true, // 如果用到跨域，需要后台开启CORS   zepto貌似没有这个属性
+        //     processData: false, // 注意：不要 process data
+        //     contentType: false, // 注意：不设置 contentType
+        //     data: form_data,
+        //     xhr: function() { //获取ajaxSettings中的xhr对象，为它的upload属性绑定progress事件的处理函数
+
+        //         myXhr = $.ajaxSettings.xhr();
+        //         if (myXhr.upload) { //检查upload属性是否存在
+        //             //绑定progress事件的回调函数
+        //             myXhr.upload.addEventListener('progress', progressHandlingFunction, false);
+        //         }
+        //         return myXhr; //xhr对象返回给jQuery使用
+        //     },
+        //     success: function(msg) {
+        //         console.log(msg);
+        //         alert("成功")
+        //     },
+        //     error: function(msg) {
+        //         console.log(msg);
+        //         alert("失败")
+        //     }
+        // });
+
+    }
+
+    //上传进度回调函数：
+    function progressHandlingFunction(e) {
+        if (e.lengthComputable) {
+            $('progress').attr({
+                value: e.loaded,
+                max: e.total
+            }); //更新数据到进度条
+            var percent = e.loaded / e.total * 100;
+            $('#progress').html(e.loaded + "/" + e.total + " bytes. " + percent.toFixed(2) + "%");
+        }
+    }
+    </script>
+</body>
+
+</html>

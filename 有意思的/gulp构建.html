@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>构建与上传</title>
+</head>
+<body>
+	
+	<button id="test">测试</button>
+	
+	<button id="gulp">gulp构建</button>
+	
+	<button id="deployFile">上传生产环境</button>
+	
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+	<script >
+		//可以把项目列个表，然后每个项目都有一个状态，coding是否有更新，测试环境与生产环境是否是最新的代码；再就是构建、上传等按钮
+		//再来一个添加项目的流程，就是填写那些配置文件；再将信息存到服务器
+		
+		$('body').on('click','#deployFile',function(){
+			$.ajax({
+				type:"GET",
+				url:"http://120.25.205.164:3000/deployFile",
+				async:true,
+				success:function(data){
+					console.log(data)
+				}
+			});
+		})
+		
+		$('body').on('click','#gulp',function(){
+			$.ajax({
+				type:"GET",
+				url:"http://120.25.205.164:3000/gulp",
+				async:true,
+				success:function(data){
+					console.log(data)
+				}
+			});
+		})
+	
+		$('body').on('click','#test',function(){
+			$.ajax({
+				type:"GET",
+				url:"http://120.25.205.164:3000/test",
+				async:true,
+				success:function(data){
+					console.log(data)
+				}
+			});
+		})
+	</script>
+</body>
+</html>

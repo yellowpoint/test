@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var arr = [{
+				ar: [1, 2, 3]
+			}, {
+				ar: [4, 5, 6]
+			}]
+			var newArr = []
+			//			for(var i=0;i<arr.length;i++){
+			//	
+			//				newArr = newArr.concat(arr[i].ar)
+			//			}
+
+			arr.map(i => {
+				newArr = [...newArr, ...i.ar]
+				//				newArr= newArr.concat(i.ar)
+			})
+			console.log(newArr)
+			//			newArr = 
+			//			console.log(JSON.parse(arr.join(',')))
+			var q = [5, 5, 1, 9, 9, 6, 4, 5, 8];
+			var b = ["tie", "mao", "csdn", "ren", "fu", "fei"];
+			q.push.apply(q, b);
+			console.log(q)
+
+			function aaa() {
+				var brr = [4, 5, 6]
+				for( num of brr) {
+					console.log(num);
+//					return ;
+				}
+			}
+aaa()
+//			brr.forEach(num => {
+//				console.log(num)
+//				return
+//			})
+		</script>
+	</body>
+
+</html>

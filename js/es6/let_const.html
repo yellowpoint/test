@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function foo(i) {
+				console.log(i)
+			}
+			var a = [];
+			for(let i = 0; i < 10; i++) {
+				a[i] = function() {
+					console.log(i)
+				}
+
+			}
+			a[6]();
+
+			for(let i = 0; i < 3; i++) {
+				let i = 'haiy'
+				console.log(i)
+			}
+
+			let bar = 123;
+			console.log(bar)
+
+			let tem = 223;
+			if(true) {
+				tmp = 233;
+				//				let tmp;
+			}
+
+			function barf(y = 2, x = y) {
+				return [x, y]
+			}
+			barf()
+
+			var x2 = x2;
+			console.log(x2)
+			//			let x2;
+
+			{
+				{
+					{
+						{
+							let insane = 5555;
+							console.log(insane)
+						}
+						//				console.log(insane)
+					}
+				}
+			}
+
+			if(true) {
+				function f33() {
+					console.log(33333)
+				}
+			}
+			f33()
+
+			function f() {
+				console.log('I am outside!');
+			}
+
+			(function() {
+				if(false) {
+					// 重复声明一次函数f
+					let f=function () {
+						console.log('I am inside!');
+					}
+				}
+
+				f();
+			}());
+			
+			const PI = 3.1415926;
+			
+//			PI = 1
+			
+			const MAX =100;
+
+			
+			console.log(window.MAX)
+			
+			console.log(this)
+			
+		</script>
+	</body>
+
+</html>

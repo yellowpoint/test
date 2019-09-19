@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="diva">dsadasdsa</div>
+
+		<script type="text/javascript">
+			function getId(o) {
+				return document.getElementById(o)
+			}
+
+			function bgRed() {
+				this.style.background = 'red'
+			}
+			Object.prototype.bgRed = bgRed //始终要在外面写一句这个啊
+			
+			getId('diva').bgRed()
+		</script>
+	</body>
+
+</html>

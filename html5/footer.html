@@ -1,0 +1,24 @@
+<style type="text/css">
+	/*父级样式也会受影响*/
+	.footer-main p{
+		color: yellowgreen;
+	}
+</style>
+<div class="footer-nav">
+	我是底部导航
+</div>
+<div class="footer-main">
+	<p>我是底部主体</p>
+</div>
+<div class="flag1">flog为1 我就不出现</div>
+<script type="text/javascript">
+	$('.footer-main p').click(function(){
+		console.log(124567)
+		
+	})
+	if(flag == 1){
+		console.log(flag)
+		$('.flag1').hide()
+	}
+	
+</script>

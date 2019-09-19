@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style>
+			.gift {
+				width: 100px;
+				height: 50px;
+				background: darkred;
+				transform-origin: top center;
+			}
+			
+			.box {
+				width: 100px;
+				height: 200px;
+				background: yellowgreen;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="gift">我是红包</div>
+		<div class="box">我是盒子</div>
+
+		<script src="../../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="velocity.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//			document.addEventListener('touchstart', function(event) {
+//				event.preventDefault();
+//			}, false);
+			document.addEventListener('touchstart', function(event) {
+				// 判断默认行为是否可以被禁用
+				if(event.cancelable) {
+					// 判断默认行为是否已经被禁用
+					if(!event.defaultPrevented) {
+						event.preventDefault();
+					}
+				}
+			}, false);
+
+			$.Velocity.animate($('.gift'), {
+					scaleY: 0.1
+				}, {
+					duration: 1000
+				})
+				.then(() => {
+					$.Velocity.animate($('.box'), {
+							translateY: -50
+						}, {
+							duration: 1000
+						})
+						.then(() => {
+
+						})
+				})
+		</script>
+	</body>
+
+</html>

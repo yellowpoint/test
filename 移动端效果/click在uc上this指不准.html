@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title></title>
+	</head>
+
+	<body>
+
+		<div class="box">
+			<!--<div class="d1">fjsakljdkasljdklasjdl</div>
+			<div class="d1">fjsakljdkasljdklasjdl</div>
+			<div class="d1">fjsakljdkasljdklasjdl</div>
+			<div class="d1">fjsakljdkasljdklasjdl</div>-->
+		</div>
+
+		<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var data = '<div class="d1">fjsakljdkasljdklasjdl</div><div class="d1">fjsakljdkasljdklasjdl</div><div class="d1">fjsakljdkasljdklasjdl</div><div class="d1">fjsakljdkasljdklasjdl</div>'
+			$('.box').append(data);
+
+			$('body').on('click', '.d1', function() {
+				alert($(this).index())
+			})
+
+//			$('body').click(function() {
+//				alert(1111)
+//			})
+		</script>
+	</body>
+
+</html>

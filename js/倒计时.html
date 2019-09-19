@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="h">00</div>:
+    <div id="m">00</div>:
+    <div id="s">00</div>
+    <script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+    <script>
+    //获取服务器时间
+    function getSevertime() {
+        var xmlHttp = new XMLHttpRequest();
+        if (!xmlHttp) {
+            xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlHttp.open("HEAD", location.href, false);
+        xmlHttp.send();
+        var severtime = new Date(xmlHttp.getResponseHeader("Date"));
+        return severtime;
+    }
+
+    console.log(getSevertime())
+
+    function getDoubleDigit(num) {
+    	if(num<10){
+    		num = '0'+num;
+    	}
+    	return num;
+    }
+
+
+    var now = getSevertime();
+    var endTime = new Date('2017/4/21 9:42:00');
+    var t = endTime.getTime() - now.getTime();
+    var timer = null;
+
+    if (t > 0) {
+    	var dd = Math.floor(t / 1000 / 60 / 60 / 24);
+    	var hh = Math.floor(t / 1000 / 60 / 60 % 24);
+    	var mm = Math.floor(t / 1000 / 60 % 60);
+    	var ss = Math.floor(t / 1000 % 60);
+
+    	$('#h').text(getDoubleDigit(hh))
+    	$('#m').text(getDoubleDigit(mm))
+    	$('#s').text(getDoubleDigit(ss))
+
+    	clearInterval(timer);
+    	timer = setInterval(function() {
+    	    ss--;
+    	    if (ss < 0) {
+    	        if (mm > 0) {
+    	            mm--;
+    	            ss = 59;
+    	            if (mm === 0 && hh > 0) {
+    	                hh--;
+    	                mm = 59;
+    	            }
+    	        } else {
+
+    	            if (hh > 0) {
+    	                hh--;
+    	                mm = 59;
+    	            }
+
+    	        }
+    	    }
+
+    	    if (hh === 0 && mm === 0 && ss === 0) {
+    	        console.log(111)
+    	        clearInterval(timer);
+    	    }
+    	    $('#h').text(getDoubleDigit(hh))
+    	    $('#m').text(getDoubleDigit(mm))
+    	    $('#s').text(getDoubleDigit(ss))
+
+    	}, 1000);
+
+    }
+
+
+
+    </script>
+</body>
+
+</html>

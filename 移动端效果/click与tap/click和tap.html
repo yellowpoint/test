@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="d1">dsadsadsadsadsadsadsadsadsadsadsadsadsadsadsads
+        adsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsad
+        sadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsads
+        adsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsad
+        sadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsad
+        sadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsadsa</div>
+
+
+    <script type="text/javascript" src="zepto.min.js"></script>
+    <script type="text/javascript" src="touch.js"></script>
+    <script type="text/javascript" src="fastclick.min.js"></script>
+    <!--<script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>-->
+
+    <!--<script type="text/javascript" src="zepto-touch.js"></script>-->
+    <script type="text/javascript">
+        FastClick.attach(document.body);
+
+        var t1,t2;
+
+        $('#d1').tap(function () {
+            t1 = Date.now();
+            console.log(Date.now());
+
+        });
+//        $('#d1').on("tap",function () {
+//            console.log(Date.now());
+//            console.log(11111)
+//
+//        })
+        $('#d1').click(function () {
+            t2 = Date.now();
+            console.log(Date.now());
+            alert(t2 - t1);
+
+        });
+
+
+    </script>
+
+</body>
+</html>

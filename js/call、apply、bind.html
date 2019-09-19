@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			function fruits() {}
+
+			fruits.prototype = {
+				color: "red",
+				say: function() {
+					console.log("My color is " + this.color);
+				}
+			}
+
+			var apple = new fruits;
+			apple.say(); //My color is red
+
+			var banana = {
+				color: "yellow",
+				say: function() {
+					console.log("hahah  " + this.color);
+				}
+			}
+			var pineapple = {
+				color: 'green'
+			}
+			var say2=apple.say.bind(banana);
+			banana.say.call(apple);
+			say2.call(pineapple)
+			var func2 = function(arg1,arg2){
+				
+			}
+		</script>
+	</body>
+
+</html>

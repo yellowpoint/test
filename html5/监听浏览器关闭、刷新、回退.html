@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+
+		
+		<div class="text">1234567897</div>
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+		<script>
+//			alert(12456)
+
+			$(document).ready(function(e) {
+				var counter = 0;
+				if(window.history && window.history.pushState) {
+					$('.text').text('fsjakfj')
+					//浏览器后退事件
+					$(window).on('popstate', function() {
+						console.log(12456)
+						//						window.history.pushState('forward', null, '#');
+						//						window.history.forward(1);
+//												alert("不可回退");
+						window.history.go(0)
+					});
+				}
+
+				//				window.history.pushState('forward', null, '#'); //在IE中必须得有这两行 
+				//				window.history.forward(1);
+
+//				onunload方法是在关闭窗口之后执行     这还能执行？试了下 关了浏览器就没反映了呀
+//				onbeforeunload方法是在关闭窗口之前执行
+
+				//浏览器关闭事件  好像是页面刚进去几十秒内不会出现。刷新页面也会弹 但是那个message没啥作用
+//				window.onbeforeunload = function(e) {
+//					var message = 'some  123word';
+//					e = e || window.event;
+//
+//					if(e) {
+//						e.returnValue = message;
+//					}
+//
+//					return message;
+//				};
+			});
+		</script>
+	</body>
+
+</html>

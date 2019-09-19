@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<a href="iframe-safari2.html" target="_top">点击跳转</a><br /><br /><br />
+		<div id="a">aaaaa跳转</div>
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+		<script type="text/javascript">
+//			top.location.href='iframe-safari2.html'
+			document.getElementById('a').onclick = function() {
+							location.href='iframe-safari2.html'
+
+//				$.ajax({
+//					type: "get",
+////					url: "http://192.168.1.177:8090/gameapi/trade/test",
+//					url: "https://api.51app.cn/payment/trade/pay",
+//					dataType: 'JSONP',
+//					success: function() {}
+//
+//				});
+			}
+		</script>
+	</body>
+
+</html>

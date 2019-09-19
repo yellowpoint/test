@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+
+		<script>
+			let diffArr = []
+			let arr = []
+			for(let i = 0; i < 1000000; i++) {
+				arr.push(i)
+			}
+			let len = arr.length;
+			let sum = 0;
+
+			function forTime() {
+
+				/*for len缓存 */
+				let start = window.performance.now();
+				sum = 0;
+				for(let i = 0; i < len; i++) {
+					sum += arr[i]
+				}
+				let end = window.performance.now();
+				let time = end - start;
+				console.log('正序', time)
+
+				/*for len缓存 倒序 */
+//				let start_reverse = window.performance.now();
+//				sum = 0;
+//				for(let i = len - 1; i >= 0; i--) {
+//					sum += arr[i]
+//				}
+//				let end_reverse = window.performance.now();
+//				let time_reverse = end_reverse - start_reverse;
+//				console.log('倒序', time_reverse)
+
+				/*reduce */
+				let start_reduce = window.performance.now();
+
+				sum = 0;
+				sum = arr.reduce((x, y) => x + y)
+				let end_reduce = window.performance.now();
+				let time_reduce = end_reduce - start_reduce;
+				console.log('reduce', time_reduce)
+
+
+				let diff = time - time_reduce
+				if(diff > 0) {
+					console.warn('正序减去倒序：', diff)
+				} else {
+					console.error('正序减去倒序：', diff)
+				}
+				diffArr.push(diff)
+
+			}
+
+			//			forTime()
+			for(let j = 0; j < 10; j++) {
+				console.info(`第${j+1}次`)
+				forTime()
+			}
+			console.log('diffArr', diffArr)
+		</script>
+	</body>
+
+</html>

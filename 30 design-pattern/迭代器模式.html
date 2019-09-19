@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="d1">
+    <a>www</a>
+    <a>www</a>
+    <a>www</a>
+    <a>www</a>
+  </div>
+
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script>
+    let arr = [1, 2, 3]
+    let nodeList = document.getElementsByTagName('a')
+    let $a = $('a')
+
+    // 遍历数组
+    arr.forEach(v => {
+      console.log(v)
+    })
+
+    // 遍历nodeList
+    for (let i = 0; i < nodeList.length; i++) {
+      console.log(nodeList[i])
+    }
+    // toArray(likeArray) {
+    //   return [].slice.call(likeArray)
+    // }
+    [].forEach.call(nodeList, (v) => {
+      console.log(v)
+    })
+    // $a
+    $a.each((i, v) => {
+      console.log(i)
+    })
+
+
+    //顺序遍历有序集合，对象就不是有序集合
+    //使用者不必知道集合的内部结构
+
+
+    // 用一个统一的方法来处理不用的数据类型
+    function myEach(data) {
+      var $data = $(data) //使用jq生成迭代器
+      $data.each((key, val) => {
+        console.log('myEach',val)
+      })
+    }
+    myEach(arr)
+    myEach(nodeList)
+    myEach($a)
+  </script>
+</body>
+
+</html>

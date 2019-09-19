@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <title>Title</title>
+    <style>
+        html,body{
+            height:100%;
+        }
+        .d1{
+            height:100%;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="d1">
+        <div class="d2">
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+            <p>22222222222</p>
+        </div>
+    </div>
+    <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+
+    <script type="text/javascript">
+
+        function infinite(container,content,distance,loadMore) {
+            var loading = false;
+
+            $(container).on('scroll',function () {
+                if (loading) return;
+                loading = true;
+
+
+                setTimeout(function () {
+                    var that = $(container),
+                            pageHeight = that.find(content).height(),
+                            containerHeight = that.height();
+
+                    if(pageHeight - that.scrollTop() < containerHeight + distance){
+
+                        loadMore();
+                    }
+
+                    loading = false;
+
+
+                },1000);
+            })
+            
+        }
+
+
+        infinite('.d1','.d2',5,function () {
+            console.log("家在家")
+
+        });
+
+//        $('.d1').off('scroll');
+
+    </script>
+</body>
+</html>

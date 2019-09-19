@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <style>
+        .d1{
+
+            width: 500px;
+            height:500px;
+            background: yellowgreen;
+            overflow: hidden;
+            position: relative;
+        }
+        .d2{
+            float: left;
+            width: 100px;
+            height:200px;
+            /*margin-top: .5px;*/
+            background: saddlebrown;
+            position: absolute;
+            top:0.5px;
+            border-top:.5px solid aquamarine;
+
+        }
+        .d3{
+            float: left;
+            width: 100px;
+            height:200px;
+            margin-left: 100px;
+            transform: translateY(.5px);
+            margin-top: .75px;
+            background: aquamarine;
+            /*border:1px solid salmon;*/
+
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="d1">
+        <div class="d2"></div>
+        <div class="d3"></div>
+    </div>
+</body>
+</html>

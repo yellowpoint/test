@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原型链</title>
+</head>
+
+<body>
+
+  <script>
+    // 第一种方式，字面量
+    var o1 = {
+      name: 'o1'
+    }
+    var o2 = new Object({
+      name: 'o2'
+    })
+    // 第二种方式 通过构造函数
+    var M = function (name) {
+      this.name = name
+    }
+    var o3 = new M('o3')
+    // 第三种方式，Object.create
+    var p = {
+      name: 'o4'
+    }
+    var o4 = Object.create(p)
+    // 控制台输出是空对象，但是o4.name有值；name应该是原型里面，不可枚举
+    // 因为Object.create创建的对象是用原型链连接的，o4.__proto__ === p true
+    /*
+    是因为Object.create()复制了一个新对象么？实际上并不是，只是Object.create()返回了一个新的空对象，并且这个空对象的构造函数的原型（prototype）是指向obj的。所以当我们访问新对象b.a的时候实际上是通过原型链访问的obj中的a。
+当我们试图修改b.a的时候，这里有一个知识点（对象的遮蔽效应，如果修改对象的一个与原型链同名属性，那么会在当前对象中新建一个改属性，这个属性拥有更高级的访问优先级，所以就会遮蔽原型链中的同名属性）
+
+作者：zifeiyu
+链接：https://juejin.im/post/5bf37a5ee51d4552da47dae9
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+    
+    */
+    _create = function (o) {
+      let F = function () {}
+      F.prototype = o
+      return new F()
+    }
+
+    // 模拟new运算符
+    var new2 = function (func) {
+      var o = Object.create(func.prototype)
+      // var o = new Object()
+      // o.prototype = func.prototype
+  
+      var k = func.call(o)
+      if (typeof k === 'object') {
+        return k
+      } else {
+        return o
+      }
+    }
+    var o6 = new2(M)
+    console.log(o6.__proto__ === M.prototype) //true
+  </script>
+</body>
+
+</html>

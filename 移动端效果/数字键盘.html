@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body>
+	<!--<input type="tel" onkeyup="onlyNumber(this)" id="number">-->
+	<input type="tel" id="number" maxlength="5">
+	<input type="number" max="5">
+    <div class="msg"></div>
+    <script>
+            function onlyNumber(obj){ 
+                //先把非数字的都替换掉，除了数字和. 
+           		obj.value = obj.value.replace(/[^\d\.]/g,''); 
+                //必须保证第一个为数字而不是. 
+                obj.value = obj.value.replace(/^\./g,'0.'); 
+                //保证只有出现一个.而没有多个. 
+                obj.value = obj.value.replace(/\.{2,}/g,'.'); 
+                //保证.只出现一次，而不能出现两次以上 
+                obj.value = obj.value.replace('.','$#$').replace(/\./g,'').replace('$#$','.');
+                 //只能输入两个小数
+                obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/,'$1$2.$3'); 
+            } 
+    </script>
+</body>
+</html>

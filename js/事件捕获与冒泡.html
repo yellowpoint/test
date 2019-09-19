@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="p">
+    	parent
+    	<p id="c">child</p>
+	</div>
+	
+
+	<script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+	<script>
+		window.alert = function(msg){
+		    console.log(msg);
+		}
+		var p = document.getElementById('p'),
+			c = document.getElementById('c');
+
+		p.addEventListener('click', function (e) {
+		    alert('父节点捕获 eventPhase:' + e.eventPhase);
+		    alert('父节点捕获 currentTarget:' + e.currentTarget);
+		    alert('父节点捕获 target:' + e.target);
+		    alert('父节点捕获 :' + (e.currentTarget == e.target));
+		    alert('父节点捕获');
+		}, true);
+
+		p.addEventListener('click', function (e) {
+		    alert('父节点捕获 eventPhase:' + e.eventPhase);
+		    alert('父节点捕获 currentTarget:' + e.currentTarget);
+		    alert('父节点捕获 target:' + e.target);
+		    alert('父节点捕获 :' + (e.currentTarget == e.target));
+		    alert('父节点捕获');
+		}, false);
+
+		c.addEventListener('click', function (e) {
+		    alert('子节点冒泡:' + e.eventPhase);
+		    alert('子节点冒泡:' + e.currentTarget);
+		    alert('子节点冒泡:' + (e.currentTarget == e.target));
+		    alert('子节点冒泡');
+		}, true);
+		c.addEventListener('click', function (e) {
+		    alert('子节点捕获:' + e.eventPhase);
+		    alert('子节点捕获:' + e.currentTarget);
+		    alert('子节点捕获:' + (e.currentTarget == e.target));
+		    alert('子节点捕获');
+		}, false);
+
+	</script>
+
+</body>
+</html>

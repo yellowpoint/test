@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+
+		<p class="aa bb">aaaa</p>
+		<p class="aa bb">aaaa</p>
+		<p class="aa bb">aaaa</p><br />
+		<div class="btn">点击</div>
+		<p>五十五<br>我讨厌下意识卖萌的自己<br>讨厌胆小的自己<br>讨厌低声下气的自己<br>讨厌不敢拒绝的自己<br>最重要的是<br>讨厌讨厌自己的自己</p>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script type="text/javascript">
+			//			$('body').on('click','.aa',function(){
+			//				console.log(123456)
+			//			})
+			//			
+			//			
+			//			$(document).bind('click','.aa',function(){
+			//				console.log('.bind()')
+			//			})
+			//			
+
+			//			$('body').on('click','.aa',function(){
+			//				console.log(222222)
+			//			})
+			////			$("body").off("click", ".aa")
+			//			$('body').off("click", ".aa").on('click','.aa',function(){
+			//				console.log(3333)
+			//			})
+
+			$('body').on('click', '.btn', function() {
+				console.log(9999999)
+
+//				$('body').on('click', '.aa', function() {
+//					console.log(222222)
+//				})
+
+				$('body').off('click', ".aa").on('click', '.aa', function() {
+					console.log(3333)
+				})
+
+			})
+
+			//			$('.aa.bb').click(function(){ 
+			//				console.log('click')
+			//			})
+			//			$('.aa').on('click',function(){
+			//				console.log('on')
+			//			})
+			//			$('.aa').bind('click',function(){
+			//				console.log('bind')
+			//			})
+			//			$('.aa').live('click',function(){
+			//				console.log('live')
+			//			})
+			//			$('.aa').delegate('click',function(){
+			//				console.log('delegate')
+			//			})
+
+			//			$('.aa').off().unbind()
+
+			//				var aa = document.querySelectorAll('.aa')[0]
+			//				aa.onclick = function(){
+			//					
+			//					console.log('onclick')
+			//					stopImmediatePropagation()
+			//					
+			//				}
+			//				aa.onclick =null;
+		</script>
+	</body>
+
+</html>

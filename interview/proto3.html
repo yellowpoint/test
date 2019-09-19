@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原型链-继承</title>
+</head>
+
+<body>
+
+  <script>
+    // 实现类
+    function Parent() {
+      this.name = 'parent'
+    }
+
+    function Child() {
+      this.type = 'child'
+    }
+    /*
+      1.借助构造函数
+    */
+    function Parent1() {
+      this.name = 'parent'
+    }
+    Parent1.prototype.say = function () {
+
+    }
+
+    function Child1() {
+      Parent1.call(this)
+      this.type = 'child'
+    }
+    console.log(new Child1())
+    // 缺点是无法继承原型链上的
+
+    /*
+      2.借助原型链
+    */
+    function Parent2() {
+      this.name = 'parent2'
+      this.arr = [1, 2, 3]
+    }
+    Parent2.prototype.say = function () {
+
+    }
+
+    function Child2() {
+      this.type = 'child2'
+
+    }
+    Child2.prototype = new Parent2()
+    console.log(new Child2())
+    let child2_1 = new Child2()
+    let child2_2 = new Child2()
+    child2_1.arr.push(4)
+    console.log(child2_1.arr, child2_2.arr)
+    // 缺点是new出来的实例，父元素的属性没有隔离
+
+
+    /*
+      3.组合 new Parent3()
+    */
+    function Parent3() {
+      this.name = 'parent3'
+      this.arr = [1, 2, 3]
+    }
+    Parent3.prototype.say = function () {
+
+    }
+
+    function Child3() {
+      Parent3.call(this)
+      this.type = 'child3'
+    }
+    Child3.prototype = new Parent3()
+    console.log(new Child3())
+    let child3_1 = new Child3()
+    let child3_2 = new Child3()
+    child3_1.arr.push(4)
+    console.log(child3_1.arr, child3_2.arr)
+    // 缺点是 Parent3执行了两次
+
+    /*
+      4.组合优化Parent4.prototype
+    */
+    function Parent4() {
+      this.name = 'parent4'
+      this.arr = [1, 2, 3]
+    }
+    Parent4.prototype.say = function () {
+
+    }
+
+    function Child4() {
+      Parent4.call(this)
+      this.type = 'child4'
+    }
+    Child4.prototype = Parent4.prototype
+    // Child4.prototype.constructor = Child4
+    console.log(new Child4())
+    let child4_1 = new Child4()
+    let child4_2 = new Child4()
+    child4_1.arr.push(4)
+    console.log(child4_1.arr, child4_2.arr)
+    console.log(child4_1.constructor === Child4, child4_1.constructor === Parent4)
+    // 这里的Child4就是一个继承自Function的函数对象
+    console.log(Child4.constructor === Parent4) //false
+    // Child4.__proto__ === Function.prototype
+    // true
+    // Child4.constructor === Function
+    // true
+    let parent4 = new Parent4
+    console.log(parent4.constructor === Parent4) //true
+    /*
+      还存在的问题  实例constructor指向问题
+      由于将Child4的prototype指向了Parent4的prototype
+      导致 child4_1.constructor===Child4 false
+          child4_1.constructor===Parent4 true
+
+    
+    */
+    /*
+      5. 组合再优化 create
+    */
+
+    function Parent5() {
+      this.name = 'parent5'
+      this.arr = [1, 2, 3]
+    }
+
+
+    function Child5() {
+      Parent5.call(this)
+      this.type = 'child5'
+    }
+    Child5.prototype = Object.create(Parent5.prototype)
+    // 回忆 Object.create的原理，是将创建的新对象的prototype指向传入的元素
+    Child5.prototype.constructor = Child5
+    Parent5.prototype.say = function () {
+
+    }
+    // 在上面的方法中，加上这一行也不行，因为 Child 和 Parent 的prototype指向同一个地方，给Child添加constructor属性会导致Parent的constructor也被修改了
+    console.log(new Child5())
+    let child5_1 = new Child5()
+    let child5_2 = new Child5()
+    child5_1.arr.push(4)
+    console.log(child5_1.arr, child5_2.arr)
+    console.log(child5_1.constructor === Child5, child5_1.constructor === Parent5)
+
+
+    /*
+      6. 用assign
+    */
+
+    function Parent6() {
+      this.name = 'parent6'
+      this.arr = [1, 2, 3]
+    }
+
+
+    function Child6() {
+      Parent6.call(this)
+      this.type = 'child6'
+    }
+    Child6.prototype = Object.assign({
+      constructor: Child6
+    }, Parent6.prototype)
+    Parent6.prototype.say = function () {
+
+    }
+    console.log(new Child6())
+    let child6_1 = new Child6()
+    let child6_2 = new Child6()
+    child6_1.arr.push(4)
+    console.log(child6_1.arr, child6_2.arr)
+    console.log(child6_1.constructor === Child6, child6_1.constructor === Parent6)
+    let parent6 = new Parent6
+    console.log(parent6.constructor === Parent6) //true
+    // 这个的缺点在于 Parent.prototype在assign之后添加方法的话child6_1就拿不到了
+    // 而create还可以是因为那是一个引用
+  </script>
+  <script>
+    function Parent7() {
+      console.log(this)
+      this.name = 'parent7'
+      this.arr = [1, 2, 3]
+    }
+
+
+    function Child7() {
+      this.type = 'child7'
+    }
+    // 想用一个方法来实现,未成功，必须要在Child7里面call
+    // 参考下es6的setPrototypeOf的Ployfill
+    function extend(subClass, superClass) {
+      var F = function () {
+        superClass.call(this)
+        subClass.call(this)
+      };
+      F.prototype = superClass.prototype;
+      subClass.prototype = new F();
+      subClass.prototype.constructor = subClass;
+      F.prototype = subClass.prototype
+    
+      subClass = F
+    }
+    // extend(Child7, Parent7)
+    Object.setPrototypeOf(Child7.prototype, Parent7.prototype)
+    console.log(new Child7())
+    let child7_1 = new Child7()
+    let child7_2 = new Child7()
+    child7_1.arr.push(4)
+    console.log(child7_1.arr, child7_2.arr)
+    console.log(child7_1.constructor === Child7, child7_1.constructor === Parent7)
+    // 作者：路易斯
+    // 链接：https://juejin.im/post/58f94c9bb123db411953691b
+    // 来源：掘金
+    // 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+  </script>
+  <script>
+    // 继承，es6的方法 这个只是设置原型链啊,继承还是用的extends
+    // Object.setPrototypeOf(Child.prototype, Parent.prototype)
+    // console.log(Child.prototype.constructor === Child) // true
+  </script>
+</body>
+
+</html>

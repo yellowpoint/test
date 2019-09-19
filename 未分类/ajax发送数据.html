@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <script type="text/javascript" src="zepto.min.js"></script>
+    <script type="text/javascript">
+        var  a="huangdian";
+        var b=111;
+        $.ajax({
+            'url':'data.json',
+            'data':{"username":a,"password":b},
+            'type':'POST',
+            'dataType':'json',
+            'success':function (data) {
+                console.log(data)
+            },
+            'error':function (error) {
+                console.log(error)
+            }
+        })
+
+//        var data = {
+//            "name": "test",
+//            "age": 1
+//        }
+//        $.ajax({
+//                    type: 'POST',
+//                    url: 'data.json',
+//                data: JSON.stringify(data), //# 转化为字符串
+//        contentType: 'application/json; charset=UTF-8',
+//                dataType: 'json', //# 注意：这里是指希望服务端返回json格式的数据
+//        success: function(data) { //# 这里的data就是json格式的数据
+//            console.log(data)
+//        },
+//        error: function(xhr, type) {
+//        }
+//
+//        });
+    </script>
+
+</body>
+</html>

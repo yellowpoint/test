@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>js加载顺序</title>
+  <script>
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "js加载顺序_1.js";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  </script>
+  <!-- <script>
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src = "js加载顺序_2.js";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    </script> -->
+</head>
+
+<body>
+
+  <!-- <script src="./js加载顺序_1.js"></script> -->
+  <script src="js加载顺序_2.js"></script>
+
+</body>
+
+</html>

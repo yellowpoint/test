@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <title>Title</title>
+</head>
+<body>
+
+
+    <h1>我叫运营</h1>
+    <h1>别拍我</h1>
+
+    <script>
+//        页面失去焦点的时候标题闪烁
+        var titleInit = document.title, isShine = true;
+
+        setInterval(function() {
+            var title = document.title;
+            if (isShine == true) {
+                if (/新/.test(title) == false) {
+                    document.title = '【你有新消息】';
+                } else {
+                    document.title = '【　　　　　】';
+                }
+            } else {
+                document.title = titleInit;
+            }
+        }, 500);
+
+        window.onfocus = function() {
+            isShine = false;
+        };
+        window.onblur = function() {
+            isShine = true;
+        };
+
+
+        // for IE
+        document.onfocusin = function() {
+            isShine = false;
+        };
+        document.onfocusout = function() {
+            isShine = true;
+        };
+
+/*============================================================*/
+//        点中和离开的时候
+//        chrome的写法
+//        window.onfocus = function() {
+//            document.title = '你来了';
+//        };
+//        window.onblur = function() {
+//            document.title = '我在这等着你';
+//        };、
+////        ie的写法
+//        document.onfocusin = function() {
+//            document.title = '你来了';
+//        };
+//        document.onfocusout = function() {
+//            document.title = '我在这等着你';
+//
+//        };
+
+
+
+    </script>
+</body>
+</html>

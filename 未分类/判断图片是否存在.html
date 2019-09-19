@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+
+    <img src="aaa" onerror="noImg();" />
+    <img src="aaa" onerror="javascript:this.src='http://file.diy.51app.cn/wp/IntegralMall/6728afa7.jpg';" />
+    <img src="aaa" onerror="this.src='http://file.diy.51app.cn/wp/IntegralMall/6728afa7.jpg';" />
+    <img src="aaa" onerror="this.className='hide'" />
+
+    <script>
+        function noImg() {
+            console.log(123456)
+            var img=event.srcElement;
+            img.src = 'http://file.diy.51app.cn/wp/IntegralMall/6728afa7.jpg';
+            img.onerror=null; //控制不要一直跳动
+        }
+    </script>
+
+    </body>
+</html>

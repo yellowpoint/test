@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .c_left {
+      background: yellowgreen;
+    }
+
+    .c_main {
+      background: blanchedalmond;
+    }
+
+    .c_right {
+      background: aqua;
+    }
+
+    .content {
+      height: 100px;
+      background: #666;
+      overflow: hidden;
+    }
+
+    .content .c_left {
+      float: left;
+      width: 300px;
+      height: 100%;
+
+    }
+
+    .content .c_main {
+      /* margin: 0 300px; */
+      height: 100%;
+
+    }
+
+    .content .c_right {
+      float: right;
+      width: 300px;
+      height: 100%;
+
+    }
+
+
+
+    /* 4.table */
+    /* 5.网格布局 */
+  </style>
+</head>
+
+<body>
+
+  <div class="content">
+    <div class="c_left"></div>
+    <div class="c_right"></div>
+    <!-- 这个right还必须和left一起在main上面 -->
+    <div class="c_main">float
+      <div style=" width: 100px;height: 100px;background:red;">
+        222
+      </div>
+      <div>3333</div>
+    </div>
+    <!-- 为什么main的文字不是从头上开始的
+        文字被挤过来，div没有
+
+        浮动的本质就是为了实现文字环绕效果
+
+        那么，浮动元素与绝对定位元素的差别在哪里呢？
+        我觉得最主要的差别在于：绝对定位的元素脱离了文档流，
+        而浮动元素依旧在文档流中；
+        而这造成的显示上的差异就是：
+        同处于文档流中的文字实体不会与浮动元素重叠，
+        而会与绝对定位元素重叠。这就是文字环绕显示的重要原因之一：
+        虽然图片实际占据的高度为0，但是由于其宽度实体存在（包裹性）
+    -->
+  </div>
+
+  <style>
+    .content2 {
+      display: flex;
+      height: 100px;
+      margin-top: 20px;
+      background: #666;
+      overflow: hidden;
+
+    }
+
+    .content2 .c_left,
+    .content2 .c_right {
+      width: 300px;
+      height: 100%;
+    }
+
+    .content2 .c_main {
+      flex: auto;
+      height: 100%;
+
+    }
+  </style>
+  <div class="content2">
+    <div class="c_left"></div>
+    <div class="c_main">flex</div>
+    <div class="c_right"></div>
+  </div>
+  <style>
+    .content3 {
+      position: relative;
+      height: 100px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    .content3 .c_left,
+    .content3 .c_right {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 300px;
+      height: 100%;
+    }
+
+    .content3 .c_right {
+      left: auto;
+      right: 0;
+    }
+
+    .content3 .c_main {
+      position: absolute;
+      top: 0;
+      left: 300px;
+      right: 300px;
+      height: 100%;
+
+    }
+  </style>
+  <div class="content3">
+    <div class="c_left"></div>
+    <div class="c_main">absolute</div>
+    <div class="c_right"></div>
+  </div>
+
+  <style>
+    .content4 {
+      display: table;
+      width: 100%;
+      height: 100px;
+      margin-top: 20px;
+    }
+
+    .content4>div {
+      display: table-cell;
+      height: 100%;
+    }
+
+    .content4 .c_left {
+      width: 300px;
+
+    }
+
+
+    .content4 .c_right {
+      width: 300px;
+
+    }
+  </style>
+  <div class="content4">
+    <div class="c_left"></div>
+    <div class="c_main">table</div>
+    <div class="c_right"></div>
+  </div>
+
+  <style>
+    .grid {
+      display: grid;
+      width: 100%;
+      margin-top: 20px;
+      grid-template-rows: 100px;
+      grid-template-columns: 300px auto 300px;
+    }
+  </style>
+  <section class="grid">
+    <div class="c_left"></div>
+    <div class="c_main">grid</div>
+    <div class="c_right"></div>
+  </section>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		const arr = [11,22,33,44]
+		let arr2=[]
+		let obj = {a:0}
+		//工厂模式
+		let objFun = function(){
+			return {a:0}
+		}
+		//构造函数模式
+		let ObjFun2 = function(){
+			this.a=0
+		}
+		for(let i=0;i<arr.length;i++){
+//			let obj2 = obj;
+			let obj2 = objFun();
+//			let obj2 = new ObjFun2();
+			obj2.a = arr[i]
+			arr2.push(obj2)
+		}
+		console.log(arr2)
+//		js new个新对象
+//js 对象的赋值
+
+//aa.a=2 与aa={a:2}的区别，前者bb变了 后者没有，应该是后者又指向了新的对象
+		var bb = {"a":1}
+		var aa = bb
+		
+		aa.a=2 
+		console.log(bb)
+		var cc = function(){
+			return {cc:1}
+		}
+		var dd = new cc()
+		dd.cc=2
+		console.log(cc())
+		console.log(dd)
+		
+		var ee = ff = {a:1}
+		ff = {b:2}
+		console.log(ee)
+		console.log(ff)
+	</script>
+</body>
+</html>

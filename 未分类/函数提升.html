@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数提升</title>
+</head>
+<body>
+
+    <script>
+        var data;
+        var a = function () {
+
+            console.log(12345)
+        }
+        var b = function () {
+            a();
+
+        }
+
+        b();
+//        console.log(data)
+
+
+    </script>
+</body>
+</html>

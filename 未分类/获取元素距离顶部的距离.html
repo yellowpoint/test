@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <title>Title</title>
+    <style>
+        html,body{
+            height:100%;
+        }
+        .d2{
+            width: 200px;
+            height:300px;
+            background: yellowgreen;
+            position: relative;
+            z-index: 3;
+        }
+        .d1{
+            width: 200px;
+            height:300px;
+            /*margin-top: 500px;*/
+            background: yellowgreen;
+            position: relative;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="d2"></div>
+    <div class="d1">456d4sa56d456as</div>
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+<script>
+
+    console.log($('.d1').offset().top)
+</script>
+
+</body>
+</html>

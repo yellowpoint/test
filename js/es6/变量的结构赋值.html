@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			
+			let [a,b,c]=[1,2,3]
+			
+			const [a2,b2] = '10'
+			console.log(a2)
+			
+			let x = 1;
+			let y = 2;
+			[x,y]=[y,x]
+			console.log(x)
+			
+			function load (url,async=true){
+				console.log(async)
+			}
+			
+			load('123')
+			load('123',0)
+			load('123',false)
+			load('123','')
+		</script>
+	</body>
+</html>

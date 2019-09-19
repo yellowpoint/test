@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="hd">heiheihie </div>
+		<div id="hd2">heiheihie </div>
+		<ul>
+			<li>
+				<h1>fhjkashf</h1>
+				<p>哈哈哈哈</p>
+			</li>
+		</ul>
+		<script src="fastclick.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+		<script type="text/javascript">
+			FastClick.attach(document.body);
+			$('body').on('click','li',function(){
+				$('#hd').text('点击了li')
+			})
+			$('body').on('click','p',function(){
+				$('#hd2').text('点击了p')
+			})
+			
+//			$('li').click(function(){
+//				$('#hd').text('点击了li')
+//			})
+//			$('p').click(function(){
+//				$('#hd2').text('点击了p')
+//			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+
+</head>
+<div id="cardList">
+    <div class="btn">11111</div>
+    <div class="btn">22222</div>
+
+</div>
+<body>
+
+
+<script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
+    <script>
+
+        function Copy(str){
+            var save = function(e){
+                e.clipboardData.setData('text/plain', str);
+                e.preventDefault();
+            };
+            document.addEventListener('copy', save);
+            document.execCommand('copy');
+            document.removeEventListener('copy',save);
+            alert('复制成功！');
+        }
+        $('#cardList').on('click', 'div.btn', function(){
+            console.log(2222);
+//            Copy($(this).prev('div').find('span.code').text());
+            Copy("hahaha");
+        });
+
+    </script>
+</body>
+</html>

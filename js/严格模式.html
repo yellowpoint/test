@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+
+		<script src="../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var a = new String("hello world")
+			var c = {
+				a: '111'
+			}
+			a = c.a
+			var b = 12
+			console.log('a', a)
+			console.log('b', b)
+			console.log('strict aa', a instanceof String)
+			console.log('strict aa', a instanceof Number)
+			console.log('strict aa', a instanceof Boolean)
+			console.log('strict aa', a instanceof Object)
+			console.log('strict aa', a instanceof Function)
+			//			console.log('strict bb', b instanceof Number)
+			console.log(111111111111111)
+			console.log(111111111111111)
+			console.log(111111111111111)
+			console.log(111111111111111)
+
+			function strict() {
+				"use strict";
+				var a = new String("hello world")
+				var b = 12
+				var c = {
+					a: '111'
+				}
+				a = c.a
+				console.log('strict a', a)
+				console.log('strict b', b)
+				console.log('strict aa', a instanceof String)
+				console.log('strict bb', b instanceof Number)
+
+				var parseParam = function(paramObj, key) {
+					var paramStr = "";
+
+					if(paramObj instanceof String || paramObj instanceof Number || paramObj instanceof Boolean) {
+						paramStr += "&" + key + "=" + encodeURIComponent(paramObj);
+					} else {
+						$.each(paramObj, function(i,v) {
+							
+							console.log('paramObj[i]', this==paramObj[i])
+							console.log('paramObj[i]', this===paramObj[i])
+							console.log('this,,,', this)
+							console.log('this,,,', typeof this)
+							console.log('this,,,', this instanceof String)
+							var k = key == null ? i : key + (paramObj instanceof Array ? "[" + i + "]" : "." + i);
+							paramStr += '&' + parseParam(paramObj[i], k);
+						});
+					}
+					return paramStr.substr(1);
+				};
+//				parseParam(c)
+
+			}
+			strict()
+
+			//和严格模式没有关系
+			//var a = '11'
+			//var a = new String("hello world")的区别是啥
+
+			//再就是构建的区别了,构建前是后者 ,构建后就是前者了  蛋疼
+
+			//还是和严格模式有关,去掉就好了呀,导致其String状态的变化
+
+			var parseParam = function(paramObj, key) {
+				var paramStr = "";
+
+				if(paramObj instanceof String || paramObj instanceof Number || paramObj instanceof Boolean) {
+					paramStr += "&" + key + "=" + encodeURIComponent(paramObj);
+				} else {
+					$.each(paramObj, function(i,v) {
+						console.log('paramObj[i]', this==v)
+//						console.log('paramObj[i]', paramObj[i]===v)
+							console.log('paramObj[i]', this===v)
+							console.log('paramObj,,,', typeof v)
+						console.log('thisparamObj,,', v instanceof String)
+							
+							
+							
+						console.log('this,,,', this)
+						console.log('this,,,', typeof this)
+						console.log('this,,,', this instanceof String)
+						var k = key == null ? i : key + (paramObj instanceof Array ? "[" + i + "]" : "." + i);
+						paramStr += '&' + parseParam(this, k);
+					});
+				}
+				return paramStr.substr(1);
+			};
+						parseParam(c)
+			//			和这个this可能有关系
+			//this是实例出来的   
+			//严格模式下是  全等的   都是 string，
+			//普通模式this是object（只有这个可用）   v是string
+			//那个作者一定是发现不能用v，才用的this，反正我一般在循环里没用this
+			
+			//需要研究 严格模式下  this 的区别
+		</script>
+	</body>
+
+</html>

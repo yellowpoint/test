@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<div id="showresult">
+			<h>jQuery读取XML文件</h>
+			<a id="read" href="#" style="width:px;">点击读取XML</a>
+		</div>
+
+		<script src="../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#read").click(function() {
+					$.ajax({
+						//请求方式为get
+						type: "GET",
+						//xml文件位置
+						url: "./youdao.xml",
+						//返回数据格式为xml
+						dataType: "xml",
+						//请求成功完成后要执行的方法
+						success: function(xml) {
+							let str = []
+							$(xml).find("item").each(function(i,v) {
+								str.push($(this).find("word").text())
+							})
+							console.log(str.toString())
+						}
+					});
+					return false;
+				});
+			});
+		</script>
+	</body>
+
+</html>

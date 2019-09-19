@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淡入淡出</title>
+    <style>
+        .d1{
+            position: absolute;
+            top:300px;
+            width: 100px;
+            height:100px;
+            background: yellowgreen;
+            opacity: 1;
+            transform: translate(0,0);
+            transition: opacity 1s ease-in-out,transform 1s ease-in-out 1s;
+        }
+        .d2:hover .d1{
+            opacity: 0;
+            transform: translate(100px,100px) scale(2);
+            transition: opacity 1s ease-in-out 1s,transform 1s ease-in-out;
+        }
+        .d2{
+            position: relative;
+            width: 300px;
+            height:300px;
+            background: #a2a2a2;
+            transition:all 3s ease-in-out;
+        }
+        .d2:hover{
+            background: #ff4f79;
+            transition:all 3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="d2">
+        <div class="d1"></div>
+    </div>
+</body>
+</html>

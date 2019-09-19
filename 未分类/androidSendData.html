@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="">fafafafafafafa</div>
+
+    <script>
+
+        var aTag = document.getElementsByTagName('a')[0];
+        aTag.addEventListener('click', function() {
+            //调用android本地方法
+            uqWyp.notifyInteraction("调用android本地方法fun1FromAndroid(String name)！！");
+
+            return false;
+        }, false);
+
+
+        function sending(id) {
+            console.log(id);
+            data = {
+                "click": id
+            };
+            connectNZOCJSBridge(function(bridge) {
+                bridge.send(data, function(responseData) {})
+            });
+            uqWyp.notifyInteraction(data);
+        }
+
+    </script>
+</body>
+</html>

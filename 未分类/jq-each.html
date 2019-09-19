@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        ul { font-size:18px; margin:0; }
+        span { color:blue; text-decoration:underline; cursor:pointer; }
+        .example { font-style:italic; }
+    </style>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <style>html, body { border:0; margin:0; padding:0; }body { font-family: 'Helvetica', 'Arial',  'Verdana', 'sans-serif'; }</style></head>
+<body>
+To do list: <span>(click here to change)</span>
+<ul>
+    <li class="example">Eat</li>
+    <li class="example">Sleep</li>
+
+    <li class="example">Be merry</li>
+</ul>
+<script>
+    window.onload = function() {
+    $( "span" ).click(function () {
+        $( "li" ).each(function(){
+            this.style.color = "blue";
+            console.log($(this).text());
+            $(this).toggleClass( "example" );
+        });
+    });
+
+};
+</script>
+
+
+</body>
+</html>

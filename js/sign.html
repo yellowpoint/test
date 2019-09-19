@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1.0">
+   		<meta name="renderer" content="webkit">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+			
+			
+		<title>签到</title>
+
+	</head>
+
+
+		<body  style="height: 1000px; " >
+			<div  style="width: 7.1rem; " >
+
+				<img src="goDraw.png" alt="去抽奖" />
+	
+			</div>
+			
+			
+			
+			
+			<script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
+			<!--<script src="zepto.min.js"></script>-->
+
+			<script>
+			//动态改变html的fontsize
+			(function changeFontSize() {
+				var screenWidth = $(document).width();
+				var htmlFontSize = screenWidth / 6;
+				$("html").css("font-size", htmlFontSize);
+				$(window).resize(function() {
+					screenWidth = $(document).width();
+					htmlFontSize = screenWidth / 6;
+					$("html").css("font-size", htmlFontSize);
+				});
+			})();
+			(function changeFontSize() {
+				var screenWidth = $(document).width();
+				var htmlFontSize = screenWidth / 7.5;
+				$("html").css("font-size", htmlFontSize);
+				$(window).resize(function() {
+					screenWidth = $(document).width();
+					htmlFontSize = screenWidth / 7.5;
+					$("html").css("font-size", htmlFontSize);
+				});
+			})();
+
+
+
+				$(function() {
+					$('.hd-noLoad').hide();
+					$('.hd-hasLoad').show()
+				})
+				var num = $('.ShopCons .ShopCon').length;
+				var Width = num * 2.3;
+				console.log(Width)
+				$('.ShopCons').css('width', Width + 'rem')
+				
+			</script>
+
+		</body>
+
+</html>

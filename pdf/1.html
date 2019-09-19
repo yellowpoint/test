@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh" style="font-size: 79.4px;">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<link rel="stylesheet" type="text/css" href="vue.css" />
+		<style type="text/css">
+			.templateEdit{
+/*				height: 841.89px;*/
+			}
+			.templateEdit .templateEdit-child{
+				position: static !important;
+			}
+			.templateEdit .templateEdit-child .scroll .content .information .right{
+				left: .7rem !important;
+			}
+			.vux-flexbox .vux-flexbox-item{
+				float: left !important;
+			}
+			.vux-flexbox .vux-flexbox-item{
+				width: 100% ;
+			}
+			.flexbox-con,.resumeObj{
+				width: 100% !important;
+			}
+			.vux-flexbox{
+				display: block !important;
+			}
+			.flexImgFixed .flexImg .flexImg-child{
+				background: transparent !important;
+			}
+			.templateEdit .templateEdit-child .scroll .content .information .right-child{
+				padding: 0 !important;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="templateEdit">
+			<div data-v-a60fb25c="" data-v-b99bce12="" class="templateEdit-child" style="top: 0;">
+				<div data-v-b99bce12="" data-v-a60fb25c="" class="scroll" style="transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1); transition-duration: 0ms; transform: translate(0px, 0px) scale(1) translateZ(0px);">
+					<div data-v-b99bce12="" data-v-a60fb25c="" style="">
+						<div data-v-b99bce12="" data-v-a60fb25c="" id="pdfDom1" class="content">
+							<div data-v-b99bce12="" data-v-a60fb25c="" class="title">
+								<div data-v-b99bce12="" data-v-a60fb25c="" class="title-child" vn="#4F727F" style="background-color: rgb(79, 114, 127);"><img data-v-b99bce12="" data-v-a60fb25c="" src="data:image/png;base64,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" alt="" width="100%"></div>
+							</div>
+							<div data-v-b99bce12="" data-v-a60fb25c="" class="information">
+								<div data-v-b99bce12="" data-v-a60fb25c="" class="right" style="border-left: 1px solid rgb(79, 114, 127);"></div>
+								<div data-v-b99bce12="" data-v-a60fb25c="" class="right-child">
+									<div data-v-b99bce12="" class="comp-all" data-v-a60fb25c="">
+										<div data-v-1edc6d67="" class="essential-information">
+											<div data-v-4b039ee6="" data-v-1edc6d67="" class="vTitle">
+												<div data-v-4b039ee6="" class="title1" style="background-color: rgb(79, 114, 127);"><img data-v-4b039ee6="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAAWCAYAAACfQxmXAAACxElEQVR4Xu3cTY7TQBAG0Kotl4AtrOE6/JyMgS1HgS3DllPMtpClOGOhOEpGidPdeUhsLMeufuXFp1ZNZ1VVdPovM7PT0pV9JwJV9S4ifkbEq4j4lJnfp6VX1beI+Li8dohkcd+diFkmAQIECBAgsCaQgruPg8B1Barqc0R8jYiniHifmX+qagryvyLi9XxtJbjP9729bpWeToAAAQIECLQuILi33iH1DSGw2Dl/jIgPmfm02I3/O19bCe/LXfshPCyCAAECBAgQOF9AcD/fzC8InC2w2GGfds4fMvPL9JDFbvz+2kp4n3ftz363HxAgQIAAAQJjCAjuY/TRKjoQMO/eQZOUSIAAAQIEGhYQ3BtujtLGEzDvPl5PrYgAAQIECGwlILhvJe09BHYCVfUwnSYTEebdfRUECBAgQIDAyQKC+8lUbiRwGYHdvPt0ROT0R6fm3S/D6ikECBAgQGB4AcF9+BZbYIsCR+bd5934/Znvh+p3vnuLXVUTAQIECBC4roDgfl1fTyewKlBV07jMFNT/P9992o1/43x3Hw8BAgQIECCwFBDcfQ8Ebihg3v2G+F5NgAABAgQ6ExDcO2uYcscSODLvPu/GO999rJZbDQECBAgQeLGA4P5iOj8kcBkB8+6XcfQUAgQIECAwuoDgPnqHra8LAfPuXbRJkQQIECBA4KYCgvtN+b2cwLOAeXdfAwECBAgQIHBMQHD3fRBoRMC8eyONUAYBAgQIEGhUQHBvtDHKuk8B8+732XerJkCAAAECpwgI7qcouYfAhgLm3TfE9ioCBAgQINCRQNfBPSJ+R8SP6X9mPnbkrlQCBAgQIECAAIGGBaqqWiuv9+C+9BTiW/u61EOAAAECBAgQ6FRAcN+ucQdDfIsN2I7EmwgQIECAAAECBHoWGGnHfa0P+xC/G63puV9qJ0CAAAECBAgQuFOBf3A0eM7h7rCmAAAAAElFTkSuQmCC" alt="" class="imgs"></div> <span data-v-4b039ee6="" class="text" style="color: rgb(255, 255, 255);">基本信息</span></div>
+											<div data-v-1edc6d67="" class="flexbox-con flexImgFixed">
+												<div data-v-1edc6d67="" class="resumeObj">
+													<div data-v-1edc6d67="" class="vux-flexbox vux-flex-row">
+														<div data-v-1edc6d67="" class="vux-flexbox-item" style="width: 75%;">
+															<div data-v-1edc6d67="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;">
+																<div data-v-1edc6d67="" class="vux-flexbox-item" style="width: 50%;">
+																	<!---->
+																	<!---->
+																	<div data-v-1edc6d67="" class="flexItem itemColor"><span data-v-1edc6d67="">姓名:</span> <span data-v-1edc6d67="">伍师兄</span></div>
+																	<!---->
+																</div>
+																<div data-v-1edc6d67="" class="vux-flexbox-item" style="width: 50%;">
+																	<div data-v-1edc6d67="" class="flexItem itemColor"><span data-v-1edc6d67="">年龄:</span> <span data-v-1edc6d67="">29</span></div>
+																	<!---->
+																	<!---->
+																	<!---->
+																</div>
+																<div data-v-1edc6d67="" class="vux-flexbox-item" style="width: 50%;">
+																	<!---->
+																	<!---->
+																	<div data-v-1edc6d67="" class="flexItem itemColor"><span data-v-1edc6d67="">电话:</span> <span data-v-1edc6d67="">075586715250</span></div>
+																	<!---->
+																</div>
+																<div data-v-1edc6d67="" class="vux-flexbox-item" style="width: 50%;">
+																	<!---->
+																	<!---->
+																	<div data-v-1edc6d67="" class="flexItem itemColor"><span data-v-1edc6d67="">邮箱:</span> <span data-v-1edc6d67="">wushixiong@resume.51app.cn</span></div>
+																	<!---->
+																</div>
+																<!---->
+																<div data-v-1edc6d67="" class="vux-flexbox-item" style="width: 50%;">
+																	<!---->
+																	<div data-v-1edc6d67="" class="flexItem itemColor"><span data-v-1edc6d67="">学历:</span> <span data-v-1edc6d67="">本科</span></div>
+																	<!---->
+																	<!---->
+																</div>
+																<div data-v-1edc6d67="" class="vux-flexbox-item" style="width: 50%;">
+																	<!---->
+																	<div data-v-1edc6d67="" class="flexItem itemColor"><span data-v-1edc6d67="">工作经验:</span> <span data-v-1edc6d67="">3年
+</span></div>
+																	<!---->
+																	<!---->
+																</div>
+																<div data-v-1edc6d67="" class="vux-flexbox-item" style="width: 50%;">
+																	<!---->
+																	<div data-v-1edc6d67="" class="flexItem itemColor"><span data-v-1edc6d67="">性别:</span> <span data-v-1edc6d67="">男</span></div>
+																	<!---->
+																	<!---->
+																</div>
+																<div data-v-1edc6d67="" class="vux-flexbox-item" style="width: 50%;">
+																	<!---->
+																	<!---->
+																	<div data-v-1edc6d67="" class="flexItem itemColor"><span data-v-1edc6d67="">民族:</span> <span data-v-1edc6d67="">汉族</span></div>
+																	<!---->
+																</div>
+																<div data-v-1edc6d67="" class="vux-flexbox-item" style="width: 50%;">
+																	<!---->
+																	<div data-v-1edc6d67="" class="flexItem itemColor"><span data-v-1edc6d67="">婚姻情况:</span> <span data-v-1edc6d67="">未婚</span></div>
+																	<!---->
+																	<!---->
+																</div>
+																<div data-v-1edc6d67="" class="vux-flexbox-item" style="width: 50%;">
+																	<!---->
+																	<div data-v-1edc6d67="" class="flexItem itemColor"><span data-v-1edc6d67="">政治面貌:</span> <span data-v-1edc6d67="">共青团员</span></div>
+																	<!---->
+																	<!---->
+																</div>
+																<div data-v-1edc6d67="" class="vux-flexbox-item" style="width: 50%;">
+																	<!---->
+																	<!---->
+																	<!---->
+																	<div data-v-1edc6d67="" class="flexItem itemColor"><span data-v-1edc6d67="">身高体重:</span> <span data-v-1edc6d67="">175/75kg</span></div>
+																</div>
+																<!---->
+															</div>
+															<div data-v-1edc6d67="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;"></div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-1edc6d67="" class="vux-flexbox-item" style="flex: 0 0 25%;">
+															<div data-v-1edc6d67="" class="flexImg">
+																<div data-v-1edc6d67="" class="flexImg-child" style="width: 1.1rem; height: 1.42rem; border-radius: 0px;">
+																	<div data-v-1edc6d67="" class="avatarBox" style="width: 1.1rem; height: 1.42rem; border-radius: 0px;">
+
+																		<img data-v-1edc6d67="" src="data:image/png;base64,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" class="avatarImg height"></div>
+																</div>
+															</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+													</div>
+												</div>
+											</div>
+										</div>
+										<div data-v-ac2d515a="" class="vIntroduce">
+											<div data-v-4b039ee6="" data-v-ac2d515a="" class="vTitle">
+												<div data-v-4b039ee6="" class="title1" style="background-color: rgb(79, 114, 127);"><img data-v-4b039ee6="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAAWCAYAAACfQxmXAAACxElEQVR4Xu3cTY7TQBAG0Kotl4AtrOE6/JyMgS1HgS3DllPMtpClOGOhOEpGidPdeUhsLMeufuXFp1ZNZ1VVdPovM7PT0pV9JwJV9S4ifkbEq4j4lJnfp6VX1beI+Li8dohkcd+diFkmAQIECBAgsCaQgruPg8B1Barqc0R8jYiniHifmX+qagryvyLi9XxtJbjP9729bpWeToAAAQIECLQuILi33iH1DSGw2Dl/jIgPmfm02I3/O19bCe/LXfshPCyCAAECBAgQOF9AcD/fzC8InC2w2GGfds4fMvPL9JDFbvz+2kp4n3ftz363HxAgQIAAAQJjCAjuY/TRKjoQMO/eQZOUSIAAAQIEGhYQ3BtujtLGEzDvPl5PrYgAAQIECGwlILhvJe09BHYCVfUwnSYTEebdfRUECBAgQIDAyQKC+8lUbiRwGYHdvPt0ROT0R6fm3S/D6ikECBAgQGB4AcF9+BZbYIsCR+bd5934/Znvh+p3vnuLXVUTAQIECBC4roDgfl1fTyewKlBV07jMFNT/P9992o1/43x3Hw8BAgQIECCwFBDcfQ8Ebihg3v2G+F5NgAABAgQ6ExDcO2uYcscSODLvPu/GO999rJZbDQECBAgQeLGA4P5iOj8kcBkB8+6XcfQUAgQIECAwuoDgPnqHra8LAfPuXbRJkQQIECBA4KYCgvtN+b2cwLOAeXdfAwECBAgQIHBMQHD3fRBoRMC8eyONUAYBAgQIEGhUQHBvtDHKuk8B8+732XerJkCAAAECpwgI7qcouYfAhgLm3TfE9ioCBAgQINCRQNfBPSJ+R8SP6X9mPnbkrlQCBAgQIECAAIGGBaqqWiuv9+C+9BTiW/u61EOAAAECBAgQ6FRAcN+ucQdDfIsN2I7EmwgQIECAAAECBHoWGGnHfa0P+xC/G63puV9qJ0CAAAECBAgQuFOBf3A0eM7h7rCmAAAAAElFTkSuQmCC" alt="" class="imgs"></div> <span data-v-4b039ee6="" class="text" style="color: rgb(255, 255, 255);">求职意向</span></div>
+											<div data-v-ac2d515a="" class="flexbox-con">
+												<div data-v-ac2d515a="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;">
+													<div data-v-ac2d515a="" class="vux-flexbox-item" style="width: 50%;">
+														<!---->
+														<div data-v-ac2d515a="" class="flexItem itemColor"><span data-v-ac2d515a="">意向岗位：</span>意向岗位</div>
+													</div>
+													<div data-v-ac2d515a="" class="vux-flexbox-item" style="width: 50%;">
+														<!---->
+														<div data-v-ac2d515a="" class="flexItem itemColor"><span data-v-ac2d515a="">意向城市：</span>深圳</div>
+													</div>
+													<div data-v-ac2d515a="" class="vux-flexbox-item" style="width: 50%;">
+														<div data-v-ac2d515a="" class="flexItem itemColor"><span data-v-ac2d515a="">入职时间：</span>一周内到岗
+														</div>
+														<!---->
+													</div>
+													<div data-v-ac2d515a="" class="vux-flexbox-item" style="width: 50%;">
+														<div data-v-ac2d515a="" class="flexItem itemColor"><span data-v-ac2d515a="">薪资要求：</span>50k以上
+														</div>
+														<!---->
+													</div>
+												</div>
+											</div>
+										</div>
+										<div data-v-22da1611="" class="veducation" resumemap="[object Object]">
+											<div data-v-4b039ee6="" data-v-22da1611="" class="vTitle">
+												<div data-v-4b039ee6="" class="title1" style="background-color: rgb(79, 114, 127);"><img data-v-4b039ee6="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAAWCAYAAACfQxmXAAACxElEQVR4Xu3cTY7TQBAG0Kotl4AtrOE6/JyMgS1HgS3DllPMtpClOGOhOEpGidPdeUhsLMeufuXFp1ZNZ1VVdPovM7PT0pV9JwJV9S4ifkbEq4j4lJnfp6VX1beI+Li8dohkcd+diFkmAQIECBAgsCaQgruPg8B1Barqc0R8jYiniHifmX+qagryvyLi9XxtJbjP9729bpWeToAAAQIECLQuILi33iH1DSGw2Dl/jIgPmfm02I3/O19bCe/LXfshPCyCAAECBAgQOF9AcD/fzC8InC2w2GGfds4fMvPL9JDFbvz+2kp4n3ftz363HxAgQIAAAQJjCAjuY/TRKjoQMO/eQZOUSIAAAQIEGhYQ3BtujtLGEzDvPl5PrYgAAQIECGwlILhvJe09BHYCVfUwnSYTEebdfRUECBAgQIDAyQKC+8lUbiRwGYHdvPt0ROT0R6fm3S/D6ikECBAgQGB4AcF9+BZbYIsCR+bd5934/Znvh+p3vnuLXVUTAQIECBC4roDgfl1fTyewKlBV07jMFNT/P9992o1/43x3Hw8BAgQIECCwFBDcfQ8Ebihg3v2G+F5NgAABAgQ6ExDcO2uYcscSODLvPu/GO999rJZbDQECBAgQeLGA4P5iOj8kcBkB8+6XcfQUAgQIECAwuoDgPnqHra8LAfPuXbRJkQQIECBA4KYCgvtN+b2cwLOAeXdfAwECBAgQIHBMQHD3fRBoRMC8eyONUAYBAgQIEGhUQHBvtDHKuk8B8+732XerJkCAAAECpwgI7qcouYfAhgLm3TfE9ioCBAgQINCRQNfBPSJ+R8SP6X9mPnbkrlQCBAgQIECAAIGGBaqqWiuv9+C+9BTiW/u61EOAAAECBAgQ6FRAcN+ucQdDfIsN2I7EmwgQIECAAAECBHoWGGnHfa0P+xC/G63puV9qJ0CAAAECBAgQuFOBf3A0eM7h7rCmAAAAAElFTkSuQmCC" alt="" class="imgs"></div> <span data-v-4b039ee6="" class="text" style="color: rgb(255, 255, 255);">教育背景</span></div>
+											<div data-v-22da1611="" class="flexbox-con">
+												<div data-v-22da1611="" class="resumeObj">
+													<div data-v-22da1611="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;">
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>1990.01-1990.01</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>请填写学校名称</div>
+														</div>
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>计算机专业</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item">
+															<div data-v-22da1611="" class="flexItem itemColor lineHeight"><span data-v-22da1611=""></span>尽量简洁，突出重点，成绩优异的话建议写上GPA及排名等信息，如：GPA:3.72/4(专业前10%) GRE:324</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div data-v-22da1611="" class="veducation" resumemap="[object Object]">
+											<div data-v-4b039ee6="" data-v-22da1611="" class="vTitle">
+												<div data-v-4b039ee6="" class="title1" style="background-color: rgb(79, 114, 127);"><img data-v-4b039ee6="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAAWCAYAAACfQxmXAAACxElEQVR4Xu3cTY7TQBAG0Kotl4AtrOE6/JyMgS1HgS3DllPMtpClOGOhOEpGidPdeUhsLMeufuXFp1ZNZ1VVdPovM7PT0pV9JwJV9S4ifkbEq4j4lJnfp6VX1beI+Li8dohkcd+diFkmAQIECBAgsCaQgruPg8B1Barqc0R8jYiniHifmX+qagryvyLi9XxtJbjP9729bpWeToAAAQIECLQuILi33iH1DSGw2Dl/jIgPmfm02I3/O19bCe/LXfshPCyCAAECBAgQOF9AcD/fzC8InC2w2GGfds4fMvPL9JDFbvz+2kp4n3ftz363HxAgQIAAAQJjCAjuY/TRKjoQMO/eQZOUSIAAAQIEGhYQ3BtujtLGEzDvPl5PrYgAAQIECGwlILhvJe09BHYCVfUwnSYTEebdfRUECBAgQIDAyQKC+8lUbiRwGYHdvPt0ROT0R6fm3S/D6ikECBAgQGB4AcF9+BZbYIsCR+bd5934/Znvh+p3vnuLXVUTAQIECBC4roDgfl1fTyewKlBV07jMFNT/P9992o1/43x3Hw8BAgQIECCwFBDcfQ8Ebihg3v2G+F5NgAABAgQ6ExDcO2uYcscSODLvPu/GO999rJZbDQECBAgQeLGA4P5iOj8kcBkB8+6XcfQUAgQIECAwuoDgPnqHra8LAfPuXbRJkQQIECBA4KYCgvtN+b2cwLOAeXdfAwECBAgQIHBMQHD3fRBoRMC8eyONUAYBAgQIEGhUQHBvtDHKuk8B8+732XerJkCAAAECpwgI7qcouYfAhgLm3TfE9ioCBAgQINCRQNfBPSJ+R8SP6X9mPnbkrlQCBAgQIECAAIGGBaqqWiuv9+C+9BTiW/u61EOAAAECBAgQ6FRAcN+ucQdDfIsN2I7EmwgQIECAAAECBHoWGGnHfa0P+xC/G63puV9qJ0CAAAECBAgQuFOBf3A0eM7h7rCmAAAAAElFTkSuQmCC" alt="" class="imgs"></div> <span data-v-4b039ee6="" class="text" style="color: rgb(255, 255, 255);">实习经历</span></div>
+											<div data-v-22da1611="" class="flexbox-con">
+												<div data-v-22da1611="" class="resumeObj">
+													<div data-v-22da1611="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;">
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>1990.01-1990.01</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>请填写公司名称</div>
+														</div>
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>前端</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item">
+															<div data-v-22da1611="" class="flexItem itemColor lineHeight"><span data-v-22da1611=""></span>此项为非必选项，根据实际情况选择，实习经验的时间采取倒叙的形式，最近经历写在前面，实习经验的描述与目标岗位的招聘要求尽量匹配，用词精准， 实习成果尽量由数据的形式来呈现，描述尽量具体简洁。
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div data-v-22da1611="" class="flexbox-con">
+												<div data-v-22da1611="" class="resumeObj">
+													<div data-v-22da1611="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;">
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>1990.01-1990.01</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>请填写公司名称</div>
+														</div>
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>前端</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item">
+															<div data-v-22da1611="" class="flexItem itemColor lineHeight"><span data-v-22da1611=""></span>此项为非必选项，根据实际情况选择，实习经验的时间采取倒叙的形式，最近经历写在前面，实习经验的描述与目标岗位的招聘要求尽量匹配，用词精准， 实习成果尽量由数据的形式来呈现，描述尽量具体简洁。
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div data-v-22da1611="" class="flexbox-con">
+												<div data-v-22da1611="" class="resumeObj">
+													<div data-v-22da1611="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;">
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>1990.01-1990.01</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>请填写公司名称</div>
+														</div>
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>前端</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item">
+															<div data-v-22da1611="" class="flexItem itemColor lineHeight"><span data-v-22da1611=""></span>此项为非必选项，根据实际情况选择，实习经验的时间采取倒叙的形式，最近经历写在前面，实习经验的描述与目标岗位的招聘要求尽量匹配，用词精准， 实习成果尽量由数据的形式来呈现，描述尽量具体简洁。
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div data-v-22da1611="" class="flexbox-con">
+												<div data-v-22da1611="" class="resumeObj">
+													<div data-v-22da1611="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;">
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>1990.01-1990.01</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>请填写公司名称</div>
+														</div>
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>前端</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item">
+															<div data-v-22da1611="" class="flexItem itemColor lineHeight"><span data-v-22da1611=""></span>此项为非必选项，根据实际情况选择，实习经验的时间采取倒叙的形式，最近经历写在前面，实习经验的描述与目标岗位的招聘要求尽量匹配，用词精准， 实习成果尽量由数据的形式来呈现，描述尽量具体简洁。
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div data-v-22da1611="" class="flexbox-con">
+												<div data-v-22da1611="" class="resumeObj">
+													<div data-v-22da1611="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;">
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>1990.01-1990.01</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>请填写公司名称</div>
+														</div>
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>前端</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item">
+															<div data-v-22da1611="" class="flexItem itemColor lineHeight"><span data-v-22da1611=""></span>此项为非必选项，根据实际情况选择，实习经验的时间采取倒叙的形式，最近经历写在前面，实习经验的描述与目标岗位的招聘要求尽量匹配，用词精准， 实习成果尽量由数据的形式来呈现，描述尽量具体简洁。
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div data-v-22da1611="" class="flexbox-con">
+												<div data-v-22da1611="" class="resumeObj">
+													<div data-v-22da1611="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;">
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>1990.01-1990.01</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>请填写公司名称</div>
+														</div>
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>前端</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item">
+															<div data-v-22da1611="" class="flexItem itemColor lineHeight"><span data-v-22da1611=""></span>此项为非必选项，根据实际情况选择，实习经验的时间采取倒叙的形式，最近经历写在前面，实习经验的描述与目标岗位的招聘要求尽量匹配，用词精准， 实习成果尽量由数据的形式来呈现，描述尽量具体简洁。
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div data-v-22da1611="" class="flexbox-con">
+												<div data-v-22da1611="" class="resumeObj">
+													<div data-v-22da1611="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;">
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>1990.01-1990.01</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>请填写公司名称</div>
+														</div>
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>前端</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item">
+															<div data-v-22da1611="" class="flexItem itemColor lineHeight"><span data-v-22da1611=""></span>此项为非必选项，根据实际情况选择，实习经验的时间采取倒叙的形式，最近经历写在前面，实习经验的描述与目标岗位的招聘要求尽量匹配，用词精准， 实习成果尽量由数据的形式来呈现，描述尽量具体简洁。
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div data-v-22da1611="" class="flexbox-con">
+												<div data-v-22da1611="" class="resumeObj">
+													<div data-v-22da1611="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;">
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>1990.01-1990.01</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>请填写公司名称</div>
+														</div>
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>前端</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item">
+															<div data-v-22da1611="" class="flexItem itemColor lineHeight"><span data-v-22da1611=""></span>此项为非必选项，根据实际情况选择，实习经验的时间采取倒叙的形式，最近经历写在前面，实习经验的描述与目标岗位的招聘要求尽量匹配，用词精准， 实习成果尽量由数据的形式来呈现，描述尽量具体简洁。
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+										</div>
+										<div data-v-22da1611="" class="veducation" resumemap="[object Object]">
+											<div data-v-4b039ee6="" data-v-22da1611="" class="vTitle">
+												<div data-v-4b039ee6="" class="title1" style="background-color: rgb(79, 114, 127);"><img data-v-4b039ee6="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAAWCAYAAACfQxmXAAACxElEQVR4Xu3cTY7TQBAG0Kotl4AtrOE6/JyMgS1HgS3DllPMtpClOGOhOEpGidPdeUhsLMeufuXFp1ZNZ1VVdPovM7PT0pV9JwJV9S4ifkbEq4j4lJnfp6VX1beI+Li8dohkcd+diFkmAQIECBAgsCaQgruPg8B1Barqc0R8jYiniHifmX+qagryvyLi9XxtJbjP9729bpWeToAAAQIECLQuILi33iH1DSGw2Dl/jIgPmfm02I3/O19bCe/LXfshPCyCAAECBAgQOF9AcD/fzC8InC2w2GGfds4fMvPL9JDFbvz+2kp4n3ftz363HxAgQIAAAQJjCAjuY/TRKjoQMO/eQZOUSIAAAQIEGhYQ3BtujtLGEzDvPl5PrYgAAQIECGwlILhvJe09BHYCVfUwnSYTEebdfRUECBAgQIDAyQKC+8lUbiRwGYHdvPt0ROT0R6fm3S/D6ikECBAgQGB4AcF9+BZbYIsCR+bd5934/Znvh+p3vnuLXVUTAQIECBC4roDgfl1fTyewKlBV07jMFNT/P9992o1/43x3Hw8BAgQIECCwFBDcfQ8Ebihg3v2G+F5NgAABAgQ6ExDcO2uYcscSODLvPu/GO999rJZbDQECBAgQeLGA4P5iOj8kcBkB8+6XcfQUAgQIECAwuoDgPnqHra8LAfPuXbRJkQQIECBA4KYCgvtN+b2cwLOAeXdfAwECBAgQIHBMQHD3fRBoRMC8eyONUAYBAgQIEGhUQHBvtDHKuk8B8+732XerJkCAAAECpwgI7qcouYfAhgLm3TfE9ioCBAgQINCRQNfBPSJ+R8SP6X9mPnbkrlQCBAgQIECAAIGGBaqqWiuv9+C+9BTiW/u61EOAAAECBAgQ6FRAcN+ucQdDfIsN2I7EmwgQIECAAAECBHoWGGnHfa0P+xC/G63puV9qJ0CAAAECBAgQuFOBf3A0eM7h7rCmAAAAAElFTkSuQmCC" alt="" class="imgs"></div> <span data-v-4b039ee6="" class="text" style="color: rgb(255, 255, 255);">校园经历</span></div>
+											<div data-v-22da1611="" class="flexbox-con">
+												<div data-v-22da1611="" class="resumeObj">
+													<div data-v-22da1611="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;">
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>1990.01-1990.01</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>请填写学校名称</div>
+														</div>
+														<div data-v-22da1611="" class="vux-flexbox-item" style="width: 33.333%;">
+															<div data-v-22da1611="" class="flexItem itemTitle"><span data-v-22da1611=""></span>职位</div>
+														</div>
+														<!---->
+														<!---->
+														<!---->
+														<!---->
+														<div data-v-22da1611="" class="vux-flexbox-item">
+															<div data-v-22da1611="" class="flexItem itemColor lineHeight"><span data-v-22da1611=""></span>此项为非必选项，根据实际情况选择，校园经历的时间采取倒叙的形式，最近经历写在前面，校园经历的描述与目标岗位的招聘要求尽量匹配，用词精准， 取得的成果尽量由数据的形式来呈现，描述尽量具体简洁。</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div data-v-bf20c80c="" class="vIntroduce" resumemap="[object Object]">
+											<div data-v-4b039ee6="" data-v-bf20c80c="" class="vTitle">
+												<div data-v-4b039ee6="" class="title1" style="background-color: rgb(79, 114, 127);"><img data-v-4b039ee6="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAAWCAYAAACfQxmXAAACxElEQVR4Xu3cTY7TQBAG0Kotl4AtrOE6/JyMgS1HgS3DllPMtpClOGOhOEpGidPdeUhsLMeufuXFp1ZNZ1VVdPovM7PT0pV9JwJV9S4ifkbEq4j4lJnfp6VX1beI+Li8dohkcd+diFkmAQIECBAgsCaQgruPg8B1Barqc0R8jYiniHifmX+qagryvyLi9XxtJbjP9729bpWeToAAAQIECLQuILi33iH1DSGw2Dl/jIgPmfm02I3/O19bCe/LXfshPCyCAAECBAgQOF9AcD/fzC8InC2w2GGfds4fMvPL9JDFbvz+2kp4n3ftz363HxAgQIAAAQJjCAjuY/TRKjoQMO/eQZOUSIAAAQIEGhYQ3BtujtLGEzDvPl5PrYgAAQIECGwlILhvJe09BHYCVfUwnSYTEebdfRUECBAgQIDAyQKC+8lUbiRwGYHdvPt0ROT0R6fm3S/D6ikECBAgQGB4AcF9+BZbYIsCR+bd5934/Znvh+p3vnuLXVUTAQIECBC4roDgfl1fTyewKlBV07jMFNT/P9992o1/43x3Hw8BAgQIECCwFBDcfQ8Ebihg3v2G+F5NgAABAgQ6ExDcO2uYcscSODLvPu/GO999rJZbDQECBAgQeLGA4P5iOj8kcBkB8+6XcfQUAgQIECAwuoDgPnqHra8LAfPuXbRJkQQIECBA4KYCgvtN+b2cwLOAeXdfAwECBAgQIHBMQHD3fRBoRMC8eyONUAYBAgQIEGhUQHBvtDHKuk8B8+732XerJkCAAAECpwgI7qcouYfAhgLm3TfE9ioCBAgQINCRQNfBPSJ+R8SP6X9mPnbkrlQCBAgQIECAAIGGBaqqWiuv9+C+9BTiW/u61EOAAAECBAgQ6FRAcN+ucQdDfIsN2I7EmwgQIECAAAECBHoWGGnHfa0P+xC/G63puV9qJ0CAAAECBAgQuFOBf3A0eM7h7rCmAAAAAElFTkSuQmCC" alt="" class="imgs"></div> <span data-v-4b039ee6="" class="text" style="color: rgb(255, 255, 255);">自我评价</span></div>
+											<div data-v-bf20c80c="" class="flexbox-con">
+												<div data-v-bf20c80c="" class="vux-flexbox vux-flex-row">
+													<div data-v-bf20c80c="" class="vux-flexbox-item">
+														<div data-v-bf20c80c="" class="flexItem itemColor resumeObj lineHeight"><span data-v-bf20c80c=""></span>篇幅不要太长，注意结合简历整体的美观度，如果真的有很多话要说，建议以求职信的形式附上。 自我评价应做到突出自身符合目标岗位要求的“卖点”，避免过多使用形容词，而应该通过数据及实例来对自身价值进行深化。
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div data-v-d51ae69e="" class="veducation">
+											<div data-v-4b039ee6="" data-v-d51ae69e="" class="vTitle">
+												<div data-v-4b039ee6="" class="title1" style="background-color: rgb(79, 114, 127);"><img data-v-4b039ee6="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAu4AAAAWCAYAAACfQxmXAAACxElEQVR4Xu3cTY7TQBAG0Kotl4AtrOE6/JyMgS1HgS3DllPMtpClOGOhOEpGidPdeUhsLMeufuXFp1ZNZ1VVdPovM7PT0pV9JwJV9S4ifkbEq4j4lJnfp6VX1beI+Li8dohkcd+diFkmAQIECBAgsCaQgruPg8B1Barqc0R8jYiniHifmX+qagryvyLi9XxtJbjP9729bpWeToAAAQIECLQuILi33iH1DSGw2Dl/jIgPmfm02I3/O19bCe/LXfshPCyCAAECBAgQOF9AcD/fzC8InC2w2GGfds4fMvPL9JDFbvz+2kp4n3ftz363HxAgQIAAAQJjCAjuY/TRKjoQMO/eQZOUSIAAAQIEGhYQ3BtujtLGEzDvPl5PrYgAAQIECGwlILhvJe09BHYCVfUwnSYTEebdfRUECBAgQIDAyQKC+8lUbiRwGYHdvPt0ROT0R6fm3S/D6ikECBAgQGB4AcF9+BZbYIsCR+bd5934/Znvh+p3vnuLXVUTAQIECBC4roDgfl1fTyewKlBV07jMFNT/P9992o1/43x3Hw8BAgQIECCwFBDcfQ8Ebihg3v2G+F5NgAABAgQ6ExDcO2uYcscSODLvPu/GO999rJZbDQECBAgQeLGA4P5iOj8kcBkB8+6XcfQUAgQIECAwuoDgPnqHra8LAfPuXbRJkQQIECBA4KYCgvtN+b2cwLOAeXdfAwECBAgQIHBMQHD3fRBoRMC8eyONUAYBAgQIEGhUQHBvtDHKuk8B8+732XerJkCAAAECpwgI7qcouYfAhgLm3TfE9ioCBAgQINCRQNfBPSJ+R8SP6X9mPnbkrlQCBAgQIECAAIGGBaqqWiuv9+C+9BTiW/u61EOAAAECBAgQ6FRAcN+ucQdDfIsN2I7EmwgQIECAAAECBHoWGGnHfa0P+xC/G63puV9qJ0CAAAECBAgQuFOBf3A0eM7h7rCmAAAAAElFTkSuQmCC" alt="" class="imgs"></div> <span data-v-4b039ee6="" class="text" style="color: rgb(255, 255, 255);">技能证书</span></div>
+											<div data-v-d51ae69e="" class="flexbox-con">
+												<div data-v-d51ae69e="" class="resumeObj">
+													<div data-v-d51ae69e="" class="vux-flexbox vux-flex-row" style="flex-wrap: wrap;">
+														<div data-v-d51ae69e="" class="vux-flexbox-item" style="width: 50%;">
+															<div data-v-d51ae69e="" class="flexItem dfhdfgh">
+																<div data-v-d51ae69e="" class="left font">技能名称：商务英语</div>
+															</div>
+														</div>
+														<div data-v-d51ae69e="" class="vux-flexbox-item" style="width: 50%;">
+															<div data-v-d51ae69e="" class="flexItem dfhdfgh">
+																<div data-v-d51ae69e="" class="left font">掌握程度：精通
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

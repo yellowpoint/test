@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<link rel="stylesheet" type="text/css" href="css/jcolor.min.css"/>
+		<title></title>
+	</head>
+	<body>
+		
+		<div class="color-picker-rgb expanded"></div>
+		<br/>
+		<br/>
+		<br/>
+		<br/>
+		<div class="text"></div>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jcolor.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$('.color-picker-rgb').colorpicker({
+color: '#b00b1e',
+colorSpace: 'rgb'
+});
+
+$('.color-picker-rgb').on('newcolor', function (ev, colorpicker) {
+
+	console.log(colorpicker.toString('rgb'))
+	$('.text').html(colorpicker.toString('rgb'))
+
+});
+	$('.text').html(123456)
+	
+	$('body').on('click','.text',function(){
+		console.log(3333333)
+		alert(123456)
+	})
+	
+	setTimeout(function(){
+		$('.color-picker-rgb,.maximize-wrapper').click()
+		console.log(123456789)
+		
+	},1000)
+	
+	
+		</script>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title></title>
+	</head>
+
+	<body>
+
+		我是p1：<input class="p1" type="text" /> 俺是p2：
+		<input class="p2" type="text" />
+
+		<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript">
+			
+			var textInputFlag = true;
+			$('.p1').bind('input propertychange', function() {
+					 var va = $(this).val().replace(/\s/gi,'')
+					 console.log(va.length)
+				if(va.length > 10) {
+
+					$(this).val(va.substring(0, 10))
+				}
+
+			});
+		</script>
+	</body>
+
+</html>

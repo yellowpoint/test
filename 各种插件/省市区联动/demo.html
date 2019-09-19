@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title></title>
+	</head>
+
+	<body>
+
+		<h3>预选某个属性:</h3>
+&radic;
+		<div class="control-group">
+			<label class="control-label" for="pre-province">省份</label>
+
+			<div class="controls">
+				<select id="pre-province">
+					<option value="载入中">载入中</option>
+				</select>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="pre-city">城市</label>
+
+			<div class="controls">
+				<select id="pre-city">
+					<option value="载入中">载入中</option>
+				</select>
+			</div>
+		</div>
+
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+		<!--<script src="https://cdn.bootcss.com/zepto/1.2.0/zepto.min.js"></script>-->
+		<script src="data.js"></script>
+		<!--<script src="LAreaData2.js"></script>-->
+		<script src="jquery.city.select.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js"></script>
+		<script type="text/javascript">
+			var city = remote_ip_info['city'];
+			var province = remote_ip_info['province'];
+
+//			alert('province='+province)
+//			alert('city='+city)
+			var flag = [];
+			$.each(data, function(i, v) {
+				cities = v.cities;
+				$.each(cities, function(k) {
+					if(cities[k].name.indexOf(city)>-1) {
+						flag[0]=v.id;
+						flag[1]=cities[k].id;
+						
+						return false;
+					}
+				})
+
+			});
+			console.log('\u5929' === '天')
+			console.log(String('\u5929') +'')
+			
+			$('#pre-province, #pre-city').citylist({
+				data: data,
+				id: 'id',
+				children: 'cities',
+				name: 'name',
+				metaTag: 'name',
+				selected: flag
+			});
+		</script>
+	</body>
+
+</html>

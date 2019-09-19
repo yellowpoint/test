@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<script src="../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			function pySegSort(arr, empty) {
+				if(!String.prototype.localeCompare)
+					return null;
+
+				var letters = "*abcdefghjklmnopqrstwxyz".split('');
+				var zh = "阿八嚓哒妸发旮哈讥咔垃痳拏噢妑七呥扨它穵夕丫帀".split('');
+
+				var segs = [];
+				var curr;
+				$.each(letters, function(i) {
+					curr = {
+						letter: this,
+						data: []
+					};
+					$.each(arr, function() {
+						if((!zh[i - 1] || zh[i - 1].localeCompare(this, "zh") <= 0) && this.localeCompare(zh[i], "zh") == -1) {
+							curr.data.push(this);
+						}
+					});
+					if(empty || curr.data.length) {
+						segs.push(curr);
+						curr.data.sort(function(a, b) {
+							return a.localeCompare(b, "zh");
+						});
+					}
+				});
+				return segs;
+			}
+			console.log(JSON.stringify(pySegSort(["我放", "不十大", "懂广告", "爱的", "啊", "按", "已", "呀", "选", "3"])))
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="author" content="ISUX" />
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <title>部屋</title>
+    <link rel="stylesheet" type="text/css" href="global.css" />
+    <link rel="stylesheet" type="text/css" href="clan2.css?3d" />
+    <link rel="stylesheet" type="text/css" href="loading.css" />
+</head>
+<style type="text/css">
+html,
+body {
+    -ms-touch-action: none;
+    -webkit-user-drag: none;
+    max-width: 100%;
+    min-height: 100%;
+}
+
+.main {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.head-cover {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.head-cover span {
+    transform-origin: top center;
+}
+
+.content {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.ui-placehold-img {
+    width: 100%;
+    -webkit-transform-origin: top center;
+}
+
+.ui-placehold-img>span {
+    background-position: center bottom;
+    background-size: 100%;
+}
+
+.notice {
+    width: 100%;
+    height: 200px;
+    display: -webkit-box;
+    position: absolute;
+    -webkit-box-orient: vertical;
+    -webkit-box-pack: center;
+    text-align: center;
+    bottom: -200px;
+}
+
+.notice.active .loading:before {
+    -webkit-animation-play-state: running;
+}
+
+.loading {
+    display: block;
+    position: relative;
+}
+
+.notice .loading:before {
+    margin: 10px 0;
+    display: inline-block;
+    -webkit-animation-play-state: paused;
+}
+</style>
+
+<body ontouchstart>
+    <section class="main">
+        <div class="ui-placehold-img head-cover">
+            <span></span>
+        </div>
+        <section class="content">
+            <section class="ui-placehold-img headImg">
+                <span style="background-image:url(clan_default.png)"></span>
+            </section>
+            <section class="mod-info ui-flex  ui-flex-align-center">
+                <div class="circle-out" id="target-circle">
+                    <div class="circle-out-left">
+                        <div class="circle-range-left">
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    <div class="circle-out-right">
+                        <div class="circle-range-right">
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    <div class="circle-inner-out">
+                        <div class="circle-inner-center">
+                            <div class="ui-avatar-one">
+                                <span style="background-image:url(http://i.gtimg.cn/vipstyle/frozenui/1.2.0/img/default.png)"></span>
+                                <div class="avatar-shadow">Lv.23</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dot circle-out-dot"></div>
+                </div>
+                <div>
+                    <h3>火影小馒头<i class="icon-male"></i></h3>
+                    <p class="ui-txt-info">燃力爆表的绅士</p>
+                </div>
+                <div class="info-task">
+                    <div>今日任务5/2</div><img class="clan-cat" src="../../img/cat.png" width="48" /></div>
+            </section>
+            <section class="mod-account">
+                <ul class="ui-row-flex">
+                    <li class="ui-col ui-center account">
+                        <div class="account-info-content ui-center ui-border-r">
+                            <p class="ui-flex  ui-flex-align-center ui-flex-pack-center">
+                                <i class="icon-account"></i><span class="ui-txt-info">点券</span>
+                            </p>
+                            <div class="num ui-reddot">5000</div>
+                            <div class="desc ui-txt-info">送点券送萌点</div>
+                        </div>
+                    </li>
+                    <li class="ui-col ui-center discount">
+                        <div>
+                            <p class="ui-flex  ui-flex-align-center ui-flex-pack-center">
+                                <i class="icon-discount"></i><span class="ui-txt-info">萌点</span>
+                            </p>
+                            <div class="num">6000</div>
+                            <div class="desc ui-txt-warning"><span>30</span>萌点即将到期</div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section class="mod-account">
+                <ul class="ui-row-flex">
+                    <li class="ui-col ui-center account">
+                        <div class="account-info-content ui-center ui-border-r">
+                            <p class="ui-flex  ui-flex-align-center ui-flex-pack-center">
+                                <i class="icon-account"></i><span class="ui-txt-info">点券</span>
+                            </p>
+                            <div class="num ui-reddot">6000</div>
+                            <div class="desc ui-txt-info">送点券送萌点</div>
+                        </div>
+                    </li>
+                    <li class="ui-col ui-center discount">
+                        <div>
+                            <p class="ui-flex  ui-flex-align-center ui-flex-pack-center">
+                                <i class="icon-discount"></i><span class="ui-txt-info">萌点</span>
+                            </p>
+                            <div class="num">7000</div>
+                            <div class="desc ui-txt-warning"><span>30</span>萌点即将到期</div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section class="mod-account">
+                <ul class="ui-row-flex">
+                    <li class="ui-col ui-center account">
+                        <div class="account-info-content ui-center ui-border-r">
+                            <p class="ui-flex  ui-flex-align-center ui-flex-pack-center">
+                                <i class="icon-account"></i><span class="ui-txt-info">点券</span>
+                            </p>
+                            <div class="num ui-reddot">8000</div>
+                            <div class="desc ui-txt-info">送点券送萌点</div>
+                        </div>
+                    </li>
+                    <li class="ui-col ui-center discount">
+                        <div>
+                            <p class="ui-flex  ui-flex-align-center ui-flex-pack-center">
+                                <i class="icon-discount"></i><span class="ui-txt-info">萌点</span>
+                            </p>
+                            <div class="num">9000</div>
+                            <div class="desc ui-txt-warning"><span>30</span>萌点即将到期</div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section class="action-list">
+                <ul class="ui-tiled">
+                    <li>
+                        <i class="icon-crown"></i>
+                        <p class="ui-reddot">动漫VIP</p>
+                    </li>
+                    <li>
+                        <i class="icon-email"></i>
+                        <p>意见反馈</p>
+                    </li>
+                    <li>
+                        <i class="icon-set"></i>
+                        <p>动漫设置</p>
+                    </li>
+                </ul>
+            </section>
+            <section class="mod-account">
+                <ul class="ui-row-flex">
+                    <li class="ui-col ui-center account">
+                        <div class="account-info-content ui-center ui-border-r">
+                            <p class="ui-flex  ui-flex-align-center ui-flex-pack-center">
+                                <i class="icon-account"></i><span class="ui-txt-info">点券</span>
+                            </p>
+                            <div class="num ui-reddot">5000</div>
+                            <div class="desc ui-txt-info">送点券送萌点</div>
+                        </div>
+                    </li>
+                    <li class="ui-col ui-center discount">
+                        <div>
+                            <p class="ui-flex  ui-flex-align-center ui-flex-pack-center">
+                                <i class="icon-discount"></i><span class="ui-txt-info">萌点</span>
+                            </p>
+                            <div class="num">4000</div>
+                            <div class="desc ui-txt-warning"><span>30</span>萌点即将到期</div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+            <section class="action-list">
+                <ul class="ui-tiled">
+                    <li>
+                        <i class="icon-crown"></i>
+                        <p class="ui-reddot">动漫VIP</p>
+                    </li>
+                    <li>
+                        <i class="icon-email"></i>
+                        <p>意见反馈</p>
+                    </li>
+                    <li>
+                        <i class="icon-set"></i>
+                        <p>动漫设置</p>
+                    </li>
+                </ul>
+            </section>
+            <section class="notice">
+                <i class="loading"></i>
+            </section>
+        </section>
+    </section>
+    <script src="zepto.min.js"></script>
+    <script src="fx.js"></script>
+    <script src="alloy_touch.js?v=11"></script>
+    <script src="transform.js"></script>
+    <script>
+    document.addEventListener('touchmove', function(e) {
+        e.preventDefault();
+    }, false);
+
+    var headHeight = window.innerWidth * 500 / 750;
+
+    var $content = $(".content"),
+        target = $content[0];
+    var $coverImg = $(".head-cover span"),
+        copyImg = $coverImg[0];
+    var $headImg = $(".headImg span");
+    
+    $coverImg.attr("style",$headImg.attr("style"));
+
+    Transform(target);
+    Transform(copyImg);
+    
+    var at = new AlloyTouch({
+        touch: ".main", //反馈触摸的dom
+        vertical: true, //不必需，默认是true代表监听竖直方向touch
+        target: target, //运动的对象
+        property: "translateY", //被滚动的属性
+        sensitivity: 1, //不必需,触摸区域的灵敏度，默认值为1，可以为负数
+        factor: 1, //不必需,默认值是1代表touch区域的1px的对应target.y的1
+        min: window.innerHeight - $('.content').height(), //不必需,滚动属性的最小值
+        max: 0, //不必需,滚动属性的最大值
+        spring: false, //不必需,是否有回弹效果。默认是true
+        inertia: true, //不必需,是否有惯性。默认是true
+        topDis: '.3',
+        bottomDis: '.5',
+        bottomMax: '200',
+        touchStart: function(value) {
+            $('.notice').addClass('active');
+        },
+        touchMove: function(value) {},
+        touchEnd: function(value) {},
+        animationEnd: function(value) {
+            $('.notice').removeClass('active');
+        },
+        change: function(value) {
+            if (value>0) {
+                $coverImg.show();
+                $headImg.hide();
+                copyImg.scaleX = copyImg.scaleY = (headHeight + value) / headHeight;
+            } else {
+                $coverImg.hide();
+                $headImg.show();
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

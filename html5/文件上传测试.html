@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<input class="file-input" type="file" name="" id="" value="" />
+
+		<script src="../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$('.file-input').on('change', function(e) {
+				var userImgFile = e.target.files[0];
+
+				//上传用户图片
+				var form_data = new FormData();
+				var file_data = userImgFile;
+				console.log(userImgFile)
+
+//				form_data.append("file", file_data);
+//				var url = apiDomain + '/diyapi/upload/order';
+//				var successFun = function(data) {
+//
+//				}
+//				var errorFun = function(err) {}
+//
+//				ajaxUploadUserImg(url, true, form_data, successFun, errorFun);
+
+			})
+		</script>
+	</body>
+
+</html>

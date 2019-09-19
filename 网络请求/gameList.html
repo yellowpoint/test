@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+	<button class="btn">请求</button>
+	<div class="content"></div>
+</head>
+<body>
+	
+	<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+	<script >
+		let page =1
+		$('.btn').click(function(){
+			$('.content').append(`<p>page ${page} 请求开始</p>`)
+			$.ajax({
+				type:"get",
+				url:`//api.51app.cn/gameapi/game/list?nav=1&page=${page}&token=6cc2c37af74041b1ad264f9b00dca142&seat=1`,
+				async:true,
+				success:function(){
+					$('.content').append(`<p>page ${page} 请求成功</p>`)
+					page++
+				}
+			});
+		})
+	</script>
+</body>
+</html>

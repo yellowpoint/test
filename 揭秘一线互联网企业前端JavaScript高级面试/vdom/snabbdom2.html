@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="container"></div>
+  <button id="btn">change</button>
+
+  <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom.js"></script>
+  <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-class.js"></script>
+  <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-props.js"></script>
+  <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-style.js"></script>
+  <script src="https://cdn.bootcss.com/snabbdom/0.7.3/snabbdom-eventlisteners.js"></script>
+  <script src="https://cdn.bootcss.com/snabbdom/0.7.3/h.js"></script>
+  <script>
+    var snabbdom = window.snabbdom
+
+    // 定义patch
+    var patch = snabbdom.init({
+      snabbdom_class,
+      snabbdom_props,
+      snabbdom_style,
+      snabbdom_eventlisteners
+    })
+
+    // 定义h
+    var h = snabbdom.h
+
+    var data = [{
+        name: '李四',
+        age: 10
+      },
+      {
+        name: '李四2',
+        age: 102
+      },
+      {
+        name: '李四3',
+        age: 103
+      }
+    ]
+    data.unshift({
+      name: '姓名',
+      age: '年龄'
+    })
+
+    var container = document.getElementById('container')
+    var btn = document.getElementById('btn')
+    // 生成 vnode
+    // var vnode = h('ul#list', {}, [
+    //   h('li.item', {}, 'item1'),
+    //   h('li.item', {}, 'item2')
+    // ])
+    // patch(container, vnode)
+
+    // btn.addEventListener('click', function () {
+    //   var newVnode = h('ul#list', {}, [
+    //     h('li.item', {}, 'item1'),
+    //     h('li.item', {}, 'item23'),
+    //     h('li.item', {}, 'item3')
+    //   ])
+    //   patch(vnode, newVnode)
+    // })
+
+    var vnode
+    //渲染函数
+    function render(data) {
+      var newVnode = h('table', {}, data.map(item => {
+        var tds = []
+        var i
+        // 那这里可以用for of额
+        for (i in item) {
+          // debugger
+          //hasOwnProtety 是否是自身的属性，不是继承来的
+          if (item.hasOwnProperty(i)) {
+            // +'' 转成字符串
+            tds.push(h('td', {}, item[i] + ''))
+          }
+        }
+        return h('tr', {}, tds)
+      }))
+
+      if (vnode) {
+        // re-render
+        patch(vnode, newVnode)
+      } else {
+        // 初次渲染
+        patch(container, newVnode)
+      }
+      vnode = newVnode
+    }
+    render(data)
+    console.log('vnode',vnode)
+    btn.addEventListener('click', function () {
+      data[1].age = 200
+      // patch(vnode, newVnode)
+      render(data)
+    })
+  </script>
+</body>
+
+</html>

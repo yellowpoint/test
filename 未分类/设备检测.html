@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    //检测设备
+    function checkDevice() {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+//        alert('是否是Android：'+isAndroid);
+//        alert('是否是iOS：'+isiOS);
+        if(isAndroid){
+            return ('android')
+        }
+        if(isiOS){
+            return ('ios')
+        }
+    }
+    console.log(checkDevice());
+    var devicePlatform = checkDevice();
+    var  url = 'http://120.26.112.213:8082/diyMall/commodity/goods.do?id=1&device='+checkDevice();
+
+    console.log(url)
+
+</script>
+</body>
+</html>

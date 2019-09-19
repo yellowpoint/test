@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no,email=no" name="format-detection">
+    <meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes">
+    <title>aaa</title>
+    <style>
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+    }
+
+    .test {
+        width: 100%;
+        height: 50%;
+        background: #ffd800;
+        text-align: left;
+        /*position: relative;*/
+    }
+
+    .result {
+        width: 100%;
+        height: 50%;
+        background: #b6ff00;
+        text-align: left;
+    }
+    img{
+    	width: 50%;
+    	display: block;
+    	position: absolute;
+    	/*transform: translate3d(10px,20px,30px);*/
+
+    }
+    </style>
+</head>
+
+<body>
+	<!-- <script src="http://cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script> -->
+	<script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="hammerv-2.0.8.min.js"></script>
+    <div  class="test">事件区域
+		<img id="test" src="水野索诺娅2.jpg" x=0 y=0>
+
+    </div>
+    <div id="result" class="result">事件结果
+        <br />
+    </div>
+    <script type="text/javascript">
+	    //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
+	    var hammertime = new Hammer(document.getElementById("test"));
+	    //添加事件
+	    // hammertime.on("pan", function (e) {
+	    // 	// 阻止下面的页面滚动
+	    // 	 $(document).on('touchmove',function(e) {
+	    // 	    var e = e || window.event;
+	    // 	    e.preventDefault();
+	    // 	})
+
+	    //     //控制台输出
+	    //     console.log(e);
+	    //     var x = parseFloat($("#test").attr("x"));
+	    //     var y = parseFloat($("#test").attr("y"));
+	    //     var x2 = x + e.deltaX;
+	    //     var y2 = y + e.deltaY;
+
+	    //     console.log(x)
+	    //     $("#test").css("transform","translate3d("+ x2 +"px,"+ y2 +"px,0)")
+
+	    //     hammertime.on("panend",function (e) {
+	    //     	console.log("结束了")
+	    //     	$("#test").attr("x",x2);
+	    //     	$("#test").attr("y",y2);
+
+	    //     	// $(document).unbind("touchmove");
+	    //     })
+	    // });
+
+	    //为该dom元素指定触屏移动事件
+	    hammertime.add(new Hammer.Rotate());
+	    hammertime.get('rotate').set({ enable: true });
+	    //添加事件
+	    hammertime.on("rotate", function (e) {
+	    	var rotate = e.rotation;
+	    	$('#result').text(rotate)
+
+	        $("#test").css("transform","rotate("+ rotate +"deg)")
+	    });
+
+
+
+
+
+
+	</script>
+
+
+<!--     <script type="text/javascript">
+    //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
+    var hammertime = new Hammer(document.getElementById("test"));
+    //为该dom元素指定触屏移动事件
+    hammertime.add(new Hammer.Pinch());
+    //添加事件
+    hammertime.on("pinchin", function(e) {
+        document.getElementById("result").innerHTML += "捏合初触发<br />";
+        //控制台输出
+        console.log(e);
+    });
+    </script> -->
+
+
+
+<!--     <script type="text/javascript">
+    //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
+    var hammertime = new Hammer(document.getElementById("test"));
+    //添加事件
+    hammertime.on("press", function(e) {
+        document.getElementById("result").innerHTML += "超过500ms了<br />";
+        //控制台输出
+        console.log(e);
+    });
+    </script> -->
+
+
+<!-- 	<script type="text/javascript">
+	    //创建一个新的hammer对象并且在初始化时指定要处理的dom元素
+	    var hammertime = new Hammer(document.getElementById("test"));
+	    //为该dom元素指定触屏移动事件
+	    hammertime.add(new Hammer.Rotate());
+	    //添加事件
+	    hammertime.on("rotate", function (e) {
+
+	        document.getElementById("result").innerHTML += "X偏移量：【" + e.rotation + "】，Y偏移量：【" + e.deltaY + "】<br />";
+	        //控制台输出
+	        console.log(e);
+	    });
+	</script> -->
+
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<html lang="zh">
+
+	<head>
+		<title>fromHTML EX</title>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style type="text/css">
+			img {
+				width: 50px;
+				height: 50px;
+			}
+			div{
+				background: yellowgreen;
+				font-size: 30px;
+				color: red;
+			}
+		</style>
+		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mP8z8BQz0AEYBxVSF+FABJADveWkH6oAAAAAElFTkSuQmCC">
+		<div>wossssjfsaklj djskl</div>
+		<div>wossssjfsaklj djskl</div>
+		<div>wossssjfsaklj djskl</div>
+
+		<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+		<script src="https://cdn.bootcss.com/jspdf/1.5.3/jspdf.min.js"></script>
+
+		<script type="text/javascript">
+			function PDF1() {
+				var doc = new jsPDF();
+				var elementHandler = {
+					'#ignorePDF': function(element, renderer) {
+						return true;
+					}
+				};
+				var source = window.document.getElementsByTagName("body")[0];
+				 doc.setFillColor(154, 205,50,0);
+				doc.fromHTML(
+					source,
+					15,
+					15, {
+						'width': 180,
+						'elementHandlers': elementHandler
+					},
+					function(a) {
+						doc.save('pdf.pdf')
+					});
+
+				//				doc.output("datauri");
+			}
+
+			$(document).ready(function() {
+				//console.log( "ready!" );
+				PDF1();
+			});
+		</script>
+
+	</head>

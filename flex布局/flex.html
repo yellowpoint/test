@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+		<style>
+			body {
+				background: #000;
+			}
+			
+			main {
+				width: 180px;
+				height: 180px;
+				border-radius: 20px;
+				background: #e7e7e7;
+				margin: 20px;
+				display: flex;
+				padding: 10px;
+			}
+			
+			section {
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background: #000;
+			}
+			
+			.box1 {
+				justify-content: center;
+			}
+			
+			.box2 {
+				justify-content: center;
+				align-items: center;
+			}
+			
+			.box3 {
+				justify-content: space-between;
+			}
+			
+			.box4 {
+				justify-content: space-between;
+				flex-direction: column;
+				align-items: center;
+			}
+			
+			.box5 {
+				/*justify-content: center;*/
+			}
+			
+			.item5:nth-child(2) {
+				align-self: center;
+			}
+			
+			.box6 {
+				justify-content: space-between;
+			}
+			
+			.item6:nth-child(2) {
+				align-self: flex-end;
+			}
+			
+			.item7:nth-child(2) {
+				align-self: center;
+			}
+			
+			.item7:nth-child(3) {
+				align-self: flex-end;
+			}
+			
+			.box8 {
+				flex-wrap: wrap;
+				justify-content: flex-end;
+				align-content: space-between;
+			}
+			
+			.box9 {
+				flex-wrap: wrap;
+				align-content: space-between;
+				
+			}
+			
+			.box9>div {
+				display: flex;
+				/*flex-basis: 100%;*/
+				width: 100%;
+				justify-content:space-between
+			}
+			
+			.box10 {
+				flex-wrap: wrap;
+				align-content: space-between;
+				
+			}
+			
+			.box10>div {
+				display: flex;
+				/*flex-basis: 100%;*/
+				width: 100%;
+				justify-content:space-between
+			}
+			.box11 {
+				flex-wrap: wrap;
+				align-content: space-between;
+				
+			}
+			
+			.box11>div {
+				display: flex;
+				/*flex-basis: 100%;*/
+				width: 100%;
+				justify-content:space-between
+			}
+			.box11>div:nth-child(2) {
+				justify-content: center;
+			}
+			.box12{
+				flex-wrap: wrap;
+				align-content: space-between;
+			}
+			.box12>div{
+				display: flex;
+				width: 100%;
+				
+			}
+			.box12>div:nth-child(1){
+				
+			}
+			.box12>div:nth-child(2){
+				
+			}
+			.box12>div:nth-child(1) section{
+				flex-grow:0 ;
+			}
+			.box12>div:nth-child(1) section:nth-child(1){
+				flex-grow:3 ;
+				background: yellowgreen;
+			}
+			.box12>div:nth-child(2) section{
+				/*flex-basis:150px ;*/
+			}
+			.box12>div:nth-child(2) section:nth-child(1){
+				flex-basis:50% ;
+				background: yellowgreen;
+			}
+			.holyGrail{
+				display: flex;
+				flex-direction: column;
+				min-height: 600px;
+				width: 100%;
+				background: #D0E9C6;
+			}
+			.holyGrail header,.holyGrail footer{
+				flex: 0 1 auto;
+				background: #0077B3;
+				height: 100px;
+			}
+			.hg-body{
+				flex: 1;
+				display: flex;
+				background: #0097A7;
+			}
+			.hg-content{
+				flex: 1;
+				background: #07ACA7;
+			}
+			.hg-nav,.hg-ads{
+				flex :0 1 200px;
+				background: tan;
+			}
+			.hg-nav{
+				order: -1;
+			}
+			@media (max-width: 768px) {
+  .hg-body {
+    flex-direction: column;
+    flex: 1;
+  }
+  .hg-nav,
+  .hg-ads,
+  .hg-content {
+    flex: auto;
+  }
+}
+		</style>
+	</head>
+
+	<body>
+		<main class="box1">
+			<section class="item1"></section>
+		</main>
+
+		<main class="box2">
+			<section class="item2"></section>
+		</main>
+
+		<main class="box3">
+			<section class="item3"></section>
+			<section class="item3"></section>
+		</main>
+
+		<main class="box4">
+			<section class="item4"></section>
+			<section class="item4"></section>
+		</main>
+
+		<main class="box5">
+			<section class="item5"></section>
+			<section class="item5"></section>
+		</main>
+
+		<main class="box6">
+			<section class="item6"></section>
+			<section class="item6"></section>
+		</main>
+
+		<main class="box7">
+			<section class="item7"></section>
+			<section class="item7"></section>
+			<section class="item7"></section>
+		</main>
+
+		<main class="box8">
+			<section class="item8"></section>
+			<section class="item8"></section>
+			<section class="item8"></section>
+			<section class="item8"></section>
+		</main>
+
+		<main class="box9">
+			<div>
+				<section class="item9"></section>
+				<section class="item9"></section>
+			</div>
+			<div>
+				<section class="item9"></section>
+				<section class="item9"></section>
+			</div>
+
+		</main>
+		
+		<main class="box10">
+			<div>
+				<section class=""></section>
+				<section class=""></section>
+				<section class=""></section>
+			</div>
+			<div>
+				<section class=""></section>
+				<section class=""></section>
+				<section class=""></section>
+			</div>
+
+		</main>
+		
+		<main class="box11">
+			<div>
+				<section class=""></section>
+				<section class=""></section>
+				<!--<section class=""></section>-->
+			</div>
+			<div>
+				<!--<section class=""></section>-->
+				<!--<section class=""></section>-->
+				<section class=""></section>
+			</div>
+			<div>
+				<!--<section class=""></section>-->
+				<section class=""></section>
+				<section class=""></section>
+			</div>
+
+		</main>
+
+		<main class="box12">
+			<div>
+				<section class=""></section>
+				<section class=""></section>
+				<section class=""></section>
+			</div>
+			<div>
+				<section class=""></section>
+				<section class=""></section>
+				<section class=""></section>
+			</div>
+		</main>
+		
+		<div class="holyGrail">
+			<header></header>
+			<div class="hg-body">
+				<div class="hg-content"></div>
+				<div class="hg-nav"></div>
+				<div class="hg-ads"></div>
+			</div>
+			
+			<footer></footer>
+		</div>
+			
+	</body>
+
+</html>

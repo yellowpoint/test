@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原型链</title>
+</head>
+
+<body>
+
+  <script>
+    // // 当new遇到return
+    // let Human = function () {
+    //   111
+    //   // return function () {222}
+    // }
+    // let Person = function () {3333}
+    // // let Person = new Human()
+    // // 有没有括号都一样
+
+    // Person.prototype = new Human
+    // Person.prototype.p=function(){'ppp'}
+    // let kid = new Person()
+
+    // // 需要修复构造函数指向
+
+    let Person = function(){
+      this.name = 'Person'
+    }
+    Person.prototype.age = 22
+    let p1 = new Person()
+    // let p11 = new
+    // __proto__是与父级做联系的
+    // prototype是与子级做联系的
+    // prototype 只有function才有
+    // 构造函数、实例、原型对象
+
+    // 元素自身没有的属性就会往原型链上找,也就是__proto__
+    p1.name
+    p1.__proto__.name
+    Person.prototype.age
+    // Function.prototype也是唯一一个typeof XXX.prototype为 function的prototype。
+    // 其它的构造器的prototype都是一个对象
+    // 但也可以手动设置为function，具体作用不明
+    // 所有对象的 __proto__ 都指向其构造器的 prototype
+    // p1.__proto__
+    // Person.__proto__
+    // Person.prototype.__proto__
+    // Object.__proto__
+    // Object.prototype.__proto__
+    // Function.__proto__  
+    // Function.prototype 是一个function
+    // Function.prototype.__proto__
+
+    // typeof的原理
+
+    // 不过，要明确的真正重要的一点就是，这个连接存在于实例（person1）与构造函数（Person）的原型对象（Person.prototype）之间，而不是存在于实例（person1）与构造函数（Person）之间。
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+		<a href="sss">我是a标签</a>
+		<a href="sss">我是a标签</a>
+		<a href="sss">我是a标签</a>
+		<a href="sss">我是a标签</a>
+		<div class="d1">我是js跳转</div>
+		<div onclick="location.href='sss'">我是onclick</div>
+		<div class="domBox"></div>
+
+		<script src="../jquery-3.3.1.min.js"></script>
+		<script type="text/javascript">
+			function setAHref() {
+				$('a').map(function(i, iIndex) {
+					$('a').eq(i).attr('href', $('a').eq(i).attr('href') + '?12456')
+				})
+
+			}
+
+			let DOMSubtreeModifiedTimer;
+			$(window).on("DOMSubtreeModified", function() {
+
+				if(DOMSubtreeModifiedTimer) {
+					clearTimeout(DOMSubtreeModifiedTimer);
+				}
+
+				// 设置一个新的定时器
+				timer = setTimeout(function() {
+					setAHref()
+				}, 100);
+
+			})
+
+			//对于添加的dom元素
+			setTimeout(function() {
+				$('.domBox').append('<a href="sss">我是a标签</a>')
+			}, 500)
+
+			//			let debounce = function(fn, context, timeout) {
+			//				let timer;
+			//
+			//				// 利用闭包将内容传递出去
+			//				return function() {
+			//					if(timer) {
+			//						// 清除定时器
+			//						clearTimeout(timer);
+			//					}
+			//
+			//					// 设置一个新的定时器
+			//					timer = setTimeout(function() {
+			//						fn.apply(context, arguments)
+			//					}, timeout);
+			//				}
+			//			}
+			//			debounce(function() {
+			//				console.log(4245)
+			//			}, $(window), 200)
+
+			$('.d1').click(function() {
+				window.location.href = 'sss'
+			})
+			console.log(delete window.location)
+			String.prototype.assign2 = function(url) {
+				console.log(url)
+				return false;
+			}
+			'a'.assign2('aaa')
+			//			window.prototype.location = {
+			//				href: function(url) {
+			//					console.log(url)
+			//				}
+			//			}
+
+			Array.prototype.join = (function(_super) {
+
+				// return our new `join()` function
+				return function() {
+					console.log("Hey, you called join!");
+					return _super.apply(this, arguments);
+				}; // Pass control back to the original join()
+				// by using .apply on `_super`
+
+			})(Array.prototype.join);
+			[1, 2, 3].join('.')
+
+			//			location.prototype.assign = (function(_super) {
+			//
+			//				return function() {
+			//					console.log("Hey, you called join!");
+			//					return _super.apply(this, arguments);
+			//				};
+			//
+			//			})(location.prototype.assign);
+		</script>
+	</body>
+
+</html>

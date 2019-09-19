@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a href="http://baidu.com">aaaaaa</a>
+<a href="http://baidu.com">bbbb</a>
+<a href="http://baidu.com">cccc</a>
+
+
+    <script type="text/javascript" src="zepto.min.js"></script>
+    <script type="text/javascript" src="framework7.min.js"></script>
+
+    <!--<script type="text/javascript" src="custom.js"></script>-->
+
+    <script type="text/javascript" >
+        var time = [];
+        time[0] = 0;
+        document.onclick = function () {
+
+//            $.ajax({
+//                url:"data.json",
+//                method : "POST",
+//                cache : false,
+//                success:function (data) {
+//                    console.log(data);
+//                }
+//            })9+
+//            console.log(new Date().getTime())
+
+            time[1] = new Date().getTime();
+            var timeGap = time[1]-time[0];
+            console.log(timeGap);
+            time[0]=time[1];
+
+        }
+
+//        document.onclick = function () {
+//            console.log(222);
+//            ajaxLoadData('data.json')
+//        }
+
+//        function convertURL(url){
+//            var timstamp = new Date().getTime();
+//            if (url.indexOf("?")>=0){
+//                url = url + "&t=" + timstamp;
+//            }else {
+//                url = url + "?t=" + timstamp;
+//            };
+//            return url;
+//        };
+//        var aAddTime = $("a");
+//        for(var i=0;i<aAddTime.length;i++){
+//            aAddTime[i].href=convertURL(aAddTime[i].href);
+//        }
+
+    </script>
+
+</body>
+</html>

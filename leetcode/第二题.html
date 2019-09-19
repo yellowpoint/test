@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Document</title>
+	</head>
+
+	<body>
+
+		<script type="text/javascript">
+			var l1 = {
+				val: 2,
+				next: {
+					val: 3,
+					next: null
+				}
+			}
+			var l2 = l1
+			var addTwoNumbers = function(l1, l2) {
+				let reverse = function(str) {
+					return str.split('').reverse().join('');
+				};
+
+				function add(a, b) {
+					var carry = 0,
+						result = [],
+						len = Math.max(a.length, b.length),
+						i = len;
+					while(i--) {
+						var sum = (+a[i - len + a.length] || 0) + (+b[i - len + b.length] || 0) + carry;
+						carry = parseInt(sum / 10);
+						result.unshift(sum % 10);
+					}
+					if(carry) result.unshift(carry);
+					return result.join('');
+				}
+				
+				let getVal = ListNode => {
+					if(ListNode.next) {
+						return String(ListNode.val) + getVal(ListNode.next)
+					} else {
+						return String(ListNode.val)
+					}
+				}
+				let num =add(reverse(getVal(l1)),reverse(getVal(l2)))
+				num = reverse(String(num))
+				let setVal = num => {
+
+					if(num.slice(1)) {
+						return {
+							val: num.slice(0, 1),
+							next: setVal(num.slice(1))
+						}
+					} else {
+						return {
+							val: num.slice(0, 1),
+							next: null
+						}
+					}
+
+				}
+				return setVal(num)
+			};
+			console.log(addTwoNumbers(l1, l2))
+		</script>
+	</body>
+
+</html>
