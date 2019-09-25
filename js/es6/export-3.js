@@ -1,3 +1,3 @@
 let a = 2
-//export default a
-export {a}
+export default a
+//export {a}
