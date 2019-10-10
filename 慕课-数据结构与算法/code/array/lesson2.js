@@ -22,7 +22,7 @@ export default (arr) => {
       }
     }
   }
-  console.log('dst', dst, min)
+  // console.log('dst', dst, min)
   if (min < 2) {
     return false
   }
