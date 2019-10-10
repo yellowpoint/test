@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let b = [], c = []
+    for (var i = 0; i < 5; i++) {
+      c.push(i)
+      // b.push(c)
+      b.push([].concat(c))
+      c.length = 0
+      // c = []
+    }
+    console.log(b)
+
+    let aa = [],bb=[1,2],cc=bb;
+    aa.push(cc)
+    bb.push(3)
+    console.log(aa[0]) // [1, 2, 3]
+  </script>
+</body>
+
+</html>
