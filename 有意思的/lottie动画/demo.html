@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>lottie 极简Demo</title>
+    <!-- 第一步: 引入CDN -->
+    <script src="https://gw.alipayobjects.com/os/lib/lottie-web/5.5.6/build/player/lottie.min.js"></script>
+  </head>
+  <body>
+    <!-- 第二步: 创建容器 -->
+    <div id="container"></div>
+    <div id="status">循环播放3次后停止</div>
+    <div id="loop"></div>
+  </body>
+  <script>
+    // 第三步: 实例化
+    var anim = lottie.loadAnimation({
+      container: document.getElementById("container"), // 容器
+      renderer: "svg",
+      loop: true,
+      autoplay: true,
+      // animationData: {}, //如果使用的是JSON
+      path:
+        // "https://gw.alipayobjects.com/os/sage/10726a69-0e6a-484f-a784-d57a812af9a6/lottie.json" // the path to the animation json
+        "./demo.json" // the path to the animation json
+    });
+    var loopCount = 0;
+    anim.onLoopComplete = function() {
+      loopCount += 1;
+      document.getElementById("loop").textContent = `播放了${loopCount}次`;
+      if (loopCount >= 3) {
+        anim.stop();
+      }
+    };
+  </script>
+</html>
