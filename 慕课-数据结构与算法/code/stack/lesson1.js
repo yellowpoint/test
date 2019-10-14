@@ -1,4 +1,4 @@
-// 682. 棒球比赛
+// 682. 棒球比赛 自己的做法
 /**
  * @param {string[]} ops
  * @return {number}
