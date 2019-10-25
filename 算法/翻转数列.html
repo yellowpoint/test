@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    //  if (n % 2m !== 0) {
+    //     return false
+    //   }
+    function sum(n, m) {
+
+      let result = 0
+      let mIndex = 1
+      let zf = -1
+      for (let i = 1; i <= n; i++) {
+        if (mIndex <= m) {
+          result += i * zf
+          mIndex++
+        } else {
+          mIndex = 2
+          zf = zf * -1
+          result += i * zf
+        }
+
+      }
+      console.log(result)
+      return result
+    }
+    sum(8, 2);
+    function sum2(n, m) {
+      let s = n * m / 2
+      return s
+    }
+  </script>
+</body>
+
+</html>

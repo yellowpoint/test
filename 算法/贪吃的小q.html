@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    function eat(day, piece) {
+      let num = 1
+      for (let i = piece; i >= 2; i--) {
+        let sum
+        let eatnum
+        for (let j = 1; j <= day; j++) {
+          if (j === 1) {
+            sum += i
+          } else {
+            sum += i / Math.pow(2, j - 1)
+          }
+
+        }
+        console.log('sum',sum)
+        if (sum >= piece) {
+          return i
+        }
+      }
+    }
+    console.log(eat(3,7))
+  </script>
+</body>
+
+</html>

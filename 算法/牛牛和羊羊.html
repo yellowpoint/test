@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    function poker(num, arr) {
+      arr.sort((a, b) => b - a)
+      let result = 0
+      let zf = 1
+      for (let i = 0; i < num; i++) {
+        if (zf) {
+          result += arr[i] * zf
+          zf = -zf
+        }
+      }
+
+      return result
+    }
+    console.log(poker(2, [3,1]))
+  </script>
+</body>
+
+</html>
+<!-- 作者：管理员
+链接：https://www.nowcoder.com/discuss/276
+来源：牛客网
+
+while(line=readline()){
+    var lines = line.split(' ');
+    var a = parseInt(lines[0]);
+    var b = parseInt(lines[1]);
+    print(a+b);
+} -->
