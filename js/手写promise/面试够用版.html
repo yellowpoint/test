@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // https://juejin.im/post/5c9c3989e51d454e3a3902b6#heading-15
+
+    function myPromise(constructor) {
+      let self = this
+      self.status = "pending"
+      self.value = undefined
+      self.reason = undefined
+
+      function resolve(value) {
+        if (self.status === 'pending') {
+          self.value = value
+          self.status = 'resolved'
+        }
+      }
+
+      function reject(reason) {
+        if (self.status === 'pending') {
+          self.reason = reason
+          self.status = 'rejected'
+        }
+      }
+      constructor(resolve, reject)
+    }
+
+
+
+    myPromise.prototype.then = function (onFullfilled, onRejected) {
+      let self = this
+      switch (self.status) {
+        case 'resolved':
+          onFullfilled(self.value);
+          break;
+        case 'rejected':
+          onRejected(self.reason)
+          break;
+        default:
+          break;
+      }
+    }
+
+    let p = new myPromise((resolve, reject) => {
+      resolve(1)
+    })
+    p.then(x => {
+      console.log(x)
+    }).then(x=>{
+      console.log('x',x)
+    })
+  </script>
+
+</body>
+
+</html>
