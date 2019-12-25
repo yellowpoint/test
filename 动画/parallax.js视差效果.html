@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    #scene {
+      padding-top: 100px;
+    }
+
+    #scene div {
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="scene">
+    <div data-depth=".1">My first Layer!</div>
+    <div data-depth=".05">My second Layer!</div>
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js"></script>
+  <script>
+    var scene = document.getElementById('scene');
+    var parallaxInstance = new Parallax(scene, {
+      frictionX: 1,
+      // ClipRelativeInput: true,
+      relativeInput: true,
+      hoverOnly: true,
+      scalarX:50
+    });
+  </script>
+</body>
+
+</html>
