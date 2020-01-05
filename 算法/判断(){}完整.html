@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function isVaild(s){
+      let stack = []
+      const map = {
+        '(':')',
+        '[':']',
+        '{':'}'
+      }
+      for (let char of s){
+        if(char in map){
+          stack.push(char)
+        }else{
+          if(!stack.length || char != map[stack.pop()]){
+            return false
+          }
+        }
+      }
+      return !stack.length
+    }  
+    let test = '()()(()){{{{{}}}}}'
+    console.log(isVaild(test))
+  </script>
+</body>
+</html>
