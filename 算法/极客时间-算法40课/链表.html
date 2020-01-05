@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function ListNode(val){
+      this.val = val 
+      this.next = null
+    }
+    //反转链表
+    function reverseList(head){
+      let prev = null
+      let curr = head 
+      while(curr != null){
+        let next = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next
+      }
+      return prev
+    }  
+    //两两交换
+    function swapPairs(head){
+      let thead = new ListNode(0)
+      thead.next = head
+      let tmp = thead
+      while(tmp.next&&tmp.next.next){
+        let start = tmp.next
+        let end = start.next
+        tmp.next = end
+        start.next = end.next
+        end.next = start
+        tmp = start
+      }
+      return thead.next
+    }
+    //是否有环
+    function hasCycle(head){
+      let fast = head
+      let slow = head
+      while(slow&&fast&&fast.next){
+        fast = fast.next.next
+        slow = slow.next
+        if(fast == slow){
+          return true
+        }
+      }
+      return false
+    }
+  </script>
+</body>
+</html>
