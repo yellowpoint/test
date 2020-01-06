@@ -28,6 +28,15 @@
     }  
     let test = '()()(()){{{{{}}}}}'
     console.log(isVaild(test))
+
+    function getKH(str){
+      let arr = []
+      let reg = /\(|\)|\[|\]|\{|\}/g
+      console.log(reg.exec(str))
+      return str.match(reg)
+    }
+    let str = '(asda{dsadas}s)'
+    console.log(getKH(str).join(''))
   </script>
 </body>
 </html>
