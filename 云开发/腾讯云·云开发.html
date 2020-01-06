@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="//imgcache.qq.com/qcloud/tcbjs/1.3.4/tcb.js"></script>
+  <script>
+    // 搞了半天匿名登录还没开放
+    // 目前云开发仅支持微信登录授权，因此您需要在微信侧注册网站应用，
+    async function init() {
+      var app = tcb.init({
+        env: 'demo-401919'
+      })
+      const auth = app.auth({
+        persistence: 'local' //用户显式退出或更改密码之前的30天一直有效
+      });
+      console.log('auth', auth)
+      auth.signInAnonymously().then(() => {
+        // 登录成功操作逻辑
+      });
+
+      // 匿名登录成功后检测登录态isAnonymous为true
+      // const loginState = await auth.getLoginState();
+      // console.log(loginState.isAnonymous) // true
+      app.callFunction({
+          // 云函数名称
+          name: 'demo',
+          // 传给云函数的参数
+          data: {
+            a: 1
+          },
+        })
+        .then(res => {
+          console.log(res)
+        })
+        .catch(error)
+    }
+    init()
+  </script>
+</body>
+
+</html>
