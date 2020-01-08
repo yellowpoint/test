@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>手写 call、apply 及 bind 函数</title>
+</head>
+
+<body>
+  <script>
+    var a = 1
+
+    function foo() {
+      console.log(this.a)
+      return this.a
+    }
+    let obj = {
+      a: 2
+    }
+    let obj3 = {
+      a: 3
+    }
+    foo.call(obj)
+
+    Function.prototype.myCall = function (context) {
+      if (typeof this != 'function') {
+        throw new TypeError('error')
+      }
+      context = context || window
+      context.fn = this
+      const args = [...arguments].slice(1)
+      const result = context.fn(...args)
+      delete context.fn
+      return result
+    }
+
+    foo.myCall(obj3)
+
+    Function.prototype.myApply = function (context) {
+      if (typeof this != 'function') {
+        throw new TypeError('error')
+      }
+      context = context || window
+      context.fn = this
+      let result
+      if (arguments[1]) {
+        result = context.fn(...arguments[1])
+      } else {
+        result = context.fn()
+      }
+      delete context.fn
+      return result
+    }
+
+    function myNew(f) {
+      let obj = {}
+      obj.__proto__ = f.prototype
+      let r = f.call(obj)
+
+      return typeof r === 'object' ? r : obj
+    }
+    var new2 = function (func) {
+      var o = Object.create(func.prototype)
+
+      var k = func.call(o)
+      if (typeof k === 'object') {
+        return k
+      } else {
+        return o
+      }
+    }
+
+    function create() {
+      let obj = {}
+      let Con = [].shift.call(arguments)
+      obj.__proto__ = Con.prototype
+      let result = Con.apply(obj, arguments)
+      return result instanceof Object ? result : obj
+    }
+    var M = function (name) {
+      this.name = name
+    }
+    var o6 = myNew(M)
+    console.log(o6.__proto__ === M.prototype) //true
+
+
+    Function.prototype.myBind = function (context) {
+      if (typeof this != 'function') {
+        throw new TypeError('error')
+      }
+
+      const that = this
+      const args = [...arguments].slice(1)
+      return function F() {
+        that.apply(context, args.concat(...arguments))
+      }
+    }
+    let bindF = foo.bind(obj3)
+    let bindF2 = new bindF()
+    console.log("TCL: bindF2", bindF2)
+  </script>
+</body>
+
+</html>
