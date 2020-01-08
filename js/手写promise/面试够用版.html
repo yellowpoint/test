@@ -51,13 +51,14 @@
       }
     }
 
+    // 这个写法延时就不行了，还是得用掘金小册的面试版，用数组存，pending时push进去
     let p = new myPromise((resolve, reject) => {
-      resolve(1)
+      setTimeout(() => {
+        resolve(1)
+      }, 0);
     })
     p.then(x => {
       console.log(x)
-    }).then(x=>{
-      console.log('x',x)
     })
   </script>
 
