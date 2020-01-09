@@ -94,10 +94,14 @@
       const that = this
       const args = [...arguments].slice(1)
       return function F() {
-        that.apply(context, args.concat(...arguments))
+        // 因为返回了一个函数，我们可以 new F()，所以需要判断
+        if (this instanceof F) {
+          return new that(...args, ...arguments)
+        }
+        return that.apply(context, args.concat(...arguments))
       }
     }
-    let bindF = foo.bind(obj3)
+    let bindF = foo.myBind(obj3)
     let bindF2 = new bindF()
     console.log("TCL: bindF2", bindF2)
   </script>
