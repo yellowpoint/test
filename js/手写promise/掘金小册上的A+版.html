@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const PENDING = 'pending'
+    const RESOLVED = 'resolved'
+    const REJECTED = 'rejected'
+
+    function MyPromise(fn) {
+      const that = this
+      that.state = PENDING
+      that.value = undefined
+      that.resolvedCBs = []
+      that.rejectedCBs = []
+
+      function resolve(value) {
+        // 对于 resolve 函数来说，首先需要判断传入的值是否为 Promise 类型
+        if (value instanceof MyPromise) {
+          return value.then(resolve, reject)
+        }
+        // 为了保证函数执行顺序，需要将两个函数体代码使用 setTimeout 包裹起来
+        // 改造为异步任务
+        setTimeout(() => {
+          if (that.state === PENDING) {
+            that.state = RESOLVED
+            that.value = value
+            that.resolvedCBs.map(cb => cb(that.value))
+          }
+        }, 0)
+
+      }
+
+      function reject(value) {
+        if (value instanceof MyPromise) {
+          return value.then(resolve, reject)
+        }
+        setTimeout(() => {
+          if (that.state === PENDING) {
+            that.state = REJECTED
+            that.value = value
+            that.rejectedCBs.map(cb => cb(that.value))
+          }
+        }, 0)
+
+      }
+
+      try {
+        fn(resolve, reject)
+      } catch (error) {
+        reject(error)
+      }
+    }
+    MyPromise.prototype.then = function (onResolve, onReject) {
+
+      onResolve = typeof onResolve === 'function' ? onResolve : v => v
+      onReject = typeof onReject === 'function' ? onReject : v => {
+        throw v
+      }
+      let that = this
+      if (that.state === PENDING) {
+        return (promise2 = new MyPromise((resolve, reject) => {
+          that.resolvedCBs.push(() => {
+            try {
+              const x = onResolve(that.value)
+              resolutionProcedure(promise2, x, resolve, reject)
+            } catch (err) {
+              reject(err)
+            }
+          })
+          that.rejectedCBs.push(() => {
+            try {
+              const x = onReject(that.value)
+              resolutionProcedure(promise2, x, resolve, reject)
+            } catch (err) {
+              reject(err)
+            }
+          })
+
+        }))
+
+      }
+      if (that.state === RESOLVED) {
+        return (promise2 = new MyPromise((resolve, reject) => {
+          setTimeout(() => {
+            try {
+              const x = onResolve(that.value)
+              resolutionProcedure(promise2, x, resolve, reject)
+            } catch (err) {
+              reject(err)
+            }
+          })
+
+        }))
+      }
+      if (that.state === REJECTED) {
+        return (promise2 = new MyPromise((resolve, reject) => {
+          setTimeout(() => {
+            try {
+              const x = onReject(that.value)
+              resolutionProcedure(promise2, x, resolve, reject)
+            } catch (err) {
+              reject(err)
+            }
+          })
+
+        }))
+      }
+
+
+      function resolutionProcedure(promise2, x, resolve, reject) {
+        // 首先规范规定了 x 不能与 promise2 相等， 这样会发生循环引用的问题
+        if (promise2 === x) {
+          return reject(new TypeError('Error'))
+        }
+        if (x instanceof MyPromise) {
+          x.then(function (value) {
+            resolutionProcedure(promise2, value, resolve, reject)
+          }, reject)
+        }
+        let called = false
+        if (x !== null && (typeof x === 'object' || typeof x === 'function')) {
+          try {
+            let then = x.then
+            if (typeof then === 'function') {
+              then.call(
+                x,
+                y => {
+                  if (called) return
+                  called = true
+                  resolutionProcedure(promise2, y, resolve, reject)
+                },
+                e => {
+                  if (called) return
+                  called = true
+                  reject(e)
+                }
+              )
+            }
+          } catch (err) {
+            if (called) return
+            called = true
+            reject(err)
+          }
+        } else {
+          resolve(x)
+        }
+      }
+    }
+
+    let p1 = new Promise(relove => {
+      setTimeout(() => {
+        relove(1)
+      }, 1000)
+    })
+    p1.then(res => {
+      console.log(res)
+      p1.then(res => {
+        console.log('222', res)
+
+      })
+    }).then(res => {
+      console.log('3333', res)
+    })
+  </script>
+</body>
+
+</html>
