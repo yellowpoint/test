@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function countSort(array) {
+      // 1.得到最大的数;;突然发现js不用额
+      // let max = array[0]
+      // for (let index = 1; index < array.length; index++) {
+      //   if (array[i] > max) {
+      //     max = array[i]
+      //   }
+      // }
+
+      // 2.新建该长度加一的统计数组
+      let countArray = []
+
+      // 3.便利数列，填充统计数组
+      for (let i = 0; i < array.length; i++) {
+        if (!countArray[array[i]]) {
+          countArray[array[i]] = 1
+        }else{
+          countArray[array[i]] += 1
+
+        }
+      }
+      // 4.遍历统计数组，输出结果
+      console.log("TCL: countSort -> countArray", countArray)
+
+      let result = []
+      for (let i = 0; i < countArray.length; i++) {
+        if (countArray[i]) {
+          for (let j = 0; j < countArray[i]; j++) {
+            result.push(i)
+          }
+        }
+      }
+      console.log("TCL: countSort -> result", result)
+      return result
+    }
+    let test = [1, 2, 89, 7, 96, 1, 2, 7, 4, 67, 97, 2, 5, 4]
+    countSort(test)
+  </script>
+</body>
+
+</html>

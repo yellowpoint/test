@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 冒泡算法
+    function sort(arr) {
+      let len = arr.length
+      for (let i = 0; i < len - 1; i++) {
+        let isSort = true
+        for (let j = 0; j < len - 1 - i; j++) {
+          if (arr[j] > arr[j + 1]) {
+            let tem = arr[j + 1]
+            arr[j + 1] = arr[j]
+            arr[j] = tem
+            isSort = false
+          }
+        }
+        if (isSort) {
+          break
+        }
+      }
+      console.log("TCL: sort -> arr", arr)
+      return arr
+    }
+    let arr = [8, 5, 9, 4, 21, 3, 89, 41, 11, 1]
+    arr.sort((a, b) => {
+      return a - b
+    })
+    sort(arr)
+  </script>
+
+</body>
+
+</html>
