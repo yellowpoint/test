@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+  <script>
+    ;
+    (async function () {
+
+      let videoUrl = []
+
+      function getData(url) {
+        return new Promise((resolve, reject) => {
+          $.ajax({
+            url: url,
+            success: function (res) {
+              res.aweme_list.forEach(item => {
+                videoUrl.push({
+                  url: item.video.play_addr.url_list[0]
+                })
+
+              })
+              // console.log(JSON.stringify(videoUrl))
+              resolve(videoUrl)
+
+            }
+          })
+        })
+      }
+
+      async function foo() {
+        // let arr = 11
+
+        for (let i = 1; i <= 2; i++) {
+          await getData(`./src2/抖音1_${i}.json`)
+          if (i == 2) {
+            console.log(JSON.stringify(videoUrl))
+          }
+        }
+      }
+      foo()
+    })()
+
+
+    // $.ajax({
+    //   url: './抖音.json',
+    //   success: function (res) {
+    //     res.aweme_list.forEach(item => {
+    //       // videoUrl.push(...item.video.play_addr.url_list)
+    //       item.video.play_addr.url_list.forEach(j => {
+    //         videoUrl.push({
+    //           url: j
+    //         })
+    //       })
+    //     })
+
+    //     $.ajax({
+    //       url: './抖音2.json',
+    //       success: function (res) {
+    //         res.aweme_list.forEach(item => {
+    //           item.video.play_addr.url_list.forEach(j => {
+    //             videoUrl.push({
+    //               url: j
+    //             })
+    //           })
+    //         })
+    //         console.log(JSON.stringify(videoUrl))
+
+    //       }
+    //     })
+    //   }
+    // })
+  </script>
+</body>
+
+</html>

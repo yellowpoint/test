@@ -1,0 +1,1212 @@
+{
+  "min_cursor": 1576579000000,
+  "has_more": false,
+  "extra": {
+    "now": 1578992835000,
+    "logid": "202001141707150100140400401C0CDF52"
+  },
+  "status_code": 0,
+  "aweme_list": [
+    {
+      "video": {
+        "width": 720,
+        "dynamic_cover": {
+          "url_list": [
+            "https://p9-dy.byteimg.com/obj/tos-cn-p-0015/8b9345c0c4794e9eb5a4da3a085adc0e_1576579007?from=2563711402_large",
+            "https://p29-dy.byteimg.com/obj/tos-cn-p-0015/8b9345c0c4794e9eb5a4da3a085adc0e_1576579007?from=2563711402_large",
+            "https://p3-dy.byteimg.com/obj/tos-cn-p-0015/8b9345c0c4794e9eb5a4da3a085adc0e_1576579007?from=2563711402_large"
+          ],
+          "uri": "tos-cn-p-0015/8b9345c0c4794e9eb5a4da3a085adc0e_1576579007"
+        },
+        "has_watermark": true,
+        "play_addr_lowbr": {
+          "uri": "v0200f1d0000bnsavcfrri6a9hqctfs0",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f1d0000bnsavcfrri6a9hqctfs0&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f1d0000bnsavcfrri6a9hqctfs0&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "bit_rate": null,
+        "duration": 30200,
+        "cover": {
+          "uri": "tos-cn-p-0015/ecd004cf49cb42e9b6193a59afa33329",
+          "url_list": [
+            "https://p9-dy.byteimg.com/img/tos-cn-p-0015/ecd004cf49cb42e9b6193a59afa33329~c5_300x400.jpeg?from=2563711402_large",
+            "https://p29-dy.byteimg.com/img/tos-cn-p-0015/ecd004cf49cb42e9b6193a59afa33329~c5_300x400.jpeg?from=2563711402_large",
+            "https://p3-dy.byteimg.com/img/tos-cn-p-0015/ecd004cf49cb42e9b6193a59afa33329~c5_300x400.jpeg?from=2563711402_large"
+          ]
+        },
+        "height": 1280,
+        "vid": "v0200f1d0000bnsavcfrri6a9hqctfs0",
+        "ratio": "540p",
+        "download_addr": {
+          "uri": "v0200f1d0000bnsavcfrri6a9hqctfs0",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f1d0000bnsavcfrri6a9hqctfs0&line=0&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f1d0000bnsavcfrri6a9hqctfs0&line=1&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "play_addr": {
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f1d0000bnsavcfrri6a9hqctfs0&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f1d0000bnsavcfrri6a9hqctfs0&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ],
+          "uri": "v0200f1d0000bnsavcfrri6a9hqctfs0"
+        },
+        "origin_cover": {
+          "uri": "large/tos-cn-p-0015/3bc115f952964a9fbe14dd1630bfb1ce_1576579006",
+          "url_list": [
+            "http://p3-dy.byteimg.com/large/tos-cn-p-0015/3bc115f952964a9fbe14dd1630bfb1ce_1576579006.jpeg?from=2563711402_large",
+            "http://p29-dy.byteimg.com/large/tos-cn-p-0015/3bc115f952964a9fbe14dd1630bfb1ce_1576579006.jpeg?from=2563711402_large",
+            "http://p9-dy.byteimg.com/large/tos-cn-p-0015/3bc115f952964a9fbe14dd1630bfb1ce_1576579006.jpeg?from=2563711402_large"
+          ]
+        }
+      },
+      "statistics": {
+        "aweme_id": "6771355227196099851",
+        "comment_count": 67,
+        "digg_count": 9624,
+        "play_count": 0,
+        "share_count": 42,
+        "forward_count": 2
+      },
+      "position": null,
+      "comment_list": null,
+      "long_video": null,
+      "aweme_id": "6771355227196099851",
+      "cha_list": null,
+      "uniqid_position": null,
+      "label_top_text": null,
+      "text_extra": [
+        {
+          "start": 43,
+          "end": 49,
+          "user_id": "6796248446",
+          "type": 0,
+          "hashtag_name": "",
+          "hashtag_id": 0
+        },
+        {
+          "start": 24,
+          "end": 31,
+          "type": 1,
+          "hashtag_name": "厉害了我的国",
+          "hashtag_id": 1579874350578701
+        },
+        {
+          "hashtag_id": 1602970145881095,
+          "start": 32,
+          "end": 37,
+          "type": 1,
+          "hashtag_name": "中国大爷"
+        },
+        {
+          "end": 43,
+          "type": 1,
+          "hashtag_name": "传统文化",
+          "hashtag_id": 1569499153309698,
+          "start": 38
+        }
+      ],
+      "image_infos": null,
+      "desc": "中国大爷鲁班在世，做了一个木头苹果，惊呆网友下巴#厉害了我的国 #中国大爷 #传统文化@抖音小助手",
+      "video_labels": null,
+      "aweme_type": 4,
+      "geofencing": null,
+      "video_text": null,
+      "promotions": null
+    },
+    {
+      "desc": "不得不佩服我们吃货的威力#厉害了我的国 #吃货 @抖音小助手",
+      "position": null,
+      "video_text": null,
+      "promotions": null,
+      "cha_list": null,
+      "statistics": {
+        "aweme_id": "6771023645323136259",
+        "comment_count": 108,
+        "digg_count": 7496,
+        "play_count": 0,
+        "share_count": 25,
+        "forward_count": 0
+      },
+      "video_labels": null,
+      "image_infos": null,
+      "geofencing": null,
+      "aweme_id": "6771023645323136259",
+      "text_extra": [
+        {
+          "user_id": "6796248446",
+          "type": 0,
+          "hashtag_name": "",
+          "hashtag_id": 0,
+          "start": 24,
+          "end": 30
+        },
+        {
+          "end": 19,
+          "type": 1,
+          "hashtag_name": "厉害了我的国",
+          "hashtag_id": 1579874350578701,
+          "start": 12
+        },
+        {
+          "start": 20,
+          "end": 23,
+          "type": 1,
+          "hashtag_name": "吃货",
+          "hashtag_id": 1555952486532097
+        }
+      ],
+      "aweme_type": 4,
+      "uniqid_position": null,
+      "video": {
+        "width": 720,
+        "dynamic_cover": {
+          "uri": "tos-cn-p-0015/bb1b6dc2ca6e4cec8a9f53d96b236f5c_1576501803",
+          "url_list": [
+            "https://p9-dy.byteimg.com/obj/tos-cn-p-0015/bb1b6dc2ca6e4cec8a9f53d96b236f5c_1576501803?from=2563711402_large",
+            "https://p29-dy.byteimg.com/obj/tos-cn-p-0015/bb1b6dc2ca6e4cec8a9f53d96b236f5c_1576501803?from=2563711402_large",
+            "https://p3-dy.byteimg.com/obj/tos-cn-p-0015/bb1b6dc2ca6e4cec8a9f53d96b236f5c_1576501803?from=2563711402_large"
+          ]
+        },
+        "download_addr": {
+          "uri": "v0300f390000bnro47jdvbt68m4s35ng",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0300f390000bnro47jdvbt68m4s35ng&line=0&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0300f390000bnro47jdvbt68m4s35ng&line=1&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "has_watermark": true,
+        "duration": 28300,
+        "vid": "v0300f390000bnro47jdvbt68m4s35ng",
+        "play_addr": {
+          "uri": "v0300f390000bnro47jdvbt68m4s35ng",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0300f390000bnro47jdvbt68m4s35ng&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0300f390000bnro47jdvbt68m4s35ng&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "cover": {
+          "uri": "tos-cn-p-0015/fe6d6021416941499704bb921ae2115d",
+          "url_list": [
+            "https://p9-dy.byteimg.com/img/tos-cn-p-0015/fe6d6021416941499704bb921ae2115d~c5_300x400.jpeg?from=2563711402_large",
+            "https://p29-dy.byteimg.com/img/tos-cn-p-0015/fe6d6021416941499704bb921ae2115d~c5_300x400.jpeg?from=2563711402_large",
+            "https://p3-dy.byteimg.com/img/tos-cn-p-0015/fe6d6021416941499704bb921ae2115d~c5_300x400.jpeg?from=2563711402_large"
+          ]
+        },
+        "height": 1280,
+        "origin_cover": {
+          "uri": "large/tos-cn-p-0015/c4b2b80dad7f4488bc13c68a038dde34_1576501802",
+          "url_list": [
+            "http://p3-dy.byteimg.com/large/tos-cn-p-0015/c4b2b80dad7f4488bc13c68a038dde34_1576501802.jpeg?from=2563711402_large",
+            "http://p29-dy.byteimg.com/large/tos-cn-p-0015/c4b2b80dad7f4488bc13c68a038dde34_1576501802.jpeg?from=2563711402_large",
+            "http://p9-dy.byteimg.com/large/tos-cn-p-0015/c4b2b80dad7f4488bc13c68a038dde34_1576501802.jpeg?from=2563711402_large"
+          ]
+        },
+        "ratio": "540p",
+        "play_addr_lowbr": {
+          "uri": "v0300f390000bnro47jdvbt68m4s35ng",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0300f390000bnro47jdvbt68m4s35ng&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0300f390000bnro47jdvbt68m4s35ng&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "bit_rate": null
+      },
+      "comment_list": null,
+      "label_top_text": null,
+      "long_video": null
+    },
+    {
+      "aweme_id": "6770520477958950148",
+      "statistics": {
+        "aweme_id": "6770520477958950148",
+        "comment_count": 224,
+        "digg_count": 9035,
+        "play_count": 0,
+        "share_count": 74,
+        "forward_count": 3
+      },
+      "geofencing": null,
+      "text_extra": [
+        {
+          "start": 33,
+          "end": 39,
+          "user_id": "6796248446",
+          "type": 0,
+          "hashtag_name": "",
+          "hashtag_id": 0
+        },
+        {
+          "start": 15,
+          "end": 22,
+          "type": 1,
+          "hashtag_name": "厉害了我的国",
+          "hashtag_id": 1579874350578701
+        },
+        {
+          "hashtag_id": 1555952486532097,
+          "start": 23,
+          "end": 26,
+          "type": 1,
+          "hashtag_name": "吃货"
+        },
+        {
+          "start": 27,
+          "end": 32,
+          "type": 1,
+          "hashtag_name": "实力中国",
+          "hashtag_id": 1625782092561419
+        }
+      ],
+      "uniqid_position": null,
+      "long_video": null,
+      "cha_list": null,
+      "position": null,
+      "comment_list": null,
+      "video_text": null,
+      "promotions": null,
+      "desc": "论吃货实力，咱们中国人怕过谁？#厉害了我的国 #吃货 #实力中国 @抖音小助手",
+      "video": {
+        "duration": 28400,
+        "cover": {
+          "uri": "tos-cn-p-0015/716b5ad5637449ffb1391b735e08fe8d",
+          "url_list": [
+            "https://p9-dy.byteimg.com/img/tos-cn-p-0015/716b5ad5637449ffb1391b735e08fe8d~c5_300x400.jpeg?from=2563711402_large",
+            "https://p29-dy.byteimg.com/img/tos-cn-p-0015/716b5ad5637449ffb1391b735e08fe8d~c5_300x400.jpeg?from=2563711402_large",
+            "https://p3-dy.byteimg.com/img/tos-cn-p-0015/716b5ad5637449ffb1391b735e08fe8d~c5_300x400.jpeg?from=2563711402_large"
+          ]
+        },
+        "dynamic_cover": {
+          "uri": "tos-cn-p-0015/17b03c0e8cc244bba5bfcb6fe6a25f3d_1576384649",
+          "url_list": [
+            "https://p3-dy.byteimg.com/obj/tos-cn-p-0015/17b03c0e8cc244bba5bfcb6fe6a25f3d_1576384649?from=2563711402_large",
+            "https://p29-dy.byteimg.com/obj/tos-cn-p-0015/17b03c0e8cc244bba5bfcb6fe6a25f3d_1576384649?from=2563711402_large",
+            "https://p9-dy.byteimg.com/obj/tos-cn-p-0015/17b03c0e8cc244bba5bfcb6fe6a25f3d_1576384649?from=2563711402_large"
+          ]
+        },
+        "ratio": "540p",
+        "download_addr": {
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0300f060000bnqrgtbjvcl3fl94an3g&line=0&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0300f060000bnqrgtbjvcl3fl94an3g&line=1&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ],
+          "uri": "v0300f060000bnqrgtbjvcl3fl94an3g"
+        },
+        "play_addr_lowbr": {
+          "uri": "v0300f060000bnqrgtbjvcl3fl94an3g",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0300f060000bnqrgtbjvcl3fl94an3g&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0300f060000bnqrgtbjvcl3fl94an3g&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "bit_rate": null,
+        "play_addr": {
+          "uri": "v0300f060000bnqrgtbjvcl3fl94an3g",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0300f060000bnqrgtbjvcl3fl94an3g&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0300f060000bnqrgtbjvcl3fl94an3g&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "height": 1280,
+        "width": 720,
+        "origin_cover": {
+          "uri": "large/tos-cn-p-0015/94771ad7d6914e198db47b959438555a_1576384650",
+          "url_list": [
+            "http://p3-dy.byteimg.com/large/tos-cn-p-0015/94771ad7d6914e198db47b959438555a_1576384650.jpeg?from=2563711402_large",
+            "http://p29-dy.byteimg.com/large/tos-cn-p-0015/94771ad7d6914e198db47b959438555a_1576384650.jpeg?from=2563711402_large",
+            "http://p9-dy.byteimg.com/large/tos-cn-p-0015/94771ad7d6914e198db47b959438555a_1576384650.jpeg?from=2563711402_large"
+          ]
+        },
+        "has_watermark": true,
+        "vid": "v0300f060000bnqrgtbjvcl3fl94an3g"
+      },
+      "video_labels": null,
+      "aweme_type": 4,
+      "image_infos": null,
+      "label_top_text": null
+    },
+    {
+      "video_text": null,
+      "promotions": null,
+      "cha_list": null,
+      "text_extra": [
+        {
+          "hashtag_name": "",
+          "hashtag_id": 0,
+          "start": 26,
+          "end": 32,
+          "user_id": "6796248446",
+          "type": 0
+        },
+        {
+          "hashtag_id": 1622886825285635,
+          "start": 10,
+          "end": 13,
+          "type": 1,
+          "hashtag_name": "6g"
+        },
+        {
+          "start": 13,
+          "end": 20,
+          "type": 1,
+          "hashtag_name": "厉害了我的国",
+          "hashtag_id": 1579874350578701
+        }
+      ],
+      "image_infos": null,
+      "video_labels": null,
+      "position": null,
+      "geofencing": null,
+      "long_video": null,
+      "video": {
+        "download_addr": {
+          "uri": "v0200fa50000bnqb9enu9qbbc2bi2fag",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200fa50000bnqb9enu9qbbc2bi2fag&line=0&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200fa50000bnqb9enu9qbbc2bi2fag&line=1&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "has_watermark": true,
+        "play_addr_lowbr": {
+          "uri": "v0200fa50000bnqb9enu9qbbc2bi2fag",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200fa50000bnqb9enu9qbbc2bi2fag&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200fa50000bnqb9enu9qbbc2bi2fag&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "vid": "v0200fa50000bnqb9enu9qbbc2bi2fag",
+        "origin_cover": {
+          "uri": "large/tos-cn-p-0015/2c4254fd14bf4d4099d7a8f2787923f1_1576318154",
+          "url_list": [
+            "http://p9-dy.byteimg.com/large/tos-cn-p-0015/2c4254fd14bf4d4099d7a8f2787923f1_1576318154.jpeg?from=2563711402_large",
+            "http://p29-dy.byteimg.com/large/tos-cn-p-0015/2c4254fd14bf4d4099d7a8f2787923f1_1576318154.jpeg?from=2563711402_large",
+            "http://p3-dy.byteimg.com/large/tos-cn-p-0015/2c4254fd14bf4d4099d7a8f2787923f1_1576318154.jpeg?from=2563711402_large"
+          ]
+        },
+        "cover": {
+          "uri": "tos-cn-p-0015/80544aa98e2e456799dcc96299136e10",
+          "url_list": [
+            "https://p3-dy.byteimg.com/img/tos-cn-p-0015/80544aa98e2e456799dcc96299136e10~c5_300x400.jpeg?from=2563711402_large",
+            "https://p29-dy.byteimg.com/img/tos-cn-p-0015/80544aa98e2e456799dcc96299136e10~c5_300x400.jpeg?from=2563711402_large",
+            "https://p9-dy.byteimg.com/img/tos-cn-p-0015/80544aa98e2e456799dcc96299136e10~c5_300x400.jpeg?from=2563711402_large"
+          ]
+        },
+        "height": 1280,
+        "width": 720,
+        "dynamic_cover": {
+          "url_list": [
+            "https://p26-dy.byteimg.com/obj/tos-cn-p-0015/08ba820fbc6549b7950a0f91ce8ee6c9_1576318155?from=2563711402_large",
+            "https://p1-dy.byteimg.com/obj/tos-cn-p-0015/08ba820fbc6549b7950a0f91ce8ee6c9_1576318155?from=2563711402_large",
+            "https://p9-dy.byteimg.com/obj/tos-cn-p-0015/08ba820fbc6549b7950a0f91ce8ee6c9_1576318155?from=2563711402_large"
+          ],
+          "uri": "tos-cn-p-0015/08ba820fbc6549b7950a0f91ce8ee6c9_1576318155"
+        },
+        "ratio": "540p",
+        "bit_rate": null,
+        "duration": 22000,
+        "play_addr": {
+          "uri": "v0200fa50000bnqb9enu9qbbc2bi2fag",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200fa50000bnqb9enu9qbbc2bi2fag&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200fa50000bnqb9enu9qbbc2bi2fag&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        }
+      },
+      "statistics": {
+        "forward_count": 4,
+        "aweme_id": "6770234876928085252",
+        "comment_count": 173,
+        "digg_count": 7181,
+        "play_count": 0,
+        "share_count": 70
+      },
+      "comment_list": null,
+      "uniqid_position": null,
+      "label_top_text": null,
+      "aweme_id": "6770234876928085252",
+      "desc": "你跟得上中国速度吗？#6g#厉害了我的国 @抖音小助手",
+      "aweme_type": 4
+    },
+    {
+      "cha_list": null,
+      "video": {
+        "cover": {
+          "uri": "tos-cn-p-0015/9f0f2510fd5244f7bf0623bc4b3559b4",
+          "url_list": [
+            "https://p9-dy.byteimg.com/img/tos-cn-p-0015/9f0f2510fd5244f7bf0623bc4b3559b4~c5_300x400.jpeg?from=2563711402_large",
+            "https://p29-dy.byteimg.com/img/tos-cn-p-0015/9f0f2510fd5244f7bf0623bc4b3559b4~c5_300x400.jpeg?from=2563711402_large",
+            "https://p3-dy.byteimg.com/img/tos-cn-p-0015/9f0f2510fd5244f7bf0623bc4b3559b4~c5_300x400.jpeg?from=2563711402_large"
+          ]
+        },
+        "width": 720,
+        "download_addr": {
+          "uri": "v0200f440000bnoure7ibktppjnjc2j0",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f440000bnoure7ibktppjnjc2j0&line=0&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f440000bnoure7ibktppjnjc2j0&line=1&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "duration": 26467,
+        "play_addr": {
+          "uri": "v0200f440000bnoure7ibktppjnjc2j0",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f440000bnoure7ibktppjnjc2j0&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f440000bnoure7ibktppjnjc2j0&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "height": 1280,
+        "dynamic_cover": {
+          "uri": "tos-cn-p-0015/d3c1ad748de24d159f43f707637264e5_1576136132",
+          "url_list": [
+            "https://p3-dy.byteimg.com/obj/tos-cn-p-0015/d3c1ad748de24d159f43f707637264e5_1576136132?from=2563711402_large",
+            "https://p29-dy.byteimg.com/obj/tos-cn-p-0015/d3c1ad748de24d159f43f707637264e5_1576136132?from=2563711402_large",
+            "https://p1-dy.byteimg.com/obj/tos-cn-p-0015/d3c1ad748de24d159f43f707637264e5_1576136132?from=2563711402_large"
+          ]
+        },
+        "origin_cover": {
+          "uri": "large/tos-cn-p-0015/a6c65aa42ef5495ebe663f26118e78e1_1576136130",
+          "url_list": [
+            "http://p3-dy.byteimg.com/large/tos-cn-p-0015/a6c65aa42ef5495ebe663f26118e78e1_1576136130.jpeg?from=2563711402_large",
+            "http://p29-dy.byteimg.com/large/tos-cn-p-0015/a6c65aa42ef5495ebe663f26118e78e1_1576136130.jpeg?from=2563711402_large",
+            "http://p9-dy.byteimg.com/large/tos-cn-p-0015/a6c65aa42ef5495ebe663f26118e78e1_1576136130.jpeg?from=2563711402_large"
+          ]
+        },
+        "ratio": "540p",
+        "has_watermark": true,
+        "play_addr_lowbr": {
+          "uri": "v0200f440000bnoure7ibktppjnjc2j0",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f440000bnoure7ibktppjnjc2j0&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f440000bnoure7ibktppjnjc2j0&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "bit_rate": null,
+        "vid": "v0200f440000bnoure7ibktppjnjc2j0"
+      },
+      "statistics": {
+        "share_count": 385,
+        "forward_count": 27,
+        "aweme_id": "6769453085279538444",
+        "comment_count": 726,
+        "digg_count": 77000,
+        "play_count": 0
+      },
+      "uniqid_position": null,
+      "comment_list": null,
+      "geofencing": null,
+      "promotions": null,
+      "desc": "中国实力总能让老外震惊！#厉害了我的国 #肖战王一博 @抖音小助手",
+      "image_infos": null,
+      "position": null,
+      "video_text": null,
+      "label_top_text": null,
+      "long_video": null,
+      "video_labels": null,
+      "aweme_id": "6769453085279538444",
+      "text_extra": [
+        {
+          "end": 33,
+          "user_id": "6796248446",
+          "type": 0,
+          "hashtag_name": "",
+          "hashtag_id": 0,
+          "start": 27
+        },
+        {
+          "hashtag_name": "厉害了我的国",
+          "hashtag_id": 1579874350578701,
+          "start": 12,
+          "end": 19,
+          "type": 1
+        },
+        {
+          "start": 20,
+          "end": 26,
+          "type": 1,
+          "hashtag_name": "肖战王一博",
+          "hashtag_id": 1599788699276365
+        }
+      ],
+      "aweme_type": 4
+    },
+    {
+      "statistics": {
+        "share_count": 18,
+        "forward_count": 0,
+        "aweme_id": "6766203775221910796",
+        "comment_count": 52,
+        "digg_count": 4137,
+        "play_count": 0
+      },
+      "image_infos": null,
+      "label_top_text": null,
+      "promotions": null,
+      "desc": "世界上最大的螃蟹，连鲨鱼都能打过，还有什么能打败他？#黑科技 #抖音小助手 #吃货 #我要上热门 #传奇",
+      "video_labels": null,
+      "aweme_type": 4,
+      "text_extra": [
+        {
+          "hashtag_id": 1571925490014210,
+          "start": 26,
+          "end": 30,
+          "type": 1,
+          "hashtag_name": "黑科技"
+        },
+        {
+          "hashtag_name": "抖音小助手",
+          "hashtag_id": 1557656100811777,
+          "start": 31,
+          "end": 37,
+          "type": 1
+        },
+        {
+          "type": 1,
+          "hashtag_name": "吃货",
+          "hashtag_id": 1555952486532097,
+          "start": 38,
+          "end": 41
+        },
+        {
+          "start": 42,
+          "end": 48,
+          "type": 1,
+          "hashtag_name": "我要上热门",
+          "hashtag_id": 1599321527572563
+        },
+        {
+          "start": 49,
+          "end": 52,
+          "type": 1,
+          "hashtag_name": "传奇",
+          "hashtag_id": 1579703353481229
+        }
+      ],
+      "cha_list": null,
+      "position": null,
+      "video_text": null,
+      "long_video": null,
+      "aweme_id": "6766203775221910796",
+      "uniqid_position": null,
+      "comment_list": null,
+      "geofencing": null,
+      "video": {
+        "width": 720,
+        "origin_cover": {
+          "uri": "large/tos-cn-p-0015/61e1a2d3b4fc40468d6871987534a515_1575379590",
+          "url_list": [
+            "http://p3-dy.byteimg.com/large/tos-cn-p-0015/61e1a2d3b4fc40468d6871987534a515_1575379590.jpeg?from=2563711402_large",
+            "http://p29-dy.byteimg.com/large/tos-cn-p-0015/61e1a2d3b4fc40468d6871987534a515_1575379590.jpeg?from=2563711402_large",
+            "http://p9-dy.byteimg.com/large/tos-cn-p-0015/61e1a2d3b4fc40468d6871987534a515_1575379590.jpeg?from=2563711402_large"
+          ]
+        },
+        "download_addr": {
+          "uri": "v0200fd40000bnj64rimac2ssuan059g",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200fd40000bnj64rimac2ssuan059g&line=0&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200fd40000bnj64rimac2ssuan059g&line=1&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "has_watermark": true,
+        "play_addr": {
+          "uri": "v0200fd40000bnj64rimac2ssuan059g",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200fd40000bnj64rimac2ssuan059g&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200fd40000bnj64rimac2ssuan059g&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "height": 1280,
+        "dynamic_cover": {
+          "uri": "tos-cn-p-0015/be71c57655b845c6b063aeef6afdb251_1575379592",
+          "url_list": [
+            "https://p9-dy.byteimg.com/obj/tos-cn-p-0015/be71c57655b845c6b063aeef6afdb251_1575379592?from=2563711402_large",
+            "https://p29-dy.byteimg.com/obj/tos-cn-p-0015/be71c57655b845c6b063aeef6afdb251_1575379592?from=2563711402_large",
+            "https://p3-dy.byteimg.com/obj/tos-cn-p-0015/be71c57655b845c6b063aeef6afdb251_1575379592?from=2563711402_large"
+          ]
+        },
+        "ratio": "540p",
+        "play_addr_lowbr": {
+          "uri": "v0200fd40000bnj64rimac2ssuan059g",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200fd40000bnj64rimac2ssuan059g&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200fd40000bnj64rimac2ssuan059g&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "bit_rate": null,
+        "duration": 18200,
+        "vid": "v0200fd40000bnj64rimac2ssuan059g",
+        "cover": {
+          "uri": "tos-cn-p-0015/0503bd09991a428b8e92321be6076a68",
+          "url_list": [
+            "https://p9-dy.byteimg.com/img/tos-cn-p-0015/0503bd09991a428b8e92321be6076a68~c5_300x400.jpeg?from=2563711402_large",
+            "https://p29-dy.byteimg.com/img/tos-cn-p-0015/0503bd09991a428b8e92321be6076a68~c5_300x400.jpeg?from=2563711402_large",
+            "https://p3-dy.byteimg.com/img/tos-cn-p-0015/0503bd09991a428b8e92321be6076a68~c5_300x400.jpeg?from=2563711402_large"
+          ]
+        }
+      }
+    },
+    {
+      "statistics": {
+        "share_count": 48,
+        "forward_count": 1,
+        "aweme_id": "6761373164288232707",
+        "comment_count": 113,
+        "digg_count": 7524,
+        "play_count": 0
+      },
+      "image_infos": null,
+      "position": null,
+      "video_text": null,
+      "label_top_text": null,
+      "promotions": null,
+      "aweme_id": "6761373164288232707",
+      "desc": "中国火锅彻底征服外国人！#火锅 #吃货 #海底捞 #成都 #重庆 #辣 #美食 #电商小助手 #抖音小助手",
+      "long_video": null,
+      "uniqid_position": null,
+      "comment_list": null,
+      "geofencing": null,
+      "video": {
+        "origin_cover": {
+          "uri": "large/tos-cn-p-0015/c7f5674c65ed4dcb80e8f60cd0863dd9_1574254880",
+          "url_list": [
+            "http://p3-dy.byteimg.com/large/tos-cn-p-0015/c7f5674c65ed4dcb80e8f60cd0863dd9_1574254880.jpeg?from=2563711402_large",
+            "http://p29-dy.byteimg.com/large/tos-cn-p-0015/c7f5674c65ed4dcb80e8f60cd0863dd9_1574254880.jpeg?from=2563711402_large",
+            "http://p9-dy.byteimg.com/large/tos-cn-p-0015/c7f5674c65ed4dcb80e8f60cd0863dd9_1574254880.jpeg?from=2563711402_large"
+          ]
+        },
+        "ratio": "540p",
+        "duration": 23000,
+        "dynamic_cover": {
+          "uri": "tos-cn-p-0015/057d61af41b24e1091a4036f62feface_1574254884",
+          "url_list": [
+            "https://p9-dy.byteimg.com/obj/tos-cn-p-0015/057d61af41b24e1091a4036f62feface_1574254884?from=2563711402_large",
+            "https://p29-dy.byteimg.com/obj/tos-cn-p-0015/057d61af41b24e1091a4036f62feface_1574254884?from=2563711402_large",
+            "https://p3-dy.byteimg.com/obj/tos-cn-p-0015/057d61af41b24e1091a4036f62feface_1574254884?from=2563711402_large"
+          ]
+        },
+        "cover": {
+          "uri": "tos-cn-p-0015/b4a5216fd417423e899000efe02bc3e9_1574254906",
+          "url_list": [
+            "https://p1-dy.byteimg.com/img/tos-cn-p-0015/b4a5216fd417423e899000efe02bc3e9_1574254906~c5_300x400.jpeg?from=2563711402_large",
+            "https://p29-dy.byteimg.com/img/tos-cn-p-0015/b4a5216fd417423e899000efe02bc3e9_1574254906~c5_300x400.jpeg?from=2563711402_large",
+            "https://p3-dy.byteimg.com/img/tos-cn-p-0015/b4a5216fd417423e899000efe02bc3e9_1574254906~c5_300x400.jpeg?from=2563711402_large"
+          ]
+        },
+        "height": 1280,
+        "width": 720,
+        "download_addr": {
+          "uri": "v0200f5b0000bnajhrubm86mrt5unvgg",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f5b0000bnajhrubm86mrt5unvgg&line=0&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f5b0000bnajhrubm86mrt5unvgg&line=1&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "has_watermark": true,
+        "play_addr_lowbr": {
+          "uri": "v0200f5b0000bnajhrubm86mrt5unvgg",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f5b0000bnajhrubm86mrt5unvgg&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f5b0000bnajhrubm86mrt5unvgg&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "bit_rate": null,
+        "play_addr": {
+          "uri": "v0200f5b0000bnajhrubm86mrt5unvgg",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f5b0000bnajhrubm86mrt5unvgg&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f5b0000bnajhrubm86mrt5unvgg&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "vid": "v0200f5b0000bnajhrubm86mrt5unvgg"
+      },
+      "video_labels": null,
+      "aweme_type": 4,
+      "cha_list": null,
+      "text_extra": [
+        {
+          "start": 12,
+          "end": 15,
+          "type": 1,
+          "hashtag_name": "火锅",
+          "hashtag_id": 1553400994340865
+        },
+        {
+          "start": 16,
+          "end": 19,
+          "type": 1,
+          "hashtag_name": "吃货",
+          "hashtag_id": 1555952486532097
+        },
+        {
+          "start": 20,
+          "end": 24,
+          "type": 1,
+          "hashtag_name": "海底捞",
+          "hashtag_id": 1568098488001538
+        },
+        {
+          "hashtag_name": "成都",
+          "hashtag_id": 1560034530455553,
+          "start": 25,
+          "end": 28,
+          "type": 1
+        },
+        {
+          "type": 1,
+          "hashtag_name": "重庆",
+          "hashtag_id": 1562728992038913,
+          "start": 29,
+          "end": 32
+        },
+        {
+          "hashtag_id": 1571547304416258,
+          "start": 33,
+          "end": 35,
+          "type": 1,
+          "hashtag_name": "辣"
+        },
+        {
+          "hashtag_id": 1554036363744257,
+          "start": 36,
+          "end": 39,
+          "type": 1,
+          "hashtag_name": "美食"
+        },
+        {
+          "start": 40,
+          "end": 46,
+          "type": 1,
+          "hashtag_name": "电商小助手",
+          "hashtag_id": 1609465071233102
+        },
+        {
+          "start": 47,
+          "end": 53,
+          "type": 1,
+          "hashtag_name": "抖音小助手",
+          "hashtag_id": 1557656100811777
+        }
+      ]
+    },
+    {
+      "aweme_id": "6761002363751812355",
+      "video": {
+        "dynamic_cover": {
+          "uri": "tos-cn-p-0015/7661a7540fa54e80ad0a1aecc500207f_1574168547",
+          "url_list": [
+            "https://p3-dy.byteimg.com/obj/tos-cn-p-0015/7661a7540fa54e80ad0a1aecc500207f_1574168547?from=2563711402_large",
+            "https://p29-dy.byteimg.com/obj/tos-cn-p-0015/7661a7540fa54e80ad0a1aecc500207f_1574168547?from=2563711402_large",
+            "https://p1-dy.byteimg.com/obj/tos-cn-p-0015/7661a7540fa54e80ad0a1aecc500207f_1574168547?from=2563711402_large"
+          ]
+        },
+        "origin_cover": {
+          "uri": "large/tos-cn-p-0015/c8dab284e7c64efc9e0a061aab1b3985_1574168545",
+          "url_list": [
+            "http://p9-dy.byteimg.com/large/tos-cn-p-0015/c8dab284e7c64efc9e0a061aab1b3985_1574168545.jpeg?from=2563711402_large",
+            "http://p29-dy.byteimg.com/large/tos-cn-p-0015/c8dab284e7c64efc9e0a061aab1b3985_1574168545.jpeg?from=2563711402_large",
+            "http://p3-dy.byteimg.com/large/tos-cn-p-0015/c8dab284e7c64efc9e0a061aab1b3985_1574168545.jpeg?from=2563711402_large"
+          ]
+        },
+        "ratio": "540p",
+        "play_addr_lowbr": {
+          "uri": "v0200fb40000bn9ufil8n75l4fbemgg0",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200fb40000bn9ufil8n75l4fbemgg0&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200fb40000bn9ufil8n75l4fbemgg0&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "play_addr": {
+          "uri": "v0200fb40000bn9ufil8n75l4fbemgg0",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200fb40000bn9ufil8n75l4fbemgg0&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200fb40000bn9ufil8n75l4fbemgg0&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "cover": {
+          "uri": "tos-cn-p-0015/a02d570355d44b08b58f7fcf5dceed73",
+          "url_list": [
+            "https://p9-dy.byteimg.com/img/tos-cn-p-0015/a02d570355d44b08b58f7fcf5dceed73~c5_300x400.jpeg?from=2563711402_large",
+            "https://p29-dy.byteimg.com/img/tos-cn-p-0015/a02d570355d44b08b58f7fcf5dceed73~c5_300x400.jpeg?from=2563711402_large",
+            "https://p3-dy.byteimg.com/img/tos-cn-p-0015/a02d570355d44b08b58f7fcf5dceed73~c5_300x400.jpeg?from=2563711402_large"
+          ]
+        },
+        "width": 720,
+        "bit_rate": null,
+        "duration": 27133,
+        "vid": "v0200fb40000bn9ufil8n75l4fbemgg0",
+        "height": 1280,
+        "download_addr": {
+          "uri": "v0200fb40000bn9ufil8n75l4fbemgg0",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200fb40000bn9ufil8n75l4fbemgg0&line=0&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200fb40000bn9ufil8n75l4fbemgg0&line=1&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "has_watermark": true
+      },
+      "position": null,
+      "promotions": null,
+      "long_video": null,
+      "desc": "#螺蛳粉 闻起来丧胆，吃一口腿软，#柳州 螺蛳粉征服老外，你喜欢吗？#吃货#美食 #小吃 #广西",
+      "video_labels": null,
+      "comment_list": null,
+      "video_text": null,
+      "label_top_text": null,
+      "text_extra": [
+        {
+          "start": 0,
+          "end": 4,
+          "type": 1,
+          "hashtag_name": "螺蛳粉",
+          "hashtag_id": 1573858621228045
+        },
+        {
+          "hashtag_id": 1576455385010189,
+          "start": 17,
+          "end": 20,
+          "type": 1,
+          "hashtag_name": "柳州"
+        },
+        {
+          "end": 37,
+          "type": 1,
+          "hashtag_name": "吃货",
+          "hashtag_id": 1555952486532097,
+          "start": 34
+        },
+        {
+          "end": 40,
+          "type": 1,
+          "hashtag_name": "美食",
+          "hashtag_id": 1554036363744257,
+          "start": 37
+        },
+        {
+          "hashtag_name": "小吃",
+          "hashtag_id": 1573253868022797,
+          "start": 41,
+          "end": 44,
+          "type": 1
+        },
+        {
+          "start": 45,
+          "end": 48,
+          "type": 1,
+          "hashtag_name": "广西",
+          "hashtag_id": 1582476165502990
+        }
+      ],
+      "aweme_type": 4,
+      "image_infos": null,
+      "uniqid_position": null,
+      "geofencing": null,
+      "cha_list": null,
+      "statistics": {
+        "comment_count": 95,
+        "digg_count": 4830,
+        "play_count": 0,
+        "share_count": 34,
+        "forward_count": 2,
+        "aweme_id": "6761002363751812355"
+      }
+    },
+    {
+      "video_text": null,
+      "promotions": null,
+      "aweme_type": 4,
+      "position": null,
+      "comment_list": null,
+      "geofencing": null,
+      "label_top_text": null,
+      "desc": "有多少老外曾方言一年吃遍中国美食？#厉害了我的国 #四川#抖音小助手",
+      "cha_list": null,
+      "video": {
+        "play_addr": {
+          "uri": "v0200f710000bn7bkg7m1hfdan41svj0",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f710000bn7bkg7m1hfdan41svj0&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f710000bn7bkg7m1hfdan41svj0&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "width": 720,
+        "ratio": "540p",
+        "bit_rate": null,
+        "vid": "v0200f710000bn7bkg7m1hfdan41svj0",
+        "has_watermark": true,
+        "play_addr_lowbr": {
+          "uri": "v0200f710000bn7bkg7m1hfdan41svj0",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f710000bn7bkg7m1hfdan41svj0&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f710000bn7bkg7m1hfdan41svj0&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "duration": 20800,
+        "cover": {
+          "uri": "tos-cn-p-0015/65e71b6dea1145cba04ab2f5658c2db1_1573829212",
+          "url_list": [
+            "https://p3-dy.byteimg.com/img/tos-cn-p-0015/65e71b6dea1145cba04ab2f5658c2db1_1573829212~c5_300x400.jpeg?from=2563711402_large",
+            "https://p29-dy.byteimg.com/img/tos-cn-p-0015/65e71b6dea1145cba04ab2f5658c2db1_1573829212~c5_300x400.jpeg?from=2563711402_large",
+            "https://p9-dy.byteimg.com/img/tos-cn-p-0015/65e71b6dea1145cba04ab2f5658c2db1_1573829212~c5_300x400.jpeg?from=2563711402_large"
+          ]
+        },
+        "height": 1280,
+        "dynamic_cover": {
+          "uri": "tos-cn-p-0015/0d5f9c60b285467ab2cafd2e4d2ccfd7_1573829217",
+          "url_list": [
+            "https://p1-dy.byteimg.com/obj/tos-cn-p-0015/0d5f9c60b285467ab2cafd2e4d2ccfd7_1573829217?from=2563711402_large",
+            "https://p29-dy.byteimg.com/obj/tos-cn-p-0015/0d5f9c60b285467ab2cafd2e4d2ccfd7_1573829217?from=2563711402_large",
+            "https://p3-dy.byteimg.com/obj/tos-cn-p-0015/0d5f9c60b285467ab2cafd2e4d2ccfd7_1573829217?from=2563711402_large"
+          ]
+        },
+        "origin_cover": {
+          "uri": "large/tos-cn-p-0015/e8322075dca54b94a3b4c54919fc0639_1573829211",
+          "url_list": [
+            "http://p9-dy.byteimg.com/large/tos-cn-p-0015/e8322075dca54b94a3b4c54919fc0639_1573829211.jpeg?from=2563711402_large",
+            "http://p29-dy.byteimg.com/large/tos-cn-p-0015/e8322075dca54b94a3b4c54919fc0639_1573829211.jpeg?from=2563711402_large",
+            "http://p3-dy.byteimg.com/large/tos-cn-p-0015/e8322075dca54b94a3b4c54919fc0639_1573829211.jpeg?from=2563711402_large"
+          ]
+        },
+        "download_addr": {
+          "uri": "v0200f710000bn7bkg7m1hfdan41svj0",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f710000bn7bkg7m1hfdan41svj0&line=0&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f710000bn7bkg7m1hfdan41svj0&line=1&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        }
+      },
+      "uniqid_position": null,
+      "aweme_id": "6759544940021206283",
+      "statistics": {
+        "aweme_id": "6759544940021206283",
+        "comment_count": 287,
+        "digg_count": 22000,
+        "play_count": 0,
+        "share_count": 53,
+        "forward_count": 1
+      },
+      "image_infos": null,
+      "text_extra": [
+        {
+          "type": 1,
+          "hashtag_name": "厉害了我的国",
+          "hashtag_id": 1579874350578701,
+          "start": 17,
+          "end": 24
+        },
+        {
+          "hashtag_name": "四川",
+          "hashtag_id": 1571015410279426,
+          "start": 25,
+          "end": 28,
+          "type": 1
+        },
+        {
+          "start": 28,
+          "end": 34,
+          "type": 1,
+          "hashtag_name": "抖音小助手",
+          "hashtag_id": 1557656100811777
+        }
+      ],
+      "video_labels": null,
+      "long_video": null
+    },
+    {
+      "comment_list": null,
+      "promotions": null,
+      "video": {
+        "dynamic_cover": {
+          "uri": "tos-cn-p-0015/fe987c4df6a84f6e8170f24ab8cfb346_1573618738",
+          "url_list": [
+            "https://p26-dy.byteimg.com/obj/tos-cn-p-0015/fe987c4df6a84f6e8170f24ab8cfb346_1573618738?from=2563711402_large",
+            "https://p3-dy.byteimg.com/obj/tos-cn-p-0015/fe987c4df6a84f6e8170f24ab8cfb346_1573618738?from=2563711402_large",
+            "https://p9-dy.byteimg.com/obj/tos-cn-p-0015/fe987c4df6a84f6e8170f24ab8cfb346_1573618738?from=2563711402_large"
+          ]
+        },
+        "ratio": "540p",
+        "vid": "v0200f7d0000bn5o7kc1n3eatlgqmhjg",
+        "height": 1280,
+        "cover": {
+          "uri": "tos-cn-p-0015/0fd6e7486172426bbc80c768f318dfba_1573618738",
+          "url_list": [
+            "https://p9-dy.byteimg.com/img/tos-cn-p-0015/0fd6e7486172426bbc80c768f318dfba_1573618738~c5_300x400.jpeg?from=2563711402_large",
+            "https://p29-dy.byteimg.com/img/tos-cn-p-0015/0fd6e7486172426bbc80c768f318dfba_1573618738~c5_300x400.jpeg?from=2563711402_large",
+            "https://p3-dy.byteimg.com/img/tos-cn-p-0015/0fd6e7486172426bbc80c768f318dfba_1573618738~c5_300x400.jpeg?from=2563711402_large"
+          ]
+        },
+        "width": 720,
+        "origin_cover": {
+          "uri": "large/tos-cn-p-0015/a28a30cf4d324feba3e840935083caad_1573618740",
+          "url_list": [
+            "http://p3-dy.byteimg.com/large/tos-cn-p-0015/a28a30cf4d324feba3e840935083caad_1573618740.jpeg?from=2563711402_large",
+            "http://p29-dy.byteimg.com/large/tos-cn-p-0015/a28a30cf4d324feba3e840935083caad_1573618740.jpeg?from=2563711402_large",
+            "http://p9-dy.byteimg.com/large/tos-cn-p-0015/a28a30cf4d324feba3e840935083caad_1573618740.jpeg?from=2563711402_large"
+          ]
+        },
+        "download_addr": {
+          "uri": "v0200f7d0000bn5o7kc1n3eatlgqmhjg",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f7d0000bn5o7kc1n3eatlgqmhjg&line=0&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f7d0000bn5o7kc1n3eatlgqmhjg&line=1&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "has_watermark": true,
+        "play_addr_lowbr": {
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f7d0000bn5o7kc1n3eatlgqmhjg&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f7d0000bn5o7kc1n3eatlgqmhjg&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ],
+          "uri": "v0200f7d0000bn5o7kc1n3eatlgqmhjg"
+        },
+        "bit_rate": null,
+        "play_addr": {
+          "uri": "v0200f7d0000bn5o7kc1n3eatlgqmhjg",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f7d0000bn5o7kc1n3eatlgqmhjg&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f7d0000bn5o7kc1n3eatlgqmhjg&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "duration": 22500
+      },
+      "video_labels": null,
+      "geofencing": null,
+      "video_text": null,
+      "cha_list": null,
+      "statistics": {
+        "digg_count": 6593,
+        "play_count": 0,
+        "share_count": 41,
+        "forward_count": 3,
+        "aweme_id": "6758640937712372996",
+        "comment_count": 72
+      },
+      "text_extra": [
+        {
+          "start": 18,
+          "end": 24,
+          "type": 1,
+          "hashtag_name": "抖音小助手",
+          "hashtag_id": 1557656100811777
+        },
+        {
+          "start": 25,
+          "end": 32,
+          "type": 1,
+          "hashtag_name": "厉害了我的国",
+          "hashtag_id": 1579874350578701
+        },
+        {
+          "end": 36,
+          "type": 1,
+          "hashtag_name": "中国",
+          "hashtag_id": 1566294436198401,
+          "start": 33
+        }
+      ],
+      "aweme_type": 4,
+      "position": null,
+      "long_video": null,
+      "aweme_id": "6758640937712372996",
+      "desc": "为啥说中国学生做了全世界一半的作业？#抖音小助手 #厉害了我的国 #中国",
+      "image_infos": null,
+      "uniqid_position": null,
+      "label_top_text": null
+    },
+    {
+      "aweme_id": "6758055001601445131",
+      "desc": "帝王蟹泛滥成灾，中国吃货们开始跃跃欲试，我要去挪威。#黑科技 #生活",
+      "position": null,
+      "label_top_text": null,
+      "promotions": null,
+      "text_extra": [
+        {
+          "end": 30,
+          "type": 1,
+          "hashtag_name": "黑科技",
+          "hashtag_id": 1571925490014210,
+          "start": 26
+        },
+        {
+          "start": 31,
+          "end": 34,
+          "type": 1,
+          "hashtag_name": "生活",
+          "hashtag_id": 1557835789985794
+        }
+      ],
+      "comment_list": null,
+      "cha_list": null,
+      "uniqid_position": null,
+      "long_video": null,
+      "geofencing": null,
+      "video_text": null,
+      "video": {
+        "play_addr": {
+          "uri": "v0200f6c0000bn4mu173cp5brkr8e370",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f6c0000bn4mu173cp5brkr8e370&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f6c0000bn4mu173cp5brkr8e370&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "cover": {
+          "uri": "tos-cn-p-0015/3743e644029b46ed9fcf80872fbd6546",
+          "url_list": [
+            "https://p3-dy.byteimg.com/img/tos-cn-p-0015/3743e644029b46ed9fcf80872fbd6546~c5_300x400.jpeg?from=2563711402_large",
+            "https://p29-dy.byteimg.com/img/tos-cn-p-0015/3743e644029b46ed9fcf80872fbd6546~c5_300x400.jpeg?from=2563711402_large",
+            "https://p9-dy.byteimg.com/img/tos-cn-p-0015/3743e644029b46ed9fcf80872fbd6546~c5_300x400.jpeg?from=2563711402_large"
+          ]
+        },
+        "origin_cover": {
+          "uri": "large/tos-cn-p-0015/95e0f56b3a2e4a94bbfed6ff66e4a99a_1573482310",
+          "url_list": [
+            "http://p26-dy.byteimg.com/large/tos-cn-p-0015/95e0f56b3a2e4a94bbfed6ff66e4a99a_1573482310.jpeg?from=2563711402_large",
+            "http://p29-dy.byteimg.com/large/tos-cn-p-0015/95e0f56b3a2e4a94bbfed6ff66e4a99a_1573482310.jpeg?from=2563711402_large",
+            "http://p3-dy.byteimg.com/large/tos-cn-p-0015/95e0f56b3a2e4a94bbfed6ff66e4a99a_1573482310.jpeg?from=2563711402_large"
+          ]
+        },
+        "ratio": "540p",
+        "has_watermark": true,
+        "play_addr_lowbr": {
+          "uri": "v0200f6c0000bn4mu173cp5brkr8e370",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f6c0000bn4mu173cp5brkr8e370&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f6c0000bn4mu173cp5brkr8e370&line=1&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "bit_rate": null,
+        "vid": "v0200f6c0000bn4mu173cp5brkr8e370",
+        "height": 1280,
+        "width": 720,
+        "dynamic_cover": {
+          "uri": "tos-cn-p-0015/002ff4e7772a476bb16c05beaf2cdbb5_1573482311",
+          "url_list": [
+            "https://p3-dy.byteimg.com/obj/tos-cn-p-0015/002ff4e7772a476bb16c05beaf2cdbb5_1573482311?from=2563711402_large",
+            "https://p1-dy.byteimg.com/obj/tos-cn-p-0015/002ff4e7772a476bb16c05beaf2cdbb5_1573482311?from=2563711402_large",
+            "https://p9-dy.byteimg.com/obj/tos-cn-p-0015/002ff4e7772a476bb16c05beaf2cdbb5_1573482311?from=2563711402_large"
+          ]
+        },
+        "download_addr": {
+          "uri": "v0200f6c0000bn4mu173cp5brkr8e370",
+          "url_list": [
+            "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f6c0000bn4mu173cp5brkr8e370&line=0&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH",
+            "https://api.amemv.com/aweme/v1/play/?video_id=v0200f6c0000bn4mu173cp5brkr8e370&line=1&ratio=540p&watermark=1&media_type=4&vr_type=0&improve_bitrate=0&logo_name=aweme&is_support_h265=0&source=PackSourceEnum_PUBLISH"
+          ]
+        },
+        "duration": 24000
+      },
+      "statistics": {
+        "share_count": 143,
+        "forward_count": 6,
+        "aweme_id": "6758055001601445131",
+        "comment_count": 1729,
+        "digg_count": 17000,
+        "play_count": 0
+      },
+      "video_labels": null,
+      "aweme_type": 4,
+      "image_infos": null
+    }
+  ],
+  "max_cursor": 1573482303000
+}
