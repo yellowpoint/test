@@ -6,7 +6,8 @@ const fs = require('fs');
 const {
   ajaxKey,
   inputUrl,
-  isShowChrome
+  isShowChrome,
+  isSaveJsonData
 } = require('./config')
 
 async function getAllUrl() {
@@ -83,7 +84,9 @@ async function getAllUrl() {
 
 
   console.log('视频接口爬取完成，视频个数为：', aweme_list.length)
-  fs.writeFileSync('aweme_list.json', JSON.stringify(aweme_list))
+  if (isSaveJsonData) {
+    fs.writeFileSync('aweme_list.json', JSON.stringify(aweme_list))
+  }
   await browser.close();
   return aweme_list
 
