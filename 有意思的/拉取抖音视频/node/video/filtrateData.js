@@ -1,3 +1,4 @@
+// 整理数据,筛选出所需要的数据
 const fs = require('fs');
 let getAllUrl = require('./getAllUrl2.js');
 async function getFiltrateData() {

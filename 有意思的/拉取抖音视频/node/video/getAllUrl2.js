@@ -1,3 +1,4 @@
+// 获取接口中的所有视频链接
 const puppeteer = require('puppeteer');
 const devices = require('puppeteer/DeviceDescriptors')
 const iPhone = devices['iPhone 6']
