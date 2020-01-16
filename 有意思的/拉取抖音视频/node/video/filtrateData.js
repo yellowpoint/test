@@ -1,6 +1,6 @@
 // 整理数据,筛选出所需要的数据
 const fs = require('fs');
-let getAllUrl = require('./getAllUrl2.js');
+let getAllUrl = require('./getAllUrl.js/index.js');
 async function getFiltrateData() {
   // .replace(/ /g, '')
   // 这里需要过滤标题中不能作为文件名保存的关键字
