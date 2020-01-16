@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    String.prototype.replaceAll = function (search, replacement) {
+      var target = this;
+      search = escapeRegExp(search)
+      return target.replace(new RegExp(search, 'g'), replacement);
+    };
+    // 兼容正则中需要转义的
+    function escapeRegExp(str) {
+      return str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // $& means the whole matched string
+    }
+    const safeGet = (o, path) => {
+      // 只要把[]都替换了就好了嘛
+      path = path.replaceAll('[', '.')
+      path = path.replaceAll(']', '')
+      console.log('path', path)
+      try {
+        return path.split('.').reduce((o, k) => o[k], o)
+      } catch (e) {
+        return void 666
+      }
+    }
+    // 获取js深层次属性兼容有[]的情况
+    function getJsonValue(obj, node) {
+      // debugger
+      if (!obj) {
+        return null;
+      }
+      if (!node) {
+        return null;
+      }
+      let nodes = node.split(".");
+      let item = nodes[0]
+      let newObj = obj[item]
+      if (nodes[0].indexOf('[') > -1) {
+        let itemArr = item.split("[")
+        newObj = obj[itemArr[0]]
+        newObj = newObj[itemArr[1].slice(0, -1)]
+      }
+      if (nodes.length == 1) {
+        return newObj;
+      }
+      return getJsonValue(newObj, node.substring(item.length + 1));
+    }
+
+    var a = {
+      aa: {
+        aaa: [1, 2, 3]
+      }
+    }
+
+    console.log(getJsonValue(a, 'aa.aaa[1]'))
+    console.log(safeGet(a, 'aa.aaa[1]'))
+  </script>
+</body>
+
+</html>
