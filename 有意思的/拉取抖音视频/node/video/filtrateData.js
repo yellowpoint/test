@@ -2,7 +2,9 @@ const fs = require('fs');
 let getAllUrl = require('./getAllUrl2.js');
 async function getFiltrateData() {
   // .replace(/ /g, '')
+  // 这里需要过滤标题中不能作为文件名保存的关键字
   let aweme_list = await getAllUrl()
+  console.log("开始整理数据")
   let filtrateData = []
   aweme_list.forEach((item, index) => {
     filtrateData.push({
@@ -10,7 +12,7 @@ async function getFiltrateData() {
       url: item.video.play_addr.url_list[0]
     })
   })
-  console.log("TCL: filtrateData", filtrateData.length)
+  console.log("整理数据完成，视频个数为：", filtrateData.length)
   fs.writeFileSync('filtrateData.json', JSON.stringify(filtrateData))
   return filtrateData
 }

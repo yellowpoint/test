@@ -1,23 +1,6 @@
 const fs = require('fs');
 const http = require('http');
-const sourceUrl = "https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200f3b0000boejbo6gnco1nprmfabg&line=0&ratio=540p&media_type=4&vr_type=0&improve_bitrate=0&is_play_url=1&is_support_h265=0&source=PackSourceEnum_PUBLISH";
-
-const config = {
-  savePath: './output'
-}
-let getUrl = require('./getUrl.js');
-let getFiltrateData = require('./filtrateData.js');
-
-
-(async () => {
-
-  let filtrateData = await getFiltrateData()
-  for (let i = 0; i < filtrateData.length; i++) {
-    let video = await getUrl(filtrateData[i])
-    downloadVideo(video)
-  }
-
-})()
+const config = require('./config');
 
 function getVideoData(url, encoding) {
   return new Promise((resolve, reject) => {
@@ -38,6 +21,17 @@ function getVideoData(url, encoding) {
   })
 }
 
+function savefileToPath(fileName, fileData) {
+  let fileFullName = `${config.savePath}/${fileName}.mp4`
+  return new Promise((resolve, reject) => {
+    fs.writeFile(fileFullName, fileData, 'binary', function (err) {
+      if (err) {
+        console.log('savefileToPath error:', err)
+      }
+      resolve('已下载')
+    })
+  })
+}
 
 async function downloadVideo(video) {
   // 判断视频文件是否已经下载
@@ -53,14 +47,4 @@ async function downloadVideo(video) {
   }
 }
 
-function savefileToPath(fileName, fileData) {
-  let fileFullName = `${config.savePath}/${fileName}.mp4`
-  return new Promise((resolve, reject) => {
-    fs.writeFile(fileFullName, fileData, 'binary', function (err) {
-      if (err) {
-        console.log('savefileToPath error:', err)
-      }
-      resolve('已下载')
-    })
-  })
-}
+module.exports = downloadVideo

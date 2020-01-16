@@ -1,27 +1,30 @@
 const puppeteer = require('puppeteer');
-const cheerio = require('cheerio');
 const devices = require('puppeteer/DeviceDescriptors')
 const iPhone = devices['iPhone 6']
 const fs = require('fs');
+const {
+  ajaxKey,
+  inputUrl,
+  isShowChrome
+} = require('./config')
 
 async function getAllUrl() {
 
   const browser = await puppeteer.launch({
-    headless: false
+    headless: !isShowChrome
   });
   const page = await browser.newPage();
   await page.emulate(iPhone);
-  // await page.goto('https://v.douyin.com/qKYSAt/');
-  await page.goto('https://v.douyin.com/qKDN9n/');
-  console.log('getAllUrl start')
+  await page.goto(inputUrl);
+  console.log('开始获取接口中的视频')
   let aweme_list = []
   // 这个事件监听要放在下面那些await前面
   page.on('requestfinished', request => {
     // 查看所有请求地址
     if (request.resourceType() == "xhr") {
-      // console.log("TCL: request", request.url())
+
       // 匹配所需数据的请求地址
-      if (request.url().indexOf('v2/aweme/post') != -1) {
+      if (request.url().indexOf(ajaxKey) != -1) {
         (async () => {
           try {
             // 获取数据并转为json格式
@@ -30,7 +33,7 @@ async function getAllUrl() {
 
             // 接口数据中找到需要的数据      
             aweme_list.push(...result.aweme_list)
-            console.log("TCL: aweme_list", aweme_list.length)
+            console.log("正在获取接口数据，当前视频个数：", aweme_list.length)
           } catch (err) {
             console.log(err)
           }
@@ -38,8 +41,13 @@ async function getAllUrl() {
       }
     }
   });
+
+  // 不能传this进去，应该就是只能传入能序列化的值
   await page.evaluate(async () => {
-    // 这里面的作用域很奇怪，拿不到外面的变量
+    let isScrollEnd = false
+    // 这个是在浏览器的环境了，所以console不会打到node控制台，
+    // 所以这个代码里的变量不能用到这里面
+
     function sleep(second) {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -47,17 +55,38 @@ async function getAllUrl() {
         }, second);
       })
     }
-    for (let y = 0; y <= 12693; y += 100) {
+    let scroll_timer = null
+    $(window).scroll(function () {
+      var scrollTop = $(this).scrollTop();
+      var scrollHeight = $(document).height();
+      var windowHeight = $(this).height();
+      // 防止滚动过快，接口较慢，500ms后再去判断
+      clearTimeout(scroll_timer)
+      scroll_timer = setTimeout(() => {
+        if (scrollTop + windowHeight >= scrollHeight) {
+          isScrollEnd = true
+          console.log("that.isScrollEnd", isScrollEnd)
+        }
+      }, 500)
+
+    });
+    let y = 0;
+    // 防止无限滚动的页面，window.scrollY 做个限制
+    while (!isScrollEnd && y < 50000) {
+      y += 100
       await sleep(20);
       window.scrollTo(0, y)
     }
+
   })
-  console.log('aweme_list', aweme_list.length)
+
+
+  console.log('视频接口爬取完成，视频个数为：', aweme_list.length)
   fs.writeFileSync('aweme_list.json', JSON.stringify(aweme_list))
   await browser.close();
   return aweme_list
 
 }
 
-
+// getAllUrl()
 module.exports = getAllUrl
