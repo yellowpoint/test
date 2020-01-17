@@ -5,12 +5,11 @@ const iPhone = devices['iPhone 6']
 const fs = require('fs');
 const {
   ajaxKey,
-  inputUrl,
   isShowChrome,
   isSaveJsonData
 } = require('./config')
 
-async function getAllUrl() {
+async function getAllUrl(inputUrl) {
 
   const browser = await puppeteer.launch({
     headless: !isShowChrome

@@ -29,16 +29,16 @@ function getJsonValue(obj, node) {
   return getJsonValue(newObj, node.substring(item.length + 1));
 }
 
-async function getFiltrateData() {
+async function getFiltrateData(inputUrl) {
   // .replace(/ /g, '')
   // 这里需要过滤标题中不能作为文件名保存的关键字
-  let aweme_list = await getAllUrl()
+  let aweme_list = await getAllUrl(inputUrl)
   console.log("开始整理数据")
   let filtrateData = []
   try {
     aweme_list.forEach((item, index) => {
       filtrateData.push({
-        title: `${index}_${item.desc.slice(0,4)}`,
+        title: `${index+1}_${item.desc}`,
         url: getJsonValue(item, ajaxPath)
       })
     })

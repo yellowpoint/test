@@ -4,9 +4,9 @@ const getFiltrateData = require('./filtrateData.js');
 const downloadVideo = require('./download.js');
 const config = require('./config');
 
-(async () => {
 
-  let filtrateData = await getFiltrateData()
+async function getVideo(inputUrl) {
+  let filtrateData = await getFiltrateData(inputUrl)
   for (let i = 0; i < filtrateData.length; i++) {
     // 获取实际视频下载地址
     let video = await getUrl(filtrateData[i])
@@ -14,5 +14,6 @@ const config = require('./config');
       downloadVideo(video)
     }
   }
+}
 
-})()
+module.exports = getVideo
