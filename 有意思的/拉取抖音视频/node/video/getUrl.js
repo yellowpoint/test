@@ -8,7 +8,7 @@ const getUrl = async (item) => {
   const page = await browser.newPage();
   await page.emulate(iPhone);
   await page.goto(item.url);
-  // await page.waitFor(1000);
+  // await page.waitFor(1000);  //页面等待，可以是时间、某个元素、某个函数
   // await page.screenshot({
   //   path: 'google.png'
   // });
