@@ -30,13 +30,12 @@ function getJsonValue(obj, node) {
 }
 
 async function getFiltrateData(inputUrl) {
-  // .replace(/ /g, '')
   // 这里需要过滤标题中不能作为文件名保存的关键字
   let aweme_list = await getAllUrl(inputUrl)
   console.log("开始整理数据")
   let filtrateData = []
   try {
-    aweme_list.forEach((item, index) => {
+    aweme_list.reverse().forEach((item, index) => {
       filtrateData.push({
         title: `${index+1}_${item.desc}`,
         url: getJsonValue(item, ajaxPath)

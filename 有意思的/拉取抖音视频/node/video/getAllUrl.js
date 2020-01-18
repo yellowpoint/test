@@ -61,14 +61,14 @@ async function getAllUrl(inputUrl) {
       var scrollTop = $(this).scrollTop();
       var scrollHeight = $(document).height();
       var windowHeight = $(this).height();
-      // 防止滚动过快，接口较慢，500ms后再去判断
+      // 防止滚动过快，接口较慢，1.5s后再去判断
       clearTimeout(scroll_timer)
       scroll_timer = setTimeout(() => {
         if (scrollTop + windowHeight >= scrollHeight) {
           isScrollEnd = true
           console.log("that.isScrollEnd", isScrollEnd)
         }
-      }, 500)
+      }, 1500)
 
     });
     let y = 0;
