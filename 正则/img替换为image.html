@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 正则表达式匹配html标签里面的内容 https://blog.csdn.net/weixin_33728708/article/details/93324615
+    var re = /<img([\s\S]*)>/;
+    var str = '<img :src="rData[0].imageUrl" alt="" @click="jump1(rData[0],0)">'
+    var newstr = str.replace(re, '<image mode="widthFix"$1></image>');
+    console.log(newstr);
+    var result = re.exec(str)
+    console.log('result', result)
+  </script>
+</body>
+
+</html>
