@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script>
+  <script>
+
+    console.log(_.sum(['1',2]))
+    var objects = [{ 'n': '4' }, { 'n': 2 }, { 'n': 8 }, { 'n': 6 }];
+    let objects2 = []
+    console.log(_.sumBy(objects, function(o) { return +o.n; }))
+    console.log(_.sum([10,10,10]))
+
+    var users = [
+      { 'user': 'fred',   'age': 48 },
+      { 'user': 'barney', 'age': 36 },
+      { 'user': 'fred',   'age': 40 },
+      { 'user': 'barney', 'age': 34 }
+    ];
+
+    console.log(_.sortBy(users, 'age'))
+    console.log(_.sortBy(users, (i)=>{
+      return i.age<42
+    }))
+
+  </script>
+</body>
+
+</html>
