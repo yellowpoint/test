@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>继承</title>
+</head>
+
+<body>
+  <!-- <script>
+    // 组合继承
+    function Parent(value) {
+      this.val = value
+    }
+    Parent.prototype.getVal = function () {
+      console.log(this.val)
+    }
+
+    function Children(value) {
+      Parent.call(this, value)
+    }
+    Children.prototype = new Parent()
+
+    let Children1 = new Children(1)
+    Children1.getVal()
+    console.log(Children1 instanceof Parent)
+    console.log(Children1)
+  </script> -->
+
+  <script>
+    // 寄生组合继承
+    function Parent(value) {
+      this.val = value
+    }
+    Parent.prototype.getVal = function () {
+      console.log(this.val)
+    }
+
+    function Children(value) {
+      Parent.call(this, value)
+    }
+  </script>
+</body>
+
+</html>
