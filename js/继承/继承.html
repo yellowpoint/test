@@ -28,6 +28,8 @@
     console.log(Children1)
   </script> -->
 
+
+
   <script>
     // 寄生组合继承
     function Parent(value) {
@@ -40,7 +42,44 @@
     function Children(value) {
       Parent.call(this, value)
     }
+    Children.prototype = Object.create(Parent.prototype, {
+      constructor: {
+        value: Children,
+        enumerable: false,
+        writable: true,
+        configurable: true
+      }
+    })
+
+    const child1 = new Children(1)
+
+    child1.getVal()
   </script>
+
+
+
+
+  <!-- <script>
+    // class继承
+    class Parent {
+      constructor(value) {
+        this.val = value
+      }
+      getVal() {
+        console.log(this.val)
+      }
+    }
+    class Child extends Parent {
+      constructor(value) {
+        super(value)
+        // this.val = value
+      }
+    }
+    let child = new Child(1)
+    console.log(child)
+    child.getVal() // 1
+    console.log(child instanceof Parent) // true
+  </script> -->
 </body>
 
 </html>
