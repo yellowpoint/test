@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="text/javascript">
+    function fruits() {}
+
+    fruits.prototype = {
+      color: "red",
+      say: function () {
+        console.log("My color is " + this.color);
+      }
+    }
+
+    var apple = new fruits;
+    // apple.say(); //My color is red
+
+    var banana = {
+      color: "yellow",
+      say: function () {
+        console.log("hahah  " + this.color);
+      }
+    }
+    var pineapple = {
+      color: 'green'
+    }
+    var say2 = apple.say.bind(banana);
+    banana.say.call(apple);
+    // say2.call(pineapple)
+
+    Function.prototype.myCall = function (context) {
+      if (typeof this !== 'function') {
+        throw new TypeError('Error')
+      }
+      context = context || window
+      context.fn = this
+      const args = [...arguments].slice(1)
+      const result = context.fn(...args)
+      delete context.fn
+      return result
+    }
+    banana.say.myCall(apple);
+
+    Function.prototype.myApply = function (context) {
+      if (typeof this !== 'function') {
+        throw new TypeError('Error')
+      }
+      context = context || window
+      context.fn = this
+      const args = arguments[1] ? [...arguments[1]] : []
+      const result = context.fn(...args)
+      delete context.fn
+      return result
+    }
+
+    let oo = {
+      sum(a, b) {
+        console.log(a + b)
+      }
+    }
+    oo.sum(1, 1)
+    oo.sum.myCall(apple, 1, 1)
+    oo.sum.myApply(apple, [1, 1])
+
+
+    Function.prototype.myBind = function (context) {
+      if (typeof this !== 'function') {
+        throw new TypeError('Error')
+      }
+      const _this = this
+      // context = context || window
+      // context.fn = this
+      const args = [...arguments].slice(1)
+      return function F() {
+        if (this instanceof F) {
+          return new _this(...args, ...arguments)
+        }
+        return _this.call(context, ...args, ...arguments)
+      }
+    }
+
+    function foo() {
+      console.log(this)
+    }
+
+    let a3 = foo.bind({
+      a: 1
+    }, 10)
+    a3(20)
+    let aa1 = new a3;
+  </script>
+</body>
+
+</html>
