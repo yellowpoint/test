@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const PENDING = 'pending'
+    const RESOLVED = 'resolved'
+    const REJECTED = 'rejected'
+
+    function hd_promise(fn) {
+      const that = this
+      that.value = null
+      that.state = PENDING
+      that.resolvedCb = []
+      that.rejectedCb = []
+
+      function resolved(value) {
+        if (that.state === PENDING) {
+          that.state = RESOLVED
+          that.value = value
+          that.resolvedCb.forEach(i => i(that.value))
+        }
+      }
+
+      function rejected(value) {
+        if (that.state === PENDING) {
+          that.state = REJECTED
+          that.value = value
+          that.rejectedCb.forEach(i => i(that.value))
+        }
+      }
+      try {
+        fn(resolved, rejected)
+      } catch (e) {
+        rejected(e)
+      }
+    }
+
+    hd_promise.prototype.then = function (onResolved, onRejected) {
+      const that = this
+      onResolved = typeof onResolved === 'function' ? onResolved : r => r
+      onRejected = typeof onRejected === 'function' ? onRejected : r => {
+        throw r
+      }
+      if (that.state === PENDING) {
+        that.resolvedCb.push(onResolved)
+        that.rejectedCb.push(onRejected)
+      }
+      if (that.state === RESOLVED) {
+        onResolved(that.value)
+      }
+      if (that.state === REJECTED) {
+        onRejected(that.value)
+      }
+
+    }
+
+
+    new hd_promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(111)
+      }, 2000)
+
+    }).then(res => {
+      console.log(res)
+    })
+
+    console.log('aaaaa')
+  </script>
+</body>
+
+</html>

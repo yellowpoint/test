@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function hd_setInterval(callback, interval) {
+      let timer
+      const now = Date.now
+      let startTime = now()
+      let endTime = startTime
+      const loop = () => {
+        timer = window.requestAnimationFrame(loop)
+        endTime = now()
+        if (endTime - startTime >= interval) {
+          startTime = endTime = now()
+          callback(timer)
+        }
+        // return timer
+      }
+      timer = window.requestAnimationFrame(loop)
+      // return loop()
+      return timer
+
+    }
+    // hd_setInterval(() => {
+    //   console.log(1)
+    // }, 5000)
+  </script>
+  <script>
+    function hd_setInterval2() {
+      let now = Date.now
+      let stime = now()
+      let etime = stime
+      let intervalTimer
+      let loop = () => {
+        intervalTimer = requestAnimationFrame(loop)
+        etime = now()
+        if (etime - stime >= interval) {
+          stime = now()
+          etime = stime
+          cb()
+        }
+      }
+      intervalTimer = requestAnimationFrame(loop)
+      return intervalTimer
+    }
+  </script>
+</body>
+
+</html>
