@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function myNew(c) {
+      let obj = {}
+      obj._proto_ = c.prototype
+      let result = c.apply(obj)
+      return result instanceof Object ? result : obj
+    }
+
+    function myNew2() {
+      let obj = {}
+      let c = [].shift.call(arguments)
+      obj._proto_ = c.prototype
+      let result = c.apply(obj, arguments)
+      return result instanceof Object ? result : obj
+    }
+
+    function myInstanceof(left, right) {
+      let prototype = right.prototype
+      let _proto_ = left._proto_
+      while (true) {
+        if (_proto_ === null || _proto_ === undefined) {
+          return false
+        }
+        if (prototype === _proto_) {
+          return true
+        }
+        _proto_ = _proto_._proto_
+      }
+    }
+
+    function myInstanceof(left, right) {
+      let prototype = right.prototype
+      left = left.__proto__
+      while (true) {
+        if (left == null) {
+          return false
+        }
+        if (prototype === left) {
+          return true
+        }
+        left = left.__proto__
+      }
+    }
+
+    // function myInstanceof(left, right) {
+    //   let prototype = right.prototype
+    //   left = left.__proto__
+    //   while (true) {
+    //     if (left === null || left === undefined)
+    //       return false
+    //     if (prototype === left)
+    //       return true
+    //     left = left.__proto__
+    //   }
+    // }
+    console.log(myInstanceof({}, Object))
+  </script>
+
+  <script>
+    function hdInstanceof(left, right) {
+      let prototype = right.prototype
+      left = left.__proto__
+      while (1) {
+        if (left == null) {
+          return false
+        }
+        if (left === prototype) {
+          return true
+        }
+        left = left.__proto__
+      }
+    }
+    console.log(hdInstanceof([], Object))
+  </script>
+
+
+
+
+
+</body>
+
+</html>
