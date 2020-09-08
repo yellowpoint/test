@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iframe</title>
+</head>
+
+<body>
+  <h1>我是父级页面</h1>
+  <iframe src="./iframe交互2.html" id="myframe"></iframe>
+
+  <script>
+    //获取iframe元素
+    let iFrame = document.getElementById('myframe')
+
+    //iframe加载完毕后再发送消息，否则子页面接收不到message
+    iFrame.onload = function () {
+
+      //iframe加载完立即发送一条消息
+      iFrame.contentWindow.postMessage('MessageFromIndex1', '*');
+
+    }
+
+    function receiveMessageFromIframePage(event) {
+      console.log('receiveMessageFromIframePage', event)
+    }
+
+    //监听message事件
+    window.addEventListener("message", receiveMessageFromIframePage, false);
+  </script>
+</body>
+
+</html>

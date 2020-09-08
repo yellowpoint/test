@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iframe</title>
+</head>
+
+<body>
+  <h1>我是子级页面</h1>
+  <script>
+    //回调函数
+    function receiveMessageFromIndex(event) {
+      console.log('receiveMessageFromIndex', event)
+    }
+
+    //监听message事件
+    window.addEventListener("message", receiveMessageFromIndex, false);
+
+    parent.postMessage( {msg: 'MessageFromIframePage'}, '*');
+  </script>
+</body>
+
+</html>
