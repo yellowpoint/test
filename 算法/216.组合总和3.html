@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * @param {number} k
+     * @param {number} n
+     * @return {number[][]}
+     */
+    // var combinationSum3 = function (k, n) {
+    //   let list = []
+    //   let r = []
+    //   for (let i = 0; i++; i < k) {
+
+    //     for (let i2 = 1; i2++; i2 < 10) {
+    //       if (r.includes(i2)) {
+    //         continue
+    //       }
+    //       r[i] = i2
+
+    //     }
+    //     if (i == k - 1) {
+    //       if (r.reduce((x, y) => x + y) == n) {
+    //         list.push(r)
+    //       }
+    //       r = []
+    //     }
+
+    //   }
+    //   console.log('list', list)
+
+    //   return list
+    // };
+    // combinationSum3(3, 7)
+
+
+    var combinationSum3 = function (k, n) {
+      const res = []
+      const temp = []
+      const dfs = (min, max) => {
+        console.log(temp, min)
+        if (temp.length > k || temp.length + (max - min + 1) < k) {
+          return
+        }
+        if (temp.length === k && temp.reduce((x, y) => x + y) === n) {
+          console.log('temp', temp.slice())
+          res.push(temp.slice())
+          return
+        }
+        temp.push(min)
+        dfs(min + 1, max)
+        temp.pop()
+        dfs(min + 1, max)
+      }
+      dfs(1, 9)
+      return res
+    };
+
+
+
+    // var combinationSum3 = function (k, sum) {
+    //   const temp = [];
+    //   const res = [];
+    //   const dfs = (cur, n) => {
+    //     if (temp.length + (n - cur + 1) < k || temp.length > k) {
+    //       return;
+    //     }
+    //     if (temp.length === k && temp.reduce((x, y) => x + y) === sum) {
+    //       res.push(temp.slice());
+    //       return;
+    //     }
+    //     temp.push(cur);
+    //     dfs(cur + 1, n);
+    //     temp.pop();
+    //     dfs(cur + 1, n);
+    //   }
+
+    //   dfs(1, 9);
+    //   return res;
+    // };
+    console.log(combinationSum3(3, 7))
+  </script>
+</body>
+
+</html>

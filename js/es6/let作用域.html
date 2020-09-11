@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作用域</title>
+</head>
+
+<body>
+  <script>
+    let a = 1;
+    if(1){
+      let a
+      console.log(a)
+    }
+
+    {
+      let a
+      console.log(a)
+    }
+    function foo(){
+      console.log(a)
+    }
+    foo()
+  </script>
+</body>
+
+</html>
