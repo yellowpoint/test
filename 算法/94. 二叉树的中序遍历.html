@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * Definition for a binary tree node.
+     * function TreeNode(val) {
+     *     this.val = val;
+     *     this.left = this.right = null;
+     * }
+     */
+    /**
+     * @param {TreeNode} root
+     * @return {number[]}
+     */
+    //  中序遍历-递归
+    var inorderTraversal = function (root) {
+      const res = []
+      const inorder = root => {
+        if (!root) {
+          return
+        }
+        // 中
+        inorder(root.left)
+        res.push(root.val)
+        inorder(root.right)
+        // 前
+        /*
+        res.push(root.val)
+        inorder(root.left)
+        inorder(root.right)
+        */
+        // 后
+        /*
+        inorder(root.left)
+        inorder(root.right)
+         res.push(root.val)
+        */
+      }
+      inorder(root)
+      return res
+    };
+  </script>
+</body>
+
+</html>
