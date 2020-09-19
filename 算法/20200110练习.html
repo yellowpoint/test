@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
   <meta charset="UTF-8">
@@ -10,7 +10,7 @@
 
 <body>
   <script>
-    // 冒泡算法
+    // 冒泡算法 20200110
     function sort(arr) {
       let len = arr.length
       for (let i = 0; i < len - 1; i++) {
@@ -35,6 +35,57 @@
       return a - b
     })
     sort(arr)
+  </script>
+
+
+
+  <script>
+    // function sort(arr) {
+    //   const len = arr.length
+    //   for (let i = 0; i < len - 1; i++) {
+    //     for (let j = 0; j < len - 1 - i; j++) {
+    //       if (arr[j] < arr[j + 1]) {
+    //         let tem = arr[j]
+    //         arr[j] = arr[j + 1]
+    //         arr[j + 1] = tem
+    //       }
+    //     }
+    //   }
+    //   return arr
+    // }
+  </script>
+  <script>
+    // 快排
+
+    function sort2(arr) {
+      arr = arr || []
+      const len = arr.length
+      if (len <= 1) {
+        return arr
+      }
+      let flag = arr[0]
+      let left = []
+      let right = []
+
+      for (let i = 0; i < len; i++) {
+        if (arr[i] > flag) {
+          right.push(arr[i])
+        }
+        if (arr[i] < flag) {
+          left.push(arr[i])
+        }
+      }
+      return [...sort2(left), flag, ...sort2(right)]
+    }
+    let arr2 = [8, 5, 9, 4, 21, 3, 89, 41, 11, 1]
+    console.log(sort2(arr2))
+  </script>
+  <script>
+    function foo(a = []) {
+      // a = a || []
+      console.log('a', a)
+    }
+    foo(null)
   </script>
 
 </body>
