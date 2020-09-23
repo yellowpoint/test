@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * 关键点
+     * 1. new promise 一经创建，立即执行
+     * 2. 使用 Promise.resolve().then 可以把任务加到微任务队列，防止立即执行迭代方法
+     * 3. 微任务处理过程中，产生的新的微任务，会在同一事件循环内，追加到微任务队列里
+     * 4. 使用 race 在某个任务完成时，继续添加任务，保持任务按照最大并发数进行执行
+     * 5. 任务完成后，需要从 doingTasks 中移出
+     */
+    function limit(count, array, iterateFunc) {
+      const tasks = []
+      const doingTasks = []
+      let i = 0
+      const enqueue = () => {
+        if (i === array.length) {
+          return Promise.resolve()
+        }
+        const task = Promise.resolve().then(() => iterateFunc(array[i++]))
+        tasks.push(task)
+        const doing = task.then(() => doingTasks.splice(doingTasks.indexOf(doing), 1))
+        // console.log('doing',doing)
+        doingTasks.push(doing)
+        const res = doingTasks.length >= count ? Promise.race(doingTasks) : Promise.resolve()
+        let a = res.then(enqueue)
+        console.log('aa', a)
+        return a
+      };
+      return enqueue().then(() => Promise.all(tasks))
+    }
+
+    // test
+    const timeout = i => new Promise(resolve => setTimeout(() => resolve(i), i))
+    console.time('a');
+    // console.log('limit', limit(2, [3000, 1000, 1000, 1000], timeout))
+    limit(2, [3000, 1000, 1000, 10000], timeout).then((res) => {
+      console.log(res)
+      console.timeEnd('a')
+    })
+  </script>
+
+  <script>
+    // 错误写法,没有实现完成一个请求就补上下一个
+    function handleFetchQueue(urls, max, callback) {
+      const requestArr = [];
+      urls.forEach((item, idx) => {
+        const i = Math.floor(idx / max);
+        if (requestArr[i]) {
+          requestArr[i].push(item)
+        } else {
+          requestArr[i] = [item]
+        }
+      });
+
+      const handleSubRequests = (subReqs) => {
+        const results = [];
+        subReqs.forEach(req => {
+          fetch(req).then(res => {
+            if (results.push(res) === max) {
+              if (requestArr.length < 1) {
+                'function' === typeof callback && callback(results)
+              } else {
+                handleSubRequests(requestArr.shift(), requestArr, max)
+              }
+            }
+          }).catch(e => {
+            results.push(e)
+          })
+        })
+      };
+      handleSubRequests(requestArr.shift())
+    }
+
+
+    const urls = [...Array(10).keys()]
+
+    const fetch = function (idx) {
+      return new Promise(resolve => {
+        console.log(`start request ${idx}`);
+        // 模拟请求时间
+        const timeout = parseInt(Math.random() * 1e4);
+        setTimeout(() => {
+          console.log(`end request ${idx}`);
+          resolve(idx)
+        }, timeout)
+      })
+    };
+
+    const max = 4;
+
+    const callback = () => {
+      console.log('run callback');
+    };
+
+    // handleFetchQueue(urls, max, callback);
+  </script>
+
+
+
+
+
+
+  <script>
+    (() => {
+      //有十个请求,分两次,每次5个请求
+      // 先自己写一下,印象更深
+      const max = 4
+      const urls = [...Array(10).keys()]
+      const timeout = (idx, i = 1000) => {
+        console.log(`start request ${idx}`);
+        return new Promise(resolve => {
+          setTimeout(() => {
+            console.log(`end request ${idx}`);
+            resolve(i)
+          }, i)
+        })
+      }
+      const callback = () => {
+        console.timeEnd('max');
+        console.log('run callback');
+      };
+
+      console.time('max');
+      // foo(urls, max, callback)
+
+
+      function foo(urls, max, callback) {
+        let tempArr = []
+        urls.forEach((value, index) => {
+          const i = Math.floor(index / max);
+          if (tempArr[i]) {
+            tempArr[i].push(value)
+          } else {
+            tempArr[i] = [value]
+          }
+
+        })
+
+        function bar(arr) {
+          const results = [];
+          arr.forEach(v => {
+            timeout(v).then(res => {
+              if (results.push(res) == arr.length) {
+                if (tempArr.length) {
+                  bar(tempArr.shift())
+                } else {
+                  'function' === typeof callback && callback(results)
+                }
+
+              }
+            }).catch(err => {
+              results.push(err)
+            })
+
+          })
+        }
+        bar(tempArr.shift())
+
+
+      }
+
+
+
+    })()
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // https: //juejin.im/post/6844903796506624014
+    // 参考
+    function handleFetchQueue(urls, max, callback) {
+      const urlCount = urls.length;
+      const requestsQueue = [];
+      const results = [];
+      let i = 0;
+      const handleRequest = (url) => {
+        const req = fetch(url).then(res => {
+          console.log('当前并发： ' + requestsQueue);
+          const len = results.push(res);
+          if (len < urlCount && i + 1 < urlCount) {
+            requestsQueue.shift();
+            handleRequest(urls[++i])
+          } else if (len === urlCount) {
+            'function' === typeof callback && callback(results)
+          }
+        }).catch(e => {
+          results.push(e)
+        });
+        if (requestsQueue.push(req) < max) {
+          handleRequest(urls[++i])
+        }
+      };
+      handleRequest(urls[i])
+    }
+
+
+    const urls = Array.from({
+      length: 10
+    }, (v, k) => k);
+
+    const fetch = function (idx) {
+      return new Promise(resolve => {
+        console.log(`start request ${idx}`);
+        const timeout = parseInt(Math.random() * 1e4);
+        setTimeout(() => {
+          console.log(`end request ${idx}`);
+          resolve(idx)
+        }, timeout)
+      })
+    };
+
+    const max = 4;
+
+    const callback = () => {
+      console.log('run callback');
+    };
+
+
+    // handleFetchQueue(urls, max, callback);
+  </script>
+
+  <script>
+    // 自己写
+    // finally没有返回参数
+    (() => {
+      const max = 4
+      const urls = [...Array(10).keys()]
+      const timeout = (idx, i = 1000) => {
+        console.log(`start request ${idx}`);
+        const timeout = parseInt(Math.random() * 1e4);
+        return new Promise(resolve => {
+          setTimeout(() => {
+            console.log(`end request ${idx}`);
+            resolve(i)
+          }, i)
+        })
+      }
+      const callback = () => {
+        console.timeEnd('max');
+        console.log('run callback');
+      };
+
+      console.time('max');
+      // foo(urls, max, callback)
+
+      function foo(urls, max, callback) {
+        let i = 0
+        let tempArr = []
+        const uLen = urls.length
+        const results = []
+
+        function bar(url) {
+          if (i > uLen - 1) {
+            return
+          }
+          timeout(url).finally(() => {
+            let rLen = results.push(1)
+            tempArr.shift()
+            if (rLen < uLen) {
+              bar(urls[++i])
+            }
+            if (rLen == uLen) {
+              callback()
+            }
+          })
+          if (tempArr.push(1) < max) {
+            bar(urls[++i])
+          }
+        }
+        bar(urls[i])
+      }
+
+
+
+    })()
+  </script>
+
+  <script>
+    (() => {
+      const max = 4
+      const urls = [...Array(10).keys()]
+      const timeout = (idx, i = 1000) => {
+        console.log(`start request ${idx}`);
+        // const timeout = parseInt(Math.random() * 1e4);
+        return new Promise(resolve => {
+          setTimeout(() => {
+            console.log(`end request ${idx}`);
+            resolve(i)
+          }, i)
+        })
+      }
+      const callback = () => {
+        console.timeEnd('max');
+        console.log('run callback');
+      };
+
+      console.time('limit');
+      // limit(urls, max, timeout).then((res) => {
+      //   console.log(res)
+      //   console.timeEnd('limit')
+      // })
+
+
+      function limit(array, count, iterateFunc) {
+        const tasks = []
+        const doingTasks = []
+        let i = 0
+        const enqueue = () => {
+          if (i === array.length) {
+            return Promise.resolve()
+          }
+          const task = Promise.resolve().then(() => iterateFunc(array[i++]))
+          tasks.push(task)
+          const doing = task.then(() => doingTasks.splice(doingTasks.indexOf(doing), 1))
+          doingTasks.push(doing)
+          const res = doingTasks.length >= count ? Promise.race(doingTasks) : Promise.resolve()
+          return res.then(enqueue)
+        };
+        return enqueue().then(() => Promise.all(tasks))
+      }
+    })()
+  </script>
+
+  <script>
+    // 评论中的好懂写法;一个循环加上结束后的加一个
+    (() => {
+
+      const max = 4
+      const urls = [...Array(2).keys()]
+      const fetch = (idx, i = 1000) => {
+        console.log(`start request ${idx}`);
+        // const timeout = parseInt(Math.random() * 1e4);
+        return new Promise(resolve => {
+          setTimeout(() => {
+            console.log(`end request ${idx}`);
+            resolve(i)
+          }, i)
+        })
+      }
+      const callback = () => {
+        console.timeEnd('easy');
+        console.log('run callback');
+      };
+      console.time('easy');
+      easy(urls, max, callback)
+
+
+      function easy(urls, max, cb) {
+        let finished = 0
+        const total = urls.length
+        for (let i = 0; i < max; i++) {
+          handle()
+        }
+
+        function handle() {
+          let url = urls.shift()
+          if (url == null) {
+            return
+          }
+          fetch(url).finally(res => {
+            finished++
+            if (urls.length) {
+              handle()
+            }
+            if (finished == total) {
+              cb()
+            }
+          })
+
+        }
+
+      }
+
+    })()
+  </script>
+</body>
+
+</html>
