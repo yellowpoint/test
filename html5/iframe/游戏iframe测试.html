@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  我是游戏内容
+  <button onclick="pay()">支付</button>
+  <!-- <script src="http://192.168.100.22/static/js/sdk.min.js"></script> -->
+  <script src="https://game.51app.cn/static/js/sdk.min.js"></script>
+  
+  <script>
+    function pay() {
+      console.log('点击了支付')
+      TENGQU_GAME_SDK.pay('eyJnYW1lTm8iOiIzWFdDM3FLbSIsInVzZXJuYW1lIjoieHVlMTg2MjQwMzQ4MzciLCJ0cmFkZU5vIjoiTUlYX3g1MWFwcF8xNjAwOTQzMjIwXzUwMzkwNyIsImFtb3VudCI6MzAwMCwic3VjY2Vzc1VybCI6IiIsImZhaWx1cmVVcmwiOiIiLCJleHQiOiIxIn0=')
+    }
+  </script>
+</body>
+
+</html>

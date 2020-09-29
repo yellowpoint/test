@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    .waveBox {
+      position: absolute;
+    }
+
+    .wave {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .wave0 {
+      animation: w 1s forwards;
+    }
+
+    .wave1 {
+      animation: w 1s 0.3s forwards;
+    }
+
+    .wave2 {
+      animation: w 1s 0.6s forwards;
+    }
+
+    @keyframes w {
+      0% {
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+      }
+
+      100% {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="waveBox">
+    <div class="wave wave0"></div>
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.js"></script>
+  <script>
+    let z = 0
+    $('body').on('click', function (e) {
+      let x = e.pageX
+      let y = e.pageY
+      z++
+      _wave(x, y, z)
+    })
+
+    function _wave(x, y, z) {
+      let dataBox = `
+      <div class="waveBox waveBox${z}" style="top:${y}px;left:${x}px;z-index:${z}">
+    <div class="wave wave0"></div>
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+  </div>
+      `
+      $('body').append(dataBox)
+      setTimeout(() => {
+        $('.waveBox' + z).remove()
+      }, 3000)
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    .wave-position {
+      position: absolute;
+    }
+
+    .wave {
+      position: absolute;
+      top: calc((100% - 30px)/2);
+      left: calc((100% - 30px)/2);
+      width: 30px;
+      height: 30px;
+      border-radius: 300px;
+    }
+
+    .wave0 {
+      background: #f00;
+      z-index: 2;
+      /* background-size: auto 106%; */
+      animation: w 1s forwards;
+    }
+
+    .wave1 {
+      background: #d00;
+      z-index: 3;
+      animation: w 1s .2s forwards;
+    }
+
+    .wave2 {
+      background: #b00;
+      z-index: 4;
+      animation: w 1s .4s forwards;
+    }
+
+    .wave3 {
+      background: #900;
+      z-index: 5;
+      animation: w 1s .5s forwards;
+    }
+
+    .wave4 {
+      background: #700;
+      z-index: 6;
+      animation: w 1s .8s forwards;
+    }
+
+    .wave5 {
+      background: #500;
+      z-index: 7;
+      animation: w 1s 1s forwards;
+    }
+
+    @keyframes w {
+      0% {
+        top: calc((100% - 30px)/2);
+        left: calc((100% - 30px)/2);
+        width: 30px;
+        height: 30px;
+        opacity: 1;
+      }
+
+      100% {
+        top: calc((100% - 300px)/2);
+        left: calc((100% - 300px)/2);
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- <div class="wave wave5"></div>
+  <div class="wave wave4"></div>
+  <div class="wave wave3"></div>
+  <div class="wave wave2"></div>
+  <div class="wave wave1"></div>
+  <div class="wave wave0"></div> -->
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.js"></script>
+  <script>
+    // var $ = document.querySelector.bind(document)
+    var mx, my, timer;
+    var z = 2;
+
+    $('body').on('click', function (e) {
+      mx = e.pageX;
+      my = e.pageY;
+      z = z + 1;
+      _wave(mx, my, z);
+    });
+
+    function _wave(i, j, k) {
+      $('body').prepend(
+        '<div class="wave-position water' + k + '" style="z-index:' + k + ';top:' + (j) + 'px;left:' + (i) + 'px;">' +
+        '<div class="wave-body">' +
+        '<div class="wave wave5"></div>' +
+        '<div class="wave wave4"></div>' +
+        '<div class="wave wave3"></div>' +
+        '<div class="wave wave2"></div>' +
+        '<div class="wave wave1"></div>' +
+        '<div class="wave wave0"></div>' +
+        '</div>' +
+        '</div>'
+      );
+      setTimeout(function () {
+        $('.water' + k).remove();
+      }, 3000);
+    }
+  </script>
+</body>
+
+</html>
