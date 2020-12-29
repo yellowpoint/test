@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <script src="../jquery-3.3.1.min.js" type="text/javascript" charset="utf-8"></script> -->
+  <!-- <script src="https://tdd.51app.cn/static/js/index.f1eac7c6.js"></script> -->
+  <!-- <script src="https://api-tdd.51app.cn/home/getHomeV2"></script> -->
+  <!-- 未拉取到资源 报警告 Cross-Origin Read Blocking (CORB) blocked cross-origin response https://api-tdd.51app.cn/home/getHomeV2 with MIME type application/json. -->
+  <!-- <script src="https://51app-image.oss-cn-hangzhou.aliyuncs.com/payment/tbk/2020/12/2/09453311954152.png"></script> -->
+  <!-- 图片直接报错because its MIME type ('image/png') is not executable. -->
+  <!-- <script src="https://tdd.51app.cn/static/index.css"></script>   -->
+  <!-- css能拉取到资源，但按照js去执行就报错了 -->
+  <!-- <script src="http://192.168.100.22:5501/js/%E6%9F%AF%E9%87%8C%E5%8C%96.html"></script> -->
+  <script>
+    function jsOnload(e) {
+      console.log('eee', e)
+    }
+  </script>
+  <!-- <script src="./跨域测试js.js" onload="jsOnload()"></script> -->
+
+  <!-- html 同css -->
+  <!-- <script type="text/javascript">
+    function callback(data) {
+      alert(data.message);
+    }
+    //添加<script>标签的方法
+    function addScriptTag(src) {
+      var script = document.createElement('script');
+      script.setAttribute("type", "text/javascript");
+      script.src = src;
+      document.body.appendChild(script);
+    }
+
+    window.onload = function () {
+      addScriptTag("http://localhost:20002/test.js");
+    }
+  </script> -->
+</body>
+
+</html>

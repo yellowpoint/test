@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const curry = (fn, ...args1) => {
+      return (...args2) => {
+        let args = [...args1, ...args2]
+        return args.length >= fn.length ? fn(...args) : curry(fn, ...args)
+      }
+    }
+
+    function fn(a, b, c) {
+      console.log(a + b)
+    }
+    // fn(1, 2)
+    curry(fn, 5)(5)(2)
+    // console.log()
+
+    window.addEventListener('hashchange',()=>{
+      console.log('hashchange')
+    })
+  </script>
+</body>
+
+</html>
